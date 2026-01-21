@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TESCA | Leading Spoken English & Visa Consultancy</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --teal: #007175;
+            --orange: #ef7f1a;
+            --black: #0b0b0b;
+            --glass: rgba(255, 255, 255, 0.9);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: var(--black);
+            overflow-x: hidden;
+            font-size: 1.1rem;
+        }
+
+        /* --- STUNNING 3D & ANIMATION UTILITIES --- */
+        .scene-3d {
+            perspective: 2000px;
+        }
+
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .card-3d:hover {
+            transform: translateZ(40px) rotateX(2deg) rotateY(-1deg);
+            box-shadow: 0 40px 80px -20px rgba(0, 113, 117, 0.15);
+        }
+
+        .gradient-teal {
+            background: linear-gradient(135deg, var(--teal), #004d4f);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--teal), var(--orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- HEADER STYLING --- */
+        header {
+            transition: all 0.4s ease;
+            background: transparent;
+        }
+
+        header.scrolled {
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            padding: 10px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .nav-link {
+            font-weight: 700;
+            font-size: 1.1rem;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--orange);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* --- SECTION SPACING --- */
+        section {
+            padding: 120px 0;
+        }
+
+        .section-title {
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: -2px;
+            line-height: 1.1;
+        }
+
+        /* --- BENTO GRID GALLERY --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 300px);
+            gap: 20px;
+        }
+
+        /* --- APP MOCKUPS --- */
+        .phone-mockup {
+            width: 100%;
+            max-width: 200px;
+            aspect-ratio: 9/19;
+            background: #000;
+            border: 8px solid #1a1a1a;
+            border-radius: 35px;
+            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.5);
+            overflow: hidden;
+            margin: auto;
+        }
+
+        /* --- CUSTOM SCROLLBAR --- */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 10px; }
+        
+        .save-badge {
+            background: #e6fffa;
+            color: #007175;
+            padding: 4px 12px;
+            border-radius: 99px;
+            font-weight: 800;
+            font-size: 0.8rem;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="fixed top-0 w-full z-[1000] py-6" id="mainHeader">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="text-4xl font-black tracking-tighter text-[#007175]">TESCA</div>
+            
+            <nav class="hidden lg:flex items-center space-x-10">
+                <a href="#home" class="nav-link text-gray-800 hover:text-[#ef7f1a]">Home</a>
+                <a href="#about" class="nav-link text-gray-800 hover:text-[#ef7f1a]">About Us</a>
+                <a href="#spoken-english" class="nav-link text-gray-800 hover:text-[#ef7f1a]">Spoken English</a>
+                <a href="#courses" class="nav-link text-gray-800 hover:text-[#ef7f1a]">Courses</a>
+                <a href="#visa" class="nav-link text-gray-800 hover:text-[#ef7f1a]">Visa</a>
+                <a href="#gallery" class="nav-link text-gray-800 hover:text-[#ef7f1a]">Gallery</a>
+                <a href="#blog" class="nav-link text-gray-800 hover:text-[#ef7f1a]">Insights</a>
+            </nav>
+
+            <a href="#contact" class="hidden md:block bg-[#007175] text-white px-10 py-4 rounded-full font-bold shadow-xl hover:bg-[#ef7f1a] transition-all transform hover:scale-105 text-lg">
+                Join Now <i class="fas fa-arrow-right ml-2 text-sm"></i>
+            </a>
+        </div>
+    </header>
+
+    <section id="home" class="min-h-screen flex items-center pt-32 mt-12 bg-[#fcfcfc] overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right" data-aos-duration="1200">
+                <div class="flex items-center space-x-3 mb-6">
+                    <div class="w-12 h-[2px] bg-[#ef7f1a]"></div>
+                    <span class="text-[#ef7f1a] font-black uppercase tracking-widest text-base">Empowering Your Future</span>
+                </div>
+                <h1 class="text-7xl lg:text-8xl font-black mb-8 leading-[1.05]">
+                    Master <span class="text-[#007175]">English.</span> <br> Conquer the <span class="gradient-text">World.</span>
+                </h1>
+                <p class="text-2xl text-gray-600 mb-10 leading-relaxed max-w-xl">
+                    TESCA is India's most trusted academy for Spoken English fluency and global career consultancy. We combine 3D learning techniques with authentic visa guidance.
+                </p>
+                <div class="flex flex-wrap gap-5">
+                    <a href="#spoken-english" class="bg-[#007175] text-white px-12 py-6 rounded-2xl font-bold text-xl shadow-2xl hover:bg-black transition-all">Start Learning</a>
+                    <a href="#visa" class="border-2 border-[#007175] text-[#007175] px-12 py-6 rounded-2xl font-bold text-xl hover:bg-[#007175] hover:text-white transition-all">Visa Consultancy</a>
+                </div>
+            </div>
+            <div class="scene-3d" data-aos="zoom-in" data-aos-duration="1500">
+                <div class="card-3d rounded-[4rem] overflow-hidden border-[15px] border-white shadow-2xl relative">
+                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80" class="w-full h-[650px] object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+                    <div class="absolute bottom-10 left-10 text-white">
+                        <p class="text-7xl font-black">9.0</p>
+                        <p class="uppercase font-bold tracking-widest text-[#ef7f1a] text-lg">IELTS Band Goal</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-24 items-center">
+                <div class="grid grid-cols-2 gap-6" data-aos="fade-up">
+                    <div class="space-y-6 mt-16">
+                        <div class="bg-gray-50 p-12 rounded-[3rem] card-3d">
+                            <i class="fas fa-history text-5xl text-[#ef7f1a] mb-6"></i>
+                            <h4 class="text-6xl font-black text-[#007175]">12+</h4>
+                            <p class="font-bold text-gray-500 uppercase text-sm mt-2">Years of Excellence</p>
+                        </div>
+                        <div class="bg-black text-white p-12 rounded-[3rem] card-3d">
+                            <i class="fas fa-users text-5xl text-[#007175] mb-6"></i>
+                            <h4 class="text-6xl font-black">50k+</h4>
+                            <p class="font-bold text-gray-400 uppercase text-sm mt-2">Happy Students</p>
+                        </div>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="bg-[#007175] text-white p-12 rounded-[3rem] card-3d">
+                            <i class="fas fa-globe-asia text-5xl text-[#ef7f1a] mb-6"></i>
+                            <h4 class="text-6xl font-black">25+</h4>
+                            <p class="font-bold text-teal-100 uppercase text-sm mt-2">Countries Covered</p>
+                        </div>
+                        <div class="bg-gray-50 p-12 rounded-[3rem] card-3d">
+                            <i class="fas fa-award text-5xl text-[#ef7f1a] mb-6"></i>
+                            <h4 class="text-6xl font-black text-[#007175]">100%</h4>
+                            <p class="font-bold text-gray-500 uppercase text-sm mt-2">Visa Success Rate</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-10" data-aos="fade-left">
+                    <h2 class="section-title">Why <span class="text-[#007175]">TESCA?</span></h2>
+                    <p class="text-2xl text-gray-600 leading-relaxed">
+                        TESCA is not just an institute; it's a launchpad for your dreams. We specialize in transforming hesitant speakers into fluent communicators and helping ambitious students reach their international destinations through authentic consultancy.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-5">
+                            <div class="w-14 h-14 rounded-full bg-[#007175]/10 flex items-center justify-center shrink-0">
+                                <i class="fas fa-check text-[#007175] text-xl"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-2xl font-bold">Comprehensive Ecosystem</h5>
+                                <p class="text-gray-500 text-lg">From basic grammar to final visa stamping, we manage everything under one roof.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-5">
+                            <div class="w-14 h-14 rounded-full bg-[#ef7f1a]/10 flex items-center justify-center shrink-0">
+                                <i class="fas fa-check text-[#ef7f1a] text-xl"></i>
+                            </div>
+                            <div>
+                                <h5 class="text-2xl font-bold">Expert Certified Faculty</h5>
+                                <p class="text-gray-500 text-lg">Our trainers are IDP & British Council certified with a decade of global experience.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="spoken-english" class="bg-[#f8f9f9]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <span class="text-[#ef7f1a] font-black uppercase tracking-[0.3em] text-base">Master the Language</span>
+                <h2 class="section-title mt-4">Deep <span class="text-[#007175]">Spoken English</span> Program</h2>
+                <p class="text-gray-500 mt-4 text-xl max-w-2xl mx-auto">Our flagship program is designed to take you from Zero to Hero in fluency. Here is exactly what we offer:</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 items-start">
+                <div class="space-y-6" data-aos="fade-right">
+                    <div class="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl transition-all border-l-8 border-[#007175]">
+                        <h4 class="text-3xl font-black mb-6 flex items-center gap-4">
+                            <i class="fas fa-layer-group text-[#007175]"></i> Module 1: Foundation
+                        </h4>
+                        <ul class="space-y-4 text-gray-600 text-lg">
+                            <li class="flex items-center gap-3"><i class="fas fa-circle text-[#007175] text-[8px]"></i> Sentence Formation & Basic Tenses</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-circle text-[#007175] text-[8px]"></i> Pronunciation & Phonetics Training</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-circle text-[#007175] text-[8px]"></i> Overcoming Hesitation & Stage Fear</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-circle text-[#007175] text-[8px]"></i> Daily Vocabulary for Common Situations</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl transition-all border-l-8 border-[#ef7f1a]">
+                        <h4 class="text-3xl font-black mb-6 flex items-center gap-4">
+                            <i class="fas fa-users text-[#ef7f1a]"></i> Module 2: Advanced Interaction
+                        </h4>
+                        <ul class="space-y-4 text-gray-600 text-lg">
+                            <li class="flex items-center gap-3"><i class="fas fa-circle text-[#ef7f1a] text-[8px]"></i> Group Discussions & Debate Mastery</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-circle text-[#ef7f1a] text-[8px]"></i> Idioms, Phrases & Slang Integration</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-circle text-[#ef7f1a] text-[8px]"></i> Business Communication & Email Etiquette</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-circle text-[#ef7f1a] text-[8px]"></i> Thought Process in English (No Translation)</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-10 rounded-3xl shadow-sm hover:shadow-xl transition-all border-l-8 border-black">
+                        <h4 class="text-3xl font-black mb-6 flex items-center gap-4">
+                            <i class="fas fa-user-tie"></i> Module 3: Professional Polish
+                        </h4>
+                        <ul class="space-y-4 text-gray-600 text-lg">
+                            <li class="flex items-center gap-3"><i class="fas fa-circle text-black text-[8px]"></i> Personality Development & Body Language</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-circle text-black text-[8px]"></i> Mock Interviews & Resume Building</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-circle text-black text-[8px]"></i> Public Speaking & Stage Modulation</li>
+                            <li class="flex items-center gap-3"><i class="fas fa-circle text-black text-[8px]"></i> Accent Neutralization Techniques</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-[#007175] rounded-[3.5rem] p-16 text-white sticky top-32" data-aos="fade-left">
+                    <h3 class="text-5xl font-black mb-10">What You Gain?</h3>
+                    <div class="grid gap-10">
+                        <div class="flex gap-6">
+                            <div class="text-4xl"><i class="fas fa-rocket text-[#ef7f1a]"></i></div>
+                            <div>
+                                <h5 class="text-2xl font-bold mb-2">Instant Fluency Boost</h5>
+                                <p class="text-teal-100 text-lg">Experience a 40% improvement in your speaking confidence within the first 15 days.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="text-4xl"><i class="fas fa-briefcase text-[#ef7f1a]"></i></div>
+                            <div>
+                                <h5 class="text-2xl font-bold mb-2">Career Acceleration</h5>
+                                <p class="text-teal-100 text-lg">English is the global corporate language. Unlock 5x more job opportunities in top MNCs.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-6">
+                            <div class="text-4xl"><i class="fas fa-plane-departure text-[#ef7f1a]"></i></div>
+                            <div>
+                                <h5 class="text-2xl font-bold mb-2">Global Readiness</h5>
+                                <p class="text-teal-100 text-lg">Perfectly prepare for life abroad. Communicate effectively with locals anywhere in the world.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-14 p-8 bg-white/10 rounded-3xl border border-white/20">
+                        <p class="italic text-lg">"The curriculum is designed specifically for Indian students who understand grammar but struggle to speak fluently."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="courses" class="bg-white">
+        <div class="max-w-7xl mx-auto px-6 mb-20">
+            <div class="flex flex-col md:flex-row justify-between items-end gap-10">
+                <div>
+                    <span class="text-[#007175] font-black uppercase tracking-widest text-base">Our Portfolio</span>
+                    <h2 class="section-title mt-2">Premium <span class="text-[#ef7f1a]">Courses</span></h2>
+                </div>
+                <div class="bg-gray-100 p-3 rounded-full flex gap-2">
+                    <button class="bg-white px-8 py-3 rounded-full font-bold shadow-md text-lg">Online</button>
+                    <button class="px-8 py-3 rounded-full font-bold text-gray-500 text-lg">Offline</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <div class="card-3d rounded-[3rem] p-10 shadow-sm border border-gray-100 group flex flex-col" data-aos="fade-up">
+                <div class="h-56 bg-gray-50 rounded-2xl mb-8 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    <div class="absolute top-4 right-4 bg-red-500 text-white px-4 py-1 rounded-full font-black text-xs">27% OFF</div>
+                </div>
+                <h3 class="text-3xl font-black mb-2 uppercase">IELTS Academic</h3>
+                <p class="text-[#ef7f1a] font-bold mb-4 italic text-sm"><i class="far fa-clock mr-2"></i>Duration: 3 Months</p>
+                <div class="space-y-3 mb-8 flex-grow">
+                    <div class="flex items-center gap-2 text-gray-600 text-sm font-bold"><i class="fas fa-check-circle text-green-500"></i> Free Grammar Book</div>
+                    <div class="flex items-center gap-2 text-gray-600 text-sm font-bold"><i class="fas fa-check-circle text-green-500"></i> 10 Full Mock Tests</div>
+                    <div class="flex items-center gap-2 text-gray-600 text-sm font-bold"><i class="fas fa-check-circle text-green-500"></i> Weekly One-on-One Speaking</div>
+                    <div class="flex items-center gap-2 text-gray-600 text-sm font-bold"><i class="fas fa-check-circle text-green-500"></i> IDP Certified Materials</div>
+                </div>
+                <div class="flex items-center justify-between border-t border-gray-100 pt-6 mt-auto">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-gray-400 line-through text-sm">₹15,000</span>
+                            <span class="save-badge">SAVE ₹4,001</span>
+                        </div>
+                        <p class="text-3xl font-black text-[#ef7f1a]">₹10,999</p>
+                    </div>
+                    <button class="bg-black text-white px-8 py-3 rounded-xl text-sm font-bold hover:bg-[#007175] transition">Enrol</button>
+                </div>
+            </div>
+
+            <div class="card-3d rounded-[3rem] p-10 shadow-sm border border-gray-100 group flex flex-col" data-aos="fade-up" data-aos-delay="100">
+                <div class="h-56 bg-gray-50 rounded-2xl mb-8 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    <div class="absolute top-4 right-4 bg-red-500 text-white px-4 py-1 rounded-full font-black text-xs">30% OFF</div>
+                </div>
+                <h3 class="text-3xl font-black mb-2 uppercase">PTE Core</h3>
+                <p class="text-[#ef7f1a] font-bold mb-4 italic text-sm"><i class="far fa-clock mr-2"></i>Duration: 2 Months</p>
+                <div class="space-y-3 mb-8 flex-grow">
+                    <div class="flex items-center gap-2 text-gray-600 text-sm font-bold"><i class="fas fa-check-circle text-green-500"></i> AI Scoring Software Access</div>
+                    <div class="flex items-center gap-2 text-gray-600 text-sm font-bold"><i class="fas fa-check-circle text-green-500"></i> Unlimited Sectional Tests</div>
+                    <div class="flex items-center gap-2 text-gray-600 text-sm font-bold"><i class="fas fa-check-circle text-green-500"></i> Real Exam Simulation</div>
+                    <div class="flex items-center gap-2 text-gray-600 text-sm font-bold"><i class="fas fa-check-circle text-green-500"></i> Personalized Feedback</div>
+                </div>
+                <div class="flex items-center justify-between border-t border-gray-100 pt-6 mt-auto">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-gray-400 line-through text-sm">₹12,000</span>
+                            <span class="save-badge">SAVE ₹3,501</span>
+                        </div>
+                        <p class="text-3xl font-black text-[#ef7f1a]">₹8,499</p>
+                    </div>
+                    <button class="bg-black text-white px-8 py-3 rounded-xl text-sm font-bold hover:bg-[#007175] transition">Enrol</button>
+                </div>
+            </div>
+
+            <div class="card-3d rounded-[3rem] p-10 shadow-sm border border-gray-100 group flex flex-col" data-aos="fade-up" data-aos-delay="200">
+                <div class="h-56 bg-gray-50 rounded-2xl mb-8 overflow-hidden relative">
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    <div class="absolute top-4 right-4 bg-red-500 text-white px-4 py-1 rounded-full font-black text-xs">29% OFF</div>
+                </div>
+                <h3 class="text-3xl font-black mb-2 uppercase">TOEFL Excellence</h3>
+                <p class="text-[#ef7f1a] font-bold mb-4 italic text-sm"><i class="far fa-clock mr-2"></i>Duration: 2.5 Months</p>
+                <div class="space-y-3 mb-8 flex-grow">
+                    <div class="flex items-center gap-2 text-gray-600 text-sm font-bold"><i class="fas fa-check-circle text-green-500"></i> University Matching Tool</div>
+                    <div class="flex items-center gap-2 text-gray-600 text-sm font-bold"><i class="fas fa-check-circle text-green-500"></i> Academic Writing Mastery</div>
+                    <div class="flex items-center gap-2 text-gray-600 text-sm font-bold"><i class="fas fa-check-circle text-green-500"></i> Recorded Live Lectures</div>
+                    <div class="flex items-center gap-2 text-gray-600 text-sm font-bold"><i class="fas fa-check-circle text-green-500"></i> Doubt Solving Community</div>
+                </div>
+                <div class="flex items-center justify-between border-t border-gray-100 pt-6 mt-auto">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-gray-400 line-through text-sm">₹13,500</span>
+                            <span class="save-badge">SAVE ₹4,001</span>
+                        </div>
+                        <p class="text-3xl font-black text-[#ef7f1a]">₹9,499</p>
+                    </div>
+                    <button class="bg-black text-white px-8 py-3 rounded-xl text-sm font-bold hover:bg-[#007175] transition">Enrol</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-[#f0f9fa]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <span class="text-[#007175] font-black uppercase tracking-widest text-base">The Tesca Advantage</span>
+                <h2 class="section-title mt-2">What <span class="text-[#ef7f1a]">TESCA</span> Provides?</h2>
+            </div>
+            <div class="grid md:grid-cols-2 gap-10">
+                <div class="bg-white p-12 rounded-[3rem] shadow-xl border border-teal-50 flex gap-8 items-start" data-aos="fade-right">
+                    <div class="w-20 h-20 bg-[#007175] rounded-3xl flex items-center justify-center shrink-0 shadow-lg shadow-teal-900/20">
+                        <i class="fas fa-certificate text-white text-4xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-black mb-4">ISO 9001:2015 Certified</h3>
+                        <p class="text-gray-600 text-lg leading-relaxed">TESCA is a government-registered and ISO-certified institute. Every student receives a globally valid course completion certificate that enhances their resume for corporate jobs and international admissions.</p>
+                        <div class="mt-4 flex items-center gap-3 font-bold text-[#007175]">
+                            <i class="fas fa-check"></i> Globally Valid Certificate
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-12 rounded-[3rem] shadow-xl border border-teal-50 flex gap-8 items-start" data-aos="fade-left">
+                    <div class="w-20 h-20 bg-[#ef7f1a] rounded-3xl flex items-center justify-center shrink-0 shadow-lg shadow-orange-900/20">
+                        <i class="fas fa-headset text-white text-4xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-black mb-4">Lifetime Alumni Support</h3>
+                        <p class="text-gray-600 text-lg leading-relaxed">Our relationship doesn't end after the course. We offer lifetime support for interview preparation, document verification, and English fluency refreshment whenever you need it throughout your career.</p>
+                        <div class="mt-4 flex items-center gap-3 font-bold text-[#ef7f1a]">
+                            <i class="fas fa-check"></i> 24/7 Expert Help Desk
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="visa" class="bg-black text-white overflow-hidden relative">
+        <div class="absolute top-0 right-0 w-1/3 h-full bg-[#007175]/10 blur-[150px]"></div>
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-20 text-center" data-aos="fade-up">
+                <h2 class="section-title text-white">Global <span class="text-[#ef7f1a]">Visa</span> Pathways</h2>
+                <p class="text-gray-400 mt-4 text-xl max-w-2xl mx-auto">Authentic consultancy with expert case officers for smooth immigration.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="bg-white/5 border border-white/10 p-10 rounded-[3rem] hover:bg-[#007175]/20 transition group" data-aos="flip-left">
+                    <div class="w-16 h-16 bg-[#007175] rounded-2xl flex items-center justify-center mb-8 text-3xl">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h4 class="text-3xl font-black mb-6">STUDENT VISA</h4>
+                    <div class="space-y-4 mb-8">
+                        <p class="text-sm font-bold text-[#ef7f1a] uppercase">Benefits:</p>
+                        <ul class="text-lg text-gray-400 space-y-2">
+                            <li>• Part-time work rights (20 hrs/week)</li>
+                            <li>• Post-study work permit up to 3 years</li>
+                            <li>• World-class degree recognition</li>
+                        </ul>
+                        <p class="text-sm font-bold text-[#ef7f1a] uppercase">Requirements:</p>
+                        <ul class="text-lg text-gray-400 space-y-2">
+                            <li>• Offer letter from DLI/University</li>
+                            <li>• IELTS/PTE Proof (6.0+ Bands)</li>
+                            <li>• GIC/Financial proof of living</li>
+                        </ul>
+                    </div>
+                    <button class="w-full py-5 rounded-2xl bg-white text-black font-bold group-hover:bg-[#ef7f1a] group-hover:text-white transition text-lg">Check Eligibility</button>
+                </div>
+
+                <div class="bg-white/5 border border-white/10 p-10 rounded-[3rem] hover:bg-[#007175]/20 transition group" data-aos="flip-left" data-aos-delay="100">
+                    <div class="w-16 h-16 bg-[#ef7f1a] rounded-2xl flex items-center justify-center mb-8 text-3xl">
+                        <i class="fas fa-plane-arrival"></i>
+                    </div>
+                    <h4 class="text-3xl font-black mb-6">VISITOR VISA</h4>
+                    <div class="space-y-4 mb-8">
+                        <p class="text-sm font-bold text-[#ef7f1a] uppercase">Benefits:</p>
+                        <ul class="text-lg text-gray-400 space-y-2">
+                            <li>• Up to 10 years multi-entry (Canada)</li>
+                            <li>• Explore global cultures effortlessly</li>
+                            <li>• Attend seminars or visit family</li>
+                        </ul>
+                        <p class="text-sm font-bold text-[#ef7f1a] uppercase">Requirements:</p>
+                        <ul class="text-lg text-gray-400 space-y-2">
+                            <li>• Strong home-country ties proof</li>
+                            <li>• Clean criminal & medical history</li>
+                            <li>• Purpose of travel & funds clarity</li>
+                        </ul>
+                    </div>
+                    <button class="w-full py-5 rounded-2xl bg-white text-black font-bold group-hover:bg-[#ef7f1a] group-hover:text-white transition text-lg">Check Eligibility</button>
+                </div>
+
+                <div class="bg-white/5 border border-white/10 p-10 rounded-[3rem] hover:bg-[#007175]/20 transition group" data-aos="flip-left" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center mb-8 text-3xl">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h4 class="text-3xl font-black mb-6">WORK VISA</h4>
+                    <div class="space-y-4 mb-8">
+                        <p class="text-sm font-bold text-[#ef7f1a] uppercase">Benefits:</p>
+                        <ul class="text-lg text-gray-400 space-y-2">
+                            <li>• Path to Permanent Residency (PR)</li>
+                            <li>• Earn in top global currencies</li>
+                            <li>• Family sponsorship available</li>
+                        </ul>
+                        <p class="text-sm font-bold text-[#ef7f1a] uppercase">Requirements:</p>
+                        <ul class="text-lg text-gray-400 space-y-2">
+                            <li>• Verified Job Offer (LMIA/Employer)</li>
+                            <li>• Specific years of work experience</li>
+                            <li>• PCC & Academic assessment (ECA)</li>
+                        </ul>
+                    </div>
+                    <button class="w-full py-5 rounded-2xl bg-white text-black font-bold group-hover:bg-[#ef7f1a] group-hover:text-white transition text-lg">Check Eligibility</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="bg-white">
+        <div class="max-w-7xl mx-auto px-6 mb-16 text-center" data-aos="fade-up">
+            <h2 class="section-title">Success <span class="text-[#007175]">Gallery</span></h2>
+            <p class="text-gray-500 mt-4 text-xl">Witness the real moments of victory.</p>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-6 gallery-grid">
+            <div class="col-span-2 row-span-1 rounded-[2.5rem] overflow-hidden card-3d" data-aos="fade-right"><img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80" class="w-full h-full object-cover"></div>
+            <div class="col-span-1 row-span-1 rounded-[2.5rem] overflow-hidden card-3d" data-aos="fade-down"><img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80" class="w-full h-full object-cover"></div>
+            <div class="col-span-1 row-span-2 rounded-[2.5rem] overflow-hidden card-3d" data-aos="fade-left"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80" class="w-full h-full object-cover"></div>
+            <div class="col-span-1 row-span-1 rounded-[2.5rem] overflow-hidden card-3d" data-aos="fade-up"><img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80" class="w-full h-full object-cover"></div>
+            <div class="col-span-2 row-span-1 rounded-[2.5rem] overflow-hidden card-3d" data-aos="fade-up" data-aos-delay="100"><img src="https://images.unsplash.com/photo-1523050338893-91d2ad9b29e4?auto=format&fit=crop&q=80" class="w-full h-full object-cover"></div>
+        </div>
+    </section>
+
+    <section id="blog" class="bg-[#fcfcfc]">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-end mb-20" data-aos="fade-right">
+                <h2 class="section-title text-5xl">TESCA <span class="text-[#007175]">Insights</span></h2>
+                <a href="#" class="text-[#ef7f1a] font-black border-b-2 border-[#ef7f1a] text-xl pb-2">All Posts →</a>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-10">
+                <div class="group cursor-pointer" data-aos="fade-up">
+                    <div class="h-64 rounded-[2.5rem] overflow-hidden mb-6 shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <span class="text-sm font-black text-[#007175] uppercase tracking-widest">IELTS Mastery</span>
+                    <h4 class="text-2xl font-bold mt-2 group-hover:text-[#ef7f1a] transition leading-tight">Top 10 Tips to Score Band 9 in Writing module.</h4>
+                </div>
+                <div class="group cursor-pointer" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-64 rounded-[2.5rem] overflow-hidden mb-6 shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <span class="text-sm font-black text-[#ef7f1a] uppercase tracking-widest">Visa Alert</span>
+                    <h4 class="text-2xl font-bold mt-2 group-hover:text-[#007175] transition leading-tight">New Student Visa Rules for Canada 2026 Revealed.</h4>
+                </div>
+                <div class="group cursor-pointer" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-64 rounded-[2.5rem] overflow-hidden mb-6 shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <span class="text-sm font-black text-gray-500 uppercase tracking-widest">Spoken English</span>
+                    <h4 class="text-2xl font-bold mt-2 group-hover:text-[#ef7f1a] transition leading-tight">How Thinking in English reduces speaking errors.</h4>
+                </div>
+                <div class="group cursor-pointer" data-aos="fade-up">
+                    <div class="h-64 rounded-[2.5rem] overflow-hidden mb-6 shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <span class="text-sm font-black text-purple-600 uppercase tracking-widest">Global PR</span>
+                    <h4 class="text-2xl font-bold mt-2 group-hover:text-[#ef7f1a] transition leading-tight">Step-by-Step Guide for Australian PR in 2026.</h4>
+                </div>
+                <div class="group cursor-pointer" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-64 rounded-[2.5rem] overflow-hidden mb-6 shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1507537362145-590e3d85d4f5?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <span class="text-sm font-black text-red-500 uppercase tracking-widest">Interview Prep</span>
+                    <h4 class="text-2xl font-bold mt-2 group-hover:text-[#007175] transition leading-tight">Cracking Job Interviews in top Tech MNCs with English.</h4>
+                </div>
+                <div class="group cursor-pointer" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-64 rounded-[2.5rem] overflow-hidden mb-6 shadow-xl">
+                        <img src="https://images.unsplash.com/photo-1454165833767-027eeea15c3e?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <span class="text-sm font-black text-blue-500 uppercase tracking-widest">Study Abroad</span>
+                    <h4 class="text-2xl font-bold mt-2 group-hover:text-[#ef7f1a] transition leading-tight">Scholarships for Indian Students in USA & UK.</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="bg-[#007175] rounded-[5rem] p-16 lg:p-24 text-white flex flex-col lg:flex-row items-center gap-16 shadow-2xl relative">
+                <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-white/10 rounded-full blur-[120px]"></div>
+                
+                <div class="lg:w-1/2 z-10" data-aos="fade-right">
+                    <h2 class="text-6xl lg:text-7xl font-black mb-8">Your Future <br>In Your Pocket.</h2>
+                    <p class="text-2xl text-teal-100 mb-10 leading-relaxed italic">The TESCA App allows you to attend live classes, take mock tests, and track your visa application status 24/7. Download the power of global success today.</p>
+                    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" class="h-20 shadow-2xl transform hover:scale-105 transition"></a>
+                </div>
+
+                <div class="lg:w-1/2 grid grid-cols-2 gap-8 z-10" data-aos="fade-left">
+                    <div class="phone-mockup mt-12"><img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80" class="w-full h-full object-cover bg-white"></div>
+                    <div class="phone-mockup -mt-12"><img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80" class="w-full h-full object-cover bg-white"></div>
+                    <div class="phone-mockup mt-12"><img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?auto=format&fit=crop&q=80" class="w-full h-full object-cover bg-white"></div>
+                    <div class="phone-mockup -mt-12"><img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?auto=format&fit=crop&q=80" class="w-full h-full object-cover bg-white"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="bg-black text-white pt-32 pb-12">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-4 gap-16 mb-24 border-b border-white/10 pb-20">
+            <div class="space-y-8">
+                <div class="text-5xl font-black tracking-tighter text-white">TESCA</div>
+                <p class="text-gray-500 text-lg">The English Studio & Consultancy Agency. Designing global careers with language mastery and legal integrity since 2014.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center hover:bg-[#ef7f1a] transition text-xl"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center hover:bg-[#ef7f1a] transition text-xl"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="w-14 h-14 rounded-xl bg-white/5 flex items-center justify-center hover:bg-[#ef7f1a] transition text-xl"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4 class="text-2xl font-bold mb-8 uppercase tracking-widest text-[#007175]">Sitemap</h4>
+                <ul class="space-y-5 text-gray-500 font-bold text-lg">
+                    <li><a href="#home" class="hover:text-white transition">Home Dashboard</a></li>
+                    <li><a href="#about" class="hover:text-white transition">Our Legacy</a></li>
+                    <li><a href="#courses" class="hover:text-white transition">Course Pricing</a></li>
+                    <li><a href="#visa" class="hover:text-white transition">Visa Services</a></li>
+                    <li><a href="#gallery" class="hover:text-white transition">Goal Gallery</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-2xl font-bold mb-8 uppercase tracking-widest text-[#ef7f1a]">Connect</h4>
+                <ul class="space-y-8 text-gray-500 text-lg font-bold">
+                    <li class="flex gap-4 items-center"><i class="fas fa-phone text-[#ef7f1a] text-xl"></i> +91 90000 12345</li>
+                    <li class="flex gap-4 items-center"><i class="fas fa-envelope text-[#ef7f1a] text-xl"></i> support@tesca.com</li>
+                    <li class="flex gap-4"><i class="fas fa-map-marker-alt text-[#ef7f1a] mt-1 text-xl"></i> 404, Education Hub, <br>Vesu, Surat, India - 395007.</li>
+                </ul>
+            </div>
+            <div class="bg-white/5 p-10 rounded-[3rem] text-center border border-white/5">
+                <h4 class="text-base font-bold mb-6">Official Google Play App</h4>
+                <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" class="h-14 inline-block shadow-2xl"></a>
+            </div>
+        </div>
+        <div class="flex flex-col md:row justify-between items-center text-sm text-gray-600 font-bold uppercase tracking-widest px-6">
+            <p>&copy; 2026 TESCA GLOBAL CONSULTANCY. ALL RIGHTS RESERVED.</p>
+            <div class="flex gap-8 mt-6 md:mt-0">
+                <a href="#" class="hover:text-white">Privacy</a>
+                <a href="#" class="hover:text-white">Terms</a>
+                <a href="#" class="hover:text-white">Cookies</a>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#home" class="fixed bottom-10 right-10 w-20 h-20 bg-[#ef7f1a] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all z-50 text-2xl">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+
+        const header = document.getElementById('mainHeader');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
