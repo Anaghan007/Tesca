@@ -15,7 +15,7 @@
             --teal: #007175;
             --orange: #ef7f1a;
             --black: #0b0b0b;
-            --glass: rgba(255, 255, 255, 0.9);
+            --glass: rgba(255, 255, 255, 0.95);
         }
 
         * {
@@ -67,12 +67,15 @@
         header {
             transition: all 0.4s ease;
             background: transparent;
+            height: 100px; /* Increased Height */
+            display: flex;
+            align-items: center;
         }
 
         header.scrolled {
             background: var(--glass);
             backdrop-filter: blur(15px);
-            padding: 10px 0;
+            height: 85px; /* Slightly more compact on scroll */
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
@@ -96,6 +99,16 @@
 
         .nav-link:hover::after {
             width: 100%;
+        }
+
+        /* --- MOBILE MENU OVERLAY --- */
+        #mobileMenu {
+            transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+            transform: translateX(100%);
+        }
+
+        #mobileMenu.active {
+            transform: translateX(0);
         }
 
         /* --- SECTION SPACING --- */
@@ -145,12 +158,20 @@
             font-size: 0.8rem;
             display: inline-block;
         }
+
+        @media (max-width: 1024px) {
+            .section-title { font-size: 3rem; }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: auto;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <header class="fixed top-0 w-full z-[1000] py-6" id="mainHeader">
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+    <header class="fixed top-0 w-full z-[1000]" id="mainHeader">
+        <div class="max-w-7xl mx-auto px-6 w-full flex justify-between items-center">
             <div class="text-4xl font-black tracking-tighter text-[#007175]">TESCA</div>
             
             <nav class="hidden lg:flex items-center space-x-10">
@@ -163,13 +184,36 @@
                 <a href="#blog" class="nav-link text-gray-800 hover:text-[#ef7f1a]">Insights</a>
             </nav>
 
-            <a href="#contact" class="hidden md:block bg-[#007175] text-white px-10 py-4 rounded-full font-bold shadow-xl hover:bg-[#ef7f1a] transition-all transform hover:scale-105 text-lg">
-                Join Now <i class="fas fa-arrow-right ml-2 text-sm"></i>
-            </a>
+            <div class="flex items-center gap-6">
+                <a href="#contact" class="hidden md:block bg-[#007175] text-white px-10 py-4 rounded-full font-bold shadow-xl hover:bg-[#ef7f1a] transition-all transform hover:scale-105 text-lg">
+                    Join Now <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                </a>
+                
+                <button id="menuBtn" class="lg:hidden text-3xl text-[#007175] focus:outline-none">
+                    <i class="fas fa-bars-staggered"></i>
+                </button>
+            </div>
         </div>
     </header>
 
-    <section id="home" class="min-h-screen flex items-center pt-32 mt-12 bg-[#fcfcfc] overflow-hidden">
+    <div id="mobileMenu" class="fixed inset-0 bg-white z-[1100] flex flex-col p-10 lg:hidden">
+        <div class="flex justify-between items-center mb-16">
+            <div class="text-4xl font-black tracking-tighter text-[#007175]">TESCA</div>
+            <button id="closeBtn" class="text-4xl text-gray-800">&times;</button>
+        </div>
+        <nav class="flex flex-col space-y-8">
+            <a href="#home" class="mobile-link text-3xl font-bold">Home</a>
+            <a href="#about" class="mobile-link text-3xl font-bold">About Us</a>
+            <a href="#spoken-english" class="mobile-link text-3xl font-bold">Spoken English</a>
+            <a href="#courses" class="mobile-link text-3xl font-bold">Courses</a>
+            <a href="#visa" class="mobile-link text-3xl font-bold">Visa</a>
+            <a href="#gallery" class="mobile-link text-3xl font-bold">Gallery</a>
+            <a href="#blog" class="mobile-link text-3xl font-bold">Insights</a>
+            <a href="#contact" class="mobile-link text-3xl font-bold text-[#ef7f1a]">Contact Us</a>
+        </nav>
+    </div>
+
+    <section id="home" class="min-h-screen flex items-center pt-32 bg-[#fcfcfc] overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
             <div data-aos="fade-right" data-aos-duration="1200">
                 <div class="flex items-center space-x-3 mb-6">
@@ -685,12 +729,37 @@
         AOS.init({ duration: 1000, once: true });
 
         const header = document.getElementById('mainHeader');
+        const menuBtn = document.getElementById('menuBtn');
+        const closeBtn = document.getElementById('closeBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        // Sticky Header Logic
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
+        });
+
+        // Mobile Menu Logic
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Stop scrolling when menu is open
+        });
+
+        closeBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close menu on link click
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
         });
     </script>
 </body>
