@@ -15,7 +15,7 @@
             --teal: #007175;
             --orange: #ef7f1a;
             --black: #0b0b0b;
-            --glass: rgba(255, 255, 255, 0.95);
+            --glass: rgba(255, 255, 255, 0.9);
         }
 
         * {
@@ -27,6 +27,7 @@
 
         html {
             scroll-behavior: smooth;
+            font-size: 16px; /* Standard base font to prevent 'zoomed' look */
         }
 
         body {
@@ -67,7 +68,7 @@
         header {
             transition: all 0.4s ease;
             background: transparent;
-            height: 100px; /* Increased Height */
+            height: 100px;
             display: flex;
             align-items: center;
         }
@@ -75,7 +76,7 @@
         header.scrolled {
             background: var(--glass);
             backdrop-filter: blur(15px);
-            height: 85px; /* Slightly more compact on scroll */
+            height: 80px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.05);
         }
 
@@ -102,18 +103,27 @@
         }
 
         /* --- MOBILE MENU OVERLAY --- */
-        #mobileMenu {
-            transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
-            transform: translateX(100%);
+        #mobileOverlay {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            height: 100vh;
+            background: white;
+            z-index: 2000;
+            transition: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
         }
 
-        #mobileMenu.active {
-            transform: translateX(0);
+        #mobileOverlay.active {
+            right: 0;
         }
 
         /* --- SECTION SPACING --- */
         section {
-            padding: 120px 0;
+            padding: 100px 0;
         }
 
         .section-title {
@@ -184,36 +194,36 @@
                 <a href="#blog" class="nav-link text-gray-800 hover:text-[#ef7f1a]">Insights</a>
             </nav>
 
-            <div class="flex items-center gap-6">
+            <div class="flex items-center gap-4">
                 <a href="#contact" class="hidden md:block bg-[#007175] text-white px-10 py-4 rounded-full font-bold shadow-xl hover:bg-[#ef7f1a] transition-all transform hover:scale-105 text-lg">
                     Join Now <i class="fas fa-arrow-right ml-2 text-sm"></i>
                 </a>
                 
-                <button id="menuBtn" class="lg:hidden text-3xl text-[#007175] focus:outline-none">
+                <button id="mobileBtn" class="lg:hidden text-3xl text-[#007175]">
                     <i class="fas fa-bars-staggered"></i>
                 </button>
             </div>
         </div>
     </header>
 
-    <div id="mobileMenu" class="fixed inset-0 bg-white z-[1100] flex flex-col p-10 lg:hidden">
+    <div id="mobileOverlay">
         <div class="flex justify-between items-center mb-16">
-            <div class="text-4xl font-black tracking-tighter text-[#007175]">TESCA</div>
-            <button id="closeBtn" class="text-4xl text-gray-800">&times;</button>
+            <div class="text-4xl font-black text-[#007175]">TESCA</div>
+            <button id="closeBtn" class="text-4xl">&times;</button>
         </div>
         <nav class="flex flex-col space-y-8">
-            <a href="#home" class="mobile-link text-3xl font-bold">Home</a>
-            <a href="#about" class="mobile-link text-3xl font-bold">About Us</a>
-            <a href="#spoken-english" class="mobile-link text-3xl font-bold">Spoken English</a>
-            <a href="#courses" class="mobile-link text-3xl font-bold">Courses</a>
-            <a href="#visa" class="mobile-link text-3xl font-bold">Visa</a>
-            <a href="#gallery" class="mobile-link text-3xl font-bold">Gallery</a>
-            <a href="#blog" class="mobile-link text-3xl font-bold">Insights</a>
-            <a href="#contact" class="mobile-link text-3xl font-bold text-[#ef7f1a]">Contact Us</a>
+            <a href="#home" class="mobile-nav-link text-3xl font-bold">Home</a>
+            <a href="#about" class="mobile-nav-link text-3xl font-bold">About Us</a>
+            <a href="#spoken-english" class="mobile-nav-link text-3xl font-bold">Spoken English</a>
+            <a href="#courses" class="mobile-nav-link text-3xl font-bold">Courses</a>
+            <a href="#visa" class="mobile-nav-link text-3xl font-bold">Visa</a>
+            <a href="#gallery" class="mobile-nav-link text-3xl font-bold">Gallery</a>
+            <a href="#blog" class="mobile-nav-link text-3xl font-bold">Insights</a>
+            <a href="#contact" class="mobile-nav-link text-3xl font-bold text-[#ef7f1a]">Join Now</a>
         </nav>
     </div>
 
-    <section id="home" class="min-h-screen flex items-center pt-32 bg-[#fcfcfc] overflow-hidden">
+    <section id="home" class="min-h-screen flex items-center pt-32 mt-12 bg-[#fcfcfc] overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
             <div data-aos="fade-right" data-aos-duration="1200">
                 <div class="flex items-center space-x-3 mb-6">
@@ -630,27 +640,6 @@
                     <span class="text-sm font-black text-gray-500 uppercase tracking-widest">Spoken English</span>
                     <h4 class="text-2xl font-bold mt-2 group-hover:text-[#ef7f1a] transition leading-tight">How Thinking in English reduces speaking errors.</h4>
                 </div>
-                <div class="group cursor-pointer" data-aos="fade-up">
-                    <div class="h-64 rounded-[2.5rem] overflow-hidden mb-6 shadow-xl">
-                        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    </div>
-                    <span class="text-sm font-black text-purple-600 uppercase tracking-widest">Global PR</span>
-                    <h4 class="text-2xl font-bold mt-2 group-hover:text-[#ef7f1a] transition leading-tight">Step-by-Step Guide for Australian PR in 2026.</h4>
-                </div>
-                <div class="group cursor-pointer" data-aos="fade-up" data-aos-delay="100">
-                    <div class="h-64 rounded-[2.5rem] overflow-hidden mb-6 shadow-xl">
-                        <img src="https://images.unsplash.com/photo-1507537362145-590e3d85d4f5?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    </div>
-                    <span class="text-sm font-black text-red-500 uppercase tracking-widest">Interview Prep</span>
-                    <h4 class="text-2xl font-bold mt-2 group-hover:text-[#007175] transition leading-tight">Cracking Job Interviews in top Tech MNCs with English.</h4>
-                </div>
-                <div class="group cursor-pointer" data-aos="fade-up" data-aos-delay="200">
-                    <div class="h-64 rounded-[2.5rem] overflow-hidden mb-6 shadow-xl">
-                        <img src="https://images.unsplash.com/photo-1454165833767-027eeea15c3e?auto=format&fit=crop&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
-                    </div>
-                    <span class="text-sm font-black text-blue-500 uppercase tracking-widest">Study Abroad</span>
-                    <h4 class="text-2xl font-bold mt-2 group-hover:text-[#ef7f1a] transition leading-tight">Scholarships for Indian Students in USA & UK.</h4>
-                </div>
             </div>
         </div>
     </section>
@@ -729,35 +718,34 @@
         AOS.init({ duration: 1000, once: true });
 
         const header = document.getElementById('mainHeader');
-        const menuBtn = document.getElementById('menuBtn');
+        const mobileBtn = document.getElementById('mobileBtn');
         const closeBtn = document.getElementById('closeBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
+        const overlay = document.getElementById('mobileOverlay');
+        const navLinks = document.querySelectorAll('.mobile-nav-link');
 
-        // Sticky Header Logic
+        // Sticky Header Effect
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
+            if (window.scrollY > 80) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
         });
 
-        // Mobile Menu Logic
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Stop scrolling when menu is open
+        // Mobile Menu Toggles
+        mobileBtn.addEventListener('click', () => {
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
         });
 
         closeBtn.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
             document.body.style.overflow = 'auto';
         });
 
-        // Close menu on link click
-        mobileLinks.forEach(link => {
+        navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
+                overlay.classList.remove('active');
                 document.body.style.overflow = 'auto';
             });
         });
