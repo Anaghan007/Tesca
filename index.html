@@ -29,55 +29,54 @@
         
         .gradient-text { background: linear-gradient(135deg, var(--teal), var(--orange)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-        /* --- FIXED HEADER STRUCTURE --- */
-        header { transition: all 0.4s ease; min-height: 70px; display: flex; align-items: center; background: white; border-bottom: 1px solid #f0f0f0; }
+        /* --- REFINED HEADER --- */
+        header { transition: all 0.4s ease; min-height: 70px; display: flex; align-items: center; padding: 10px 0; }
         header.scrolled { background: var(--glass); backdrop-filter: blur(15px); min-height: 60px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
 
-        .nav-link { font-weight: 700; font-size: 0.8rem; position: relative; transition: color 0.3s; white-space: nowrap; color: #4a4a4a; }
-        .nav-link:hover { color: var(--orange); }
-        .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: var(--orange); transition: width 0.3s; }
+        .nav-link { font-weight: 700; font-size: 0.85rem; position: relative; transition: color 0.3s; white-space: nowrap; }
+        .nav-link::after { content: ''; position: absolute; bottom: -3px; left: 0; width: 0; height: 2px; background: var(--orange); transition: width 0.3s; }
         .nav-link:hover::after { width: 100%; }
 
-        /* --- SECTIONS --- */
+        /* --- SECTION MANAGEMENT --- */
         section { padding: 60px 0; }
-        .section-title { font-size: 2.5rem; font-weight: 800; letter-spacing: -1px; line-height: 1.1; }
+        #home { padding-bottom: 20px; } /* Reduced bottom space for hero */
+        .section-title { font-size: 2.8rem; font-weight: 800; letter-spacing: -1px; line-height: 1.1; }
 
         .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(2, 220px); gap: 12px; }
         .phone-mockup { width: 100%; max-width: 135px; aspect-ratio: 9/19; background: #000; border: 4px solid #1a1a1a; border-radius: 22px; overflow: hidden; margin: auto; }
         
         .save-badge { background: #e6fffa; color: #007175; padding: 2px 8px; border-radius: 99px; font-weight: 800; font-size: 0.7rem; }
 
+        /* --- MOBILE STRUCTURE FIX --- */
         @media (max-width: 768px) {
-            header .max-w-7xl { flex-direction: column; gap: 8px; padding: 12px; }
-            header nav { justify-content: center; flex-wrap: wrap; gap: 12px 18px; }
-            .nav-link { font-size: 0.75rem; }
-            .section-title { font-size: 2.1rem; }
+            header .max-w-7xl { flex-direction: column; gap: 8px; }
+            header nav { flex-wrap: wrap; justify-content: center; gap: 12px; row-gap: 5px; }
+            .section-title { font-size: 2.3rem; }
             .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: auto; }
-            section { padding: 50px 0; }
+            section { padding: 40px 0; }
         }
     </style>
 </head>
 <body>
 
-    <header class="fixed top-0 w-full z-[1000]" id="mainHeader">
-        <div class="max-w-7xl mx-auto px-6 w-full flex flex-row justify-between items-center">
-            <div class="text-2xl font-black tracking-tighter text-[#007175] shrink-0">TESCA</div>
-            <nav class="flex items-center space-x-4 md:space-x-6 overflow-hidden">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#spoken-english" class="nav-link">English</a>
-                <a href="#courses" class="nav-link">Courses</a>
-                <a href="#visa" class="nav-link">Visa</a>
-                <a href="#gallery" class="nav-link">Gallery</a>
-                <a href="#blog" class="nav-link">Insights</a>
+    <header class="fixed top-0 w-full z-[1000] bg-white lg:bg-transparent" id="mainHeader">
+        <div class="max-w-7xl mx-auto px-6 w-full flex justify-between items-center">
+            <div class="text-2xl font-black tracking-tighter text-[#007175]">TESCA</div>
+            <nav class="flex items-center space-x-4 lg:space-x-8">
+                <a href="#home" class="nav-link text-gray-800 hover:text-[#ef7f1a]">About</a>
+                <a href="#spoken-english" class="nav-link text-gray-800 hover:text-[#ef7f1a]">English</a>
+                <a href="#courses" class="nav-link text-gray-800 hover:text-[#ef7f1a]">Courses</a>
+                <a href="#visa" class="nav-link text-gray-800 hover:text-[#ef7f1a]">Visa</a>
+                <a href="#gallery" class="nav-link text-gray-800 hover:text-[#ef7f1a]">Gallery</a>
+                <a href="#blog" class="nav-link text-gray-800 hover:text-[#ef7f1a]">Insights</a>
             </nav>
-            <div class="hidden lg:block shrink-0">
-                <a href="#contact" class="bg-[#007175] text-white px-5 py-2 rounded-full font-bold text-xs shadow-lg hover:bg-[#ef7f1a] transition-all transform hover:scale-105">Join Now</a>
+            <div class="hidden lg:flex items-center">
+                <a href="#contact" class="bg-[#007175] text-white px-5 py-2 rounded-full font-bold text-xs shadow-lg hover:bg-[#ef7f1a] transition-all">Join Now</a>
             </div>
         </div>
     </header>
 
-    <section id="home" class="pt-32 pb-12 bg-[#fcfcfc] overflow-hidden">
+    <section id="home" class="min-h-[70vh] flex items-center pt-32 lg:pt-24 bg-[#fcfcfc] overflow-hidden">
         <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-10 items-center">
             <div data-aos="fade-right" data-aos-duration="1200">
                 <div class="flex items-center space-x-2 mb-3">
@@ -112,7 +111,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="grid grid-cols-2 gap-4" data-aos="fade-up">
-                    <div class="space-y-4 md:mt-8">
+                    <div class="space-y-4 mt-8">
                         <div class="bg-gray-50 p-6 rounded-[2rem] card-3d">
                             <i class="fas fa-history text-2xl text-[#ef7f1a] mb-3"></i>
                             <h4 class="text-3xl font-black text-[#007175]">12+</h4>
@@ -154,7 +153,7 @@
                             <div class="w-9 h-9 rounded-full bg-[#ef7f1a]/10 flex items-center justify-center shrink-0"><i class="fas fa-check text-[#ef7f1a] text-xs"></i></div>
                             <div>
                                 <h5 class="text-base font-bold">Expert Certified Faculty</h5>
-                                <p class="text-gray-500 text-xs">Our trainers are IDP & British Council certified with a decade of global experience.</p>
+                                <p class="text-gray-500 text-xs">Our trainers are IDP & British Council certified with a decade of experience.</p>
                             </div>
                         </div>
                     </div>
@@ -168,7 +167,7 @@
             <div class="text-center mb-10" data-aos="fade-up">
                 <span class="text-[#ef7f1a] font-black uppercase text-[10px] tracking-widest">Master the Language</span>
                 <h2 class="section-title mt-2">Deep <span class="text-[#007175]">Spoken English</span> Program</h2>
-                <p class="text-gray-500 mt-2 text-sm max-w-xl mx-auto">Our flagship program is designed to take you from Zero to Hero in fluency. Here is exactly what we offer:</p>
+                <p class="text-gray-500 mt-2 text-sm max-w-xl mx-auto">Take your fluency from Zero to Hero. Here is exactly what we offer:</p>
             </div>
 
             <div class="grid lg:grid-cols-2 gap-8 items-start">
@@ -192,7 +191,7 @@
                             <li class="flex items-center gap-2"><i class="fas fa-circle text-[#ef7f1a] text-[6px]"></i> Group Discussions & Debate Mastery</li>
                             <li class="flex items-center gap-2"><i class="fas fa-circle text-[#ef7f1a] text-[6px]"></i> Idioms, Phrases & Slang Integration</li>
                             <li class="flex items-center gap-2"><i class="fas fa-circle text-[#ef7f1a] text-[6px]"></i> Business Communication & Email Etiquette</li>
-                            <li class="flex items-center gap-2"><i class="fas fa-circle text-[#ef7f1a] text-[6px]"></i> Thought Process in English (No Translation)</li>
+                            <li class="flex items-center gap-2"><i class="fas fa-circle text-[#ef7f1a] text-[6px]"></i> Thought Process in English</li>
                         </ul>
                     </div>
                     <div class="bg-white p-6 rounded-2xl shadow-sm border-l-8 border-black">
@@ -214,27 +213,27 @@
                         <div class="flex gap-4">
                             <i class="fas fa-rocket text-[#ef7f1a] text-xl"></i>
                             <div>
-                                <h5 class="font-bold">Instant Fluency Boost</h5>
-                                <p class="text-teal-100 text-xs leading-relaxed">Experience a 40% improvement in your speaking confidence within the first 15 days.</p>
+                                <h5 class="text-base font-bold">Instant Fluency Boost</h5>
+                                <p class="text-teal-100 text-xs">Experience a 40% improvement in your speaking confidence within the first 15 days.</p>
                             </div>
                         </div>
                         <div class="flex gap-4">
                             <i class="fas fa-briefcase text-[#ef7f1a] text-xl"></i>
                             <div>
-                                <h5 class="font-bold">Career Acceleration</h5>
-                                <p class="text-teal-100 text-xs leading-relaxed">English is the global corporate language. Unlock 5x more job opportunities in top MNCs.</p>
+                                <h5 class="text-base font-bold">Career Acceleration</h5>
+                                <p class="text-teal-100 text-xs">English is the global corporate language. Unlock 5x more job opportunities.</p>
                             </div>
                         </div>
                         <div class="flex gap-4">
                             <i class="fas fa-plane-departure text-[#ef7f1a] text-xl"></i>
                             <div>
-                                <h5 class="font-bold">Global Readiness</h5>
-                                <p class="text-teal-100 text-xs leading-relaxed">Perfectly prepare for life abroad. Communicate effectively with locals anywhere in the world.</p>
+                                <h5 class="text-base font-bold">Global Readiness</h5>
+                                <p class="text-teal-100 text-xs">Perfectly prepare for life abroad. Communicate effectively with locals anywhere.</p>
                             </div>
                         </div>
                     </div>
-                    <div class="mt-8 p-6 bg-white/10 rounded-2xl border border-white/20 text-xs italic leading-relaxed">
-                        "The curriculum is designed specifically for Indian students who understand grammar but struggle to speak fluently."
+                    <div class="mt-8 p-5 bg-white/10 rounded-2xl border border-white/20 text-xs italic">
+                        "The curriculum is designed specifically for students who understand grammar but struggle to speak fluently."
                     </div>
                 </div>
             </div>
@@ -247,7 +246,7 @@
                 <span class="text-[#007175] font-black uppercase text-[10px] tracking-widest">Our Portfolio</span>
                 <h2 class="section-title mt-1">Premium <span class="text-[#ef7f1a]">Courses</span></h2>
             </div>
-            <div class="bg-gray-100 p-1.5 rounded-full flex gap-1">
+            <div class="bg-gray-100 p-1 rounded-full flex gap-1">
                 <button class="bg-white px-6 py-1.5 rounded-full font-bold shadow-sm text-[10px]">Online</button>
                 <button class="px-6 py-1.5 rounded-full font-bold text-gray-500 text-[10px]">Offline</button>
             </div>
@@ -260,11 +259,11 @@
                     <div class="absolute top-3 right-3 bg-red-500 text-white px-3 py-1 rounded-full font-black text-[9px]">27% OFF</div>
                 </div>
                 <h3 class="text-lg font-black uppercase">IELTS Academic</h3>
-                <p class="text-[#ef7f1a] font-bold text-[9px] mb-3"><i class="far fa-clock mr-1"></i>Duration: 3 Months</p>
+                <p class="text-[#ef7f1a] font-bold text-[9px] mb-3 uppercase tracking-tighter">Duration: 3 Months</p>
                 <div class="space-y-1.5 mb-5 flex-grow text-[11px] font-semibold text-gray-600">
                     <div class="flex items-center gap-2"><i class="fas fa-check-circle text-green-500"></i> Free Grammar Book</div>
                     <div class="flex items-center gap-2"><i class="fas fa-check-circle text-green-500"></i> 10 Full Mock Tests</div>
-                    <div class="flex items-center gap-2"><i class="fas fa-check-circle text-green-500"></i> Weekly One-on-One Speaking</div>
+                    <div class="flex items-center gap-2"><i class="fas fa-check-circle text-green-500"></i> Weekly Speaking Practice</div>
                     <div class="flex items-center gap-2"><i class="fas fa-check-circle text-green-500"></i> IDP Certified Materials</div>
                 </div>
                 <div class="flex items-center justify-between border-t pt-4">
@@ -272,7 +271,7 @@
                         <div class="flex items-center gap-1.5"><span class="text-gray-400 line-through text-[9px]">₹15,000</span><span class="save-badge">SAVE ₹4,001</span></div>
                         <p class="text-xl font-black text-[#ef7f1a]">₹10,999</p>
                     </div>
-                    <button class="bg-black text-white px-5 py-2 rounded-lg text-[10px] font-bold">Enrol</button>
+                    <button class="bg-black text-white px-5 py-2 rounded-lg text-[10px] font-bold hover:bg-[#007175] transition">Enrol</button>
                 </div>
             </div>
 
@@ -282,7 +281,7 @@
                     <div class="absolute top-3 right-3 bg-red-500 text-white px-3 py-1 rounded-full font-black text-[9px]">30% OFF</div>
                 </div>
                 <h3 class="text-lg font-black uppercase">PTE Core</h3>
-                <p class="text-[#ef7f1a] font-bold text-[9px] mb-3"><i class="far fa-clock mr-1"></i>Duration: 2 Months</p>
+                <p class="text-[#ef7f1a] font-bold text-[9px] mb-3 uppercase tracking-tighter">Duration: 2 Months</p>
                 <div class="space-y-1.5 mb-5 flex-grow text-[11px] font-semibold text-gray-600">
                     <div class="flex items-center gap-2"><i class="fas fa-check-circle text-green-500"></i> AI Scoring Access</div>
                     <div class="flex items-center gap-2"><i class="fas fa-check-circle text-green-500"></i> Unlimited Sectional Tests</div>
@@ -294,7 +293,7 @@
                         <div class="flex items-center gap-1.5"><span class="text-gray-400 line-through text-[9px]">₹12,000</span><span class="save-badge">SAVE ₹3,501</span></div>
                         <p class="text-xl font-black text-[#ef7f1a]">₹8,499</p>
                     </div>
-                    <button class="bg-black text-white px-5 py-2 rounded-lg text-[10px] font-bold">Enrol</button>
+                    <button class="bg-black text-white px-5 py-2 rounded-lg text-[10px] font-bold hover:bg-[#007175] transition">Enrol</button>
                 </div>
             </div>
 
@@ -304,7 +303,7 @@
                     <div class="absolute top-3 right-3 bg-red-500 text-white px-3 py-1 rounded-full font-black text-[9px]">29% OFF</div>
                 </div>
                 <h3 class="text-lg font-black uppercase">TOEFL Excellence</h3>
-                <p class="text-[#ef7f1a] font-bold text-[9px] mb-3"><i class="far fa-clock mr-1"></i>Duration: 2.5 Months</p>
+                <p class="text-[#ef7f1a] font-bold text-[9px] mb-3 uppercase tracking-tighter">Duration: 2.5 Months</p>
                 <div class="space-y-1.5 mb-5 flex-grow text-[11px] font-semibold text-gray-600">
                     <div class="flex items-center gap-2"><i class="fas fa-check-circle text-green-500"></i> University Matching Tool</div>
                     <div class="flex items-center gap-2"><i class="fas fa-check-circle text-green-500"></i> Academic Writing Mastery</div>
@@ -316,7 +315,7 @@
                         <div class="flex items-center gap-1.5"><span class="text-gray-400 line-through text-[9px]">₹13,500</span><span class="save-badge">SAVE ₹4,001</span></div>
                         <p class="text-xl font-black text-[#ef7f1a]">₹9,499</p>
                     </div>
-                    <button class="bg-black text-white px-5 py-2 rounded-lg text-[10px] font-bold">Enrol</button>
+                    <button class="bg-black text-white px-5 py-2 rounded-lg text-[10px] font-bold hover:bg-[#007175] transition">Enrol</button>
                 </div>
             </div>
         </div>
@@ -324,21 +323,21 @@
 
     <section class="bg-[#f0f9fa]">
         <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-12">
+            <div class="text-center mb-12" data-aos="fade-up">
                 <span class="text-[#007175] font-black uppercase text-[10px] tracking-widest">The Tesca Advantage</span>
                 <h2 class="section-title mt-2">What <span class="text-[#ef7f1a]">TESCA</span> Provides?</h2>
             </div>
             <div class="grid md:grid-cols-2 gap-8">
                 <div class="bg-white p-8 rounded-[2.5rem] shadow-sm flex gap-6 items-start" data-aos="fade-right">
-                    <div class="w-16 h-16 bg-[#007175] rounded-xl flex items-center justify-center shrink-0 shadow-lg"><i class="fas fa-certificate text-white text-3xl"></i></div>
+                    <div class="w-16 h-16 bg-[#007175] rounded-xl flex items-center justify-center shrink-0 shadow-lg shadow-teal-900/10"><i class="fas fa-certificate text-white text-3xl"></i></div>
                     <div>
                         <h3 class="text-xl font-black mb-3">ISO 9001:2015 Certified</h3>
-                        <p class="text-gray-600 text-[11px] leading-relaxed mb-4">TESCA is a government-registered and ISO-certified institute. Every student receives a globally valid course completion certificate that enhances their resume for corporate jobs and international admissions.</p>
+                        <p class="text-gray-600 text-[11px] leading-relaxed mb-4">TESCA is a government-registered and ISO-certified institute. Every student receives a globally valid course completion certificate that enhances their resume for corporate jobs and admissions.</p>
                         <div class="flex items-center gap-2 font-bold text-[#007175] text-[11px]"><i class="fas fa-check"></i> Globally Valid Certificate</div>
                     </div>
                 </div>
                 <div class="bg-white p-8 rounded-[2.5rem] shadow-sm flex gap-6 items-start" data-aos="fade-left">
-                    <div class="w-16 h-16 bg-[#ef7f1a] rounded-xl flex items-center justify-center shrink-0 shadow-lg"><i class="fas fa-headset text-white text-3xl"></i></div>
+                    <div class="w-16 h-16 bg-[#ef7f1a] rounded-xl flex items-center justify-center shrink-0 shadow-lg shadow-orange-900/10"><i class="fas fa-headset text-white text-3xl"></i></div>
                     <div>
                         <h3 class="text-xl font-black mb-3">Lifetime Alumni Support</h3>
                         <p class="text-gray-600 text-[11px] leading-relaxed mb-4">Our relationship doesn't end after the course. We offer lifetime support for interview preparation, document verification, and English fluency refreshment whenever you need it throughout your career.</p>
@@ -358,7 +357,7 @@
             <div class="grid lg:grid-cols-3 gap-6">
                 <div class="bg-white/5 border border-white/10 p-8 rounded-[2.5rem] hover:bg-[#007175]/20 transition group" data-aos="flip-left">
                     <div class="w-12 h-12 bg-[#007175] rounded-xl flex items-center justify-center mb-6 text-xl"><i class="fas fa-user-graduate"></i></div>
-                    <h4 class="text-lg font-black mb-4 uppercase">Student Visa</h4>
+                    <h4 class="text-lg font-black mb-4">STUDENT VISA</h4>
                     <div class="space-y-4 mb-8">
                         <div>
                             <p class="text-[9px] font-bold text-[#ef7f1a] uppercase mb-1">Benefits:</p>
@@ -377,11 +376,11 @@
                             </ul>
                         </div>
                     </div>
-                    <button class="w-full py-3.5 rounded-xl bg-white text-black font-bold group-hover:bg-[#ef7f1a] group-hover:text-white transition text-[10px] uppercase">Check Eligibility</button>
+                    <button class="w-full py-3.5 rounded-xl bg-white text-black font-bold group-hover:bg-[#ef7f1a] group-hover:text-white transition text-[10px] uppercase tracking-widest">Check Eligibility</button>
                 </div>
                 <div class="bg-white/5 border border-white/10 p-8 rounded-[2.5rem] hover:bg-[#007175]/20 transition group" data-aos="flip-left" data-aos-delay="100">
                     <div class="w-12 h-12 bg-[#ef7f1a] rounded-xl flex items-center justify-center mb-6 text-xl"><i class="fas fa-plane-arrival"></i></div>
-                    <h4 class="text-lg font-black mb-4 uppercase">Visitor Visa</h4>
+                    <h4 class="text-lg font-black mb-4">VISITOR VISA</h4>
                     <div class="space-y-4 mb-8">
                         <div>
                             <p class="text-[9px] font-bold text-[#ef7f1a] uppercase mb-1">Benefits:</p>
@@ -400,11 +399,11 @@
                             </ul>
                         </div>
                     </div>
-                    <button class="w-full py-3.5 rounded-xl bg-white text-black font-bold group-hover:bg-[#ef7f1a] group-hover:text-white transition text-[10px] uppercase">Check Eligibility</button>
+                    <button class="w-full py-3.5 rounded-xl bg-white text-black font-bold group-hover:bg-[#ef7f1a] group-hover:text-white transition text-[10px] uppercase tracking-widest">Check Eligibility</button>
                 </div>
                 <div class="bg-white/5 border border-white/10 p-8 rounded-[2.5rem] hover:bg-[#007175]/20 transition group" data-aos="flip-left" data-aos-delay="200">
                     <div class="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center mb-6 text-xl"><i class="fas fa-briefcase"></i></div>
-                    <h4 class="text-lg font-black mb-4 uppercase">Work Visa</h4>
+                    <h4 class="text-lg font-black mb-4">WORK VISA</h4>
                     <div class="space-y-4 mb-8">
                         <div>
                             <p class="text-[9px] font-bold text-[#ef7f1a] uppercase mb-1">Benefits:</p>
@@ -423,7 +422,7 @@
                             </ul>
                         </div>
                     </div>
-                    <button class="w-full py-3.5 rounded-xl bg-white text-black font-bold group-hover:bg-[#ef7f1a] group-hover:text-white transition text-[10px] uppercase">Check Eligibility</button>
+                    <button class="w-full py-3.5 rounded-xl bg-white text-black font-bold group-hover:bg-[#ef7f1a] group-hover:text-white transition text-[10px] uppercase tracking-widest">Check Eligibility</button>
                 </div>
             </div>
         </div>
@@ -503,7 +502,7 @@
                 <ul class="space-y-3 text-gray-500 font-bold text-xs uppercase">
                     <li><a href="#home" class="hover:text-white transition">Home Dashboard</a></li>
                     <li><a href="#about" class="hover:text-white transition">Our Legacy</a></li>
-                    <li><a href="#courses" class="hover:text-white transition">Course Pricing</a></li>
+                    <li><a href="#courses" class="hover:text-white transition">Courses</a></li>
                     <li><a href="#visa" class="hover:text-white transition">Visa Services</a></li>
                 </ul>
             </div>
