@@ -1,1619 +1,1143 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tesca Global - Leading Spoken English & Visa Consultancy</title>
+    <title>TESCA | World-Class Education & Visa Consultancy</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { 
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        mono: ['Inter', 'monospace']
+                    },
+                    colors: {
+                        brand: {
+                            bg: '#050507',
+                            surface: '#0F1016',
+                            surface2: '#181926',
+                            primary: '#6366f1',    /* Indigo */
+                            secondary: '#8b5cf6',  /* Violet */
+                            accent: '#06b6d4',     /* Cyan */
+                            success: '#10b981',
+                            warning: '#f59e0b',
+                            danger: '#ef4444'
+                        }
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'slide-up': 'slideUp 0.5s ease-out forwards'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        :root {
-            --teal: #007175;
-            --orange: #ef7f1a;
-            --black: #0b0b0b;
-            --glass: rgba(255, 255, 255, 0.98);
+        /* --- CORE STYLES --- */
+        body {
+            background-color: #050507;
+            color: #ffffff;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
-        html { scroll-behavior: smooth; font-size: 15px; } 
-        body { background-color: #ffffff; color: var(--black); overflow-x: hidden; line-height: 1.5; }
+        /* Apple Style Loader Bar */
+        .progress-bar-bg {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .progress-bar-fill {
+            background: white;
+            box-shadow: 0 0 10px rgba(255,255,255,0.5);
+            transition: width 0.1s linear;
+        }
 
-        /* --- STUNNING 3D & ANIMATION --- */
-        .scene-3d { perspective: 2000px; }
-        .card-3d { transform-style: preserve-3d; transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1); background: #fff; border: 1px solid rgba(0,0,0,0.03); }
-        .card-3d:hover { transform: translateZ(15px) rotateX(1deg); box-shadow: 0 30px 60px -15px rgba(0, 113, 117, 0.15); }
-        
-        .gradient-text { background: linear-gradient(135deg, var(--teal), var(--orange)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-        /* --- HEADER --- */
-        header { transition: all 0.4s ease; min-height: 90px; display: flex; align-items: center; padding: 10px 0; }
-        header.scrolled { background: var(--glass); backdrop-filter: blur(15px); min-height: 75px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .header-narrow { max-width: 1200px; margin: 0 auto; width: 100%; display: flex; justify-content: space-between; align-items: center; }
-
-        /* Logo Sizing */
-        .logo-img { height: 45px; width: auto; object-fit: contain; }
-
-        /* --- SECTIONS --- */
-        section { padding: 80px 0; }
-        .section-title { font-size: 2.8rem; font-weight: 800; letter-spacing: -1px; line-height: 1.1; }
-
-        /* Hero Banner Slider - FIXED HEIGHT */
-        .hero-slider { width: 100%; overflow: hidden; position: relative; height: 100vh; min-height: 700px; max-height: 900px; }
-        .slider-track { display: flex; transition: transform 0.8s ease-in-out; height: 100%; }
-        .slider-slide { min-width: 100%; position: relative; height: 100%; }
-        .slider-slide img, .slider-slide video { width: 100%; height: 100%; object-fit: cover; }
-        .slider-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white; z-index: 10; width: 90%; max-width: 900px; padding: 20px; }
-        .video-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); z-index: 1; }
-        
-        .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0, 113, 117, 0.8); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 20; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: all 0.3s; }
-        .slider-btn:hover { background: rgba(239, 127, 26, 0.9); transform: translateY(-50%) scale(1.1); }
-        .slider-btn.prev { left: 20px; }
-        .slider-btn.next { right: 20px; }
-        
-        /* Gallery Tabs */
-        .gallery-tabs { display: flex; justify-content: center; margin-bottom: 30px; border-bottom: 2px solid #f0f0f0; }
-        .gallery-tab { padding: 12px 24px; background: transparent; border: none; font-weight: 700; color: #666; cursor: pointer; transition: all 0.3s; position: relative; }
-        .gallery-tab.active { color: var(--teal); }
-        .gallery-tab.active::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 3px; background: var(--teal); }
-        
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-        .gallery-item { border-radius: 16px; overflow: hidden; height: 240px; position: relative; }
-        .gallery-caption { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.7); color: white; padding: 12px; transform: translateY(100%); transition: transform 0.3s; }
-        .gallery-item:hover .gallery-caption { transform: translateY(0); }
-        
-        /* Phone Mockup - IMPROVED */
-        .phone-mockup { width: 100%; max-width: 180px; aspect-ratio: 9/19; background: #111; border: 6px solid #222; border-radius: 24px; overflow: hidden; position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
-        .phone-mockup::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 40%; height: 20px; background: #222; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px; z-index: 10; }
-        .phone-mockup::after { content: ''; position: absolute; bottom: 8px; left: 50%; transform: translateX(-50%); width: 40px; height: 40px; background: #222; border-radius: 50%; z-index: 10; }
-        .phone-mockup img { width: 100%; height: 100%; object-fit: cover; }
-
-        @media (max-width: 1024px) {
-            header { min-height: 80px; }
-            .header-narrow { padding: 8px 20px; }
-            .logo-img { height: 35px; }
-            .section-title { font-size: 2.3rem; }
-            section { padding: 70px 0; }
-            .slider-btn { width: 40px; height: 40px; font-size: 1rem; }
-            .slider-btn.prev { left: 10px; }
-            .slider-btn.next { right: 10px; }
-            .hero-slider { height: 85vh; min-height: 600px; max-height: 800px; }
+        /* Glassmorphism Panel */
+        .glass {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
         
+        .glass-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+
+        /* Ambient Background Glows */
+        .glow-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            z-index: -1;
+            opacity: 0.15;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050507; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #555; }
+
+        /* REALISTIC PHONE FRAME (WIDER) */
+        .phone-mockup {
+            width: 300px; /* Wider */
+            height: 600px;
+            border: 12px solid #1a1a1a;
+            border-radius: 40px;
+            overflow: hidden;
+            background: #000;
+            position: relative;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s ease;
+            margin: 0 auto;
+        }
+        .phone-mockup:hover { transform: translateY(-10px); }
+        .phone-notch {
+            position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+            width: 120px; height: 30px; background: #1a1a1a;
+            border-bottom-left-radius: 16px; border-bottom-right-radius: 16px; z-index: 20;
+        }
+        .phone-screen {
+            width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .phone-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent 20%, transparent 80%, rgba(0,0,0,0.8));
+        }
+
+        /* Filter Button Active State */
+        .filter-btn.active {
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            border-color: transparent;
+            color: white;
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Header rounded corners */
+        #main-header .glass {
+            border-radius: 0 0 1rem 1rem;
+        }
+
+        /* Center course section title */
+        #courses .flex-col {
+            align-items: center;
+            text-align: center;
+        }
+        #courses .max-w-2xl {
+            margin: 0 auto;
+        }
+
+        /* Responsive details modal */
+        #details-panel {
+            max-height: 90vh;
+            overflow-y: auto;
+        }
         @media (max-width: 768px) {
-            .gallery-tabs { flex-direction: column; align-items: center; }
-            .gallery-tab { width: 100%; text-align: center; }
-            section { padding: 60px 0; }
-            .phone-mockup { max-width: 150px; }
-            .hero-slider { height: 80vh; min-height: 500px; max-height: 700px; }
-            .slider-content h1 { font-size: 2.5rem !important; }
-            .slider-content p { font-size: 1rem !important; }
+            #details-panel {
+                margin: 1rem;
+                max-width: 95%;
+                max-height: 85vh;
+            }
+            #details-content {
+                padding: 1.5rem;
+            }
         }
-        
-        @media (max-width: 480px) {
-            .hero-slider { height: 75vh; min-height: 450px; max-height: 600px; }
-            .slider-content h1 { font-size: 2rem !important; }
-            .slider-content p { font-size: 0.9rem !important; }
+
+        /* Faculty card hover effects */
+        .faculty-card {
+            transition: all 0.3s ease;
+        }
+        .faculty-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        /* UPI App payment buttons */
+        .upi-app-btn {
+            transition: all 0.3s ease;
+        }
+        .upi-app-btn:hover {
+            transform: scale(1.1);
+            filter: brightness(1.2);
         }
     </style>
 </head>
 <body>
 
-    <header class="fixed top-0 w-full z-[1000] bg-white border-b border-gray-100" id="mainHeader">
-        <div class="header-narrow px-4">
-            <a href="#home"><img src="Logo.png" alt="Tesca Global Logo" class="logo-img"></a>
-            <div class="flex items-center space-x-6">
-                <a href="#contact" class="hidden md:inline-block text-[#007175] font-bold hover:text-[#ef7f1a] transition">Call: +91 98765 43210</a>
-                <a href="#contact" class="bg-[#007175] text-white px-8 py-3 rounded-full font-bold text-xs shadow-lg hover:bg-[#ef7f1a] transition-all uppercase tracking-widest">Free Demo Class</a>
+    <div class="glow-orb bg-brand-primary w-[500px] h-[500px] top-[-100px] left-[-100px]"></div>
+    <div class="glow-orb bg-brand-accent w-[600px] h-[600px] bottom-[-100px] right-[-100px]"></div>
+
+    <div id="loader" class="fixed inset-0 bg-black z-[9999] flex flex-col items-center justify-center transition-opacity duration-700">
+        <div class="mb-8 animate-pulse">
+             <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-brand-primary to-brand-accent flex items-center justify-center">
+                <span class="text-4xl font-bold text-white">T</span>
+             </div>
+             </div>
+        
+        <div class="w-48 h-[2px] progress-bar-bg">
+            <div id="loader-bar" class="h-full progress-bar-fill w-0"></div>
+        </div>
+        <div class="mt-4 text-xs text-gray-500 font-mono tracking-widest">LOADING TESCA...</div>
+    </div>
+
+    <header class="fixed top-0 w-full z-50 transition-all duration-300" id="main-header">
+        <div class="glass border-b border-white/5 backdrop-blur-md">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <a href="#home" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-brand-primary to-brand-accent flex items-center justify-center text-white font-bold text-lg group-hover:shadow-[0_0_15px_rgba(99,102,241,0.5)] transition">T</div>
+                    <span class="font-bold text-xl tracking-wide">TESCA</span>
+                </a>
+
+                <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
+                    <a href="#home" class="hover:text-white transition-colors">Home</a>
+                    <a href="#courses" class="hover:text-white transition-colors">Courses</a>
+                    <a href="#faculty" class="hover:text-white transition-colors">Our Faculty</a>
+                    <a href="#app" class="hover:text-white transition-colors">Mobile App</a>
+                    <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+                </nav>
+
+                <div class="flex items-center gap-5">
+                    <a href="tel:+918866722633" class="hidden sm:flex items-center gap-2 text-xs font-bold text-white bg-white/10 px-4 py-2 rounded-full hover:bg-white/20 transition">
+                        <i class="fas fa-phone-alt text-brand-success"></i> Help
+                    </a>
+                    
+                    <button onclick="toggleCart()" class="relative group">
+                        <div class="p-2 rounded-full hover:bg-white/10 transition">
+                            <i class="fas fa-shopping-bag text-xl text-white"></i>
+                        </div>
+                        <span id="cart-count" class="absolute top-0 right-0 bg-brand-danger text-[10px] w-5 h-5 flex items-center justify-center rounded-full border-2 border-brand-bg font-bold">0</span>
+                    </button>
+                    
+                    <button class="md:hidden text-white text-xl" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
 
-    <!-- SECTION 1: Hero Banner with Auto Slider -->
-    <section id="home" class="pt-0 overflow-hidden" style="padding-top: 0 !important;">
-        <div class="hero-slider">
-            <div class="slider-track" id="sliderTrack">
-                <!-- Slide 1: Banner -->
-                <div class="slider-slide">
-                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1920" alt="Students Learning" class="w-full h-full object-cover">
-                    <div class="video-overlay"></div>
-                    <div class="slider-content">
-                        <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight">Study Abroad Made <span class="gradient-text">Easy</span></h1>
-                        <p class="text-xl mb-8 text-gray-200 max-w-2xl mx-auto">Get expert guidance for admissions, visas, and language training from India's most trusted consultancy.</p>
-                        <a href="#contact" class="inline-block bg-[#ef7f1a] text-white px-10 py-4 rounded-xl font-bold shadow-xl hover:bg-black transition-all">Book Free Counseling</a>
-                    </div>
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-brand-bg/95 backdrop-blur-xl hidden flex-col items-center justify-center gap-8 text-2xl font-bold transition-all">
+        <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-gray-400 p-2"><i class="fas fa-times text-3xl"></i></button>
+        <a href="#home" onclick="toggleMobileMenu()" class="hover:text-brand-accent">Home</a>
+        <a href="#courses" onclick="toggleMobileMenu()" class="hover:text-brand-accent">Courses</a>
+        <a href="#faculty" onclick="toggleMobileMenu()" class="hover:text-brand-accent">Our Faculty</a>
+        <a href="#app" onclick="toggleMobileMenu()" class="hover:text-brand-accent">Download App</a>
+        <a href="#contact" onclick="toggleMobileMenu()" class="hover:text-brand-accent">Contact Us</a>
+    </div>
+
+    <section id="home" class="relative pt-32 pb-16 container mx-auto px-4">
+        <div class="relative w-full h-[550px] rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/10">
+            <div id="banner-wrapper" class="w-full h-full">
                 </div>
-                
-                <!-- Slide 2: Video -->
-                <div class="slider-slide">
-                    <video class="w-full h-full object-cover" autoplay muted loop playsinline>
-                        <source src="https://assets.mixkit.co/videos/preview/mixkit-group-of-students-in-a-meeting-44875-large.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="video-overlay"></div>
-                    <div class="slider-content">
-                        <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight">Interactive <span class="gradient-text">Live Classes</span></h1>
-                        <p class="text-xl mb-8 text-gray-200 max-w-2xl mx-auto">Experience our innovative 3D learning platform with real-time doubt solving.</p>
-                        <a href="#spoken-english" class="inline-block bg-white text-[#007175] px-10 py-4 rounded-xl font-bold shadow-xl hover:bg-gray-100 transition-all">Join Free Demo</a>
-                    </div>
-                </div>
-                
-                <!-- Slide 3: Banner -->
-                <div class="slider-slide">
-                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1920" alt="Graduation Ceremony" class="w-full h-full object-cover">
-                    <div class="video-overlay"></div>
-                    <div class="slider-content">
-                        <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight">100% Visa <span class="text-[#007175]">Success</span> Rate</h1>
-                        <p class="text-xl mb-8 text-gray-200 max-w-2xl mx-auto">Our experts have processed 5000+ successful visa applications for students worldwide.</p>
-                        <a href="#visa" class="inline-block bg-[#007175] text-white px-10 py-4 rounded-xl font-bold shadow-xl hover:bg-[#ef7f1a] transition-all">Check Visa Eligibility</a>
-                    </div>
-                </div>
-                
-                <!-- Slide 4: Video -->
-                <div class="slider-slide">
-                    <video class="w-full h-full object-cover" autoplay muted loop playsinline>
-                        <source src="https://assets.mixkit.co/videos/preview/mixkit-happy-students-walking-out-of-school-43739-large.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="video-overlay"></div>
-                    <div class="slider-content">
-                        <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight">Get <span class="text-[#ef7f1a]">Job Ready</span> in 90 Days</h1>
-                        <p class="text-xl mb-8 text-gray-200 max-w-2xl mx-auto">Our Spoken English program includes interview preparation and corporate communication training.</p>
-                        <a href="#courses" class="inline-block bg-[#ef7f1a] text-white px-10 py-4 rounded-xl font-bold shadow-xl hover:bg-black transition-all">Explore Courses</a>
-                    </div>
-                </div>
-                
-                <!-- Slide 5: Banner -->
-                <div class="slider-slide">
-                    <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=1920" alt="University Campus" class="w-full h-full object-cover">
-                    <div class="video-overlay"></div>
-                    <div class="slider-content">
-                        <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight">Your Dream <span class="text-[#007175]">University Awaits</span></h1>
-                        <p class="text-xl mb-8 text-gray-200 max-w-2xl mx-auto">Partnered with 200+ universities across USA, UK, Canada, Australia & Europe.</p>
-                        <a href="#contact" class="inline-block bg-[#007175] text-white px-10 py-4 rounded-xl font-bold shadow-xl hover:bg-[#ef7f1a] transition-all">University Shortlisting</a>
-                    </div>
-                </div>
-            </div>
-            
-            <button class="slider-btn prev" id="prevBtn"><i class="fas fa-chevron-left"></i></button>
-            <button class="slider-btn next" id="nextBtn"><i class="fas fa-chevron-right"></i></button>
-            
-            <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
-                <button class="slider-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition" data-slide="0"></button>
-                <button class="slider-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition" data-slide="1"></button>
-                <button class="slider-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition" data-slide="2"></button>
-                <button class="slider-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition" data-slide="3"></button>
-                <button class="slider-dot w-3 h-3 rounded-full bg-white/50 hover:bg-white transition" data-slide="4"></button>
+
+            <div class="absolute bottom-8 left-0 w-full flex justify-center gap-4 z-20">
+                <button onclick="changeBanner(-1)" class="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-white hover:text-black transition"><i class="fas fa-chevron-left"></i></button>
+                <button onclick="changeBanner(1)" class="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-white hover:text-black transition"><i class="fas fa-chevron-right"></i></button>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 2: Download App Section - NO GAP FROM HERO -->
-    <section class="bg-gradient-to-r from-[#007175] to-[#00474a] text-white py-16 mt-0" style="margin-top: 0 !important; padding-top: 0 !important;">
-        <div class="max-w-7xl mx-auto px-6 py-16">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div data-aos="fade-right">
-                    <h2 class="text-4xl font-black mb-6">Everything in Your Pocket</h2>
-                    <p class="text-lg mb-8 leading-relaxed">Track your visa application, attend live classes, practice mock tests, and connect with mentors - all through our dedicated mobile app.</p>
-                    
-                    <div class="space-y-4 mb-10">
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
-                                <i class="fas fa-calendar-check text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-bold">Live Class Schedule</h4>
-                                <p class="text-gray-300">Never miss a class with automatic reminders</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
-                                <i class="fas fa-chart-line text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-bold">Progress Tracking</h4>
-                                <p class="text-gray-300">Monitor your fluency improvement daily</p>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center">
-                                <i class="fas fa-file-alt text-2xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-bold">Visa Status Updates</h4>
-                                <p class="text-gray-300">Real-time tracking of your application</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="flex flex-wrap gap-4">
-                        <a href="https://play.google.com/store/apps" target="_blank" class="inline-block">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="h-12 hover:scale-105 transition-transform">
-                        </a>
-                        <a href="https://www.apple.com/app-store/" target="_blank" class="inline-block">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" class="h-12 hover:scale-105 transition-transform">
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="flex justify-center" data-aos="fade-left">
-                    <div class="grid grid-cols-2 gap-6 place-items-center">
-                        <div class="phone-mockup">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover" alt="App Dashboard">
-                        </div>
-                        <div class="phone-mockup mt-10">
-                            <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover" alt="Class Schedule">
-                        </div>
-                        <div class="phone-mockup -mt-10">
-                            <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover" alt="Progress Tracking">
-                        </div>
-                        <div class="phone-mockup">
-                            <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover" alt="Visa Status">
-                        </div>
-                    </div>
-                </div>
+    <section class="py-12 border-y border-white/5 bg-white/5 backdrop-blur-sm">
+        <div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div class="space-y-2">
+                <i class="fas fa-user-graduate text-3xl text-brand-primary mb-2"></i>
+                <h3 class="font-bold text-lg">Expert Tutors</h3>
+                <p class="text-xs text-gray-400">Certified Trainers from UK/USA</p>
+            </div>
+            <div class="space-y-2">
+                <i class="fas fa-globe-americas text-3xl text-brand-accent mb-2"></i>
+                <h3 class="font-bold text-lg">Global Visa</h3>
+                <p class="text-xs text-gray-400">99% Success Rate in Filing</p>
+            </div>
+            <div class="space-y-2">
+                <i class="fas fa-mobile-alt text-3xl text-brand-secondary mb-2"></i>
+                <h3 class="font-bold text-lg">Mobile App</h3>
+                <p class="text-xs text-gray-400">Learn Anytime, Anywhere</p>
+            </div>
+            <div class="space-y-2">
+                <i class="fas fa-certificate text-3xl text-brand-warning mb-2"></i>
+                <h3 class="font-bold text-lg">Certified</h3>
+                <p class="text-xs text-gray-400">ISO 9001:2015 Certified</p>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 3: About Tesca -->
-    <section id="about" class="bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-                <div data-aos="fade-right">
-                    <span class="text-[#ef7f1a] font-black uppercase text-xs tracking-widest">Our Story</span>
-                    <h2 class="section-title mt-2 mb-6">Welcome to Tesca Global</h2>
-                    <p class="text-lg text-gray-600 mb-6 leading-relaxed">Founded in 2012, Tesca Global has emerged as India's premier institute for Spoken English training and overseas education consultancy. With a legacy of transforming 50,000+ lives, we've mastered the art of making global education accessible.</p>
-                    <p class="text-gray-600 mb-8 leading-relaxed">Our unique methodology combines language mastery with cultural adaptation training, ensuring our students not only speak fluently but also thrive in international environments. From small classroom beginnings to a network spanning 25+ countries, our journey reflects our commitment to excellence.</p>
-                    
-                    <div class="flex flex-wrap gap-4">
-                        <div class="bg-[#f8f9f9] p-6 rounded-2xl text-center">
-                            <h4 class="text-3xl font-black text-[#007175]">12+</h4>
-                            <p class="font-bold text-gray-500 uppercase text-xs">Years Experience</p>
-                        </div>
-                        <div class="bg-[#f8f9f9] p-6 rounded-2xl text-center">
-                            <h4 class="text-3xl font-black text-[#007175]">50K+</h4>
-                            <p class="font-bold text-gray-500 uppercase text-xs">Students Transformed</p>
-                        </div>
-                        <div class="bg-[#f8f9f9] p-6 rounded-2xl text-center">
-                            <h4 class="text-3xl font-black text-[#007175]">25+</h4>
-                            <p class="font-bold text-gray-500 uppercase text-xs">Countries Covered</p>
+    <section id="courses" class="py-24 container mx-auto px-6">
+        <div class="flex flex-col items-center justify-center mb-16 gap-8">
+            <div class="max-w-2xl text-center">
+                <span class="text-brand-accent font-bold tracking-widest text-xs uppercase mb-2 block">Upgrade Your Skills</span>
+                <h2 class="text-4xl md:text-5xl font-bold leading-tight">Explore Our <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-accent">Premium Courses</span></h2>
+                <p class="text-gray-400 mt-4 mx-auto max-w-xl">Select a category to filter courses. All courses come with a completion certificate and lifetime app access.</p>
+            </div>
+            
+            <div class="flex flex-wrap gap-3 justify-center">
+                <button onclick="filterCourses('all')" class="filter-btn active px-6 py-3 rounded-full border border-white/10 bg-white/5 text-sm font-bold transition">All Courses</button>
+                <button onclick="filterCourses('spoken')" class="filter-btn px-6 py-3 rounded-full border border-white/10 bg-white/5 text-sm font-bold transition">Spoken English</button>
+                <button onclick="filterCourses('exam')" class="filter-btn px-6 py-3 rounded-full border border-white/10 bg-white/5 text-sm font-bold transition">IELTS / PTE</button>
+                <button onclick="filterCourses('visa')" class="filter-btn px-6 py-3 rounded-full border border-white/10 bg-white/5 text-sm font-bold transition">Visa</button>
+            </div>
+        </div>
+
+        <div id="course-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            </div>
+    </section>
+
+    <section id="faculty" class="py-24 bg-gradient-to-b from-brand-surface to-brand-bg">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-brand-accent font-bold tracking-widest text-xs uppercase mb-2 block">Meet Our Experts</span>
+                <h2 class="text-4xl md:text-5xl font-bold leading-tight mb-4">World-Class <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-secondary">Faculty Team</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Learn from industry veterans with decades of combined experience in English training and global visa consultancy.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Nikunj Dhanani -->
+                <div class="faculty-card glass-card p-8 rounded-3xl text-center">
+                    <div class="relative mb-6">
+                        <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-brand-primary to-purple-600 flex items-center justify-center text-4xl font-bold text-white mb-4">
+                            ND
                         </div>
                     </div>
+                    <div class="mb-3">
+                        <div class="bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full inline-block mb-2">Founder</div>
+                        <h3 class="text-2xl font-bold">Nikunj Dhanani</h3>
+                    </div>
+                    <p class="text-sm text-brand-accent font-bold mb-4">CEO & Lead Visa Consultant</p>
+                    <p class="text-gray-400 text-sm mb-6">With 12+ years in international education, Nikunj has successfully placed 5000+ students in top global universities. His expertise in visa documentation has achieved a remarkable 99.2% success rate.</p>
+                    <div class="flex justify-center space-x-3">
+                        <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full">UK Visa Expert</span>
+                        <span class="px-3 py-1 bg-green-500/10 text-green-400 text-xs rounded-full">Profile Builder</span>
+                    </div>
                 </div>
-                
-                <div data-aos="fade-left">
-                    <div class="relative rounded-3xl overflow-hidden shadow-2xl">
-                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=1200" alt="Tesca Campus" class="w-full h-[500px] object-cover">
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                        <div class="absolute bottom-8 left-8 text-white">
-                            <p class="text-sm font-bold uppercase tracking-widest text-[#ef7f1a]">Our Campus</p>
-                            <h3 class="text-2xl font-black">State-of-the-Art Learning Facilities</h3>
+
+                <!-- Vishal Faldu -->
+                <div class="faculty-card glass-card p-8 rounded-3xl text-center">
+                    <div class="relative mb-6">
+                        <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-brand-warning to-orange-500 flex items-center justify-center text-4xl font-bold text-white mb-4">
+                            VF
                         </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="bg-blue-500/20 text-blue-400 text-xs font-bold px-3 py-1 rounded-full inline-block mb-2">Co-Founder</div>
+                        <h3 class="text-2xl font-bold">Vishal Faldu</h3>
+                    </div>
+                    <p class="text-sm text-brand-warning font-bold mb-4">IELTS/PTE Master Trainer</p>
+                    <p class="text-gray-400 text-sm mb-6">A British Council certified trainer with 8+ years experience. Specializes in helping students achieve Band 8+ in IELTS and 85+ in PTE. Known for his unique "Score Booster" techniques.</p>
+                    <div class="flex justify-center space-x-3">
+                        <span class="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs rounded-full">IELTS Band 9</span>
+                        <span class="px-3 py-1 bg-red-500/10 text-red-400 text-xs rounded-full">PTE Expert</span>
+                    </div>
+                </div>
+
+                <!-- Kiran Sir -->
+                <div class="faculty-card glass-card p-8 rounded-3xl text-center">
+                    <div class="relative mb-6">
+                        <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-brand-accent to-cyan-500 flex items-center justify-center text-4xl font-bold text-white mb-4">
+                            KS
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="bg-brand-primary/20 text-brand-primary text-xs font-bold px-3 py-1 rounded-full inline-block mb-2">Head Mentor</div>
+                        <h3 class="text-2xl font-bold">Kiran Sir</h3>
+                    </div>
+                    <p class="text-sm text-cyan-400 font-bold mb-4">Spoken English Guru</p>
+                    <p class="text-gray-400 text-sm mb-6">25+ years of transforming students into confident English speakers. Former corporate trainer at multinational companies. His "Zero to Hero" methodology has helped 10,000+ students overcome hesitation.</p>
+                    <div class="flex justify-center space-x-3">
+                        <span class="px-3 py-1 bg-cyan-500/10 text-cyan-400 text-xs rounded-full">Accent Trainer</span>
+                        <span class="px-3 py-1 bg-yellow-500/10 text-yellow-400 text-xs rounded-full">Corporate English</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 glass-card p-8 rounded-3xl">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div>
+                        <div class="text-4xl font-bold text-brand-primary mb-2">15K+</div>
+                        <div class="text-sm text-gray-400">Students Trained</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold text-brand-success mb-2">99%</div>
+                        <div class="text-sm text-gray-400">Visa Success Rate</div>
+                    </div>
+                    <div>
+                        <div class="text-4xl font-bold text-brand-accent mb-2">8.5+</div>
+                        <div class="text-sm text-gray-400">Average IELTS Band</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 4: Why Choose Us -->
-    <section class="bg-[#f8f9f9]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <span class="text-[#007175] font-black uppercase text-xs tracking-widest">The Difference</span>
-                <h2 class="section-title mt-2">Why Choose Tesca Global?</h2>
-                <p class="text-gray-500 mt-4 text-lg max-w-2xl mx-auto">We don't just teach English or process visas - we build global citizens equipped for international success.</p>
+    <section id="app" class="py-24 relative overflow-hidden bg-brand-surface2">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">Your Pocket Classroom</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Download the TESCA App for seamless learning. Watch videos, take quizzes, and chat with tutors on the go.</p>
+                <div class="mt-8 flex justify-center">
+                    <a href="https://play.google.com/store/apps/details?id=co.ted.fpqdt" target="_blank" class="flex items-center gap-4 bg-white text-black px-8 py-4 rounded-2xl font-bold hover:scale-105 transition shadow-lg shadow-white/10">
+                        <i class="fab fa-google-play text-3xl text-brand-success"></i>
+                        <div class="text-left">
+                            <div class="text-[10px] uppercase font-bold text-gray-600">Get it on</div>
+                            <div class="text-xl leading-none">Google Play</div>
+                        </div>
+                    </a>
+                </div>
             </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card-3d bg-white p-8 rounded-3xl" data-aos="fade-up">
-                    <div class="w-16 h-16 rounded-2xl bg-[#007175]/10 flex items-center justify-center mb-6">
-                        <i class="fas fa-user-graduate text-2xl text-[#007175]"></i>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="phone-mockup">
+                    <div class="phone-notch"></div>
+                    <div class="phone-screen bg-gray-900 flex flex-col items-center justify-center p-6 text-center">
+                        <div class="w-16 h-16 rounded-full bg-brand-primary/20 flex items-center justify-center mb-4"><i class="fas fa-play text-brand-primary text-2xl"></i></div>
+                        <h4 class="font-bold text-lg mb-2">Live Classes</h4>
+                        <p class="text-xs text-gray-500">Interactive video sessions</p>
                     </div>
-                    <h3 class="text-xl font-black mb-4">End-to-End Support</h3>
-                    <p class="text-gray-600">From initial counseling to post-landing assistance abroad, we're with you at every step of your journey.</p>
                 </div>
-                
-                <div class="card-3d bg-white p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-16 h-16 rounded-2xl bg-[#ef7f1a]/10 flex items-center justify-center mb-6">
-                        <i class="fas fa-chalkboard-teacher text-2xl text-[#ef7f1a]"></i>
+                <div class="phone-mockup lg:translate-y-12">
+                    <div class="phone-notch"></div>
+                    <div class="phone-screen bg-gray-900 flex flex-col items-center justify-center p-6 text-center">
+                        <div class="w-16 h-16 rounded-full bg-brand-accent/20 flex items-center justify-center mb-4"><i class="fas fa-file-alt text-brand-accent text-2xl"></i></div>
+                        <h4 class="font-bold text-lg mb-2">Study Material</h4>
+                        <p class="text-xs text-gray-500">PDFs & E-books included</p>
                     </div>
-                    <h3 class="text-xl font-black mb-4">Industry Expert Faculty</h3>
-                    <p class="text-gray-600">Learn from trainers with 10+ years international experience, certified by IDP, British Council & Cambridge.</p>
                 </div>
-                
-                <div class="card-3d bg-white p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-16 h-16 rounded-2xl bg-[#007175]/10 flex items-center justify-center mb-6">
-                        <i class="fas fa-handshake text-2xl text-[#007175]"></i>
+                <div class="phone-mockup">
+                    <div class="phone-notch"></div>
+                    <div class="phone-screen bg-gray-900 flex flex-col items-center justify-center p-6 text-center">
+                        <div class="w-16 h-16 rounded-full bg-brand-secondary/20 flex items-center justify-center mb-4"><i class="fas fa-chart-line text-brand-secondary text-2xl"></i></div>
+                        <h4 class="font-bold text-lg mb-2">Track Progress</h4>
+                        <p class="text-xs text-gray-500">Detailed analytics & results</p>
                     </div>
-                    <h3 class="text-xl font-black mb-4">200+ University Tie-ups</h3>
-                    <p class="text-gray-600">Direct partnerships with top universities worldwide ensure priority admissions & scholarship access.</p>
                 </div>
-                
-                <div class="card-3d bg-white p-8 rounded-3xl" data-aos="fade-up">
-                    <div class="w-16 h-16 rounded-2xl bg-[#ef7f1a]/10 flex items-center justify-center mb-6">
-                        <i class="fas fa-laptop-code text-2xl text-[#ef7f1a]"></i>
+                <div class="phone-mockup lg:translate-y-12">
+                    <div class="phone-notch"></div>
+                    <div class="phone-screen bg-gray-900 flex flex-col items-center justify-center p-6 text-center">
+                        <div class="w-16 h-16 rounded-full bg-brand-success/20 flex items-center justify-center mb-4"><i class="fas fa-comments text-brand-success text-2xl"></i></div>
+                        <h4 class="font-bold text-lg mb-2">Tutor Chat</h4>
+                        <p class="text-xs text-gray-500">Instant doubt solving</p>
                     </div>
-                    <h3 class="text-xl font-black mb-4">AI-Powered Learning</h3>
-                    <p class="text-gray-600">Our proprietary platform uses AI to personalize your learning path and predict improvement areas.</p>
-                </div>
-                
-                <div class="card-3d bg-white p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-16 h-16 rounded-2xl bg-[#007175]/10 flex items-center justify-center mb-6">
-                        <i class="fas fa-file-contract text-2xl text-[#007175]"></i>
-                    </div>
-                    <h3 class="text-xl font-black mb-4">100% Visa Success</h3>
-                    <p class="text-gray-600">With meticulous documentation and mock interviews, we maintain a near-perfect visa approval rate.</p>
-                </div>
-                
-                <div class="card-3d bg-white p-8 rounded-3xl" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-16 h-16 rounded-2xl bg-[#ef7f1a]/10 flex items-center justify-center mb-6">
-                        <i class="fas fa-users text-2xl text-[#ef7f1a]"></i>
-                    </div>
-                    <h3 class="text-xl font-black mb-4">Lifetime Alumni Network</h3>
-                    <p class="text-gray-600">Join our global community of successful professionals for networking, mentorship & career opportunities.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION 5: Deep Spoken English Program -->
-    <section id="spoken-english" class="bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <span class="text-[#ef7f1a] font-black uppercase text-xs tracking-widest">Flagship Program</span>
-                <h2 class="section-title mt-2">Deep Spoken English Program</h2>
-                <p class="text-gray-500 mt-4 text-lg max-w-3xl mx-auto">A comprehensive 90-day transformation journey from hesitant speaker to confident communicator</p>
-            </div>
-            
-            <div class="grid lg:grid-cols-3 gap-8">
-                <div class="lg:col-span-2">
-                    <div class="space-y-6">
-                        <div class="card-3d bg-white p-8 rounded-3xl border-l-8 border-[#007175]" data-aos="fade-right">
-                            <div class="flex items-center mb-6">
-                                <div class="w-12 h-12 rounded-xl bg-[#007175] text-white flex items-center justify-center text-xl font-black mr-4">01</div>
-                                <h3 class="text-2xl font-black">Foundation Phase (Weeks 1-4)</h3>
-                            </div>
-                            <p class="text-gray-600 mb-4">Build rock-solid grammar foundations and overcome speaking anxiety.</p>
-                            <ul class="space-y-2 text-gray-600">
-                                <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span>Sentence structure & essential tenses</span></li>
-                                <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span>Pronunciation correction & phonetics</span></li>
-                                <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span>300+ essential vocabulary & phrases</span></li>
-                                <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span>Daily conversation practice sessions</span></li>
-                            </ul>
-                        </div>
-                        
-                        <div class="card-3d bg-white p-8 rounded-3xl border-l-8 border-[#ef7f1a]" data-aos="fade-right" data-aos-delay="100">
-                            <div class="flex items-center mb-6">
-                                <div class="w-12 h-12 rounded-xl bg-[#ef7f1a] text-white flex items-center justify-center text-xl font-black mr-4">02</div>
-                                <h3 class="text-2xl font-black">Fluency Phase (Weeks 5-8)</h3>
-                            </div>
-                            <p class="text-gray-600 mb-4">Develop natural speaking flow and thinking process in English.</p>
-                            <ul class="space-y-2 text-gray-600">
-                                <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span>Idioms, phrases & modern slang</span></li>
-                                <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span>Group discussions & debate practice</span></li>
-                                <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span>Accent neutralization techniques</span></li>
-                                <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span>Business communication & email writing</span></li>
-                            </ul>
-                        </div>
-                        
-                        <div class="card-3d bg-white p-8 rounded-3xl border-l-8 border-black" data-aos="fade-right" data-aos-delay="200">
-                            <div class="flex items-center mb-6">
-                                <div class="w-12 h-12 rounded-xl bg-black text-white flex items-center justify-center text-xl font-black mr-4">03</div>
-                                <h3 class="text-2xl font-black">Mastery Phase (Weeks 9-12)</h3>
-                            </div>
-                            <p class="text-gray-600 mb-4">Polish your skills for professional environments and international settings.</p>
-                            <ul class="space-y-2 text-gray-600">
-                                <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span>Public speaking & presentation skills</span></li>
-                                <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span>Interview preparation & resume building</span></li>
-                                <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span>Cultural adaptation & global etiquette</span></li>
-                                <li class="flex items-start gap-2"><i class="fas fa-check text-green-500 mt-1"></i> <span>Final project: Host a live podcast episode</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
+    <footer id="contact" class="bg-brand-surface border-t border-white/5 pt-20 pb-10">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                 <div class="space-y-6">
-                    <div class="bg-[#007175] text-white p-8 rounded-3xl sticky top-24" data-aos="fade-left">
-                        <h3 class="text-2xl font-black mb-6">Program Highlights</h3>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-start gap-4">
-                                <i class="fas fa-microphone text-[#ef7f1a] text-2xl mt-1"></i>
-                                <div>
-                                    <h4 class="text-lg font-bold mb-2">40+ Speaking Sessions</h4>
-                                    <p class="text-teal-100 text-sm">Guided practice with native speaker simulations</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start gap-4">
-                                <i class="fas fa-chart-bar text-[#ef7f1a] text-2xl mt-1"></i>
-                                <div>
-                                    <h4 class="text-lg font-bold mb-2">Progress Analytics</h4>
-                                    <p class="text-teal-100 text-sm">Weekly fluency score tracking & personalized feedback</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start gap-4">
-                                <i class="fas fa-certificate text-[#ef7f1a] text-2xl mt-1"></i>
-                                <div>
-                                    <h4 class="text-lg font-bold mb-2">Dual Certification</h4>
-                                    <p class="text-teal-100 text-sm">Tesca certificate + International partner recognition</p>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start gap-4">
-                                <i class="fas fa-briefcase text-[#ef7f1a] text-2xl mt-1"></i>
-                                <div>
-                                    <h4 class="text-lg font-bold mb-2">Job Assistance</h4>
-                                    <p class="text-teal-100 text-sm">Placement support with 150+ corporate partners</p>
-                                </div>
-                            </div>
+                    <a href="#home" class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded bg-gradient-to-br from-brand-primary to-brand-accent flex items-center justify-center font-bold text-white">T</div>
+                        <span class="font-bold text-2xl">TESCA</span>
+                    </a>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        The leading platform for English mastery and Visa consultancy. We have helped 15,000+ students achieve their global dreams.
+                    </p>
+                    <a href="https://play.google.com/store/apps/details?id=co.ted.fpqdt" target="_blank" class="inline-flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-lg hover:bg-white/10 transition">
+                        <i class="fab fa-google-play text-xl text-brand-success"></i>
+                        <div class="text-left">
+                            <div class="text-[9px] uppercase text-gray-400">Android App on</div>
+                            <div class="text-sm font-bold">Google Play</div>
                         </div>
-                        
-                        <div class="mt-8 pt-6 border-t border-white/20">
-                            <div class="flex justify-between items-center mb-4">
-                                <span class="text-gray-300">Regular Price:</span>
-                                <span class="text-xl line-through">₹24,999</span>
-                            </div>
-                            <div class="flex justify-between items-center mb-6">
-                                <span class="text-white font-bold">Launch Offer:</span>
-                                <span class="text-3xl font-black text-[#ef7f1a]">₹14,999</span>
-                            </div>
-                            <a href="#contact" class="block w-full bg-white text-[#007175] text-center py-4 rounded-xl font-bold hover:bg-gray-100 transition">Enroll Now</a>
-                        </div>
-                    </div>
+                    </a>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- SECTION 6: Premium Courses (6 Courses) -->
-    <section id="courses" class="bg-[#f8f9f9]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <span class="text-[#007175] font-black uppercase text-xs tracking-widest">Learning Portfolio</span>
-                <h2 class="section-title mt-2">Premium Certification Courses</h2>
-                <p class="text-gray-500 mt-4 text-lg max-w-2xl mx-auto">Choose from our industry-recognized programs designed for global career success</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Course 1 -->
-                <div class="card-3d bg-white rounded-3xl overflow-hidden" data-aos="fade-up">
-                    <div class="h-48 bg-gradient-to-r from-[#007175] to-teal-800 relative overflow-hidden">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-globe-americas text-white text-6xl opacity-30"></i>
-                        </div>
-                        <div class="absolute top-4 right-4 bg-red-500 text-white px-4 py-1 rounded-full font-black text-xs">27% OFF</div>
-                        <div class="absolute bottom-4 left-4 text-white">
-                            <span class="bg-white/20 px-3 py-1 rounded-full text-xs font-bold">IELTS</span>
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-xl font-black mb-2">IELTS Mastery Program</h3>
-                        <p class="text-gray-500 text-sm mb-4">Comprehensive training for band 8+ guaranteed</p>
-                        
-                        <div class="space-y-2 mb-6">
-                            <div class="flex items-center text-sm">
-                                <i class="fas fa-clock text-[#ef7f1a] mr-2"></i>
-                                <span class="font-bold">Duration:</span>
-                                <span class="ml-2">3 Months</span>
-                            </div>
-                            <div class="flex items-center text-sm">
-                                <i class="fas fa-chalkboard-teacher text-[#ef7f1a] mr-2"></i>
-                                <span class="font-bold">Mode:</span>
-                                <span class="ml-2">Online + Classroom</span>
-                            </div>
-                        </div>
-                        
-                        <div class="space-y-3 mb-8">
-                            <div class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                                <span class="text-sm">20 Full Mock Tests</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                                <span class="text-sm">Weekly One-on-One Speaking</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                                <span class="text-sm">IDP Certified Materials</span>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-between items-center border-t pt-6">
-                            <div>
-                                <div class="flex items-center gap-2 mb-1">
-                                    <span class="text-gray-400 line-through text-sm">₹18,000</span>
-                                    <span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">SAVE ₹5,001</span>
-                                </div>
-                                <p class="text-2xl font-black text-[#ef7f1a]">₹12,999</p>
-                            </div>
-                            <button class="bg-[#007175] text-white px-6 py-3 rounded-xl font-bold hover:bg-black transition">Enroll Now</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Course 2 -->
-                <div class="card-3d bg-white rounded-3xl overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-                    <div class="h-48 bg-gradient-to-r from-[#ef7f1a] to-orange-600 relative overflow-hidden">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-robot text-white text-6xl opacity-30"></i>
-                        </div>
-                        <div class="absolute top-4 right-4 bg-red-500 text-white px-4 py-1 rounded-full font-black text-xs">30% OFF</div>
-                        <div class="absolute bottom-4 left-4 text-white">
-                            <span class="bg-white/20 px-3 py-1 rounded-full text-xs font-bold">PTE</span>
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-xl font-black mb-2">PTE Core Excellence</h3>
-                        <p class="text-gray-500 text-sm mb-4">AI-based scoring mastery for Canadian immigration</p>
-                        
-                        <div class="space-y-2 mb-6">
-                            <div class="flex items-center text-sm">
-                                <i class="fas fa-clock text-[#ef7f1a] mr-2"></i>
-                                <span class="font-bold">Duration:</span>
-                                <span class="ml-2">2 Months</span>
-                            </div>
-                            <div class="flex items-center text-sm">
-                                <i class="fas fa-chalkboard-teacher text-[#ef7f1a] mr-2"></i>
-                                <span class="font-bold">Mode:</span>
-                                <span class="ml-2">Online + AI Practice</span>
-                            </div>
-                        </div>
-                        
-                        <div class="space-y-3 mb-8">
-                            <div class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                                <span class="text-sm">AI Scoring Simulation</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                                <span class="text-sm">Unlimited Sectional Tests</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                                <span class="text-sm">Real Exam Environment</span>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-between items-center border-t pt-6">
-                            <div>
-                                <div class="flex items-center gap-2 mb-1">
-                                    <span class="text-gray-400 line-through text-sm">₹15,000</span>
-                                    <span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">SAVE ₹4,501</span>
-                                </div>
-                                <p class="text-2xl font-black text-[#ef7f1a]">₹10,499</p>
-                            </div>
-                            <button class="bg-[#007175] text-white px-6 py-3 rounded-xl font-bold hover:bg-black transition">Enroll Now</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Course 3 -->
-                <div class="card-3d bg-white rounded-3xl overflow-hidden" data-aos="fade-up" data-aos-delay="200">
-                    <div class="h-48 bg-gradient-to-r from-purple-600 to-indigo-700 relative overflow-hidden">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-university text-white text-6xl opacity-30"></i>
-                        </div>
-                        <div class="absolute top-4 right-4 bg-red-500 text-white px-4 py-1 rounded-full font-black text-xs">25% OFF</div>
-                        <div class="absolute bottom-4 left-4 text-white">
-                            <span class="bg-white/20 px-3 py-1 rounded-full text-xs font-bold">TOEFL</span>
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-xl font-black mb-2">TOEFL iBT Masterclass</h3>
-                        <p class="text-gray-500 text-sm mb-4">Top US university admission focused training</p>
-                        
-                        <div class="space-y-2 mb-6">
-                            <div class="flex items-center text-sm">
-                                <i class="fas fa-clock text-[#ef7f1a] mr-2"></i>
-                                <span class="font-bold">Duration:</span>
-                                <span class="ml-2">2.5 Months</span>
-                            </div>
-                            <div class="flex items-center text-sm">
-                                <i class="fas fa-chalkboard-teacher text-[#ef7f1a] mr-2"></i>
-                                <span class="font-bold">Mode:</span>
-                                <span class="ml-2">Hybrid Learning</span>
-                            </div>
-                        </div>
-                        
-                        <div class="space-y-3 mb-8">
-                            <div class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                                <span class="text-sm">University Matching Tool</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                                <span class="text-sm">Academic Writing Mastery</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                                <span class="text-sm">Recorded Live Lectures</span>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-between items-center border-t pt-6">
-                            <div>
-                                <div class="flex items-center gap-2 mb-1">
-                                    <span class="text-gray-400 line-through text-sm">₹16,500</span>
-                                    <span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">SAVE ₹4,501</span>
-                                </div>
-                                <p class="text-2xl font-black text-[#ef7f1a]">₹11,999</p>
-                            </div>
-                            <button class="bg-[#007175] text-white px-6 py-3 rounded-xl font-bold hover:bg-black transition">Enroll Now</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Course 4 -->
-                <div class="card-3d bg-white rounded-3xl overflow-hidden" data-aos="fade-up">
-                    <div class="h-48 bg-gradient-to-r from-cyan-600 to-blue-700 relative overflow-hidden">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-comments text-white text-6xl opacity-30"></i>
-                        </div>
-                        <div class="absolute top-4 right-4 bg-red-500 text-white px-4 py-1 rounded-full font-black text-xs">35% OFF</div>
-                        <div class="absolute bottom-4 left-4 text-white">
-                            <span class="bg-white/20 px-3 py-1 rounded-full text-xs font-bold">SPOKEN</span>
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-xl font-black mb-2">Advanced Business English</h3>
-                        <p class="text-gray-500 text-sm mb-4">Corporate communication & negotiation skills</p>
-                        
-                        <div class="space-y-2 mb-6">
-                            <div class="flex items-center text-sm">
-                                <i class="fas fa-clock text-[#ef7f1a] mr-2"></i>
-                                <span class="font-bold">Duration:</span>
-                                <span class="ml-2">1.5 Months</span>
-                            </div>
-                            <div class="flex items-center text-sm">
-                                <i class="fas fa-chalkboard-teacher text-[#ef7f1a] mr-2"></i>
-                                <span class="font-bold">Mode:</span>
-                                <span class="ml-2">Live Online Sessions</span>
-                            </div>
-                        </div>
-                        
-                        <div class="space-y-3 mb-8">
-                            <div class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                                <span class="text-sm">Corporate Presentation Skills</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                                <span class="text-sm">Email & Report Writing</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                                <span class="text-sm">Client Meeting Simulations</span>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-between items-center border-t pt-6">
-                            <div>
-                                <div class="flex items-center gap-2 mb-1">
-                                    <span class="text-gray-400 line-through text-sm">₹12,000</span>
-                                    <span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">SAVE ₹4,001</span>
-                                </div>
-                                <p class="text-2xl font-black text-[#ef7f1a]">₹7,999</p>
-                            </div>
-                            <button class="bg-[#007175] text-white px-6 py-3 rounded-xl font-bold hover:bg-black transition">Enroll Now</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Course 5 -->
-                <div class="card-3d bg-white rounded-3xl overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-                    <div class="h-48 bg-gradient-to-r from-green-600 to-emerald-700 relative overflow-hidden">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-passport text-white text-6xl opacity-30"></i>
-                        </div>
-                        <div class="absolute top-4 right-4 bg-red-500 text-white px-4 py-1 rounded-full font-black text-xs">20% OFF</div>
-                        <div class="absolute bottom-4 left-4 text-white">
-                            <span class="bg-white/20 px-3 py-1 rounded-full text-xs font-bold">VISA</span>
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-xl font-black mb-2">VISA Documentation Mastery</h3>
-                        <p class="text-gray-500 text-sm mb-4">Complete guidance for study/work visa applications</p>
-                        
-                        <div class="space-y-2 mb-6">
-                            <div class="flex items-center text-sm">
-                                <i class="fas fa-clock text-[#ef7f1a] mr-2"></i>
-                                <span class="font-bold">Duration:</span>
-                                <span class="ml-2">1 Month</span>
-                            </div>
-                            <div class="flex items-center text-sm">
-                                <i class="fas fa-chalkboard-teacher text-[#ef7f1a] mr-2"></i>
-                                <span class="font-bold">Mode:</span>
-                                <span class="ml-2">One-on-One Mentorship</span>
-                            </div>
-                        </div>
-                        
-                        <div class="space-y-3 mb-8">
-                            <div class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                                <span class="text-sm">Document Checklist & Review</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                                <span class="text-sm">SOP & LOR Writing Assistance</span></div>
-                            <div class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                                <span class="text-sm">Mock Visa Interviews</span>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-between items-center border-t pt-6">
-                            <div>
-                                <div class="flex items-center gap-2 mb-1">
-                                    <span class="text-gray-400 line-through text-sm">₹8,000</span>
-                                    <span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">SAVE ₹1,501</span>
-                                </div>
-                                <p class="text-2xl font-black text-[#ef7f1a]">₹6,499</p>
-                            </div>
-                            <button class="bg-[#007175] text-white px-6 py-3 rounded-xl font-bold hover:bg-black transition">Enroll Now</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Course 6 -->
-                <div class="card-3d bg-white rounded-3xl overflow-hidden" data-aos="fade-up" data-aos-delay="200">
-                    <div class="h-48 bg-gradient-to-r from-pink-600 to-rose-700 relative overflow-hidden">
-                        <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-user-tie text-white text-6xl opacity-30"></i>
-                        </div>
-                        <div class="absolute top-4 right-4 bg-red-500 text-white px-4 py-1 rounded-full font-black text-xs">28% OFF</div>
-                        <div class="absolute bottom-4 left-4 text-white">
-                            <span class="bg-white/20 px-3 py-1 rounded-full text-xs font-bold">CAREER</span>
-                        </div>
-                    </div>
-                    <div class="p-8">
-                        <h3 class="text-xl font-black mb-2">Global Career Launchpad</h3>
-                        <p class="text-gray-500 text-sm mb-4">Job search strategy for international markets</p>
-                        
-                        <div class="space-y-2 mb-6">
-                            <div class="flex items-center text-sm">
-                                <i class="fas fa-clock text-[#ef7f1a] mr-2"></i>
-                                <span class="font-bold">Duration:</span>
-                                <span class="ml-2">2 Months</span>
-                            </div>
-                            <div class="flex items-center text-sm">
-                                <i class="fas fa-chalkboard-teacher text-[#ef7f1a] mr-2"></i>
-                                <span class="font-bold">Mode:</span>
-                                <span class="ml-2">Workshop + Coaching</span>
-                            </div>
-                        </div>
-                        
-                        <div class="space-y-3 mb-8">
-                            <div class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                                <span class="text-sm">LinkedIn Profile Optimization</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                                <span class="text-sm">International Resume Formatting</span>
-                            </div>
-                            <div class="flex items-center">
-                                <i class="fas fa-check-circle text-green-500 mr-3"></i>
-                                <span class="text-sm">Virtual Interview Techniques</span>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-between items-center border-t pt-6">
-                            <div>
-                                <div class="flex items-center gap-2 mb-1">
-                                    <span class="text-gray-400 line-through text-sm">₹14,000</span>
-                                    <span class="bg-green-100 text-green-800 text-xs font-bold px-2 py-1 rounded">SAVE ₹4,001</span>
-                                </div>
-                                <p class="text-2xl font-black text-[#ef7f1a]">₹9,999</p>
-                            </div>
-                            <button class="bg-[#007175] text-white px-6 py-3 rounded-xl font-bold hover:bg-black transition">Enroll Now</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12" data-aos="fade-up">
-                <a href="#contact" class="inline-block bg-[#ef7f1a] text-white px-10 py-4 rounded-xl font-bold text-lg shadow-xl hover:bg-black transition-all">View All 12+ Courses</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 7: What We Provide -->
-    <section class="bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <span class="text-[#007175] font-black uppercase text-xs tracking-widest">Our Commitment</span>
-                <h2 class="section-title mt-2">What We Provide?</h2>
-                <p class="text-gray-500 mt-4 text-lg max-w-2xl mx-auto">Beyond courses, we offer a complete ecosystem for your global success journey</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card-3d bg-white p-8 rounded-3xl border border-gray-100" data-aos="fade-up">
-                    <div class="w-20 h-20 rounded-2xl bg-[#007175]/10 flex items-center justify-center mb-6">
-                        <i class="fas fa-certificate text-3xl text-[#007175]"></i>
-                    </div>
-                    <h3 class="text-xl font-black mb-4">ISO 9001:2015 Certified</h3>
-                    <p class="text-gray-600 mb-6">We maintain international quality standards in all our processes, ensuring you receive world-class education and consultancy.</p>
-                    <ul class="space-y-2">
-                        <li class="flex items-center text-sm"><i class="fas fa-check text-green-500 mr-2"></i> Globally Valid Certificates</li>
-                        <li class="flex items-center text-sm"><i class="fas fa-check text-green-500 mr-2"></i> Quality Management System</li>
-                        <li class="flex items-center text-sm"><i class="fas fa-check text-green-500 mr-2"></i> Standardized Curriculum</li>
-                    </ul>
-                </div>
-                
-                <div class="card-3d bg-white p-8 rounded-3xl border border-gray-100" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-20 h-20 rounded-2xl bg-[#ef7f1a]/10 flex items-center justify-center mb-6">
-                        <i class="fas fa-headset text-3xl text-[#ef7f1a]"></i>
-                    </div>
-                    <h3 class="text-xl font-black mb-4">24/7 Student Support</h3>
-                    <p class="text-gray-600 mb-6">Our dedicated support team is available round-the-clock to resolve your queries, be it technical, academic, or administrative.</p>
-                    <ul class="space-y-2">
-                        <li class="flex items-center text-sm"><i class="fas fa-check text-green-500 mr-2"></i> Instant Query Resolution</li>
-                        <li class="flex items-center text-sm"><i class="fas fa-check text-green-500 mr-2"></i> Technical Assistance</li>
-                        <li class="flex items-center text-sm"><i class="fas fa-check text-green-500 mr-2"></i> Emergency Visa Help</li>
-                    </ul>
-                </div>
-                
-                <div class="card-3d bg-white p-8 rounded-3xl border border-gray-100" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-20 h-20 rounded-2xl bg-[#007175]/10 flex items-center justify-center mb-6">
-                        <i class="fas fa-network-wired text-3xl text-[#007175]"></i>
-                    </div>
-                    <h3 class="text-xl font-black mb-4">Global Alumni Network</h3>
-                    <p class="text-gray-600 mb-6">Join our community of 20,000+ successful alumni spread across 25+ countries for networking, mentorship, and opportunities.</p>
-                    <ul class="space-y-2">
-                        <li class="flex items-center text-sm"><i class="fas fa-check text-green-500 mr-2"></i> Country-specific Groups</li>
-                        <li class="flex items-center text-sm"><i class="fas fa-check text-green-500 mr-2"></i> Annual Alumni Meets</li>
-                        <li class="flex items-center text-sm"><i class="fas fa-check text-green-500 mr-2"></i> Job Referral System</li>
-                    </ul>
-                </div>
-                
-                <div class="card-3d bg-white p-8 rounded-3xl border border-gray-100" data-aos="fade-up">
-                    <div class="w-20 h-20 rounded-2xl bg-[#ef7f1a]/10 flex items-center justify-center mb-6">
-                        <i class="fas fa-laptop-medical text-3xl text-[#ef7f1a]"></i>
-                    </div>
-                    <h3 class="text-xl font-black mb-4">AI-Powered Learning Analytics</h3>
-                    <p class="text-gray-600 mb-6">Our proprietary platform tracks 50+ learning metrics to provide personalized improvement plans and predict your success rate.</p>
-                    <ul class="space-y-2">
-                        <li class="flex items-center text-sm"><i class="fas fa-check text-green-500 mr-2"></i> Performance Dashboards</li>
-                        <li class="flex items-center text-sm"><i class="fas fa-check text-green-500 mr-2"></i> Weakness Identification</li>
-                        <li class="flex items-center text-sm"><i class="fas fa-check text-green-500 mr-2"></i> Success Probability Score</li>
-                    </ul>
-                </div>
-                
-                <div class="card-3d bg-white p-8 rounded-3xl border border-gray-100" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-20 h-20 rounded-2xl bg-[#007175]/10 flex items-center justify-center mb-6">
-                        <i class="fas fa-handshake text-3xl text-[#007175]"></i>
-                    </div>
-                    <h3 class="text-xl font-black mb-4">University Placement Guarantee</h3>
-                    <p class="text-gray-600 mb-6">We guarantee admission in one of our 200+ partner universities worldwide or offer a full refund of consultancy fees.</p>
-                    <ul class="space-y-2">
-                        <li class="flex items-center text-sm"><i class="fas fa-check text-green-500 mr-2"></i> Admission Letter Guarantee</li>
-                        <li class="flex items-center text-sm"><i class="fas fa-check text-green-500 mr-2"></i> Scholarship Assistance</li>
-                        <li class="flex items-center text-sm"><i class="fas fa-check text-green-500 mr-2"></i> Refund Policy</li>
-                    </ul>
-                </div>
-                
-                <div class="card-3d bg-white p-8 rounded-3xl border border-gray-100" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-20 h-20 rounded-2xl bg-[#ef7f1a]/10 flex items-center justify-center mb-6">
-                        <i class="fas fa-plane-departure text-3xl text-[#ef7f1a]"></i>
-                    </div>
-                    <h3 class="text-xl font-black mb-4">Post-Landing Support</h3>
-                    <p class="text-gray-600 mb-6">Our support continues even after you reach your destination with accommodation, banking, and local orientation assistance.</p>
-                    <ul class="space-y-2">
-                        <li class="flex items-center text-sm"><i class="fas fa-check text-green-500 mr-2"></i> Airport Pickup Coordination</li>
-                        <li class="flex items-center text-sm"><i class="fas fa-check text-green-500 mr-2"></i> Temporary Accommodation</li>
-                        <li class="flex items-center text-sm"><i class="fas fa-check text-green-500 mr-2"></i> Local SIM & Banking Help</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 8: Global Visa Pathways -->
-    <section id="visa" class="bg-black text-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <span class="text-[#ef7f1a] font-black uppercase text-xs tracking-widest">Immigration Specialists</span>
-                <h2 class="section-title text-white mt-2">Global Visa Pathways</h2>
-                <p class="text-gray-400 mt-4 text-lg max-w-2xl mx-auto">Expert guidance for every type of international visa application with 98% success rate</p>
-            </div>
-            
-            <div class="grid lg:grid-cols-4 gap-6">
-                <!-- Student Visa -->
-                <div class="bg-white/5 border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition group" data-aos="flip-left">
-                    <div class="w-16 h-16 rounded-2xl bg-[#007175] flex items-center justify-center mb-6 text-2xl">
-                        <i class="fas fa-user-graduate"></i>
-                    </div>
-                    <h3 class="text-xl font-black mb-4">Student Visa</h3>
-                    <p class="text-gray-400 text-sm mb-6">For pursuing education in foreign universities and colleges</p>
-                    
-                    <div class="space-y-4 mb-8">
-                        <div>
-                            <p class="text-xs font-bold text-[#ef7f1a] uppercase mb-2">Top Destinations</p>
-                            <p class="text-sm">USA, Canada, UK, Australia, Germany</p>
-                        </div>
-                        <div>
-                            <p class="text-xs font-bold text-[#ef7f1a] uppercase mb-2">Processing Time</p>
-                            <p class="text-sm">4-12 Weeks</p>
-                        </div>
-                    </div>
-                    
-                    <button class="w-full py-3 rounded-xl bg-white text-black font-bold group-hover:bg-[#ef7f1a] transition text-sm">Check Eligibility</button>
-                </div>
-                
-                <!-- Work Visa -->
-                <div class="bg-white/5 border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition group" data-aos="flip-left" data-aos-delay="100">
-                    <div class="w-16 h-16 rounded-2xl bg-[#ef7f1a] flex items-center justify-center mb-6 text-2xl">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <h3 class="text-xl font-black mb-4">Work Visa</h3>
-                    <p class="text-gray-400 text-sm mb-6">For skilled professionals seeking employment abroad</p>
-                    
-                    <div class="space-y-4 mb-8">
-                        <div>
-                            <p class="text-xs font-bold text-[#ef7f1a] uppercase mb-2">Top Destinations</p>
-                            <p class="text-sm">Canada, Australia, Germany, UAE, Singapore</p>
-                        </div>
-                        <div>
-                            <p class="text-xs font-bold text-[#ef7f1a] uppercase mb-2">Processing Time</p>
-                            <p class="text-sm">6-18 Months</p>
-                        </div>
-                    </div>
-                    
-                    <button class="w-full py-3 rounded-xl bg-white text-black font-bold group-hover:bg-[#ef7f1a] transition text-sm">Check Eligibility</button>
-                </div>
-                
-                <!-- Visitor Visa -->
-                <div class="bg-white/5 border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition group" data-aos="flip-left" data-aos-delay="200">
-                    <div class="w-16 h-16 rounded-2xl bg-[#007175] flex items-center justify-center mb-6 text-2xl">
-                        <i class="fas fa-plane"></i>
-                    </div>
-                    <h3 class="text-xl font-black mb-4">Visitor Visa</h3>
-                    <p class="text-gray-400 text-sm mb-6">For tourism, family visits, or short business trips</p>
-                    
-                    <div class="space-y-4 mb-8">
-                        <div>
-                            <p class="text-xs font-bold text-[#ef7f1a] uppercase mb-2">Top Destinations</p>
-                            <p class="text-sm">USA, UK, Schengen, Canada, Australia</p>
-                        </div>
-                        <div>
-                            <p class="text-xs font-bold text-[#ef7f1a] uppercase mb-2">Processing Time</p>
-                            <p class="text-sm">2-8 Weeks</p>
-                        </div>
-                    </div>
-                    
-                    <button class="w-full py-3 rounded-xl bg-white text-black font-bold group-hover:bg-[#ef7f1a] transition text-sm">Check Eligibility</button>
-                </div>
-                
-                <!-- Dependent Visa -->
-                <div class="bg-white/5 border border-white/10 rounded-3xl p-8 hover:bg-white/10 transition group" data-aos="flip-left" data-aos-delay="300">
-                    <div class="w-16 h-16 rounded-2xl bg-[#ef7f1a] flex items-center justify-center mb-6 text-2xl">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="text-xl font-black mb-4">Dependent Visa</h3>
-                    <p class="text-gray-400 text-sm mb-6">For family members of students or work visa holders</p>
-                    
-                    <div class="space-y-4 mb-8">
-                        <div>
-                            <p class="text-xs font-bold text-[#ef7f1a] uppercase mb-2">Eligibility</p>
-                            <p class="text-sm">Spouse, Children, Parents</p>
-                        </div>
-                        <div>
-                            <p class="text-xs font-bold text-[#ef7f1a] uppercase mb-2">Processing Time</p>
-                            <p class="text-sm">4-16 Weeks</p>
-                        </div>
-                    </div>
-                    
-                    <button class="w-full py-3 rounded-xl bg-white text-black font-bold group-hover:bg-[#ef7f1a] transition text-sm">Check Eligibility</button>
-                </div>
-            </div>
-            
-            <!-- Additional Visa Types -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition" data-aos="fade-up">
-                    <h4 class="text-lg font-bold mb-2 flex items-center"><i class="fas fa-heart text-red-400 mr-2"></i> Spouse Visa</h4>
-                    <p class="text-gray-400 text-sm">For joining spouse living abroad</p>
-                </div>
-                
-                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition" data-aos="fade-up" data-aos-delay="100">
-                    <h4 class="text-lg font-bold mb-2 flex items-center"><i class="fas fa-home text-green-400 mr-2"></i> PR Visa</h4>
-                    <p class="text-gray-400 text-sm">Permanent residency pathways</p>
-                </div>
-                
-                <div class="bg-white/5 border border-white/10 rounded-2xl p-6 hover:bg-white/10 transition" data-aos="fade-up" data-aos-delay="200">
-                    <h4 class="text-lg font-bold mb-2 flex items-center"><i class="fas fa-star text-yellow-400 mr-2"></i> Investor Visa</h4>
-                    <p class="text-gray-400 text-sm">For business investment abroad</p>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12" data-aos="fade-up">
-                <a href="#contact" class="inline-block bg-[#ef7f1a] text-white px-10 py-4 rounded-xl font-bold text-lg shadow-xl hover:bg-white hover:text-black transition-all">Book Free Visa Consultation</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 9: Success Gallery -->
-    <section id="gallery" class="bg-white">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="text-center mb-12" data-aos="fade-up">
-                <span class="text-[#007175] font-black uppercase text-xs tracking-widest">Our Achievements</span>
-                <h2 class="section-title mt-2">Success Gallery</h2>
-                <p class="text-gray-500 mt-4 text-lg max-w-2xl mx-auto">Celebrating the milestones and achievements of our students and institution</p>
-            </div>
-            
-            <div class="gallery-tabs" id="galleryTabs">
-                <button class="gallery-tab active" data-category="student-awards">Student Awards (10)</button>
-                <button class="gallery-tab" data-category="function-awards">Function Awards (10)</button>
-                <button class="gallery-tab" data-category="celebrations">Celebrations (10)</button>
-            </div>
-            
-            <!-- Student Awards Gallery -->
-            <div class="gallery-content" id="student-awards">
-                <div class="gallery-grid">
-                    <!-- 10 images for student awards -->
-                    <div class="gallery-item" data-aos="fade-up">
-                        <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=80&w=600" alt="IELTS Topper" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">IELTS Band 9 Achievement</p>
-                            <p class="text-xs">Rahul Sharma, 2024</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item" data-aos="fade-up" data-aos-delay="50">
-                        <img src="https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&q=80&w=600" alt="University Admission" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">Harvard University Admission</p>
-                            <p class="text-xs">Priya Patel, 2023</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item" data-aos="fade-up" data-aos-delay="100">
-                        <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&q=80&w=600" alt="Scholarship Award" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">Full Scholarship to Canada</p>
-                            <p class="text-xs">Amit Kumar, 2024</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item" data-aos="fade-up" data-aos-delay="150">
-                        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&q=80&w=600" alt="PTE Excellence" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">PTE 90/90 Score</p>
-                            <p class="text-xs">Sneha Reddy, 2023</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item" data-aos="fade-up" data-aos-delay="200">
-                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=600" alt="Group Achievement" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">Batch 2024 - 100% Visa Success</p>
-                            <p class="text-xs">Canada Group</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item" data-aos="fade-up" data-aos-delay="250">
-                        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&q=80&w=600" alt="Language Competition" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">National English Olympiad Winner</p>
-                            <p class="text-xs">Karan Singh, 2024</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
-                        <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&q=80&w=600" alt="University Gold Medal" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">University of Toronto Gold Medalist</p>
-                            <p class="text-xs">Neha Gupta, 2023</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item" data-aos="fade-up" data-aos-delay="350">
-                        <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=600" alt="Research Award" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">Best Research Paper Award</p>
-                            <p class="text-xs">David Chen, MIT, 2024</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item" data-aos="fade-up" data-aos-delay="400">
-                        <img src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?auto=format&fit=crop&q=80&w=600" alt="Job Placement" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">Google USA Job Placement</p>
-                            <p class="text-xs">Rohan Mehta, 2023</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item" data-aos="fade-up" data-aos-delay="450">
-                        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&q=80&w=600" alt="Entrepreneurship Award" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">Student Entrepreneur Award</p>
-                            <p class="text-xs">Anjali Sharma, 2024</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Function Awards Gallery (Hidden by default) -->
-            <div class="gallery-content hidden" id="function-awards">
-                <div class="gallery-grid">
-                    <!-- 10 images for function awards -->
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1492684223066-dd23140edf6d?auto=format&fit=crop&q=80&w=600" alt="Best Institute Award" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">Best Education Institute 2024</p>
-                            <p class="text-xs">National Education Awards</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=600" alt="Excellence Award" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">Excellence in Visa Consultancy</p>
-                            <p class="text-xs">Global Education Summit 2023</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=600" alt="Innovation Award" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">Innovation in Teaching 2024</p>
-                            <p class="text-xs">Education Technology Awards</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=600" alt="Leadership Award" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">Educational Leadership Award</p>
-                            <p class="text-xs">Global Education Forum 2023</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&q=80&w=600" alt="Quality Award" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">Quality Excellence Award 2024</p>
-                            <p class="text-xs">International Quality Summit</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&q=80&w=600" alt="Corporate Award" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">Corporate Training Excellence</p>
-                            <p class="text-xs">Industry Collaboration Awards</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=600" alt="Digital Learning Award" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">Digital Learning Platform Award</p>
-                            <p class="text-xs">EdTech Innovation Awards 2024</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?auto=format&fit=crop&q=80&w=600" alt="Student Satisfaction Award" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">Student Satisfaction Award</p>
-                            <p class="text-xs">Customer Choice Awards 2023</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=600" alt="Global Recognition Award" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">Global Recognition Award</p>
-                            <p class="text-xs">International Education Summit</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=600" alt="Community Service Award" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">Community Service Excellence</p>
-                            <p class="text-xs">Social Impact Awards 2024</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Celebrations Gallery (Hidden by default) -->
-            <div class="gallery-content hidden" id="celebrations">
-                <div class="gallery-grid">
-                    <!-- 10 images for celebrations -->
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=600" alt="Annual Day" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">Annual Day Celebration 2024</p>
-                            <p class="text-xs">Cultural Performances</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=600" alt="Freshers Party" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">Freshers Welcome Party</p>
-                            <p class="text-xs">Batch 2024 Inauguration</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=600" alt="Diwali Celebration" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">Diwali Festival Celebration</p>
-                            <p class="text-xs">Cultural Exchange Program</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=600" alt="Christmas Party" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">Christmas & New Year Party</p>
-                            <p class="text-xs">International Students Meet</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?auto=format&fit=crop&q=80&w=600" alt="Success Party" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">Visa Success Celebration</p>
-                            <p class="text-xs">Batch 2023 Farewell</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=600" alt="Holi Celebration" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">Holi Festival Celebration</p>
-                            <p class="text-xs">Colorful Cultural Event</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?auto=format&fit=crop&q=80&w=600" alt="Graduation Party" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">Course Completion Ceremony</p>
-                            <p class="text-xs">Certificate Distribution</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?auto=format&fit=crop&q=80&w=600" alt="Faculty Day" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">Faculty Appreciation Day</p>
-                            <p class="text-xs">Teacher's Day Celebration</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80&w=600" alt="Alumni Meet" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">Annual Alumni Meet 2024</p>
-                            <p class="text-xs">Networking Event</p>
-                        </div>
-                    </div>
-                    
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?auto=format&fit=crop&q=80&w=600" alt="Workshop Celebration" class="w-full h-full object-cover">
-                        <div class="gallery-caption">
-                            <p class="font-bold">Workshop Completion Party</p>
-                            <p class="text-xs">Skill Development Session</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 10: Blog Section (6 Articles) -->
-    <section id="blog" class="bg-[#f8f9f9]">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="flex justify-between items-end mb-12" data-aos="fade-right">
                 <div>
-                    <span class="text-[#ef7f1a] font-black uppercase text-xs tracking-widest">Latest Insights</span>
-                    <h2 class="section-title mt-2">Educational Resources & Updates</h2>
+                    <h4 class="font-bold text-white mb-6">Explore</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="#home" class="hover:text-brand-accent transition-colors">Home</a></li>
+                        <li><a href="#courses" class="hover:text-brand-accent transition-colors">All Courses</a></li>
+                        <li><a href="#faculty" class="hover:text-brand-accent transition-colors">Our Faculty</a></li>
+                        <li><a href="#app" class="hover:text-brand-accent transition-colors">Mobile App</a></li>
+                        <li><a href="#contact" class="hover:text-brand-accent transition-colors">Contact Support</a></li>
+                    </ul>
                 </div>
-                <a href="#" class="text-[#ef7f1a] font-black border-b-2 border-[#ef7f1a] text-sm pb-1 uppercase tracking-widest hover:text-[#007175] hover:border-[#007175] transition">All Articles →</a>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Blog 1 -->
-                <div class="card-3d bg-white rounded-3xl overflow-hidden group cursor-pointer" data-aos="fade-up">
-                    <div class="h-56 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    </div>
-                    <div class="p-8">
-                        <span class="text-xs font-black text-[#007175] uppercase tracking-widest">IELTS Tips</span>
-                        <h4 class="text-xl font-bold mt-3 mb-4 group-hover:text-[#ef7f1a] transition leading-tight">10 Proven Strategies to Achieve Band 8+ in IELTS Writing</h4>
-                        <p class="text-gray-600 text-sm mb-6">Learn how to structure your essays effectively and avoid common mistakes that cost valuable bands.</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs text-gray-500">May 15, 2024</span>
-                            <span class="text-xs font-bold text-[#007175]">Read More →</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Blog 2 -->
-                <div class="card-3d bg-white rounded-3xl overflow-hidden group cursor-pointer" data-aos="fade-up" data-aos-delay="100">
-                    <div class="h-56 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    </div>
-                    <div class="p-8">
-                        <span class="text-xs font-black text-[#ef7f1a] uppercase tracking-widest">Visa Updates</span>
-                        <h4 class="text-xl font-bold mt-3 mb-4 group-hover:text-[#007175] transition leading-tight">Canada Study Visa Changes 2024: What You Need to Know</h4>
-                        <p class="text-gray-600 text-sm mb-6">Important updates on GIC requirements, SDS category changes, and new document checklist for Canadian student visas.</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs text-gray-500">April 28, 2024</span>
-                            <span class="text-xs font-bold text-[#ef7f1a]">Read More →</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Blog 3 -->
-                <div class="card-3d bg-white rounded-3xl overflow-hidden group cursor-pointer" data-aos="fade-up" data-aos-delay="200">
-                    <div class="h-56 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    </div>
-                    <div class="p-8">
-                        <span class="text-xs font-black text-gray-500 uppercase tracking-widest">Language Learning</span>
-                        <h4 class="text-xl font-bold mt-3 mb-4 group-hover:text-[#ef7f1a] transition leading-tight">How Thinking in English Can Reduce Speaking Errors by 70%</h4>
-                        <p class="text-gray-600 text-sm mb-6">Cognitive techniques to switch your internal monologue to English and dramatically improve fluency.</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs text-gray-500">April 12, 2024</span>
-                            <span class="text-xs font-bold text-gray-500">Read More →</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Blog 4 -->
-                <div class="card-3d bg-white rounded-3xl overflow-hidden group cursor-pointer" data-aos="fade-up">
-                    <div class="h-56 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    </div>
-                    <div class="p-8">
-                        <span class="text-xs font-black text-[#007175] uppercase tracking-widest">Career Guidance</span>
-                        <h4 class="text-xl font-bold mt-3 mb-4 group-hover:text-[#ef7f1a] transition leading-tight">Top 5 In-Demand Skills for International Job Market in 2024</h4>
-                        <p class="text-gray-600 text-sm mb-6">Skills that can increase your employability abroad by 300% according to LinkedIn global data.</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs text-gray-500">March 30, 2024</span>
-                            <span class="text-xs font-bold text-[#007175]">Read More →</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Blog 5 -->
-                <div class="card-3d bg-white rounded-3xl overflow-hidden group cursor-pointer" data-aos="fade-up" data-aos-delay="100">
-                    <div class="h-56 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    </div>
-                    <div class="p-8">
-                        <span class="text-xs font-black text-[#ef7f1a] uppercase tracking-widest">University Admissions</span>
-                        <h4 class="text-xl font-bold mt-3 mb-4 group-hover:text-[#007175] transition leading-tight">How to Write a Winning Statement of Purpose for Ivy League Universities</h4>
-                        <p class="text-gray-600 text-sm mb-6">Sample templates and expert tips to craft an SOP that stands out from thousands of applications.</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs text-gray-500">March 18, 2024</span>
-                            <span class="text-xs font-bold text-[#ef7f1a]">Read More →</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Blog 6 -->
-                <div class="card-3d bg-white rounded-3xl overflow-hidden group cursor-pointer" data-aos="fade-up" data-aos-delay="200">
-                    <div class="h-56 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
-                    </div>
-                    <div class="p-8">
-                        <span class="text-xs font-black text-gray-500 uppercase tracking-widest">Test Preparation</span>
-                        <h4 class="text-xl font-bold mt-3 mb-4 group-hover:text-[#ef7f1a] transition leading-tight">PTE vs IELTS vs TOEFL: Which is Right for Your Immigration Goals?</h4>
-                        <p class="text-gray-600 text-sm mb-6">Comparative analysis of test formats, scoring patterns, and acceptance across countries.</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs text-gray-500">March 5, 2024</span>
-                            <span class="text-xs font-bold text-gray-500">Read More →</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Footer Section -->
-    <footer id="contact" class="bg-black text-white pt-20 pb-10">
-        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-4 gap-12 mb-16 border-b border-white/10 pb-12">
-            <div class="space-y-6">
-                <a href="#home"><img src="Logo.png" alt="Tesca Global Logo" class="logo-img"></a>
-                <p class="text-gray-500 text-sm leading-relaxed">Transforming lives through language mastery and global education since 2012. Your trusted partner for international success.</p>
-                <div class="flex gap-3">
-                    <a href="https://facebook.com" target="_blank" class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-[#ef7f1a] transition text-sm"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://instagram.com" target="_blank" class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-[#ef7f1a] transition text-sm"><i class="fab fa-instagram"></i></a>
-                    <a href="https://linkedin.com" target="_blank" class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-[#ef7f1a] transition text-sm"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://youtube.com" target="_blank" class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center hover:bg-[#ef7f1a] transition text-sm"><i class="fab fa-youtube"></i></a>
+                <div>
+                    <h4 class="font-bold text-white mb-6">Popular Courses</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li><a href="#courses" onclick="filterCourses('spoken')" class="hover:text-brand-accent transition-colors cursor-pointer">Spoken English Basic</a></li>
+                        <li><a href="#courses" onclick="filterCourses('exam')" class="hover:text-brand-accent transition-colors cursor-pointer">IELTS Academic</a></li>
+                        <li><a href="#courses" onclick="filterCourses('exam')" class="hover:text-brand-accent transition-colors cursor-pointer">PTE Fast Track</a></li>
+                        <li><a href="#courses" onclick="filterCourses('visa')" class="hover:text-brand-accent transition-colors cursor-pointer">Student Visa Filing</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-white mb-6">Get in Touch</h4>
+                    <ul class="space-y-3 text-sm text-gray-400 mb-6">
+                        <li class="flex items-start gap-3"><i class="fas fa-map-marker-alt mt-1 text-brand-primary"></i> <span>304, Royal Trade Center, Surat, Gujarat</span></li>
+                        <li class="flex items-center gap-3"><i class="fas fa-phone text-brand-primary"></i> <a href="tel:+918866722633" class="hover:text-brand-accent">+91 88667 22633</a></li>
+                        <li class="flex items-center gap-3"><i class="fas fa-envelope text-brand-primary"></i> <a href="mailto:support@tesca.com" class="hover:text-brand-accent">support@tesca.com</a></li>
+                    </ul>
+                    <div class="flex gap-4">
+                        <a href="https://instagram.com" target="_blank" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-brand-primary hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com" target="_blank" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-brand-primary hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://youtube.com" target="_blank" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-red-600 hover:text-white transition"><i class="fab fa-youtube"></i></a>
+                        <a href="https://linkedin.com" target="_blank" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-blue-600 hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
                 </div>
             </div>
-            <div>
-                <h4 class="text-xs font-bold mb-6 uppercase tracking-widest text-[#007175]">Quick Links</h4>
-                <ul class="space-y-3 text-gray-500 font-bold text-sm">
-                    <li><a href="#home" class="hover:text-white transition">Home</a></li>
-                    <li><a href="#about" class="hover:text-white transition">About Tesca</a></li>
-                    <li><a href="#spoken-english" class="hover:text-white transition">Spoken English</a></li>
-                    <li><a href="#courses" class="hover:text-white transition">All Courses</a></li>
-                    <li><a href="#visa" class="hover:text-white transition">Visa Services</a></li>
-                    <li><a href="#gallery" class="hover:text-white transition">Success Gallery</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-xs font-bold mb-6 uppercase tracking-widest text-[#ef7f1a]">Contact Us</h4>
-                <ul class="space-y-5 text-gray-500 text-sm font-bold leading-relaxed">
-                    <li class="flex items-start">
-                        <i class="fas fa-phone text-[#ef7f1a] mr-3 mt-1"></i>
-                        <div>
-                            <p>+91 98765 43210</p>
-                            <p class="text-xs text-gray-400">Mon-Sat, 9AM-8PM</p>
-                        </div>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fas fa-envelope text-[#ef7f1a] mr-3 mt-1"></i>
-                        <div>
-                            <p>info@tescaglobal.com</p>
-                            <p class="text-xs text-gray-400">Admissions & General</p>
-                        </div>
-                    </li>
-                    <li class="flex items-start">
-                        <i class="fas fa-map-marker-alt text-[#ef7f1a] mr-3 mt-1"></i>
-                        <div>
-                            <p>404, Education Hub, Vesu</p>
-                            <p class="text-xs text-gray-400">Surat, Gujarat - 395007</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="bg-white/5 p-8 rounded-3xl text-center border border-white/5">
-                <h4 class="text-xs font-bold mb-6 uppercase tracking-widest text-white">Download Our App</h4>
-                <p class="text-sm text-gray-300 mb-6">Track your progress, attend classes & manage visa applications</p>
-                <div class="flex flex-col gap-4">
-                    <a href="https://play.google.com/store/apps" target="_blank" class="inline-block">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Google Play" class="h-10 w-full hover:scale-105 transition-transform">
-                    </a>
-                    <a href="https://www.apple.com/app-store/" target="_blank" class="inline-block">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" class="h-10 w-full hover:scale-105 transition-transform">
-                    </a>
+
+            <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
+                <p>&copy; 2026 TESCA Education. All rights reserved.</p>
+                <div class="flex gap-4 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
                 </div>
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600 font-bold uppercase tracking-widest gap-6">
-            <p>&copy; 2024 TESCA GLOBAL CONSULTANCY. ALL RIGHTS RESERVED.</p>
-            <div class="flex gap-8">
-                <a href="#" class="hover:text-white transition">Privacy Policy</a>
-                <a href="#" class="hover:text-white transition">Terms of Service</a>
-                <a href="#" class="hover:text-white transition">Refund Policy</a>
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <a href="#home" class="fixed bottom-8 right-8 w-14 h-14 bg-[#ef7f1a] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-all z-50">
-        <i class="fas fa-arrow-up"></i>
-    </a>
-
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        // Initialize AOS animations
-        AOS.init({ duration: 800, once: true });
-        
-        // Header scroll effect
-        const header = document.getElementById('mainHeader');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 40) header.classList.add('scrolled');
-            else header.classList.remove('scrolled');
-        });
-        
-        // Hero Slider Functionality
-        const sliderTrack = document.getElementById('sliderTrack');
-        const slides = document.querySelectorAll('.slider-slide');
-        const dots = document.querySelectorAll('.slider-dot');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-        
-        let currentSlide = 0;
-        const totalSlides = slides.length;
-        
-        function updateSlider() {
-            sliderTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+    <div id="cart-modal" class="fixed inset-0 z-[100] hidden">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="toggleCart()"></div>
+        <div id="cart-panel" class="absolute right-0 top-0 h-full w-full md:w-[450px] bg-brand-surface border-l border-white/10 flex flex-col transform transition-transform duration-300 translate-x-full shadow-2xl">
+            <div class="p-6 border-b border-white/5 flex justify-between items-center bg-black/20">
+                <h2 class="text-xl font-bold flex items-center gap-2"><i class="fas fa-shopping-cart text-brand-primary"></i> Your Cart</h2>
+                <button onclick="toggleCart()" class="text-gray-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+            </div>
             
-            // Update active dot
-            dots.forEach((dot, index) => {
-                if (index === currentSlide) {
-                    dot.classList.add('bg-white');
-                    dot.classList.remove('bg-white/50');
-                } else {
-                    dot.classList.remove('bg-white');
-                    dot.classList.add('bg-white/50');
+            <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+                </div>
+
+            <div class="p-6 bg-brand-surface2 border-t border-white/5">
+                <div class="mb-4">
+                    <p class="text-[10px] text-gray-400 uppercase font-bold mb-2">Tap to Apply Coupon</p>
+                    <div class="flex gap-2 overflow-x-auto pb-2">
+                        <button onclick="applySpecificCode('TESCA50')" class="px-3 py-1 bg-green-500/10 border border-green-500/30 text-green-400 rounded text-xs font-mono font-bold hover:bg-green-500/20 whitespace-nowrap">TESCA50</button>
+                        <button onclick="applySpecificCode('WELCOME10')" class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 text-blue-400 rounded text-xs font-mono font-bold hover:bg-blue-500/20 whitespace-nowrap">WELCOME10</button>
+                    </div>
+                </div>
+
+                <div class="relative mb-4">
+                    <input id="promo-input" type="text" placeholder="ENTER CODE" class="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-sm focus:border-brand-primary outline-none font-mono uppercase text-white">
+                    <button onclick="applyPromo()" class="absolute right-2 top-2 bg-white/10 px-3 py-1 rounded text-xs font-bold hover:bg-white/20 transition">APPLY</button>
+                </div>
+                <div id="promo-status" class="text-xs h-5 mb-2"></div>
+
+                <div class="space-y-2 text-sm text-gray-400 border-t border-white/5 pt-4">
+                    <div class="flex justify-between"><span>Subtotal</span><span id="cart-subtotal" class="text-white">₹0</span></div>
+                    <div class="flex justify-between text-brand-success"><span>Discount</span><span id="cart-discount">-₹0</span></div>
+                    <div class="flex justify-between text-xl font-bold text-white pt-2"><span>Total</span><span id="cart-total">₹0</span></div>
+                </div>
+
+                <button onclick="startPayment()" id="checkout-btn" class="w-full mt-6 bg-gradient-to-r from-brand-primary to-brand-secondary py-4 rounded-xl font-bold text-white shadow-lg hover:shadow-brand-primary/40 transition disabled:opacity-50 disabled:cursor-not-allowed">
+                    Proceed to Pay <i class="fas fa-arrow-right ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="details-modal" class="fixed inset-0 z-[150] hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-md" onclick="closeDetails()"></div>
+        <div id="details-panel" class="relative bg-brand-surface w-full max-w-2xl rounded-2xl border border-white/10 shadow-2xl transform transition-all scale-95 opacity-0 overflow-hidden">
+            <div id="details-content" class="p-8 overflow-y-auto">
+                </div>
+            <button onclick="closeDetails()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 text-white"><i class="fas fa-times"></i></button>
+        </div>
+    </div>
+
+    <div id="payment-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-4">
+        <div class="absolute inset-0 bg-black/95 backdrop-blur-xl" onclick="closePayment()"></div>
+        
+        <div class="relative bg-[#121212] w-full max-w-[350px] rounded-3xl border border-white/10 shadow-2xl flex flex-col items-center overflow-hidden animate-slide-up">
+            
+            <div class="w-full bg-gradient-to-r from-brand-primary to-brand-secondary p-3 text-center">
+                <h3 class="font-bold text-white text-base tracking-wide">Secure Payment</h3>
+            </div>
+
+            <div class="p-6 w-full flex flex-col items-center">
+                
+                <div class="mb-4 text-xs font-mono text-gray-400 bg-white/5 px-3 py-1 rounded-full">
+                    Expiring in: <span id="timer" class="text-brand-danger font-bold">01:00</span>
+                </div>
+
+                <div class="relative bg-white p-3 rounded-2xl shadow-inner mb-4">
+                    <img id="qr-image" src="" alt="Scan QR" class="w-44 h-44 object-contain mx-auto">
+                    
+                    <div id="qr-expired" class="absolute inset-0 bg-white/95 flex flex-col items-center justify-center rounded-2xl hidden">
+                        <span class="text-black font-bold text-xs mb-2">QR Expired</span>
+                        <button onclick="resetTimer()" class="bg-blue-600 text-white text-xs px-4 py-2 rounded-full font-bold shadow-lg">Refresh Code</button>
+                    </div>
+                </div>
+
+                <div class="text-center w-full mb-4">
+                    <div class="text-xs text-gray-500">Pay to: <span class="text-white font-bold">TESCA Education</span></div>
+                    <div class="text-xs text-brand-accent font-mono my-1 select-all">8866722633@upi</div>
+                    <div class="text-2xl font-bold text-white" id="pay-final-amount">₹0</div>
+                </div>
+
+                <div class="text-center w-full mb-6">
+                    <p class="text-xs text-gray-400 mb-3">Or pay directly via:</p>
+                    <div class="flex gap-4 justify-center">
+                        <a id="google-pay-link" href="#" class="upi-app-btn bg-white rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-white/20 transition-all">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg" class="h-6" alt="Google Pay">
+                        </a>
+                        <a id="phonepe-link" href="#" class="upi-app-btn bg-white rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-white/20 transition-all">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/PhonePe_Logo.svg" class="h-5" alt="PhonePe">
+                        </a>
+                        <a id="paytm-link" href="#" class="upi-app-btn bg-white rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-white/20 transition-all">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Paytm_Logo_%28standalone%29.svg" class="h-4" alt="Paytm">
+                        </a>
+                        <a id="upi-link" href="#" class="upi-app-btn bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-blue-500/20 transition-all">
+                            <i class="fas fa-mobile-alt text-white text-xl"></i>
+                        </a>
+                    </div>
+                    <p class="text-[10px] text-gray-500 mt-2">Click any app to pay instantly</p>
+                </div>
+
+                <div class="w-full bg-brand-danger/10 border border-brand-danger/20 p-3 rounded-xl">
+                    <div class="flex items-start gap-2">
+                        <i class="fas fa-exclamation-circle text-brand-danger text-sm mt-0.5"></i>
+                        <p class="text-[11px] text-gray-300 leading-snug font-medium">
+                            <span class="text-brand-danger font-bold">IMPORTANT:</span> 
+                            After payment, take a <strong>screenshot</strong> and WhatsApp it to 
+                            <span class="text-white font-mono underline">8866722633</span>. 
+                            Course activates in 24h.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <button onclick="closePayment()" class="absolute top-3 right-3 text-white/60 hover:text-white"><i class="fas fa-times-circle text-lg"></i></button>
+        </div>
+    </div>
+
+
+    <script>
+        // --- 1. DATASETS ---
+        const banners = [
+            { h: "Become Global Ready", p: "Master English & Study Abroad", btn: "Start Learning", bg: "linear-gradient(135deg, #1e3c72, #2a5298)" },
+            { h: "Flat 50% Discount", p: "Use Code: TESCA50 Today!", btn: "Grab Offer", bg: "linear-gradient(135deg, #D4145A, #FBB03B)" },
+            { h: "IELTS Band 8.0+", p: "Expert Coaching for 100% Success", btn: "Join Batch", bg: "linear-gradient(135deg, #009245, #FCEE21)" },
+            { h: "TESCA Mobile App", p: "Your Personal Tutor in Pocket", btn: "Download Now", bg: "linear-gradient(135deg, #000000, #434343)" }
+        ];
+
+        const courses = [
+            { 
+                id: 1, type: 'spoken', title: 'Spoken English Basic', price: 2500, original: 5000, 
+                dur: '2 Months', lang: 'Hindi/English', cert: 'Yes',
+                desc: 'Build a strong foundation in English grammar and vocabulary.',
+                curriculum: ['Tenses & Grammar Rules', '500+ Daily Vocabulary', 'Sentence Structure', 'Basic Conversation'] 
+            },
+            { 
+                id: 2, type: 'spoken', title: 'Fluent Speaker Pro', price: 4500, original: 9000, 
+                dur: '3 Months', lang: 'English', cert: 'Yes',
+                desc: 'Become a confident speaker and remove hesitation.',
+                curriculum: ['Public Speaking', 'Debate Sessions', 'Accent Neutralization', 'Body Language'] 
+            },
+            { 
+                id: 3, type: 'spoken', title: 'Business Communication', price: 6000, original: 12000, 
+                dur: '2.5 Months', lang: 'English', cert: 'Yes',
+                desc: 'Master corporate English for job interviews and office work.',
+                curriculum: ['Email Etiquette', 'Interview Prep', 'Presentation Skills', 'Corporate Vocabulary'] 
+            },
+            { 
+                id: 4, type: 'exam', title: 'IELTS Academic', price: 8000, original: 16000, 
+                dur: '3 Months', lang: 'English', cert: 'Yes',
+                desc: 'Complete preparation for students aiming for foreign universities.',
+                curriculum: ['Reading & Listening Modules', 'Writing Task 1 & 2', 'Speaking Mock Tests', 'Band 8 Strategy'] 
+            },
+            { 
+                id: 5, type: 'exam', title: 'PTE Fast Track', price: 7500, original: 15000, 
+                dur: '1 Month', lang: 'English', cert: 'Yes',
+                desc: 'Crash course for PTE with AI-based scoring tricks.',
+                curriculum: ['Speaking Templates', 'Writing Templates', 'AI Scoring Hacks', 'Mock Tests'] 
+            },
+            { 
+                id: 6, type: 'visa', title: 'Student Visa Consult', price: 5000, original: 10000, 
+                dur: 'Until Approval', lang: 'English', cert: 'No',
+                desc: 'End-to-end guidance for study visa applications.',
+                curriculum: ['Profile Assessment', 'University Shortlisting', 'SOP Drafting', 'Visa Filing Assistance'] 
+            }
+        ];
+
+        const promos = {
+            'TESCA50': 0.50,
+            'WELCOME10': 0.10,
+            'FIRST5': 0.05
+        };
+
+        // --- 2. STATE ---
+        let cart = [];
+        let activePromo = null;
+        let bannerIndex = 0;
+        let timerInterval;
+        let currentPaymentAmount = 0;
+
+        // --- 3. INIT & LOADER ---
+        window.onload = () => {
+            const bar = document.getElementById('loader-bar');
+            bar.style.width = '100%'; // Trigger animation
+            
+            setTimeout(() => {
+                const loader = document.getElementById('loader');
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 700);
+            }, 1200);
+
+            renderBanners();
+            filterCourses('all');
+            
+            // Add click handlers for UPI payment buttons
+            document.getElementById('google-pay-link').addEventListener('click', (e) => {
+                e.preventDefault();
+                openUPIApp('googlepay');
+            });
+            document.getElementById('phonepe-link').addEventListener('click', (e) => {
+                e.preventDefault();
+                openUPIApp('phonepe');
+            });
+            document.getElementById('paytm-link').addEventListener('click', (e) => {
+                e.preventDefault();
+                openUPIApp('paytm');
+            });
+            document.getElementById('upi-link').addEventListener('click', (e) => {
+                e.preventDefault();
+                openUPIApp('generic');
+            });
+        };
+
+        // --- 4. BANNER LOGIC ---
+        function renderBanners() {
+            const wrapper = document.getElementById('banner-wrapper');
+            wrapper.innerHTML = banners.map((b, i) => `
+                <div id="banner-${i}" class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 transition-opacity duration-1000"
+                     style="background: ${b.bg}; opacity: ${i===0?1:0}; pointer-events: ${i===0?'all':'none'}">
+                    <div class="transform translate-y-0 transition-transform duration-700">
+                        <h2 class="text-4xl md:text-7xl font-bold mb-4 drop-shadow-lg">${b.h}</h2>
+                        <p class="text-xl md:text-2xl text-white/90 mb-8 font-light">${b.p}</p>
+                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'})" class="px-10 py-4 bg-white text-black rounded-full font-bold hover:scale-105 transition shadow-xl">${b.btn}</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function changeBanner(dir) {
+            document.getElementById(`banner-${bannerIndex}`).style.opacity = '0';
+            document.getElementById(`banner-${bannerIndex}`).style.pointerEvents = 'none';
+            bannerIndex = (bannerIndex + dir + banners.length) % banners.length;
+            document.getElementById(`banner-${bannerIndex}`).style.opacity = '1';
+            document.getElementById(`banner-${bannerIndex}`).style.pointerEvents = 'all';
+        }
+        setInterval(() => changeBanner(1), 5000);
+
+        // --- 5. COURSE RENDERER ---
+        function filterCourses(cat) {
+            // UI Toggle
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active', 'border-transparent');
+                btn.classList.add('border-white/10');
+                if(cat === 'all' && btn.innerText.includes('All')) btn.classList.add('active');
+                if(cat === 'spoken' && btn.innerText.includes('Spoken')) btn.classList.add('active');
+                if(cat === 'exam' && btn.innerText.includes('IELTS')) btn.classList.add('active');
+                if(cat === 'visa' && btn.innerText.includes('Visa')) btn.classList.add('active');
+            });
+
+            const filtered = cat === 'all' ? courses : courses.filter(c => c.type === cat);
+            const grid = document.getElementById('course-grid');
+            
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-3 flex flex-col items-center justify-center py-16 text-gray-400">
+                        <i class="fas fa-book-open text-5xl mb-4 opacity-30"></i>
+                        <p>No courses found in this category</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            grid.innerHTML = filtered.map(c => `
+                <div class="glass-card p-6 rounded-3xl relative group hover:-translate-y-2 transition duration-300">
+                    <div class="absolute top-4 right-4 bg-brand-danger text-[10px] font-bold px-3 py-1 rounded-full animate-pulse">50% OFF</div>
+                    <div class="mb-4">
+                        <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">${c.type}</span>
+                        <h3 class="text-xl font-bold mt-1 group-hover:text-brand-accent transition">${c.title}</h3>
+                    </div>
+                    <p class="text-sm text-gray-400 mb-6 line-clamp-2">${c.desc}</p>
+                    
+                    <div class="flex items-end gap-2 mb-6 border-t border-white/5 pt-4">
+                        <span class="text-2xl font-bold text-white">₹${c.price}</span>
+                        <span class="text-sm text-gray-500 line-through mb-1">₹${c.original}</span>
+                    </div>
+
+                    <div class="flex gap-3">
+                        <button onclick="openCourseDetails(${c.id})" class="flex-1 py-3 rounded-xl border border-white/10 hover:bg-white/5 text-xs font-bold transition">View Details</button>
+                        <button onclick="addToCart(${c.id})" class="flex-1 py-3 rounded-xl bg-white text-black hover:bg-gray-200 text-xs font-bold transition">Add to Cart</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function openCourseDetails(id) {
+            const c = courses.find(x => x.id === id);
+            const modal = document.getElementById('details-modal');
+            const panel = document.getElementById('details-panel');
+            const content = document.getElementById('details-content');
+
+            // Responsive design for mobile
+            const isMobile = window.innerWidth < 768;
+            
+            content.innerHTML = `
+                <div class="flex flex-col ${isMobile ? '' : 'md:flex-row'} gap-6 mb-6">
+                    <div class="flex-1">
+                        <h2 class="text-2xl ${isMobile ? '' : 'text-3xl'} font-bold text-brand-accent mb-2">${c.title}</h2>
+                        <p class="text-gray-400 text-sm ${isMobile ? 'text-xs' : ''}">${c.desc}</p>
+                    </div>
+                    <div class="text-right">
+                        <div class="text-2xl ${isMobile ? '' : 'text-3xl'} font-bold text-white">₹${c.price}</div>
+                        <div class="text-sm text-gray-500 line-through">₹${c.original}</div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-${isMobile ? '1' : '3'} gap-4 mb-8">
+                    <div class="bg-white/5 p-3 rounded-xl text-center">
+                        <div class="text-xs text-gray-500">Duration</div>
+                        <div class="font-bold text-sm">${c.dur}</div>
+                    </div>
+                    <div class="bg-white/5 p-3 rounded-xl text-center">
+                        <div class="text-xs text-gray-500">Language</div>
+                        <div class="font-bold text-sm">${c.lang}</div>
+                    </div>
+                    <div class="bg-white/5 p-3 rounded-xl text-center">
+                        <div class="text-xs text-gray-500">Certificate</div>
+                        <div class="font-bold text-sm text-brand-success">${c.cert}</div>
+                    </div>
+                </div>
+
+                <div class="mb-8">
+                    <h4 class="font-bold text-white mb-4 border-b border-white/10 pb-2">Curriculum / What You'll Learn</h4>
+                    <ul class="space-y-3">
+                        ${c.curriculum.map(item => `
+                            <li class="flex items-start gap-3 text-sm ${isMobile ? 'text-xs' : ''} text-gray-300">
+                                <i class="fas fa-check-circle text-brand-primary mt-0.5"></i> ${item}
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+
+                <button onclick="closeDetails(); addToCart(${c.id})" class="w-full bg-brand-primary py-4 rounded-xl font-bold text-white hover:bg-brand-secondary transition">
+                    Enroll Now for ₹${c.price}
+                </button>
+            `;
+
+            // Adjust modal size for mobile
+            if (isMobile) {
+                panel.style.maxWidth = '95%';
+                panel.style.maxHeight = '85vh';
+            }
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                panel.classList.remove('scale-95', 'opacity-0');
+                panel.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closeDetails() {
+            const modal = document.getElementById('details-modal');
+            const panel = document.getElementById('details-panel');
+            panel.classList.remove('scale-100', 'opacity-100');
+            panel.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                // Reset panel styles
+                panel.style.maxWidth = '';
+                panel.style.maxHeight = '';
+            }, 300);
+        }
+
+        // --- 6. CART SYSTEM ---
+        function addToCart(id) {
+            if(cart.find(x => x.id === id)) return alert("This course is already in your cart!");
+            cart.push(courses.find(x => x.id === id));
+            renderCart();
+            toggleCart(true);
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(x => x.id !== id);
+            // If cart becomes empty, remove promo
+            if(cart.length === 0) {
+                removePromo();
+            }
+            renderCart();
+        }
+
+        function toggleCart(forceOpen = false) {
+            const modal = document.getElementById('cart-modal');
+            const panel = document.getElementById('cart-panel');
+            
+            if(forceOpen || modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+                setTimeout(() => panel.classList.remove('translate-x-full'), 10);
+            } else {
+                panel.classList.add('translate-x-full');
+                setTimeout(() => modal.classList.add('hidden'), 300);
+            }
+        }
+
+        function applySpecificCode(code) {
+            document.getElementById('promo-input').value = code;
+            applyPromo();
+        }
+
+        function applyPromo() {
+            // Logic Check: Empty Cart
+            if(cart.length === 0) {
+                document.getElementById('promo-status').innerHTML = '<span class="text-brand-danger font-bold"><i class="fas fa-exclamation-triangle"></i> Add a course first!</span>';
+                return;
+            }
+
+            const code = document.getElementById('promo-input').value.toUpperCase().trim();
+            const statusEl = document.getElementById('promo-status');
+
+            if(promos[code]) {
+                activePromo = code;
+                statusEl.innerHTML = `
+                    <span class="text-brand-success font-bold">
+                        <i class="fas fa-check"></i> Applied! ${promos[code]*100}% OFF
+                        <button onclick="removePromo()" class="ml-2 text-xs text-gray-400 hover:text-white">
+                            <i class="fas fa-times"></i> Remove
+                        </button>
+                    </span>`;
+                renderCart();
+            } else {
+                activePromo = null;
+                statusEl.innerHTML = `<span class="text-brand-danger font-bold">Invalid Code</span>`;
+                renderCart();
+            }
+        }
+
+        function removePromo() {
+            activePromo = null;
+            document.getElementById('promo-input').value = '';
+            document.getElementById('promo-status').innerHTML = '';
+            renderCart();
+        }
+
+        function renderCart() {
+            // Count
+            document.getElementById('cart-count').innerText = cart.length;
+            const container = document.getElementById('cart-items');
+            const btn = document.getElementById('checkout-btn');
+
+            // Empty State
+            if(cart.length === 0) {
+                container.innerHTML = `
+                    <div class="flex flex-col items-center justify-center h-64 text-gray-500">
+                        <i class="fas fa-shopping-basket text-4xl mb-4 opacity-30"></i>
+                        <p>Your cart is empty</p>
+                    </div>
+                `;
+                btn.disabled = true;
+                btn.classList.add('opacity-50');
+                updateTotals(0,0);
+                return;
+            }
+
+            // List Items
+            btn.disabled = false;
+            btn.classList.remove('opacity-50');
+            container.innerHTML = cart.map(c => `
+                <div class="bg-white/5 p-4 rounded-xl flex justify-between items-center group hover:bg-white/10 transition">
+                    <div>
+                        <h4 class="font-bold text-sm text-white">${c.title}</h4>
+                        <div class="text-xs text-brand-accent mt-1">₹${c.price}</div>
+                    </div>
+                    <button onclick="removeFromCart(${c.id})" class="w-8 h-8 rounded-full bg-black/20 flex items-center justify-center text-gray-400 hover:text-brand-danger hover:bg-white transition">
+                        <i class="fas fa-trash-alt text-xs"></i>
+                    </button>
+                </div>
+            `).join('');
+
+            // Calculate
+            const subtotal = cart.reduce((acc, item) => acc + item.price, 0);
+            let discount = 0;
+            if(activePromo) {
+                discount = Math.floor(subtotal * promos[activePromo]);
+            }
+            updateTotals(subtotal, discount);
+        }
+
+        function updateTotals(sub, disc) {
+            document.getElementById('cart-subtotal').innerText = `₹${sub}`;
+            document.getElementById('cart-discount').innerText = `-₹${disc}`;
+            document.getElementById('cart-total').innerText = `₹${sub - disc}`;
+        }
+
+        // --- 7. PAYMENT QR LOGIC ---
+        function startPayment() {
+            // Double Check
+            if(cart.length === 0) return;
+
+            const totalStr = document.getElementById('cart-total').innerText.replace('₹', '');
+            const amount = parseInt(totalStr);
+            currentPaymentAmount = amount;
+
+            toggleCart(); // Close Cart
+            
+            // Set Modal Data
+            document.getElementById('pay-final-amount').innerText = `₹${amount}`;
+            document.getElementById('payment-modal').classList.remove('hidden');
+
+            // Generate UPI QR (Dynamic Amount)
+            const upiString = `upi://pay?pa=8866722633@upi&pn=TESCA_Education&am=${amount}&cu=INR`;
+            // Using QR Server API
+            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&margin=10&data=${encodeURIComponent(upiString)}`;
+            document.getElementById('qr-image').src = qrUrl;
+
+            // Update UPI app links
+            updateUPILinks(amount);
+
+            resetTimer();
+        }
+
+        function updateUPILinks(amount) {
+            const upiId = "8866722633@upi";
+            const merchantName = "TESCA Education";
+            
+            // Generic UPI link for all apps
+            const genericUPI = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR&tn=TESCA Course Payment`;
+            
+            // App-specific links
+            const googlePayLink = `tez://upi/pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR`;
+            const phonePeLink = `phonepe://upi/pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR`;
+            const paytmLink = `paytmmp://upi/pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR`;
+            
+            // Set href attributes
+            document.getElementById('google-pay-link').href = googlePayLink;
+            document.getElementById('phonepe-link').href = phonePeLink;
+            document.getElementById('paytm-link').href = paytmLink;
+            document.getElementById('upi-link').href = genericUPI;
+        }
+
+        function openUPIApp(appName) {
+            const upiId = "8866722633@upi";
+            const merchantName = "TESCA Education";
+            const amount = currentPaymentAmount;
+            
+            let upiLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR&tn=TESCA Course Payment`;
+            
+            // App-specific deep links
+            switch(appName) {
+                case 'googlepay':
+                    upiLink = `tez://upi/pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR`;
+                    break;
+                case 'phonepe':
+                    upiLink = `phonepe://upi/pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR`;
+                    break;
+                case 'paytm':
+                    upiLink = `paytmmp://upi/pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR`;
+                    break;
+                case 'generic':
+                default:
+                    upiLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR&tn=TESCA Course Payment`;
+                    break;
+            }
+            
+            // Open the UPI app
+            window.location.href = upiLink;
+            
+            // Fallback - if app not installed, show alert
+            setTimeout(() => {
+                if(document.hasFocus()) {
+                    alert(`Please install ${appName === 'generic' ? 'a UPI payment app' : appName} to make the payment.`);
                 }
-            });
+            }, 500);
         }
-        
-        // Next slide function
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            updateSlider();
+
+        function closePayment() {
+            document.getElementById('payment-modal').classList.add('hidden');
+            clearInterval(timerInterval);
         }
-        
-        // Previous slide function
-        function prevSlide() {
-            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-            updateSlider();
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            document.getElementById('qr-expired').classList.add('hidden');
+            
+            let timeLeft = 60; // 60 seconds
+            const timerDisplay = document.getElementById('timer');
+            timerDisplay.innerText = "01:00";
+            timerDisplay.classList.remove('text-gray-500');
+            timerDisplay.classList.add('text-brand-danger');
+
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                let min = Math.floor(timeLeft / 60);
+                let sec = timeLeft % 60;
+                timerDisplay.innerText = `0${min}:${sec < 10 ? '0' : ''}${sec}`;
+
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    timerDisplay.innerText = "00:00";
+                    document.getElementById('qr-expired').classList.remove('hidden');
+                }
+            }, 1000);
         }
-        
-        // Auto slide every 5 seconds
-        let autoSlide = setInterval(nextSlide, 5000);
-        
-        // Event listeners for buttons
-        nextBtn.addEventListener('click', () => {
-            clearInterval(autoSlide);
-            nextSlide();
-            autoSlide = setInterval(nextSlide, 5000);
-        });
-        
-        prevBtn.addEventListener('click', () => {
-            clearInterval(autoSlide);
-            prevSlide();
-            autoSlide = setInterval(nextSlide, 5000);
-        });
-        
-        // Event listeners for dots
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                clearInterval(autoSlide);
-                currentSlide = index;
-                updateSlider();
-                autoSlide = setInterval(nextSlide, 5000);
-            });
-        });
-        
-        // Gallery Tab Switching
-        const galleryTabs = document.querySelectorAll('.gallery-tab');
-        const galleryContents = document.querySelectorAll('.gallery-content');
-        
-        galleryTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const category = tab.getAttribute('data-category');
-                
-                // Update active tab
-                galleryTabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                
-                // Show selected gallery
-                galleryContents.forEach(content => {
-                    content.classList.add('hidden');
-                    if (content.id === category) {
-                        content.classList.remove('hidden');
-                    }
-                });
-            });
-        });
-        
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            if(menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+            }
+        }
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
                 
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: target.offsetTop - 80,
                         behavior: 'smooth'
                     });
                 }
             });
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', toggleMobileMenu);
         });
     </script>
 </body>
