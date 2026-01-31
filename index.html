@@ -141,9 +141,12 @@
             box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
         }
 
-        /* Header rounded corners */
+        /* Header fully rounded */
         #main-header .glass {
-            border-radius: 0 0 1rem 1rem;
+            border-radius: 0 0 2rem 2rem;
+            margin: 0 auto;
+            max-width: 1200px;
+            width: calc(100% - 2rem);
         }
 
         /* Center course section title */
@@ -188,6 +191,14 @@
             transform: scale(1.1);
             filter: brightness(1.2);
         }
+
+        /* Responsive QR code */
+        @media (max-width: 640px) {
+            .qr-responsive {
+                width: 280px !important;
+                height: 280px !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -209,36 +220,39 @@
     </div>
 
     <header class="fixed top-0 w-full z-50 transition-all duration-300" id="main-header">
-        <div class="glass border-b border-white/5 backdrop-blur-md">
-            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-                <a href="#home" class="flex items-center gap-3 group">
-                    <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-brand-primary to-brand-accent flex items-center justify-center text-white font-bold text-lg group-hover:shadow-[0_0_15px_rgba(99,102,241,0.5)] transition">T</div>
-                    <span class="font-bold text-xl tracking-wide">TESCA</span>
-                </a>
-
-                <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
-                    <a href="#home" class="hover:text-white transition-colors">Home</a>
-                    <a href="#courses" class="hover:text-white transition-colors">Courses</a>
-                    <a href="#faculty" class="hover:text-white transition-colors">Our Faculty</a>
-                    <a href="#app" class="hover:text-white transition-colors">Mobile App</a>
-                    <a href="#contact" class="hover:text-white transition-colors">Contact</a>
-                </nav>
-
-                <div class="flex items-center gap-5">
-                    <a href="tel:+918866722633" class="hidden sm:flex items-center gap-2 text-xs font-bold text-white bg-white/10 px-4 py-2 rounded-full hover:bg-white/20 transition">
-                        <i class="fas fa-phone-alt text-brand-success"></i> Help
+        <div class="container mx-auto px-4">
+            <div class="glass border-b border-white/5 backdrop-blur-md">
+                <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                    <a href="#home" class="flex items-center gap-3 group">
+                        <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-brand-primary to-brand-accent flex items-center justify-center text-white font-bold text-lg group-hover:shadow-[0_0_15px_rgba(99,102,241,0.5)] transition">T</div>
+                        <span class="font-bold text-xl tracking-wide">TESCA</span>
                     </a>
-                    
-                    <button onclick="toggleCart()" class="relative group">
-                        <div class="p-2 rounded-full hover:bg-white/10 transition">
-                            <i class="fas fa-shopping-bag text-xl text-white"></i>
-                        </div>
-                        <span id="cart-count" class="absolute top-0 right-0 bg-brand-danger text-[10px] w-5 h-5 flex items-center justify-center rounded-full border-2 border-brand-bg font-bold">0</span>
-                    </button>
-                    
-                    <button class="md:hidden text-white text-xl" onclick="toggleMobileMenu()">
-                        <i class="fas fa-bars"></i>
-                    </button>
+
+                    <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
+                        <a href="#home" class="hover:text-white transition-colors">Home</a>
+                        <a href="#courses" class="hover:text-white transition-colors">Courses</a>
+                        <a href="#faculty" class="hover:text-white transition-colors">Our Faculty</a>
+                        <a href="#app" class="hover:text-white transition-colors">Mobile App</a>
+                        <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+                    </nav>
+
+                    <div class="flex items-center gap-5">
+                        <a href="tel:+918866722633" class="hidden sm:flex items-center gap-2 text-xs font-bold text-white bg-white/10 px-4 py-2 rounded-full hover:bg-white/20 transition">
+                            <!-- Fixed phone icon direction -->
+                            <i class="fas fa-phone-flip text-brand-success transform rotate-90"></i> Help
+                        </a>
+                        
+                        <button onclick="toggleCart()" class="relative group">
+                            <div class="p-2 rounded-full hover:bg-white/10 transition">
+                                <i class="fas fa-shopping-bag text-xl text-white"></i>
+                            </div>
+                            <span id="cart-count" class="absolute top-0 right-0 bg-brand-danger text-[10px] w-5 h-5 flex items-center justify-center rounded-full border-2 border-brand-bg font-bold">0</span>
+                        </button>
+                        
+                        <button class="md:hidden text-white text-xl" onclick="toggleMobileMenu()">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -319,15 +333,16 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Nikunj Dhanani -->
+                <!-- Nikunj Dhanani - UPDATED: Title between photo and name -->
                 <div class="faculty-card glass-card p-8 rounded-3xl text-center">
-                    <div class="relative mb-6">
+                    <div class="relative mb-4">
                         <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-brand-primary to-purple-600 flex items-center justify-center text-4xl font-bold text-white mb-4">
                             ND
                         </div>
+                        <!-- Title moved here -->
+                        <div class="bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full inline-block mb-2">Founder</div>
                     </div>
                     <div class="mb-3">
-                        <div class="bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full inline-block mb-2">Founder</div>
                         <h3 class="text-2xl font-bold">Nikunj Dhanani</h3>
                     </div>
                     <p class="text-sm text-brand-accent font-bold mb-4">CEO & Lead Visa Consultant</p>
@@ -338,15 +353,16 @@
                     </div>
                 </div>
 
-                <!-- Vishal Faldu -->
+                <!-- Vishal Faldu - UPDATED: Title between photo and name -->
                 <div class="faculty-card glass-card p-8 rounded-3xl text-center">
-                    <div class="relative mb-6">
+                    <div class="relative mb-4">
                         <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-brand-warning to-orange-500 flex items-center justify-center text-4xl font-bold text-white mb-4">
                             VF
                         </div>
+                        <!-- Title moved here -->
+                        <div class="bg-blue-500/20 text-blue-400 text-xs font-bold px-3 py-1 rounded-full inline-block mb-2">Co-Founder</div>
                     </div>
                     <div class="mb-3">
-                        <div class="bg-blue-500/20 text-blue-400 text-xs font-bold px-3 py-1 rounded-full inline-block mb-2">Co-Founder</div>
                         <h3 class="text-2xl font-bold">Vishal Faldu</h3>
                     </div>
                     <p class="text-sm text-brand-warning font-bold mb-4">IELTS/PTE Master Trainer</p>
@@ -357,15 +373,16 @@
                     </div>
                 </div>
 
-                <!-- Kiran Sir -->
+                <!-- Kiran Sir - UPDATED: Title between photo and name -->
                 <div class="faculty-card glass-card p-8 rounded-3xl text-center">
-                    <div class="relative mb-6">
+                    <div class="relative mb-4">
                         <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-brand-accent to-cyan-500 flex items-center justify-center text-4xl font-bold text-white mb-4">
                             KS
                         </div>
+                        <!-- Title moved here -->
+                        <div class="bg-brand-primary/20 text-brand-primary text-xs font-bold px-3 py-1 rounded-full inline-block mb-2">Head Mentor</div>
                     </div>
                     <div class="mb-3">
-                        <div class="bg-brand-primary/20 text-brand-primary text-xs font-bold px-3 py-1 rounded-full inline-block mb-2">Head Mentor</div>
                         <h3 class="text-2xl font-bold">Kiran Sir</h3>
                     </div>
                     <p class="text-sm text-cyan-400 font-bold mb-4">Spoken English Guru</p>
@@ -569,7 +586,7 @@
     <div id="payment-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-black/95 backdrop-blur-xl" onclick="closePayment()"></div>
         
-        <div class="relative bg-[#121212] w-full max-w-[350px] rounded-3xl border border-white/10 shadow-2xl flex flex-col items-center overflow-hidden animate-slide-up">
+        <div class="relative bg-[#121212] w-full max-w-[90%] sm:max-w-[350px] rounded-3xl border border-white/10 shadow-2xl flex flex-col items-center overflow-hidden animate-slide-up">
             
             <div class="w-full bg-gradient-to-r from-brand-primary to-brand-secondary p-3 text-center">
                 <h3 class="font-bold text-white text-base tracking-wide">Secure Payment</h3>
@@ -582,7 +599,8 @@
                 </div>
 
                 <div class="relative bg-white p-3 rounded-2xl shadow-inner mb-4">
-                    <img id="qr-image" src="" alt="Scan QR" class="w-44 h-44 object-contain mx-auto">
+                    <!-- QR Code with responsive sizing -->
+                    <img id="qr-image" src="" alt="Scan QR" class="qr-responsive w-56 h-56 sm:w-44 sm:h-44 object-contain mx-auto">
                     
                     <div id="qr-expired" class="absolute inset-0 bg-white/95 flex flex-col items-center justify-center rounded-2xl hidden">
                         <span class="text-black font-bold text-xs mb-2">QR Expired</span>
@@ -599,18 +617,18 @@
                 <div class="text-center w-full mb-6">
                     <p class="text-xs text-gray-400 mb-3">Or pay directly via:</p>
                     <div class="flex gap-4 justify-center">
-                        <a id="google-pay-link" href="#" class="upi-app-btn bg-white rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-white/20 transition-all">
+                        <button onclick="openUPIApp('googlepay')" class="upi-app-btn bg-white rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-white/20 transition-all">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg" class="h-6" alt="Google Pay">
-                        </a>
-                        <a id="phonepe-link" href="#" class="upi-app-btn bg-white rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-white/20 transition-all">
+                        </button>
+                        <button onclick="openUPIApp('phonepe')" class="upi-app-btn bg-white rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-white/20 transition-all">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/PhonePe_Logo.svg" class="h-5" alt="PhonePe">
-                        </a>
-                        <a id="paytm-link" href="#" class="upi-app-btn bg-white rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-white/20 transition-all">
+                        </button>
+                        <button onclick="openUPIApp('paytm')" class="upi-app-btn bg-white rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-white/20 transition-all">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Paytm_Logo_%28standalone%29.svg" class="h-4" alt="Paytm">
-                        </a>
-                        <a id="upi-link" href="#" class="upi-app-btn bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-blue-500/20 transition-all">
+                        </button>
+                        <button onclick="openUPIApp('generic')" class="upi-app-btn bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-blue-500/20 transition-all">
                             <i class="fas fa-mobile-alt text-white text-xl"></i>
-                        </a>
+                        </button>
                     </div>
                     <p class="text-[10px] text-gray-500 mt-2">Click any app to pay instantly</p>
                 </div>
@@ -708,24 +726,6 @@
 
             renderBanners();
             filterCourses('all');
-            
-            // Add click handlers for UPI payment buttons
-            document.getElementById('google-pay-link').addEventListener('click', (e) => {
-                e.preventDefault();
-                openUPIApp('googlepay');
-            });
-            document.getElementById('phonepe-link').addEventListener('click', (e) => {
-                e.preventDefault();
-                openUPIApp('phonepe');
-            });
-            document.getElementById('paytm-link').addEventListener('click', (e) => {
-                e.preventDefault();
-                openUPIApp('paytm');
-            });
-            document.getElementById('upi-link').addEventListener('click', (e) => {
-                e.preventDefault();
-                openUPIApp('generic');
-            });
         };
 
         // --- 4. BANNER LOGIC ---
@@ -1017,29 +1017,7 @@
             const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&margin=10&data=${encodeURIComponent(upiString)}`;
             document.getElementById('qr-image').src = qrUrl;
 
-            // Update UPI app links
-            updateUPILinks(amount);
-
             resetTimer();
-        }
-
-        function updateUPILinks(amount) {
-            const upiId = "8866722633@upi";
-            const merchantName = "TESCA Education";
-            
-            // Generic UPI link for all apps
-            const genericUPI = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR&tn=TESCA Course Payment`;
-            
-            // App-specific links
-            const googlePayLink = `tez://upi/pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR`;
-            const phonePeLink = `phonepe://upi/pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR`;
-            const paytmLink = `paytmmp://upi/pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR`;
-            
-            // Set href attributes
-            document.getElementById('google-pay-link').href = googlePayLink;
-            document.getElementById('phonepe-link').href = phonePeLink;
-            document.getElementById('paytm-link').href = paytmLink;
-            document.getElementById('upi-link').href = genericUPI;
         }
 
         function openUPIApp(appName) {
@@ -1047,32 +1025,51 @@
             const merchantName = "TESCA Education";
             const amount = currentPaymentAmount;
             
-            let upiLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR&tn=TESCA Course Payment`;
+            // Different UPI links for different apps
+            let upiLink;
             
-            // App-specific deep links
             switch(appName) {
                 case 'googlepay':
-                    upiLink = `tez://upi/pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR`;
+                    // Google Pay uses UPI deep link format
+                    upiLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR&tn=TESCA Course Payment`;
+                    // Try to open Google Pay first
+                    window.location.href = `tez://upi/pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR`;
                     break;
+                    
                 case 'phonepe':
+                    // PhonePe specific deep link
                     upiLink = `phonepe://upi/pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR`;
+                    window.location.href = upiLink;
                     break;
+                    
                 case 'paytm':
+                    // Paytm specific deep link
                     upiLink = `paytmmp://upi/pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR`;
+                    window.location.href = upiLink;
                     break;
+                    
                 case 'generic':
                 default:
+                    // Generic UPI link that opens UPI app selector
                     upiLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR&tn=TESCA Course Payment`;
+                    window.location.href = upiLink;
                     break;
             }
             
-            // Open the UPI app
-            window.location.href = upiLink;
-            
-            // Fallback - if app not installed, show alert
+            // Fallback - if app not installed, open generic UPI link after delay
             setTimeout(() => {
                 if(document.hasFocus()) {
-                    alert(`Please install ${appName === 'generic' ? 'a UPI payment app' : appName} to make the payment.`);
+                    // App didn't open, try generic UPI link
+                    if(appName !== 'generic') {
+                        window.location.href = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR&tn=TESCA Course Payment`;
+                    }
+                    
+                    // Second fallback - if still not working, show alert
+                    setTimeout(() => {
+                        if(document.hasFocus()) {
+                            alert(`If payment app didn't open, please manually open your UPI app and pay to: ${upiId} for ₹${amount}`);
+                        }
+                    }, 1000);
                 }
             }, 500);
         }
