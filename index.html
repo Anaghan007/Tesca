@@ -77,31 +77,9 @@
             overflow: hidden;
             margin: 0;
             padding: 0;
-        }
-
-        /* Mobile view: hero + features in one screen */
-        @media (max-width: 768px) {
-            .hero-section {
-                min-height: 100vh;
-                height: auto;
-                padding-bottom: 120px;
-            }
-            
-            .hero-section .features-container {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                background: rgba(5, 5, 7, 0.85);
-                backdrop-filter: blur(10px);
-                border-top: 1px solid rgba(255, 255, 255, 0.1);
-                padding: 20px 0;
-                margin-top: 0;
-            }
-            
-            .banner-content {
-                padding-top: 40px;
-            }
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         /* Banner container */
@@ -110,6 +88,9 @@
             height: 100%;
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .banner-slide {
@@ -137,6 +118,12 @@
             text-align: center;
             z-index: 3;
             position: relative;
+            padding-top: 60px; /* Space from header */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh;
         }
 
         /* Banner overlay for better text visibility */
@@ -182,7 +169,7 @@
 
         /* REALISTIC PHONE FRAME */
         .phone-mockup {
-            width: 300px; 
+            width: 300px;
             height: 600px;
             border: 12px solid #1a1a1a;
             border-radius: 40px;
@@ -614,18 +601,37 @@
             margin: 1rem auto 0;
         }
 
-        /* Feature icons */
+        /* Feature icons - FIXED FOR LAPTOP VIEW */
         .feature-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 15px;
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.5rem;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Desktop features grid - FIXED VERTICAL ALIGNMENT */
+        .desktop-features-grid {
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .desktop-features-grid > div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            max-width: 250px;
         }
 
         /* Gradient text */
@@ -801,7 +807,7 @@
             font-weight: 600 !important;
         }
 
-        /* Responsive adjustments */
+        /* Mobile view adjustments */
         @media (max-width: 768px) {
             .section-padding {
                 padding-top: 3rem;
@@ -815,8 +821,25 @@
                 max-width: 98%;
             }
             
+            /* Banner adjustments for mobile */
+            .hero-section {
+                height: auto;
+                min-height: 100vh;
+                padding-top: 80px;
+                padding-bottom: 160px; /* Space for features */
+            }
+            
+            .banner-container {
+                height: 70vh;
+            }
+            
+            .banner-content {
+                padding-top: 20px;
+                min-height: 60vh;
+            }
+            
             .banner-title {
-                font-size: 2.2rem;
+                font-size: 2rem;
                 margin-bottom: 1rem;
             }
             
@@ -824,6 +847,19 @@
                 font-size: 1rem;
                 padding: 0 1rem;
                 margin-bottom: 1.5rem;
+            }
+            
+            /* Mobile features - shown at bottom of hero section */
+            .mobile-features-container {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: rgba(5, 5, 7, 0.9);
+                backdrop-filter: blur(10px);
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                padding: 20px 0;
+                z-index: 5;
             }
             
             /* Faculty card mobile adjustments */
@@ -894,6 +930,37 @@
             .stat-number {
                 font-size: 2.5rem;
             }
+            
+            /* Hide desktop features on mobile */
+            .desktop-features-grid {
+                display: none;
+            }
+            
+            /* Show mobile features */
+            .mobile-features-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            
+            /* Mobile feature items */
+            .mobile-feature-item {
+                text-align: center;
+                padding: 10px;
+            }
+            
+            .mobile-feature-icon {
+                width: 50px;
+                height: 50px;
+                border-radius: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 0.5rem;
+                font-size: 1.2rem;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
         }
         
         @media (max-width: 640px) {
@@ -914,6 +981,17 @@
             
             .banner-title {
                 font-size: 1.8rem;
+            }
+            
+            .mobile-features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+            }
+            
+            .mobile-feature-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1rem;
             }
         }
         
@@ -946,6 +1024,28 @@
                 max-height: 100vh;
                 border-radius: 0;
             }
+            
+            .mobile-features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Desktop view adjustments */
+        @media (min-width: 769px) {
+            /* Hide mobile features on desktop */
+            .mobile-features-container {
+                display: none;
+            }
+            
+            /* Show desktop features */
+            .desktop-features-grid {
+                display: flex;
+            }
+            
+            /* Banner adjustments for desktop */
+            .banner-content {
+                padding-top: 80px;
+            }
         }
 
         /* Fix for Play Store and social media links - no black popup */
@@ -958,30 +1058,14 @@
             opacity: 0.8;
         }
 
-        /* Hero section features layout for mobile */
+        /* Mobile features grid */
         .mobile-features-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        
-        @media (min-width: 769px) {
-            .mobile-features-grid {
-                display: none;
-            }
-        }
-        
-        /* Desktop features grid */
-        .desktop-features-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
+            display: none;
         }
         
         @media (max-width: 768px) {
-            .desktop-features-grid {
-                display: none;
+            .mobile-features-grid {
+                display: grid;
             }
         }
     </style>
@@ -1055,7 +1139,7 @@
         <a href="#contact" class="hover:text-brand-accent mobile-menu-link transition-colors duration-300" onclick="toggleMobileMenu()">Contact Us</a>
     </div>
 
-    <!-- Hero Banner Section with Mobile Features -->
+    <!-- Hero Banner Section -->
     <section id="home" class="hero-section">
         <div class="banner-container">
             <!-- Banner slides will be inserted here by JavaScript -->
@@ -1065,33 +1149,33 @@
             </div>
         </div>
         
-        <!-- Mobile Features (shown only on mobile, part of hero section) -->
-        <div class="features-container md:hidden">
+        <!-- Mobile Features Container (shown only on mobile, part of hero section) -->
+        <div class="mobile-features-container">
             <div class="container mx-auto px-4">
                 <div class="mobile-features-grid">
-                    <div class="text-center">
-                        <div class="feature-icon">
+                    <div class="mobile-feature-item">
+                        <div class="mobile-feature-icon">
                             <i class="fas fa-user-graduate text-brand-primary"></i>
                         </div>
                         <h3 class="font-bold text-sm mb-1">Expert Tutors</h3>
                         <p class="text-xs text-gray-400">Certified Trainers</p>
                     </div>
-                    <div class="text-center">
-                        <div class="feature-icon">
+                    <div class="mobile-feature-item">
+                        <div class="mobile-feature-icon">
                             <i class="fas fa-globe-americas text-brand-accent"></i>
                         </div>
                         <h3 class="font-bold text-sm mb-1">Global Visa</h3>
                         <p class="text-xs text-gray-400">99% Success Rate</p>
                     </div>
-                    <div class="text-center">
-                        <div class="feature-icon">
+                    <div class="mobile-feature-item">
+                        <div class="mobile-feature-icon">
                             <i class="fas fa-mobile-alt text-brand-secondary"></i>
                         </div>
                         <h3 class="font-bold text-sm mb-1">Mobile App</h3>
                         <p class="text-xs text-gray-400">Learn Anywhere</p>
                     </div>
-                    <div class="text-center">
-                        <div class="feature-icon">
+                    <div class="mobile-feature-item">
+                        <div class="mobile-feature-icon">
                             <i class="fas fa-certificate text-brand-warning"></i>
                         </div>
                         <h3 class="font-bold text-sm mb-1">Certified</h3>
@@ -1893,7 +1977,7 @@
             setupEventListeners();
         }
 
-        // --- 6. BANNER SYSTEM ---
+        // --- 6. BANNER SYSTEM - FIXED FOR MOBILE VISIBILITY ---
         function renderBanners() {
             const bannerContainer = document.querySelector('.banner-container');
             const indicatorsContainer = document.getElementById('banner-indicators');
@@ -1918,7 +2002,7 @@
                         </p>
                         
                         <div class="glass-card p-6 rounded-2xl mb-8 banner-offer-details">
-                            <div class="flex items-center justify-center gap-4 mb-4">
+                            <div class="flex items-center justify-center gap-4 mb-4 flex-wrap">
                                 <span class="text-2xl text-gray-400 line-through">${banner.originalPrice}</span>
                                 <span class="text-4xl md:text-5xl font-bold text-white">${banner.price}</span>
                                 <span class="bg-gradient-to-r ${banner.color} text-white text-sm px-3 py-1 rounded-full font-bold">${banner.discount}</span>
