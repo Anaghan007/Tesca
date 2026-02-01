@@ -144,7 +144,7 @@
         /* Header fully rounded */
         #main-header .glass {
             border-radius: 9999px;
-            margin: 1rem auto;
+            margin: 1.5rem auto;
             max-width: 95%;
         }
 
@@ -204,6 +204,9 @@
         .banner-container {
             height: 500px;
             position: relative;
+            border-radius: 2rem;
+            overflow: hidden;
+            border: 2px solid rgba(255, 255, 255, 0.1);
         }
         
         .banner-glass {
@@ -211,13 +214,13 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 2rem;
             height: 100%;
             overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: center;
+            padding: 2rem;
+            position: relative;
         }
         
         @media (max-width: 768px) {
@@ -226,66 +229,138 @@
             }
             .banner-glass {
                 padding: 1.5rem;
-                overflow: hidden; /* Remove scroll */
+                overflow: hidden;
             }
         }
         
-        /* Logo without background - original colors */
+        /* Logo without background - original colors - LARGER SIZE */
         .logo-img {
-            width: 100%;
-            height: 100%;
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: 100%;
             object-fit: contain;
-            /* Remove filter: brightness(0) invert(1) to keep original colors */
         }
         
-        /* Banner navigation buttons */
+        /* Banner navigation buttons - ON BORDER */
         .banner-nav-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 30;
             transition: all 0.3s ease;
+            font-size: 1.5rem;
         }
         
         .banner-nav-btn:hover {
             background: rgba(255, 255, 255, 0.2);
             transform: translateY(-50%) scale(1.1);
+            border-color: rgba(255, 255, 255, 0.5);
         }
         
         .banner-nav-btn.prev {
-            left: 20px;
+            left: -30px;
         }
         
         .banner-nav-btn.next {
-            right: 20px;
+            right: -30px;
         }
         
-        /* For mobile, keep buttons on sides but adjust position */
+        /* For mobile, bring buttons slightly inside */
         @media (max-width: 768px) {
             .banner-nav-btn {
-                width: 40px;
-                height: 40px;
-                top: 50%;
-                transform: translateY(-50%);
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
             }
             .banner-nav-btn.prev {
                 left: 10px;
-                right: auto;
             }
             .banner-nav-btn.next {
                 right: 10px;
-                left: auto;
             }
+        }
+        
+        /* Banner tag styles - fixed position */
+        .banner-tag {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #ff4757, #ff3838);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
+        }
+        
+        /* Section spacing */
+        .section-spacing {
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+        }
+        
+        @media (max-width: 768px) {
+            .section-spacing {
+                margin-top: 3rem;
+                margin-bottom: 3rem;
+            }
+        }
+        
+        /* Timer styles */
+        .countdown-timer {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 5px 10px;
+            border-radius: 10px;
+            display: inline-block;
+            margin: 0 5px;
+        }
+        
+        /* Banner title spacing */
+        .banner-title {
+            margin-top: 40px !important;
+            margin-bottom: 20px !important;
+        }
+        
+        /* Call button in header */
+        .call-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            padding: 10px 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .call-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+        
+        .call-btn i {
+            font-size: 16px;
         }
     </style>
 </head>
@@ -296,8 +371,8 @@
 
     <div id="loader" class="fixed inset-0 bg-black z-[9999] flex flex-col items-center justify-center transition-opacity duration-700">
         <div class="mb-8 animate-pulse">
-            <!-- Logo without text, larger size -->
-            <div class="w-32 h-32 flex items-center justify-center">
+            <!-- Logo without text, MUCH larger size -->
+            <div class="w-48 h-48 flex items-center justify-center">
                 <img src="Logo.png" alt="TESCA Logo" class="logo-img w-full h-full">
             </div>
         </div>
@@ -312,8 +387,8 @@
         <div class="glass border border-white/5 backdrop-blur-md">
             <div class="container mx-auto px-4 py-3 flex justify-between items-center">
                 <a href="#home" class="flex items-center group">
-                    <!-- Logo without text, larger size -->
-                    <div class="w-16 h-16 flex items-center justify-center">
+                    <!-- Logo without text, MUCH larger size -->
+                    <div class="w-20 h-20 flex items-center justify-center">
                         <img src="Logo.png" alt="TESCA" class="logo-img w-full h-full">
                     </div>
                 </a>
@@ -327,10 +402,10 @@
                 </nav>
 
                 <div class="flex items-center gap-4">
-                    <!-- Help button visible on mobile with correct phone icon -->
-                    <a href="tel:+918866722633" class="flex items-center gap-2 text-xs font-bold text-white bg-white/10 px-4 py-2 rounded-full hover:bg-white/20 transition">
+                    <!-- Call button with correct icon -->
+                    <a href="tel:+918866722633" class="call-btn">
                         <i class="fas fa-phone-alt text-brand-success"></i> 
-                        <span class="hidden sm:inline">Help</span>
+                        <span class="hidden sm:inline">Call Now</span>
                         <span class="sm:hidden">Call</span>
                     </a>
                     
@@ -358,13 +433,13 @@
         <a href="#contact" class="hover:text-brand-accent mobile-menu-link">Contact Us</a>
     </div>
 
-    <section id="home" class="relative pt-28 pb-16 container mx-auto px-4">
-        <div class="relative banner-container rounded-[2.5rem] overflow-hidden shadow-2xl">
+    <section id="home" class="relative pt-32 pb-16 container mx-auto px-4 section-spacing">
+        <div class="relative banner-container">
             <div id="banner-wrapper" class="w-full h-full">
                 <!-- Banners will be inserted here by JavaScript -->
             </div>
 
-            <!-- Banner navigation buttons on sides -->
+            <!-- Banner navigation buttons ON BORDER -->
             <button onclick="changeBanner(-1)" class="banner-nav-btn prev">
                 <i class="fas fa-chevron-left"></i>
             </button>
@@ -374,7 +449,7 @@
         </div>
     </section>
 
-    <section class="py-12 border-y border-white/5 bg-white/5 backdrop-blur-sm">
+    <section class="py-12 border-y border-white/5 bg-white/5 backdrop-blur-sm section-spacing">
         <div class="container mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div class="space-y-2">
                 <i class="fas fa-user-graduate text-3xl text-brand-primary mb-2"></i>
@@ -399,7 +474,7 @@
         </div>
     </section>
 
-    <section id="courses" class="py-24 container mx-auto px-6">
+    <section id="courses" class="container mx-auto px-6 section-spacing">
         <div class="flex flex-col items-center justify-center mb-16 gap-8">
             <div class="max-w-2xl text-center">
                 <span class="text-brand-accent font-bold tracking-widest text-xs uppercase mb-2 block">Upgrade Your Skills</span>
@@ -422,7 +497,7 @@
         </div>
     </section>
 
-    <section id="faculty" class="py-24 bg-gradient-to-b from-brand-surface to-brand-bg">
+    <section id="faculty" class="bg-gradient-to-b from-brand-surface to-brand-bg section-spacing">
         <div class="container mx-auto px-6">
             <div class="text-center mb-16">
                 <span class="text-brand-accent font-bold tracking-widest text-xs uppercase mb-2 block">Meet Our Experts</span>
@@ -508,7 +583,7 @@
         </div>
     </section>
 
-    <section id="app" class="py-24 relative overflow-hidden bg-brand-surface2">
+    <section id="app" class="relative overflow-hidden bg-brand-surface2 section-spacing">
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
         
         <div class="container mx-auto px-6 relative z-10">
@@ -563,13 +638,13 @@
         </div>
     </section>
 
-    <footer id="contact" class="bg-brand-surface border-t border-white/5 pt-20 pb-10">
+    <footer id="contact" class="bg-brand-surface border-t border-white/5 section-spacing">
         <div class="container mx-auto px-6">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                 <div class="space-y-6">
                     <a href="#home" class="flex items-center">
-                        <!-- Logo without text -->
-                        <div class="w-16 h-16 flex items-center justify-center">
+                        <!-- Logo without text, MUCH larger size -->
+                        <div class="w-24 h-24 flex items-center justify-center">
                             <img src="Logo.png" alt="TESCA" class="logo-img w-full h-full">
                         </div>
                     </a>
@@ -615,7 +690,7 @@
                     </ul>
                     <div class="flex gap-4">
                         <a href="https://instagram.com" target="_blank" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-brand-primary hover:text-white transition"><i class="fab fa-instagram"></i></a>
-                        <a href="https://facebook.com" target="_blank" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-brand-primary hover:text-white transition"><i class="fab fa-font-awesome"></i></a>
+                        <a href="https://facebook.com" target="_blank" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-brand-primary hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://youtube.com" target="_blank" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-red-600 hover:text-white transition"><i class="fab fa-youtube"></i></a>
                         <a href="https://linkedin.com" target="_blank" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-blue-600 hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
                     </div>
@@ -761,170 +836,178 @@
         const banners = [
             {
                 type: 'spoken',
+                tag: 'LIMITED TIME',
                 html: `
-                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full">
-                        <div class="absolute top-4 right-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">LIMITED TIME</div>
-                        <h1 class="text-2xl md:text-3xl font-bold mb-3 px-4">Speak English Like a Native in <span class="text-yellow-300">30 Days!</span></h1>
-                        <p class="text-gray-300 mb-4 px-4 text-sm md:text-base">Join 10,000+ students who transformed their communication skills</p>
+                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full relative">
+                        <div class="banner-tag">LIMITED TIME</div>
+                        <h1 class="text-3xl md:text-4xl font-bold mb-4 px-4 banner-title">Speak English Like a Native in <span class="text-yellow-300">30 Days!</span></h1>
+                        <p class="text-gray-300 mb-6 px-4 text-lg md:text-xl">Join 10,000+ students who transformed their communication skills</p>
                         
-                        <div class="glass-card p-4 mb-4 w-full max-w-md mx-4">
-                            <h2 class="text-yellow-300 font-bold mb-2 text-lg">🚀 LAUNCH OFFER: 40% OFF</h2>
-                            <div class="flex items-center justify-center gap-2 mb-3">
-                                <span class="text-gray-400 line-through text-sm">₹15,999</span>
-                                <span class="text-2xl md:text-3xl font-bold text-white">₹9,599</span>
+                        <div class="glass-card p-6 mb-6 w-full max-w-lg mx-4">
+                            <h2 class="text-yellow-300 font-bold mb-4 text-xl">🚀 LAUNCH OFFER: 40% OFF</h2>
+                            <div class="flex items-center justify-center gap-3 mb-4">
+                                <span class="text-gray-400 line-through text-lg">₹15,999</span>
+                                <span class="text-4xl md:text-5xl font-bold text-white">₹9,599</span>
                             </div>
-                            <div class="text-left space-y-2 text-sm">
-                                <p class="text-green-400 flex items-start gap-2"><i class="fas fa-check mt-1"></i> Live 1:1 Sessions with Certified Trainers</p>
-                                <p class="text-green-400 flex items-start gap-2"><i class="fas fa-check mt-1"></i> Daily Practice Group with Native Speakers</p>
-                                <p class="text-green-400 flex items-start gap-2"><i class="fas fa-check mt-1"></i> Lifetime Access to 200+ Interactive Lessons</p>
+                            <div class="text-left space-y-3 text-base">
+                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> Live 1:1 Sessions with Certified Trainers</p>
+                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> Daily Practice Group with Native Speakers</p>
+                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> Lifetime Access to 200+ Interactive Lessons</p>
                             </div>
                         </div>
                         
-                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('spoken')" class="bg-yellow-300 text-blue-900 font-bold py-3 px-8 rounded-full hover:bg-yellow-400 transition text-lg">
+                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('spoken')" class="bg-yellow-300 text-blue-900 font-bold py-4 px-10 rounded-full hover:bg-yellow-400 transition text-xl transform hover:scale-105">
                             ENROLL NOW - 40% OFF
                         </button>
-                        <p class="text-xs text-gray-400 mt-4 px-4">Offer ends in: <span class="text-yellow-300 font-bold">24:00:00</span></p>
+                        <p class="text-sm text-gray-300 mt-6 px-4">Offer ends in: <span class="countdown-timer text-yellow-300 font-bold text-lg">24:00:00</span></p>
                     </div>
                 `
             },
             {
                 type: 'spoken',
+                tag: 'FLASH SALE',
                 html: `
-                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full">
-                        <div class="absolute top-4 right-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">FLASH SALE</div>
-                        <h1 class="text-2xl md:text-3xl font-bold mb-3 px-4">Get <span class="text-orange-300">50% OFF</span> + 2 FREE Months!</h1>
-                        <p class="text-gray-300 mb-4 px-4 text-sm md:text-base">"This course changed my career!" - Rohan S., placed at Amazon</p>
+                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full relative">
+                        <div class="banner-tag" style="background: linear-gradient(135deg, #ff3838, #ff6b6b);">FLASH SALE</div>
+                        <h1 class="text-3xl md:text-4xl font-bold mb-4 px-4 banner-title">Get <span class="text-orange-300">50% OFF</span> + 2 FREE Months!</h1>
+                        <p class="text-gray-300 mb-6 px-4 text-lg md:text-xl">"This course changed my career!" - Rohan S., placed at Amazon</p>
                         
-                        <div class="glass-card p-4 mb-4 w-full max-w-md mx-4">
-                            <h2 class="text-orange-300 font-bold mb-2 text-lg">🎯 TODAY ONLY: 50% OFF</h2>
-                            <div class="flex items-center justify-center gap-2 mb-3">
-                                <span class="text-gray-400 line-through text-sm">₹15,999</span>
-                                <span class="text-2xl md:text-3xl font-bold text-white">₹7,999</span>
-                                <span class="bg-red-500 text-white text-xs px-3 py-1 rounded">SAVE ₹8,000</span>
+                        <div class="glass-card p-6 mb-6 w-full max-w-lg mx-4">
+                            <h2 class="text-orange-300 font-bold mb-4 text-xl">🎯 TODAY ONLY: 50% OFF</h2>
+                            <div class="flex items-center justify-center gap-3 mb-4">
+                                <span class="text-gray-400 line-through text-lg">₹15,999</span>
+                                <span class="text-4xl md:text-5xl font-bold text-white">₹7,999</span>
+                                <span class="bg-red-500 text-white text-sm px-4 py-2 rounded-lg font-bold">SAVE ₹8,000</span>
                             </div>
-                            <div class="text-left space-y-2 text-sm">
-                                <p class="text-green-400 flex items-start gap-2"><i class="fas fa-check mt-1"></i> FREE Job Interview Preparation Module</p>
-                                <p class="text-green-400 flex items-start gap-2"><i class="fas fa-check mt-1"></i> 2 Additional Months Access EXTENDED</p>
-                                <p class="text-green-400 flex items-start gap-2"><i class="fas fa-check mt-1"></i> Personal Mentor for 3 Months</p>
+                            <div class="text-left space-y-3 text-base">
+                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> FREE Job Interview Preparation Module</p>
+                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> 2 Additional Months Access EXTENDED</p>
+                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> Personal Mentor for 3 Months</p>
                             </div>
                         </div>
                         
-                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('spoken')" class="bg-orange-300 text-blue-900 font-bold py-3 px-8 rounded-full hover:bg-orange-400 transition text-lg shadow-lg">
+                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('spoken')" class="bg-orange-300 text-blue-900 font-bold py-4 px-10 rounded-full hover:bg-orange-400 transition text-xl shadow-lg transform hover:scale-105">
                             GRAB 50% OFF + FREE BONUS
                         </button>
-                        <p class="text-xs text-gray-400 mt-4 px-4">Only <span class="text-orange-300 font-bold">12</span> seats left!</p>
+                        <p class="text-sm text-gray-300 mt-6 px-4">Only <span class="text-orange-300 font-bold text-xl">12</span> seats left!</p>
                     </div>
                 `
             },
             {
                 type: 'spoken',
+                tag: 'LAST CHANCE',
                 html: `
-                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full">
-                        <div class="absolute top-4 right-4 bg-black text-white text-xs font-bold px-3 py-1 rounded-full">LAST CHANCE</div>
-                        <h1 class="text-2xl md:text-3xl font-bold mb-3 px-4"><span class="text-yellow-300">FINAL 10 SLOTS!</span> Get <span class="text-yellow-300">60% OFF</span></h1>
-                        <p class="text-gray-300 mb-4 px-4 text-sm md:text-base">"I achieved fluency in just 8 weeks!" - Priya M., now in Canada</p>
+                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full relative">
+                        <div class="banner-tag" style="background: linear-gradient(135deg, #000000, #434343);">LAST CHANCE</div>
+                        <h1 class="text-3xl md:text-4xl font-bold mb-4 px-4 banner-title"><span class="text-yellow-300">FINAL 10 SLOTS!</span> Get <span class="text-yellow-300">60% OFF</span></h1>
+                        <p class="text-gray-300 mb-6 px-4 text-lg md:text-xl">"I achieved fluency in just 8 weeks!" - Priya M., now in Canada</p>
                         
-                        <div class="glass-card p-4 mb-4 w-full max-w-md mx-4 border-2 border-dashed border-yellow-300">
-                            <h2 class="text-yellow-300 font-bold mb-2 text-lg">⚡ ULTIMATE PACKAGE: 60% OFF</h2>
-                            <div class="flex items-center justify-center gap-2 mb-3">
-                                <span class="text-gray-400 line-through text-sm">₹15,999</span>
-                                <span class="text-3xl md:text-4xl font-bold text-yellow-300">₹6,399</span>
-                                <span class="bg-black text-white text-xs px-3 py-1 rounded">SAVE ₹9,600</span>
+                        <div class="glass-card p-6 mb-6 w-full max-w-lg mx-4 border-2 border-dashed border-yellow-300">
+                            <h2 class="text-yellow-300 font-bold mb-4 text-xl">⚡ ULTIMATE PACKAGE: 60% OFF</h2>
+                            <div class="flex items-center justify-center gap-3 mb-4">
+                                <span class="text-gray-400 line-through text-lg">₹15,999</span>
+                                <span class="text-5xl md:text-6xl font-bold text-yellow-300">₹6,399</span>
+                                <span class="bg-black text-white text-sm px-4 py-2 rounded-lg font-bold">SAVE ₹9,600</span>
                             </div>
-                            <div class="text-left space-y-2 text-sm">
-                                <p class="text-green-400 flex items-start gap-2"><i class="fas fa-check mt-1"></i> IELTS Speaking Module FREE</p>
-                                <p class="text-green-400 flex items-start gap-2"><i class="fas fa-check mt-1"></i> Accent Training Masterclass</p>
-                                <p class="text-green-400 flex items-start gap-2"><i class="fas fa-check mt-1"></i> Business English Certificate</p>
+                            <div class="text-left space-y-3 text-base">
+                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> IELTS Speaking Module FREE</p>
+                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> Accent Training Masterclass</p>
+                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> Business English Certificate</p>
                             </div>
                         </div>
                         
-                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('spoken')" class="bg-yellow-300 text-red-700 font-bold py-3 px-8 rounded-full hover:bg-yellow-400 transition text-lg shadow-xl">
+                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('spoken')" class="bg-yellow-300 text-red-700 font-bold py-4 px-10 rounded-full hover:bg-yellow-400 transition text-xl shadow-xl transform hover:scale-105">
                             GET 60% OFF - LAST 10 SEATS!
                         </button>
-                        <p class="text-xs text-gray-400 mt-4 px-4"><span class="text-yellow-300">🔥</span> Only <span class="text-yellow-300 font-bold">8</span> slots remaining!</p>
+                        <p class="text-sm text-gray-300 mt-6 px-4"><span class="text-yellow-300">🔥</span> Only <span class="text-yellow-300 font-bold text-xl">8</span> slots remaining!</p>
                     </div>
                 `
             },
             {
                 type: 'ielts',
+                tag: 'LAST 15 SEATS',
                 html: `
-                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full">
-                        <h1 class="text-2xl md:text-3xl font-bold mb-3 px-4">Ace IELTS with <span class="text-orange-300">8+ Band Guarantee!</span></h1>
-                        <p class="text-gray-300 mb-4 px-4 text-sm md:text-base">Join India's #1 IELTS Prep with 94% Success Rate</p>
+                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full relative">
+                        <div class="banner-tag" style="background: linear-gradient(135deg, #ff3838, #ff6b6b);">LAST 15 SEATS</div>
+                        <h1 class="text-3xl md:text-4xl font-bold mb-4 px-4 banner-title">Ace IELTS with <span class="text-orange-300">8+ Band Guarantee!</span></h1>
+                        <p class="text-gray-300 mb-6 px-4 text-lg md:text-xl">Join India's #1 IELTS Prep with 94% Success Rate</p>
                         
-                        <div class="glass-card p-4 mb-4 w-full max-w-md mx-4">
-                            <h2 class="text-orange-300 font-bold mb-2 text-lg">SPECIAL OFFER: 35% OFF</h2>
-                            <div class="flex items-center justify-center gap-2 mb-3">
-                                <span class="text-gray-400 line-through text-sm">₹24,999</span>
-                                <span class="text-2xl md:text-3xl font-bold text-white">₹16,249</span>
-                                <span class="bg-red-500 text-white text-xs px-3 py-1 rounded">SAVE ₹8,750</span>
+                        <div class="glass-card p-6 mb-6 w-full max-w-lg mx-4">
+                            <h2 class="text-orange-300 font-bold mb-4 text-xl">SPECIAL OFFER: 35% OFF</h2>
+                            <div class="flex items-center justify-center gap-3 mb-4">
+                                <span class="text-gray-400 line-through text-lg">₹24,999</span>
+                                <span class="text-4xl md:text-5xl font-bold text-white">₹16,249</span>
+                                <span class="bg-red-500 text-white text-sm px-4 py-2 rounded-lg font-bold">SAVE ₹8,750</span>
                             </div>
-                            <div class="text-left space-y-2 text-sm">
-                                <p class="text-green-400 flex items-start gap-2"><i class="fas fa-check mt-1"></i> 40+ Live Sessions with Band 9 Trainers</p>
-                                <p class="text-green-400 flex items-start gap-2"><i class="fas fa-check mt-1"></i> 5 Full Mock Tests with Evaluation</p>
-                                <p class="text-green-400 flex items-start gap-2"><i class="fas fa-check mt-1"></i> FREE Spoken English Course (Worth ₹9,999)</p>
+                            <div class="text-left space-y-3 text-base">
+                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> 40+ Live Sessions with Band 9 Trainers</p>
+                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> 5 Full Mock Tests with Evaluation</p>
+                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> FREE Spoken English Course (Worth ₹9,999)</p>
                             </div>
                         </div>
                         
-                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('ielts')" class="bg-orange-300 text-blue-900 font-bold py-3 px-8 rounded-full hover:bg-orange-400 transition text-lg">
+                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('ielts')" class="bg-orange-300 text-blue-900 font-bold py-4 px-10 rounded-full hover:bg-orange-400 transition text-xl transform hover:scale-105">
                             GET IELTS + FREE SPOKEN ENGLISH
                         </button>
-                        <p class="text-xs text-gray-400 mt-4 px-4"><span class="text-orange-300">🎯</span> 1,287 students achieved 8+ bands</p>
+                        <p class="text-sm text-gray-300 mt-6 px-4"><span class="text-orange-300">🎯</span> 1,287 students achieved 8+ bands</p>
                     </div>
                 `
             },
             {
                 type: 'ielts',
+                tag: 'FLASH SALE',
                 html: `
-                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full">
-                        <div class="absolute top-4 right-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">LAST 15 SEATS</div>
-                        <h1 class="text-2xl md:text-3xl font-bold mb-3 px-4">IELTS <span class="text-yellow-300">CRASH COURSE</span></h1>
-                        <p class="text-gray-300 mb-4 px-4 text-sm md:text-base">6-Week Intensive Program | Band 7+ Guaranteed</p>
+                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full relative">
+                        <div class="banner-tag" style="background: linear-gradient(135deg, #ff3838, #ff6b6b);">FLASH SALE</div>
+                        <h1 class="text-3xl md:text-4xl font-bold mb-4 px-4 banner-title">IELTS <span class="text-yellow-300">CRASH COURSE</span></h1>
+                        <p class="text-gray-300 mb-6 px-4 text-lg md:text-xl">6-Week Intensive Program | Band 7+ Guaranteed</p>
                         
-                        <div class="glass-card p-4 mb-4 w-full max-w-md mx-4 border-2 border-yellow-300">
-                            <h2 class="text-yellow-300 font-bold mb-2 text-lg">FLASH SALE: 45% OFF</h2>
-                            <div class="flex items-center justify-center gap-2 mb-3">
-                                <span class="text-gray-400 line-through text-sm">₹29,999</span>
-                                <span class="text-3xl md:text-4xl font-bold text-yellow-300">₹16,499</span>
+                        <div class="glass-card p-6 mb-6 w-full max-w-lg mx-4 border-2 border-yellow-300">
+                            <h2 class="text-yellow-300 font-bold mb-4 text-xl">FLASH SALE: 45% OFF</h2>
+                            <div class="flex items-center justify-center gap-3 mb-4">
+                                <span class="text-gray-400 line-through text-lg">₹29,999</span>
+                                <span class="text-5xl md:text-6xl font-bold text-yellow-300">₹16,499</span>
                             </div>
-                            <div class="text-left space-y-2 text-sm">
-                                <p class="text-green-400 flex items-start gap-2"><i class="fas fa-check mt-1"></i> Band 7+ Guarantee or 50% Refund</p>
-                                <p class="text-green-400 flex items-start gap-2"><i class="fas fa-check mt-1"></i> FREE Visa SOP Review</p>
-                                <p class="text-green-400 flex items-start gap-2"><i class="fas fa-check mt-1"></i> Spoken English Module Included</p>
+                            <div class="text-left space-y-3 text-base">
+                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> Band 7+ Guarantee or 50% Refund</p>
+                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> FREE Visa SOP Review</p>
+                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> Spoken English Module Included</p>
                             </div>
                         </div>
                         
-                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('ielts')" class="bg-yellow-300 text-blue-900 font-bold py-3 px-8 rounded-full hover:bg-yellow-400 transition text-lg shadow-lg">
+                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('ielts')" class="bg-yellow-300 text-blue-900 font-bold py-4 px-10 rounded-full hover:bg-yellow-400 transition text-xl shadow-lg transform hover:scale-105">
                             ENROLL NOW - BAND 7+ GUARANTEED
                         </button>
-                        <p class="text-xs text-gray-400 mt-4 px-4"><span class="text-yellow-300">⏰</span> Only <span class="font-bold">12</span> seats left!</p>
+                        <p class="text-sm text-gray-300 mt-6 px-4"><span class="text-yellow-300">⏰</span> Only <span class="font-bold text-xl">12</span> seats left!</p>
                     </div>
                 `
             },
             {
                 type: 'pte',
+                tag: 'LIMITED TIME',
                 html: `
-                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full">
-                        <h1 class="text-2xl md:text-3xl font-bold mb-3 px-4">PTE <span class="text-cyan-300">90/90 Guarantee</span> in 4 Weeks!</h1>
-                        <p class="text-gray-300 mb-4 px-4 text-sm md:text-base">India's Highest PTE Success Rate | 87% Score 79+</p>
+                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full relative">
+                        <div class="banner-tag">LIMITED TIME</div>
+                        <h1 class="text-3xl md:text-4xl font-bold mb-4 px-4 banner-title">PTE <span class="text-cyan-300">90/90 Guarantee</span> in 4 Weeks!</h1>
+                        <p class="text-gray-300 mb-6 px-4 text-lg md:text-xl">India's Highest PTE Success Rate | 87% Score 79+</p>
                         
-                        <div class="glass-card p-4 mb-4 w-full max-w-md mx-4">
-                            <h2 class="text-cyan-300 font-bold mb-2 text-lg">LAUNCH OFFER: 40% OFF</h2>
-                            <div class="flex items-center justify-center gap-2 mb-3">
-                                <span class="text-gray-400 line-through text-sm">₹22,999</span>
-                                <span class="text-2xl md:text-3xl font-bold text-white">₹13,799</span>
+                        <div class="glass-card p-6 mb-6 w-full max-w-lg mx-4">
+                            <h2 class="text-cyan-300 font-bold mb-4 text-xl">LAUNCH OFFER: 40% OFF</h2>
+                            <div class="flex items-center justify-center gap-3 mb-4">
+                                <span class="text-gray-400 line-through text-lg">₹22,999</span>
+                                <span class="text-4xl md:text-5xl font-bold text-white">₹13,799</span>
                             </div>
-                            <div class="text-left space-y-2 text-sm">
-                                <p class="text-green-400 flex items-start gap-2"><i class="fas fa-check mt-1"></i> Daily Practice with AI Scoring</p>
-                                <p class="text-green-400 flex items-start gap-2"><i class="fas fa-check mt-1"></i> FREE Spoken English Fluency Course</p>
-                                <p class="text-green-400 flex items-start gap-2"><i class="fas fa-check mt-1"></i> Unlimited Mock Tests & Personal Trainer</p>
+                            <div class="text-left space-y-3 text-base">
+                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> Daily Practice with AI Scoring</p>
+                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> FREE Spoken English Fluency Course</p>
+                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> Unlimited Mock Tests & Personal Trainer</p>
                             </div>
                         </div>
                         
-                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('pte')" class="bg-cyan-300 text-purple-900 font-bold py-3 px-8 rounded-full hover:bg-cyan-400 transition text-lg">
+                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('pte')" class="bg-cyan-300 text-purple-900 font-bold py-4 px-10 rounded-full hover:bg-cyan-400 transition text-xl transform hover:scale-105">
                             SCORE 79+ WITH 40% OFF
                         </button>
-                        <p class="text-xs text-gray-400 mt-4 px-4"><span class="text-cyan-300">📊</span> 2,134 PTE high scorers</p>
+                        <p class="text-sm text-gray-300 mt-6 px-4"><span class="text-cyan-300">📊</span> 2,134 PTE high scorers</p>
                     </div>
                 `
             }
@@ -1027,6 +1110,7 @@
         let bannerIndex = 0;
         let timerInterval;
         let currentPaymentAmount = 0;
+        let bannerTimers = {};
 
         // --- 3. INIT & LOADER ---
         window.onload = () => {
@@ -1042,9 +1126,6 @@
             renderBanners();
             filterCourses('all');
             
-            // Start banner timer
-            startBannerTimers();
-            
             // Add event listeners for mobile menu links
             document.querySelectorAll('.mobile-menu-link').forEach(link => {
                 link.addEventListener('click', function(e) {
@@ -1059,7 +1140,7 @@
                         // Scroll to section after a small delay to allow menu to close
                         setTimeout(() => {
                             window.scrollTo({
-                                top: targetElement.offsetTop - 100,
+                                top: targetElement.offsetTop - 120,
                                 behavior: 'smooth'
                             });
                         }, 300);
@@ -1077,6 +1158,9 @@
                     ${b.html}
                 </div>
             `).join('');
+            
+            // Start timers for all banners
+            startAllTimers();
         }
 
         function changeBanner(dir) {
@@ -1087,46 +1171,56 @@
             document.getElementById(`banner-${bannerIndex}`).style.pointerEvents = 'all';
         }
 
-        // Auto rotate banners every 8 seconds
-        setInterval(() => changeBanner(1), 8000);
+        // Auto rotate banners every 10 seconds
+        setInterval(() => changeBanner(1), 10000);
 
-        function startBannerTimers() {
-            // Initialize all timers
+        function startAllTimers() {
             banners.forEach((banner, index) => {
-                const bannerElement = document.getElementById(`banner-${index}`);
-                if (bannerElement) {
-                    const timerElements = bannerElement.querySelectorAll('.countdown-timer');
-                    timerElements.forEach(timer => {
-                        if (timer.innerText.includes(':')) {
-                            startCountdown(timer, '24:00:00');
-                        }
-                    });
-                }
+                startCountdown(index, 24 * 60 * 60); // 24 hours in seconds
             });
         }
 
-        function startCountdown(timerElement, initialTime) {
-            let time = initialTime;
-            const parts = time.split(':').map(Number);
-            let totalSeconds = parts[0] * 3600 + parts[1] * 60 + parts[2];
+        function startCountdown(bannerIndex, seconds) {
+            // Clear existing timer for this banner
+            if (bannerTimers[bannerIndex]) {
+                clearInterval(bannerTimers[bannerIndex]);
+            }
             
-            const interval = setInterval(() => {
-                if (totalSeconds <= 0) {
-                    clearInterval(interval);
-                    timerElement.innerText = '00:00:00';
+            const timerElement = document.querySelector(`#banner-${bannerIndex} .countdown-timer`);
+            if (!timerElement) return;
+            
+            let timeLeft = seconds;
+            
+            // Update timer immediately
+            updateTimerDisplay(timerElement, timeLeft);
+            
+            // Start interval
+            bannerTimers[bannerIndex] = setInterval(() => {
+                if (timeLeft <= 0) {
+                    clearInterval(bannerTimers[bannerIndex]);
+                    timerElement.textContent = '00:00:00';
                     return;
                 }
                 
-                totalSeconds--;
-                const hours = Math.floor(totalSeconds / 3600);
-                const minutes = Math.floor((totalSeconds % 3600) / 60);
-                const seconds = totalSeconds % 60;
-                
-                timerElement.innerText = 
-                    `${hours.toString().padStart(2, '0')}:` +
-                    `${minutes.toString().padStart(2, '0')}:` +
-                    `${seconds.toString().padStart(2, '0')}`;
+                timeLeft--;
+                updateTimerDisplay(timerElement, timeLeft);
             }, 1000);
+        }
+
+        function updateTimerDisplay(timerElement, seconds) {
+            const hours = Math.floor(seconds / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            const secs = seconds % 60;
+            
+            timerElement.textContent = 
+                `${hours.toString().padStart(2, '0')}:` +
+                `${minutes.toString().padStart(2, '0')}:` +
+                `${secs.toString().padStart(2, '0')}`;
+        }
+
+        // Reset timer function
+        function resetTimer(timerId) {
+            startCountdown(timerId, 24 * 60 * 60);
         }
 
         // --- 5. COURSE RENDERER ---
@@ -1489,7 +1583,7 @@
                     const target = document.querySelector(href);
                     if (target) {
                         window.scrollTo({
-                            top: target.offsetTop - 100,
+                            top: target.offsetTop - 120,
                             behavior: 'smooth'
                         });
                     }
