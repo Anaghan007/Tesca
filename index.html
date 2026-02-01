@@ -68,10 +68,11 @@
             padding: 0;
         }
 
-        /* Hero section for mobile - combined with features */
+        /* Hero section - FIXED FOR ALL SCREENS */
         .hero-section {
             height: 100vh;
             min-height: 600px;
+            max-height: 900px;
             width: 100%;
             position: relative;
             overflow: hidden;
@@ -82,7 +83,7 @@
             justify-content: center;
         }
 
-        /* Banner container */
+        /* Banner container - IMPROVED FOR DUAL SCREEN */
         .banner-container {
             width: 100%;
             height: 100%;
@@ -104,7 +105,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
+            padding: 1.5rem;
         }
         
         .banner-slide.active {
@@ -118,7 +119,7 @@
             text-align: center;
             z-index: 3;
             position: relative;
-            padding-top: 60px; /* Space from header */
+            padding-top: 60px;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -126,7 +127,7 @@
             min-height: 70vh;
         }
 
-        /* Banner overlay for better text visibility */
+        /* Banner overlay */
         .banner-overlay {
             position: absolute;
             top: 0;
@@ -253,7 +254,7 @@
             object-fit: contain;
         }
 
-        /* Faculty card hover effects - FIXED STRUCTURE & INCREASED TEXT SIZE */
+        /* Faculty card hover effects */
         .faculty-card {
             transition: all 0.3s ease;
             height: 100%;
@@ -269,8 +270,8 @@
         
         .faculty-card .faculty-description {
             flex: 1;
-            font-size: 0.95rem !important; /* Increased font size */
-            line-height: 1.6 !important; /* Better readability */
+            font-size: 0.95rem !important;
+            line-height: 1.6 !important;
         }
         
         .faculty-card:hover {
@@ -376,7 +377,7 @@
             font-weight: bold;
         }
 
-        /* NEW CART MODAL - Single column, no left/right division */
+        /* NEW CART MODAL */
         .full-cart-modal {
             position: fixed;
             inset: 0;
@@ -558,6 +559,40 @@
             transform: scale(1.3);
         }
 
+        /* Banner Navigation Arrows */
+        .banner-nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 1.5rem;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .banner-nav-arrow:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .banner-nav-arrow.prev {
+            left: 30px;
+        }
+        
+        .banner-nav-arrow.next {
+            right: 30px;
+        }
+
         /* Prevent overlapping with fixed header */
         section[id] {
             scroll-margin-top: 100px;
@@ -588,7 +623,7 @@
             margin-right: auto;
         }
 
-        /* Banner CTA button - CENTERED */
+        /* Banner CTA button */
         .banner-cta {
             font-size: 1.1rem;
             padding: 1rem 2.5rem;
@@ -601,7 +636,7 @@
             margin: 1rem auto 0;
         }
 
-        /* Feature icons - FIXED FOR LAPTOP VIEW */
+        /* Feature icons */
         .feature-icon {
             width: 70px;
             height: 70px;
@@ -615,7 +650,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        /* Desktop features grid - FIXED VERTICAL ALIGNMENT */
+        /* Desktop features grid */
         .desktop-features-grid {
             display: flex;
             justify-content: center;
@@ -653,7 +688,7 @@
             background-clip: text;
         }
 
-        /* Course card hover - FULLY ROUNDED BUTTONS */
+        /* Course card hover */
         .course-card {
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -679,7 +714,7 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
         
-        /* Course buttons container - FULLY ROUNDED */
+        /* Course buttons container */
         .course-buttons {
             margin-top: auto;
             display: flex;
@@ -694,7 +729,7 @@
             align-items: center;
             justify-content: center;
             white-space: nowrap;
-            border-radius: 9999px !important; /* Fully rounded */
+            border-radius: 9999px !important;
         }
 
         /* Loader - NO SPIN ANIMATION */
@@ -760,7 +795,7 @@
             line-height: 1.4;
         }
 
-        /* App section grid for mobile - 2 columns 2 rows */
+        /* App section grid for mobile */
         .app-section-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -784,7 +819,7 @@
             padding: 1rem;
         }
 
-        /* Footer mobile grid - 2x2 */
+        /* Footer mobile grid */
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -801,14 +836,44 @@
             margin: 0 auto;
         }
 
-        /* Faculty designation styling - slightly larger */
+        /* Faculty designation styling */
         .faculty-designation {
             font-size: 1rem !important;
             font-weight: 600 !important;
         }
 
+        /* NEW: Mobile view improvements */
+        .mobile-optimized {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .mobile-optimized h2 {
+            font-size: 2rem !important;
+            line-height: 1.2;
+        }
+        
+        .mobile-optimized h3 {
+            font-size: 1.3rem !important;
+        }
+        
+        .mobile-optimized p {
+            font-size: 0.9rem !important;
+        }
+        
+        .mobile-optimized .btn {
+            padding: 0.8rem 1.5rem !important;
+            font-size: 0.9rem !important;
+        }
+
         /* Mobile view adjustments */
         @media (max-width: 768px) {
+            /* IMPROVED MOBILE VIEW */
+            body.mobile-view {
+                font-size: 16px;
+                line-height: 1.6;
+            }
+            
             .section-padding {
                 padding-top: 3rem;
                 padding-bottom: 3rem;
@@ -816,37 +881,62 @@
             
             /* Mobile header adjustment */
             #main-header .glass {
-                margin: 1rem auto;
+                margin: 0.5rem auto;
                 padding: 0.5rem 1rem;
                 max-width: 98%;
+                border-radius: 20px;
             }
             
-            /* Banner adjustments for mobile */
+            /* Banner adjustments for mobile - IMPROVED */
             .hero-section {
-                height: auto;
-                min-height: 100vh;
-                padding-top: 80px;
-                padding-bottom: 160px; /* Space for features */
+                height: 90vh;
+                min-height: 500px;
+                max-height: 700px;
+                padding-top: 70px;
             }
             
             .banner-container {
-                height: 70vh;
+                height: 100%;
             }
             
             .banner-content {
                 padding-top: 20px;
-                min-height: 60vh;
+                min-height: 50vh;
+                justify-content: flex-start;
+                padding: 1rem;
             }
             
             .banner-title {
-                font-size: 2rem;
-                margin-bottom: 1rem;
+                font-size: 1.8rem !important;
+                margin-bottom: 0.8rem;
+                line-height: 1.3;
             }
             
             .banner-subtitle {
-                font-size: 1rem;
-                padding: 0 1rem;
-                margin-bottom: 1.5rem;
+                font-size: 0.95rem !important;
+                padding: 0 0.5rem;
+                margin-bottom: 1rem;
+                line-height: 1.5;
+            }
+            
+            .banner-offer-details {
+                padding: 0.8rem !important;
+                margin: 0.5rem 0;
+            }
+            
+            .banner-offer-details .text-4xl {
+                font-size: 1.8rem !important;
+            }
+            
+            .banner-cta {
+                font-size: 0.9rem !important;
+                padding: 0.8rem 1.5rem !important;
+                margin-top: 0.5rem;
+            }
+            
+            /* Hide arrows on mobile */
+            .banner-nav-arrow {
+                display: none;
             }
             
             /* Mobile features - shown at bottom of hero section */
@@ -855,19 +945,140 @@
                 bottom: 0;
                 left: 0;
                 right: 0;
-                background: rgba(5, 5, 7, 0.9);
+                background: rgba(5, 5, 7, 0.95);
                 backdrop-filter: blur(10px);
                 border-top: 1px solid rgba(255, 255, 255, 0.1);
-                padding: 20px 0;
+                padding: 15px 0;
                 z-index: 5;
             }
             
-            /* Faculty card mobile adjustments */
-            .faculty-card .faculty-description {
-                font-size: 0.85rem !important;
+            .mobile-features-grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 0.5rem;
+                padding: 0 0.5rem;
             }
             
-            /* Cart modal mobile responsiveness */
+            .mobile-feature-item {
+                text-align: center;
+                padding: 8px 4px;
+            }
+            
+            .mobile-feature-icon {
+                width: 40px;
+                height: 40px;
+                border-radius: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 0.5rem;
+                font-size: 1rem;
+                background: rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            
+            .mobile-feature-item h3 {
+                font-size: 0.75rem !important;
+                margin-bottom: 0.2rem;
+                font-weight: 600;
+            }
+            
+            .mobile-feature-item p {
+                font-size: 0.65rem !important;
+                color: rgba(255, 255, 255, 0.7);
+            }
+            
+            /* Courses section mobile */
+            #courses h2 {
+                font-size: 2rem !important;
+                line-height: 1.2;
+                margin-bottom: 1rem;
+            }
+            
+            #courses p {
+                font-size: 0.9rem !important;
+                padding: 0 1rem;
+            }
+            
+            .filter-btn {
+                padding: 0.5rem 1rem !important;
+                font-size: 0.8rem !important;
+                margin: 0.2rem;
+            }
+            
+            .course-card {
+                padding: 1rem !important;
+                margin-bottom: 1rem;
+            }
+            
+            .course-card h3 {
+                font-size: 1.1rem !important;
+                line-height: 1.3;
+            }
+            
+            .course-card .text-2xl {
+                font-size: 1.3rem !important;
+            }
+            
+            /* Faculty section mobile */
+            #faculty h2 {
+                font-size: 2rem !important;
+                line-height: 1.2;
+            }
+            
+            .faculty-card {
+                padding: 1.5rem !important;
+                margin-bottom: 1.5rem;
+            }
+            
+            .faculty-card h3 {
+                font-size: 1.3rem !important;
+            }
+            
+            .faculty-designation {
+                font-size: 0.9rem !important;
+            }
+            
+            .faculty-description p {
+                font-size: 0.85rem !important;
+                line-height: 1.5;
+            }
+            
+            /* App section mobile */
+            #app h2 {
+                font-size: 2rem !important;
+            }
+            
+            .app-section-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2, auto);
+                gap: 1rem;
+                margin-top: 2rem;
+            }
+            
+            .app-section-grid .phone-mockup {
+                height: 200px;
+                border-width: 6px;
+                border-radius: 20px;
+            }
+            
+            /* Footer mobile */
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            /* Stats section for mobile */
+            .stat-number {
+                font-size: 2.2rem !important;
+            }
+            
+            /* Hide desktop features on mobile */
+            .desktop-features-grid {
+                display: none;
+            }
+            
+            /* Cart modal mobile */
             .full-cart-content {
                 max-width: 95%;
                 height: 85vh;
@@ -903,6 +1114,7 @@
             
             .course-buttons button {
                 width: 100%;
+                padding: 0.8rem !important;
             }
             
             /* Promo grid for mobile */
@@ -915,55 +1127,46 @@
                 display: none;
             }
             
-            /* App section grid for mobile */
-            .app-section-grid {
-                grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(2, auto);
+            /* Show mobile menu button */
+            #main-header .md\\:hidden {
+                display: block;
             }
             
-            /* Footer grid for mobile */
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
+            /* Adjust banner indicators for mobile */
+            .banner-indicators {
+                bottom: 80px;
             }
             
-            /* Stats section for mobile */
-            .stat-number {
-                font-size: 2.5rem;
+            /* Mobile menu improvements */
+            #mobile-menu {
+                font-size: 1.5rem;
             }
             
-            /* Hide desktop features on mobile */
-            .desktop-features-grid {
-                display: none;
+            .mobile-menu-link {
+                padding: 0.8rem 0;
             }
             
-            /* Show mobile features */
-            .mobile-features-grid {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-            }
-            
-            /* Mobile feature items */
-            .mobile-feature-item {
-                text-align: center;
-                padding: 10px;
-            }
-            
-            .mobile-feature-icon {
-                width: 50px;
-                height: 50px;
-                border-radius: 15px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin: 0 auto 0.5rem;
-                font-size: 1.2rem;
-                background: rgba(255, 255, 255, 0.05);
-                border: 1px solid rgba(255, 255, 255, 0.1);
+            /* Payment modal mobile */
+            #payment-modal .max-w-\[350px\] {
+                max-width: 90% !important;
             }
         }
         
         @media (max-width: 640px) {
+            /* Extra small devices */
+            .hero-section {
+                min-height: 450px;
+                max-height: 600px;
+            }
+            
+            .banner-title {
+                font-size: 1.6rem !important;
+            }
+            
+            .banner-subtitle {
+                font-size: 0.85rem !important;
+            }
+            
             .app-section-grid {
                 grid-template-columns: 1fr;
                 grid-template-rows: repeat(4, auto);
@@ -975,27 +1178,24 @@
                 margin: 0 auto;
             }
             
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .banner-title {
-                font-size: 1.8rem;
-            }
-            
             .mobile-features-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.75rem;
+                grid-template-columns: repeat(2, 2fr);
+                gap: 0.5rem;
             }
             
             .mobile-feature-icon {
-                width: 45px;
-                height: 45px;
-                font-size: 1rem;
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
+            }
+            
+            #courses h2, #faculty h2, #app h2 {
+                font-size: 1.8rem !important;
             }
         }
         
         @media (max-width: 480px) {
+            /* Very small devices */
             .call-btn span {
                 display: none;
             }
@@ -1011,11 +1211,11 @@
             }
             
             .banner-title {
-                font-size: 1.6rem;
+                font-size: 1.5rem !important;
             }
             
             .banner-subtitle {
-                font-size: 0.9rem;
+                font-size: 0.8rem !important;
             }
             
             .full-cart-content {
@@ -1026,7 +1226,38 @@
             }
             
             .mobile-features-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .mobile-feature-item h3 {
+                font-size: 0.7rem !important;
+            }
+            
+            .mobile-feature-item p {
+                font-size: 0.6rem !important;
+            }
+            
+            .banner-indicators {
+                bottom: 70px;
+            }
+        }
+
+        /* Dual screen / split screen adjustments */
+        @media (max-width: 1024px) and (min-height: 600px) {
+            .hero-section {
+                max-height: 700px;
+            }
+            
+            .banner-content {
+                min-height: 60vh;
+            }
+            
+            .banner-title {
+                font-size: 2.5rem !important;
+            }
+            
+            .banner-subtitle {
+                font-size: 1.1rem !important;
             }
         }
 
@@ -1042,13 +1273,18 @@
                 display: flex;
             }
             
+            /* Show banner arrows on desktop */
+            .banner-nav-arrow {
+                display: flex;
+            }
+            
             /* Banner adjustments for desktop */
             .banner-content {
                 padding-top: 80px;
             }
         }
 
-        /* Fix for Play Store and social media links - no black popup */
+        /* Fix for Play Store and social media links */
         .direct-link {
             text-decoration: none;
             color: inherit;
@@ -1058,14 +1294,42 @@
             opacity: 0.8;
         }
 
-        /* Mobile features grid */
-        .mobile-features-grid {
-            display: none;
-        }
-        
+        /* Add class for mobile optimization */
         @media (max-width: 768px) {
-            .mobile-features-grid {
-                display: grid;
+            .mobile-optimized-text {
+                font-size: 0.9rem !important;
+                line-height: 1.6;
+            }
+            
+            .mobile-optimized-heading {
+                font-size: 1.8rem !important;
+                line-height: 1.2;
+                margin-bottom: 1rem !important;
+            }
+            
+            .mobile-optimized-section {
+                padding: 2rem 1rem !important;
+            }
+            
+            .mobile-optimized-grid {
+                gap: 1rem !important;
+            }
+        }
+
+        /* Banner arrow visibility on medium screens */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .banner-nav-arrow {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+            
+            .banner-nav-arrow.prev {
+                left: 15px;
+            }
+            
+            .banner-nav-arrow.next {
+                right: 15px;
             }
         }
     </style>
@@ -1142,6 +1406,15 @@
     <!-- Hero Banner Section -->
     <section id="home" class="hero-section">
         <div class="banner-container">
+            <!-- Banner Navigation Arrows -->
+            <button class="banner-nav-arrow prev" onclick="prevBanner()">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <button class="banner-nav-arrow next" onclick="nextBanner()">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            
             <!-- Banner slides will be inserted here by JavaScript -->
             <div class="banner-overlay"></div>
             <div class="banner-indicators" id="banner-indicators">
@@ -1225,10 +1498,10 @@
     <!-- Courses Section -->
     <section id="courses" class="section-padding bg-brand-bg">
         <div class="container mx-auto px-4">
-            <div class="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
+            <div class="text-center max-w-3xl mx-auto mb-16 animate-fade-in mobile-optimized">
                 <span class="text-brand-accent font-bold tracking-widest text-sm uppercase mb-4 block">Upgrade Your Skills</span>
-                <h2 class="text-5xl md:text-6xl font-bold leading-tight mb-6">Explore Our <span class="gradient-text">Premium Courses</span></h2>
-                <p class="text-gray-400 text-lg">Select a category to filter courses. All courses come with a completion certificate and lifetime app access.</p>
+                <h2 class="mobile-optimized-heading text-5xl md:text-6xl font-bold leading-tight mb-6">Explore Our <span class="gradient-text">Premium Courses</span></h2>
+                <p class="mobile-optimized-text text-gray-400 text-lg">Select a category to filter courses. All courses come with a completion certificate and lifetime app access.</p>
             </div>
             
             <div class="flex flex-wrap gap-3 justify-center mb-12 animate-fade-in" style="animation-delay: 0.2s">
@@ -1246,16 +1519,16 @@
         </div>
     </section>
 
-    <!-- Faculty Section - FIXED STRUCTURE & INCREASED TEXT SIZE -->
+    <!-- Faculty Section -->
     <section id="faculty" class="section-padding bg-gradient-to-b from-brand-surface to-brand-bg">
         <div class="container mx-auto px-4">
-            <div class="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
+            <div class="text-center max-w-3xl mx-auto mb-16 animate-fade-in mobile-optimized">
                 <span class="text-brand-accent font-bold tracking-widest text-sm uppercase mb-4 block">Meet Our Experts</span>
-                <h2 class="text-5xl md:text-6xl font-bold leading-tight mb-6">World-Class <span class="gradient-text">Faculty Team</span></h2>
-                <p class="text-gray-400 text-lg">Learn from industry veterans with decades of combined experience in English training and global visa consultancy.</p>
+                <h2 class="mobile-optimized-heading text-5xl md:text-6xl font-bold leading-tight mb-6">World-Class <span class="gradient-text">Faculty Team</span></h2>
+                <p class="mobile-optimized-text text-gray-400 text-lg">Learn from industry veterans with decades of combined experience in English training and global visa consultancy.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 mobile-optimized-grid">
                 <!-- Nikunj Dhanani -->
                 <div class="faculty-card glass-card p-8 rounded-3xl text-center animate-fade-in" style="animation-delay: 0.1s">
                     <div class="faculty-content">
@@ -1265,12 +1538,12 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <h3 class="text-2xl font-bold">Nikunj Dhanani</h3>
+                            <h3 class="text-2xl font-bold mobile-optimized-heading">Nikunj Dhanani</h3>
                             <div class="bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full inline-block mb-2 mt-2">Founder</div>
                         </div>
                         <p class="faculty-designation text-sm text-brand-accent font-bold mb-4">CEO & Lead Visa Consultant</p>
                         <div class="faculty-description mb-6">
-                            <p class="text-gray-400">With 12+ years in international education, Nikunj has successfully placed 5000+ students in top global universities. His expertise in visa documentation has achieved a remarkable 99.2% success rate.</p>
+                            <p class="mobile-optimized-text text-gray-400">With 12+ years in international education, Nikunj has successfully placed 5000+ students in top global universities. His expertise in visa documentation has achieved a remarkable 99.2% success rate.</p>
                         </div>
                         <div class="flex justify-center space-x-3 mt-auto">
                             <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full">UK Visa Expert</span>
@@ -1288,12 +1561,12 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <h3 class="text-2xl font-bold">Vishal Faldu</h3>
+                            <h3 class="text-2xl font-bold mobile-optimized-heading">Vishal Faldu</h3>
                             <div class="bg-blue-500/20 text-blue-400 text-xs font-bold px-3 py-1 rounded-full inline-block mb-2 mt-2">Co-Founder</div>
                         </div>
                         <p class="faculty-designation text-sm text-brand-warning font-bold mb-4">IELTS/PTE Master Trainer</p>
                         <div class="faculty-description mb-6">
-                            <p class="text-gray-400">A British Council certified trainer with 8+ years experience. Specializes in helping students achieve Band 8+ in IELTS and 85+ in PTE. Known for his unique "Score Booster" techniques.</p>
+                            <p class="mobile-optimized-text text-gray-400">A British Council certified trainer with 8+ years experience. Specializes in helping students achieve Band 8+ in IELTS and 85+ in PTE. Known for his unique "Score Booster" techniques.</p>
                         </div>
                         <div class="flex justify-center space-x-3 mt-auto">
                             <span class="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs rounded-full">IELTS Band 9</span>
@@ -1311,12 +1584,12 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <h3 class="text-2xl font-bold">Kiran Sir</h3>
+                            <h3 class="text-2xl font-bold mobile-optimized-heading">Kiran Sir</h3>
                             <div class="bg-brand-primary/20 text-brand-primary text-xs font-bold px-3 py-1 rounded-full inline-block mb-2 mt-2">Head Mentor</div>
                         </div>
                         <p class="faculty-designation text-sm text-cyan-400 font-bold mb-4">Spoken English Guru</p>
                         <div class="faculty-description mb-6">
-                            <p class="text-gray-400">25+ years of transforming students into confident English speakers. Former corporate trainer at multinational companies. His "Zero to Hero" methodology has helped 10,000+ students overcome hesitation.</p>
+                            <p class="mobile-optimized-text text-gray-400">25+ years of transforming students into confident English speakers. Former corporate trainer at multinational companies. His "Zero to Hero" methodology has helped 10,000+ students overcome hesitation.</p>
                         </div>
                         <div class="flex justify-center space-x-3 mt-auto">
                             <span class="px-3 py-1 bg-cyan-500/10 text-cyan-400 text-xs rounded-full">Accent Trainer</span>
@@ -1346,14 +1619,14 @@
         </div>
     </section>
 
-    <!-- App Section - MOBILE: 2 COLUMNS 2 ROWS -->
+    <!-- App Section -->
     <section id="app" class="section-padding bg-brand-surface2">
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
         
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
-                <h2 class="text-5xl md:text-6xl font-bold leading-tight mb-6">Your <span class="gradient-text">Pocket Classroom</span></h2>
-                <p class="text-gray-400 text-lg mb-8">Download the TESCA App for seamless learning. Watch videos, take quizzes, and chat with tutors on the go.</p>
+        <div class="container mx-auto px-4 relative z-10 mobile-optimized-section">
+            <div class="text-center max-w-3xl mx-auto mb-16 animate-fade-in mobile-optimized">
+                <h2 class="mobile-optimized-heading text-5xl md:text-6xl font-bold leading-tight mb-6">Your <span class="gradient-text">Pocket Classroom</span></h2>
+                <p class="mobile-optimized-text text-gray-400 text-lg mb-8">Download the TESCA App for seamless learning. Watch videos, take quizzes, and chat with tutors on the go.</p>
                 <a href="https://play.google.com/store/apps/details?id=co.ted.fpqdt" target="_blank" class="direct-link inline-flex items-center gap-4 bg-white text-black px-8 py-4 rounded-2xl font-bold hover:scale-105 transition shadow-lg shadow-white/10">
                     <i class="fab fa-google-play text-3xl text-brand-success"></i>
                     <div class="text-left">
@@ -1400,7 +1673,7 @@
         </div>
     </section>
 
-    <!-- Footer - MOBILE: 2x2 GRID -->
+    <!-- Footer -->
     <footer id="contact" class="bg-brand-surface border-t border-white/5 py-16">
         <div class="container mx-auto px-4">
             <div class="footer-grid md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-12 mb-16">
@@ -1410,7 +1683,7 @@
                             <img src="Logo.png" alt="TESCA" class="logo-img w-full h-full">
                         </div>
                     </a>
-                    <p class="text-gray-400 text-sm leading-relaxed">
+                    <p class="mobile-optimized-text text-gray-400 text-sm leading-relaxed">
                         The leading platform for English mastery and Visa consultancy. We have helped 15,000+ students achieve their global dreams.
                     </p>
                     <a href="https://play.google.com/store/apps/details?id=co.ted.fpqdt" target="_blank" class="direct-link inline-flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-lg hover:bg-white/10 transition">
@@ -1469,7 +1742,7 @@
         </div>
     </footer>
 
-    <!-- NEW SIMPLE CART MODAL - Single column, no left/right division -->
+    <!-- NEW SIMPLE CART MODAL -->
     <div id="full-cart-modal" class="full-cart-modal">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-md" onclick="toggleCart()"></div>
         <div id="full-cart-panel" class="full-cart-content transform transition-all duration-300 scale-95 opacity-0">
@@ -1936,8 +2209,8 @@
         let timerInterval;
         let bannerInterval;
         let currentPaymentAmount = 0;
-        let usedPromoCodes = []; // For temporary use
-        let permanentUsedPromoCodes = []; // For permanently used codes
+        let usedPromoCodes = [];
+        let permanentUsedPromoCodes = [];
         let promoButtons = {};
 
         // --- 5. INITIALIZATION ---
@@ -1955,7 +2228,6 @@
                         loader.style.opacity = '0';
                         setTimeout(() => {
                             loader.style.display = 'none';
-                            // Initialize all components after loader
                             initWebsite();
                         }, 700);
                     }, 300);
@@ -1975,53 +2247,59 @@
             filterCourses('all');
             renderPromoButtons();
             setupEventListeners();
+            
+            // Add mobile optimization class
+            if (window.innerWidth <= 768) {
+                document.body.classList.add('mobile-view');
+            }
         }
 
-        // --- 6. BANNER SYSTEM - FIXED FOR MOBILE VISIBILITY ---
+        // --- 6. BANNER SYSTEM WITH ARROWS ---
         function renderBanners() {
             const bannerContainer = document.querySelector('.banner-container');
             const indicatorsContainer = document.getElementById('banner-indicators');
             
-            // Clear existing content
-            bannerContainer.innerHTML = '';
+            // Clear existing content (except arrows)
+            const existingSlides = bannerContainer.querySelectorAll('.banner-slide:not(.banner-nav-arrow)');
+            existingSlides.forEach(slide => slide.remove());
+            
             indicatorsContainer.innerHTML = '';
             
             // Create banner slides
             banners.forEach((banner, index) => {
-                // Create banner slide
                 const slide = document.createElement('div');
                 slide.className = `banner-slide ${index === 0 ? 'active' : ''}`;
                 slide.id = `banner-${index}`;
                 slide.innerHTML = `
                     <div class="banner-content">
-                        <h1 class="banner-title text-white mb-6">
+                        <h1 class="banner-title text-white mb-6 mobile-optimized-heading">
                             ${banner.title}
                         </h1>
-                        <p class="banner-subtitle text-gray-300 mb-8">
+                        <p class="banner-subtitle text-gray-300 mb-8 mobile-optimized-text">
                             ${banner.subtitle}
                         </p>
                         
                         <div class="glass-card p-6 rounded-2xl mb-8 banner-offer-details">
                             <div class="flex items-center justify-center gap-4 mb-4 flex-wrap">
-                                <span class="text-2xl text-gray-400 line-through">${banner.originalPrice}</span>
-                                <span class="text-4xl md:text-5xl font-bold text-white">${banner.price}</span>
+                                <span class="text-2xl text-gray-400 line-through mobile-optimized-text">${banner.originalPrice}</span>
+                                <span class="text-4xl md:text-5xl font-bold text-white mobile-optimized-heading">${banner.price}</span>
                                 <span class="bg-gradient-to-r ${banner.color} text-white text-sm px-3 py-1 rounded-full font-bold">${banner.discount}</span>
                             </div>
-                            <p class="text-sm text-gray-300 mb-2 text-center">${banner.offer}</p>
-                            <div class="text-xs text-gray-500 mt-3 text-center">
+                            <p class="text-sm text-gray-300 mb-2 text-center mobile-optimized-text">${banner.offer}</p>
+                            <div class="text-xs text-gray-500 mt-3 text-center mobile-optimized-text">
                                 Offer ends in: <span class="countdown-timer text-white font-bold" data-timer="${banner.timer}">${banner.timer}</span>
                             </div>
                         </div>
                         
                         <div class="text-center">
-                            <button onclick="scrollToCourses('${banner.type}')" class="banner-cta bg-gradient-to-r ${banner.color} text-white hover:opacity-90 shadow-lg">
+                            <button onclick="scrollToCourses('${banner.type}')" class="banner-cta bg-gradient-to-r ${banner.color} text-white hover:opacity-90 shadow-lg mobile-optimized-text">
                                 ${banner.cta} →
                             </button>
                         </div>
                     </div>
                 `;
                 
-                bannerContainer.appendChild(slide);
+                bannerContainer.insertBefore(slide, bannerContainer.querySelector('.banner-overlay'));
                 
                 // Create indicator dot
                 const dot = document.createElement('div');
@@ -2030,37 +2308,31 @@
                 indicatorsContainer.appendChild(dot);
             });
             
-            // Start timers for all banners
             startBannerTimers();
         }
 
         function startBannerRotation() {
-            // Clear existing interval
             if (bannerInterval) clearInterval(bannerInterval);
             
-            // Set new interval with faster rotation (5 seconds)
             bannerInterval = setInterval(() => {
                 nextBanner();
             }, 5000);
         }
 
         function goToBanner(index) {
-            // Hide current banner
             document.querySelectorAll('.banner-slide').forEach(slide => {
                 slide.classList.remove('active');
             });
             
-            // Update dots
             document.querySelectorAll('.banner-dot').forEach(dot => {
                 dot.classList.remove('active');
             });
             
-            // Show selected banner
             currentBannerIndex = index;
             document.getElementById(`banner-${index}`).classList.add('active');
-            document.querySelectorAll('.banner-dot')[index].classList.add('active');
+            const dots = document.querySelectorAll('.banner-dot');
+            if (dots[index]) dots[index].classList.add('active');
             
-            // Reset rotation timer
             clearInterval(bannerInterval);
             startBannerRotation();
         }
@@ -2070,8 +2342,12 @@
             goToBanner(nextIndex);
         }
 
+        function prevBanner() {
+            const prevIndex = (currentBannerIndex - 1 + banners.length) % banners.length;
+            goToBanner(prevIndex);
+        }
+
         function startBannerTimers() {
-            // This is a simplified timer for display purposes
             setInterval(() => {
                 document.querySelectorAll('.countdown-timer').forEach(timer => {
                     const timeStr = timer.textContent;
@@ -2091,19 +2367,16 @@
         }
 
         function scrollToCourses(type) {
-            // Scroll to courses section
             const coursesSection = document.getElementById('courses');
             coursesSection.scrollIntoView({ behavior: 'smooth' });
             
-            // Filter courses after a short delay
             setTimeout(() => {
                 filterCourses(type);
             }, 500);
         }
 
-        // --- 7. COURSES SYSTEM - FULLY ROUNDED BUTTONS ---
+        // --- 7. COURSES SYSTEM ---
         function filterCourses(cat) {
-            // Update active filter button
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.classList.remove('active');
                 if (cat === 'all' && btn.textContent.includes('All')) btn.classList.add('active');
@@ -2114,7 +2387,6 @@
                 if (cat === 'visa' && btn.textContent.includes('Visa')) btn.classList.add('active');
             });
 
-            // Filter courses
             const filtered = cat === 'all' ? courses : courses.filter(c => c.type === cat);
             const grid = document.getElementById('course-grid');
             
@@ -2122,13 +2394,12 @@
                 grid.innerHTML = `
                     <div class="col-span-3 flex flex-col items-center justify-center py-16 text-gray-400">
                         <i class="fas fa-book-open text-5xl mb-4 opacity-30"></i>
-                        <p class="text-lg">No courses found in this category</p>
+                        <p class="text-lg mobile-optimized-text">No courses found in this category</p>
                     </div>
                 `;
                 return;
             }
             
-            // Render courses with fully rounded buttons
             grid.innerHTML = filtered.map(c => {
                 const discountPercent = Math.round(((c.original - c.price) / c.original) * 100);
                 return `
@@ -2137,20 +2408,20 @@
                         <div class="absolute top-4 right-4 bg-brand-danger text-xs font-bold px-3 py-1 rounded-full">${discountPercent}% OFF</div>
                         <div class="mb-4">
                             <span class="text-xs font-bold text-brand-accent uppercase tracking-widest">${c.type}</span>
-                            <h3 class="text-xl font-bold mt-2 mb-3 line-clamp-2">${c.title}</h3>
+                            <h3 class="text-xl font-bold mt-2 mb-3 line-clamp-2 mobile-optimized-heading">${c.title}</h3>
                             <div class="course-description">
-                                <p class="text-sm text-gray-400 line-clamp-2">${c.desc}</p>
+                                <p class="text-sm text-gray-400 line-clamp-2 mobile-optimized-text">${c.desc}</p>
                             </div>
                         </div>
                         
                         <div class="flex items-end gap-2 mb-6 border-t border-white/5 pt-4">
-                            <span class="text-2xl font-bold text-white">₹${c.price.toLocaleString()}</span>
-                            <span class="text-sm text-gray-500 line-through mb-1">₹${c.original.toLocaleString()}</span>
+                            <span class="text-2xl font-bold text-white mobile-optimized-heading">₹${c.price.toLocaleString()}</span>
+                            <span class="text-sm text-gray-500 line-through mb-1 mobile-optimized-text">₹${c.original.toLocaleString()}</span>
                         </div>
 
                         <div class="course-buttons">
-                            <button onclick="openCourseDetails(${c.id})" class="py-3 rounded-full border border-white/10 hover:bg-white/5 text-xs font-bold transition duration-300">View Details</button>
-                            <button onclick="addToCart(${c.id})" class="py-3 rounded-full bg-gradient-to-r from-brand-primary to-brand-secondary text-white hover:opacity-90 text-xs font-bold transition duration-300">Add to Cart</button>
+                            <button onclick="openCourseDetails(${c.id})" class="py-3 rounded-full border border-white/10 hover:bg-white/5 text-xs font-bold transition duration-300 mobile-optimized-text">View Details</button>
+                            <button onclick="addToCart(${c.id})" class="py-3 rounded-full bg-gradient-to-r from-brand-primary to-brand-secondary text-white hover:opacity-90 text-xs font-bold transition duration-300 mobile-optimized-text">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -2170,12 +2441,12 @@
                 <div class="flex flex-col md:flex-row gap-6 mb-6">
                     <div class="flex-1">
                         <span class="text-xs font-bold text-brand-accent uppercase tracking-widest">${course.type}</span>
-                        <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">${course.title}</h2>
-                        <p class="text-gray-400 text-sm">${course.desc}</p>
+                        <h2 class="text-2xl md:text-3xl font-bold text-white mb-2 mobile-optimized-heading">${course.title}</h2>
+                        <p class="text-gray-400 text-sm mobile-optimized-text">${course.desc}</p>
                     </div>
                     <div class="text-right">
-                        <div class="text-2xl md:text-3xl font-bold text-white">₹${course.price.toLocaleString()}</div>
-                        <div class="text-sm text-gray-500 line-through">₹${course.original.toLocaleString()}</div>
+                        <div class="text-2xl md:text-3xl font-bold text-white mobile-optimized-heading">₹${course.price.toLocaleString()}</div>
+                        <div class="text-sm text-gray-500 line-through mobile-optimized-text">₹${course.original.toLocaleString()}</div>
                         <div class="text-xs text-brand-danger font-bold">Save ${discountPercent}%</div>
                     </div>
                 </div>
@@ -2196,10 +2467,10 @@
                 </div>
 
                 <div class="mb-8">
-                    <h4 class="font-bold text-white mb-4 border-b border-white/10 pb-2">What You'll Learn</h4>
+                    <h4 class="font-bold text-white mb-4 border-b border-white/10 pb-2 mobile-optimized-heading">What You'll Learn</h4>
                     <ul class="space-y-3">
                         ${course.curriculum.map(item => `
-                            <li class="flex items-start gap-3 text-sm text-gray-300">
+                            <li class="flex items-start gap-3 text-sm text-gray-300 mobile-optimized-text">
                                 <i class="fas fa-check-circle text-brand-primary mt-0.5"></i> ${item}
                             </li>
                         `).join('')}
@@ -2208,13 +2479,13 @@
 
                 ${course.applicablePromos && course.applicablePromos.length > 0 ? `
                 <div class="mb-6 p-4 bg-white/5 rounded-xl">
-                    <h4 class="font-bold text-white mb-2 text-sm">Applicable Coupons:</h4>
+                    <h4 class="font-bold text-white mb-2 text-sm mobile-optimized-heading">Applicable Coupons:</h4>
                     <div class="flex flex-wrap gap-2">
                         ${course.applicablePromos.map(code => {
                             const promo = promos[code];
                             const isPermanentlyUsed = permanentUsedPromoCodes.includes(code);
                             return `
-                            <span class="text-xs px-2 py-1 rounded ${isPermanentlyUsed ? 'bg-red-500/10 text-red-400 border-red-500/30' : 'bg-green-500/10 text-green-400 border-green-500/30'} border">
+                            <span class="text-xs px-2 py-1 rounded ${isPermanentlyUsed ? 'bg-red-500/10 text-red-400 border-red-500/30' : 'bg-green-500/10 text-green-400 border-green-500/30'} border mobile-optimized-text">
                                 ${code} - ${promo.description} ${isPermanentlyUsed ? '(Permanently Used)' : ''}
                             </span>`;
                         }).join('')}
@@ -2223,10 +2494,10 @@
                 ` : ''}
 
                 <div class="flex gap-3">
-                    <button onclick="closeDetails()" class="flex-1 py-4 rounded-full border border-white/10 hover:bg-white/5 font-bold transition duration-300">
+                    <button onclick="closeDetails()" class="flex-1 py-4 rounded-full border border-white/10 hover:bg-white/5 font-bold transition duration-300 mobile-optimized-text">
                         Close
                     </button>
-                    <button onclick="closeDetails(); addToCart(${course.id})" class="flex-1 py-4 rounded-full bg-gradient-to-r from-brand-primary to-brand-secondary text-white hover:opacity-90 font-bold transition duration-300">
+                    <button onclick="closeDetails(); addToCart(${course.id})" class="flex-1 py-4 rounded-full bg-gradient-to-r from-brand-primary to-brand-secondary text-white hover:opacity-90 font-bold transition duration-300 mobile-optimized-text">
                         Enroll Now
                     </button>
                 </div>
@@ -2247,7 +2518,7 @@
             setTimeout(() => modal.classList.add('hidden'), 300);
         }
 
-        // --- 8. CART SYSTEM - Single column, no left/right division ---
+        // --- 8. CART SYSTEM ---
         function addToCart(id) {
             if (cart.find(x => x.id === id)) {
                 showNotification('This course is already in your cart!', 'warning');
@@ -2265,7 +2536,6 @@
         function removeFromCart(id) {
             cart = cart.filter(x => x.id !== id);
             
-            // Check if active promo is still valid
             if (activePromo) {
                 const promo = promos[activePromo];
                 const isStillValid = cart.some(course => 
@@ -2274,7 +2544,6 @@
                 );
                 
                 if (!isStillValid) {
-                    // Only remove from temporary used codes, not permanent ones
                     const index = usedPromoCodes.indexOf(activePromo);
                     if (index > -1) usedPromoCodes.splice(index, 1);
                     activePromo = null;
@@ -2288,7 +2557,6 @@
         }
 
         function renderCart() {
-            // Update cart count in header
             document.getElementById('cart-count').innerText = cart.length;
             document.getElementById('full-cart-count').innerText = `${cart.length} ${cart.length === 1 ? 'item' : 'items'}`;
             document.getElementById('cart-items-count').innerText = cart.length;
@@ -2316,17 +2584,17 @@
                 <div class="cart-course-item">
                     <div class="cart-course-details">
                         <span class="cart-course-type">${c.type}</span>
-                        <h4 class="font-bold text-white text-sm mb-1">${c.title}</h4>
-                        <p class="text-xs text-gray-400 mb-2">${c.desc}</p>
+                        <h4 class="font-bold text-white text-sm mb-1 mobile-optimized-heading">${c.title}</h4>
+                        <p class="text-xs text-gray-400 mb-2 mobile-optimized-text">${c.desc}</p>
                         <div class="flex items-center gap-2">
                             <span class="cart-course-price">₹${c.price.toLocaleString()}</span>
                             <span class="text-xs text-gray-500 line-through">₹${c.original.toLocaleString()}</span>
                             <span class="text-xs text-brand-danger font-bold">Save ${discountPercent}%</span>
                         </div>
                         <div class="flex flex-wrap gap-1 mt-2">
-                            <span class="text-xs px-2 py-1 bg-white/5 rounded">${c.dur}</span>
-                            <span class="text-xs px-2 py-1 bg-white/5 rounded">${c.lang}</span>
-                            ${c.cert === 'Yes' ? '<span class="text-xs px-2 py-1 bg-green-500/10 text-green-400 rounded">Certificate</span>' : ''}
+                            <span class="text-xs px-2 py-1 bg-white/5 rounded mobile-optimized-text">${c.dur}</span>
+                            <span class="text-xs px-2 py-1 bg-white/5 rounded mobile-optimized-text">${c.lang}</span>
+                            ${c.cert === 'Yes' ? '<span class="text-xs px-2 py-1 bg-green-500/10 text-green-400 rounded mobile-optimized-text">Certificate</span>' : ''}
                         </div>
                     </div>
                     
@@ -2394,7 +2662,7 @@
             
             container.innerHTML = Object.entries(promos).map(([code, details]) => `
                 <button onclick="applySpecificCode('${code}')" id="promo-btn-${code}" 
-                        class="px-2 py-1 bg-blue-500/10 border border-blue-500/30 text-blue-400 rounded text-xs font-mono font-bold hover:bg-blue-500/20 transition-all duration-300 text-center relative">
+                        class="px-2 py-1 bg-blue-500/10 border border-blue-500/30 text-blue-400 rounded text-xs font-mono font-bold hover:bg-blue-500/20 transition-all duration-300 text-center relative mobile-optimized-text">
                     <div class="font-bold">${code}</div>
                     <div class="promo-info truncate">${details.description}</div>
                 </button>
@@ -2447,13 +2715,13 @@
         function applySpecificCode(code) {
             if (permanentUsedPromoCodes.includes(code)) {
                 document.getElementById('full-promo-status').innerHTML = 
-                    `<span class="text-brand-danger font-bold">Permanently Used - Cannot be used again</span>`;
+                    `<span class="text-brand-danger font-bold mobile-optimized-text">Permanently Used - Cannot be used again</span>`;
                 return;
             }
             
             if (usedPromoCodes.includes(code)) {
                 document.getElementById('full-promo-status').innerHTML = 
-                    `<span class="text-brand-warning font-bold">Already applied</span>`;
+                    `<span class="text-brand-warning font-bold mobile-optimized-text">Already applied</span>`;
                 return;
             }
             
@@ -2464,7 +2732,7 @@
         function applyPromo() {
             if (cart.length === 0) {
                 document.getElementById('full-promo-status').innerHTML = 
-                    `<span class="text-brand-danger font-bold">Add a course first!</span>`;
+                    `<span class="text-brand-danger font-bold mobile-optimized-text">Add a course first!</span>`;
                 return;
             }
 
@@ -2473,19 +2741,19 @@
 
             if (!promos[code]) {
                 activePromo = null;
-                statusEl.innerHTML = `<span class="text-brand-danger font-bold">Invalid Code</span>`;
+                statusEl.innerHTML = `<span class="text-brand-danger font-bold mobile-optimized-text">Invalid Code</span>`;
                 updatePromoInfo();
                 renderCart();
                 return;
             }
 
             if (permanentUsedPromoCodes.includes(code)) {
-                statusEl.innerHTML = `<span class="text-brand-danger font-bold">Permanently Used - Cannot be used again</span>`;
+                statusEl.innerHTML = `<span class="text-brand-danger font-bold mobile-optimized-text">Permanently Used - Cannot be used again</span>`;
                 return;
             }
 
             if (usedPromoCodes.includes(code)) {
-                statusEl.innerHTML = `<span class="text-brand-warning font-bold">Already applied</span>`;
+                statusEl.innerHTML = `<span class="text-brand-warning font-bold mobile-optimized-text">Already applied</span>`;
                 return;
             }
 
@@ -2496,7 +2764,7 @@
             );
 
             if (!isEligible) {
-                statusEl.innerHTML = `<span class="text-brand-warning font-bold">Not applicable to courses in cart</span>`;
+                statusEl.innerHTML = `<span class="text-brand-warning font-bold mobile-optimized-text">Not applicable to courses in cart</span>`;
                 return;
             }
 
@@ -2504,7 +2772,7 @@
             usedPromoCodes.push(code);
             
             statusEl.innerHTML = `
-                <span class="text-brand-success font-bold">
+                <span class="text-brand-success font-bold mobile-optimized-text">
                     Applied! ${promo.discount * 100}% OFF
                 </span>`;
             
@@ -2527,7 +2795,6 @@
                 codeEl.textContent = `${activePromo} - ${promo.discount * 100}% OFF`;
                 descEl.textContent = isPermanentlyUsed ? 'Permanently Used' : promo.description;
                 
-                // Hide remove button if permanently used
                 if (isPermanentlyUsed) {
                     removeBtn.style.display = 'none';
                 } else {
@@ -2542,13 +2809,11 @@
 
         function removePromo() {
             if (activePromo) {
-                // Check if code is permanently used
                 if (permanentUsedPromoCodes.includes(activePromo)) {
                     showNotification('This promo code is permanently used and cannot be removed', 'warning');
                     return;
                 }
                 
-                // Remove from temporary used codes
                 const index = usedPromoCodes.indexOf(activePromo);
                 if (index > -1) usedPromoCodes.splice(index, 1);
             }
@@ -2570,19 +2835,16 @@
             const amount = parseInt(totalStr);
             currentPaymentAmount = amount;
 
-            // PERMANENTLY mark promo code as used when proceeding to payment
             if (activePromo && !permanentUsedPromoCodes.includes(activePromo)) {
                 permanentUsedPromoCodes.push(activePromo);
                 localStorage.setItem('tescaPermanentUsedPromos', JSON.stringify(permanentUsedPromoCodes));
                 
-                // Also remove from temporary used codes
                 const tempIndex = usedPromoCodes.indexOf(activePromo);
                 if (tempIndex > -1) {
                     usedPromoCodes.splice(tempIndex, 1);
                 }
             }
             
-            // Show applied code on payment page
             const appliedCodeDisplay = document.getElementById('applied-code-display');
             const appliedCodeText = document.getElementById('applied-code-text');
             
@@ -2633,14 +2895,11 @@
             document.getElementById('payment-modal').classList.add('hidden');
             clearInterval(timerInterval);
             
-            // When closing payment, clear the active promo
             if (activePromo) {
-                // Already permanently marked as used, so keep it that way
                 updatePromoButtonStates();
                 updatePromoInfo();
             }
             
-            // Clear cart after successful payment (simulated)
             cart = [];
             activePromo = null;
             usedPromoCodes = [];
@@ -2665,7 +2924,6 @@
         }
 
         function showNotification(message, type = 'info') {
-            // Create notification element
             const notification = document.createElement('div');
             notification.className = `fixed top-24 right-4 z-[1000] px-4 py-3 rounded-lg shadow-lg transform transition-all duration-300 translate-x-full`;
             
@@ -2678,16 +2936,14 @@
             notification.innerHTML = `
                 <div class="flex items-center gap-2">
                     <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'}"></i>
-                    <span>${message}</span>
+                    <span class="mobile-optimized-text">${message}</span>
                 </div>
             `;
             
             document.body.appendChild(notification);
             
-            // Animate in
             setTimeout(() => notification.classList.remove('translate-x-full'), 10);
             
-            // Remove after 3 seconds
             setTimeout(() => {
                 notification.classList.add('translate-x-full');
                 setTimeout(() => notification.remove(), 300);
@@ -2695,7 +2951,6 @@
         }
 
         function setupEventListeners() {
-            // Header scroll effect
             window.addEventListener('scroll', () => {
                 const header = document.getElementById('main-header');
                 if (window.scrollY > 100) {
@@ -2707,7 +2962,6 @@
                 }
             });
 
-            // Smooth scrolling for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
@@ -2715,13 +2969,11 @@
                     
                     e.preventDefault();
                     
-                    // Close mobile menu if open
                     const mobileMenu = document.getElementById('mobile-menu');
                     if (!mobileMenu.classList.contains('hidden')) {
                         toggleMobileMenu();
                     }
                     
-                    // Get target element
                     const targetId = href.substring(1);
                     const targetElement = document.getElementById(targetId);
                     
@@ -2738,7 +2990,6 @@
                 });
             });
             
-            // Close cart modal with Escape key
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
                     const cartModal = document.getElementById('full-cart-modal');
@@ -2750,6 +3001,14 @@
                     if (!paymentModal.classList.contains('hidden')) {
                         closePayment();
                     }
+                }
+            });
+            
+            window.addEventListener('resize', () => {
+                if (window.innerWidth <= 768) {
+                    document.body.classList.add('mobile-view');
+                } else {
+                    document.body.classList.remove('mobile-view');
                 }
             });
         }
