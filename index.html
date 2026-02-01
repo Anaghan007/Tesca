@@ -68,7 +68,7 @@
             padding: 0;
         }
 
-        /* Full-screen banner/hero section */
+        /* Hero section for mobile - combined with features */
         .hero-section {
             height: 100vh;
             min-height: 600px;
@@ -77,6 +77,31 @@
             overflow: hidden;
             margin: 0;
             padding: 0;
+        }
+
+        /* Mobile view: hero + features in one screen */
+        @media (max-width: 768px) {
+            .hero-section {
+                min-height: 100vh;
+                height: auto;
+                padding-bottom: 120px;
+            }
+            
+            .hero-section .features-container {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: rgba(5, 5, 7, 0.85);
+                backdrop-filter: blur(10px);
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                padding: 20px 0;
+                margin-top: 0;
+            }
+            
+            .banner-content {
+                padding-top: 40px;
+            }
         }
 
         /* Banner container */
@@ -189,7 +214,7 @@
             box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
         }
 
-        /* Header styling - FULLY ROUNDED IN CENTER */
+        /* Header styling - FULLY ROUNDED CENTERED */
         #main-header {
             transition: all 0.3s ease;
         }
@@ -312,7 +337,7 @@
             color: #10b981 !important;
         }
 
-        /* Promo code info styles - NO SCROLLER */
+        /* Promo code info styles */
         .promo-info {
             font-size: 10px;
             margin-top: 4px;
@@ -364,13 +389,142 @@
             font-weight: bold;
         }
 
-        /* Cart item styles - NEW FULLSCREEN CART DESIGN */
-        .cart-item {
-            padding: 16px;
-            margin-bottom: 12px;
-            background: rgba(255, 255, 255, 0.05);
+        /* NEW CART MODAL - Single column, no left/right division */
+        .full-cart-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 150;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        
+        .full-cart-content {
+            background: #0F1016;
+            width: 100%;
+            max-width: 800px;
+            height: 90vh;
+            max-height: 700px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .full-cart-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 5, 7, 0.9);
+            flex-shrink: 0;
+        }
+        
+        .full-cart-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+        }
+
+        /* Course item in cart */
+        .cart-course-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.03);
             border-radius: 12px;
+            margin-bottom: 1rem;
             border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .cart-course-details {
+            flex: 1;
+        }
+        
+        .cart-course-type {
+            font-size: 0.75rem;
+            color: #06b6d4;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .cart-course-price {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: white;
+            margin-top: 4px;
+        }
+        
+        .cart-remove-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .cart-remove-btn:hover {
+            background: rgba(239, 68, 68, 0.2);
+            transform: scale(1.1);
+        }
+
+        /* Applied promo info in cart */
+        .applied-promo-section {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+            border-radius: 12px;
+            padding: 1rem;
+            margin: 1rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .applied-promo-details {
+            flex: 1;
+        }
+        
+        .applied-promo-code {
+            font-weight: bold;
+            color: #10b981;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+        }
+        
+        .applied-promo-desc {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 4px;
+        }
+        
+        .remove-promo-btn {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        
+        .remove-promo-btn:hover {
+            background: rgba(239, 68, 68, 0.2);
         }
 
         /* Line clamp for cart titles */
@@ -462,14 +616,14 @@
 
         /* Feature icons */
         .feature-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 1.8rem;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -493,7 +647,7 @@
             background-clip: text;
         }
 
-        /* Course card hover - FIXED BUTTON ALIGNMENT */
+        /* Course card hover - FULLY ROUNDED BUTTONS */
         .course-card {
             transition: all 0.3s ease;
             border: 1px solid rgba(255, 255, 255, 0.05);
@@ -519,7 +673,7 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
         
-        /* Course buttons container - FIXED */
+        /* Course buttons container - FULLY ROUNDED */
         .course-buttons {
             margin-top: auto;
             display: flex;
@@ -534,6 +688,7 @@
             align-items: center;
             justify-content: center;
             white-space: nowrap;
+            border-radius: 9999px !important; /* Fully rounded */
         }
 
         /* Loader - NO SPIN ANIMATION */
@@ -599,258 +754,35 @@
             line-height: 1.4;
         }
 
-        /* NEW FULLSCREEN CART MODAL STYLES */
-        .full-cart-modal {
-            position: fixed;
-            inset: 0;
-            z-index: 150;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-        }
-        
-        .full-cart-content {
-            background: #0F1016;
-            width: 100%;
-            max-width: 1200px;
-            height: 90vh;
-            max-height: 800px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-        
-        .full-cart-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(5, 5, 7, 0.9);
-        }
-        
-        .full-cart-body {
-            display: flex;
-            flex: 1;
-            overflow: hidden;
-        }
-        
-        .full-cart-left {
-            flex: 1;
-            padding: 1.5rem;
-            overflow-y: auto;
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .full-cart-right {
-            width: 400px;
-            padding: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            overflow-y: auto;
-            background: rgba(15, 16, 22, 0.5);
-        }
-        
-        .full-cart-course-item {
+        /* App section grid for mobile - 2 columns 2 rows */
+        .app-section-grid {
             display: grid;
-            grid-template-columns: auto 1fr auto;
-            gap: 1rem;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 1.5rem;
+        }
+        
+        .app-section-grid .phone-mockup {
+            width: 100%;
+            height: 280px;
+            border: 8px solid #1a1a1a;
+            border-radius: 25px;
+        }
+        
+        .app-section-grid .phone-notch {
+            width: 80px;
+            height: 20px;
+        }
+        
+        .app-section-grid .phone-screen {
             padding: 1rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .full-cart-course-type {
-            font-size: 0.75rem;
-            color: #06b6d4;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .full-cart-course-price {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: white;
-        }
-        
-        .full-cart-remove-btn {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.2);
-            color: #ef4444;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .full-cart-remove-btn:hover {
-            background: rgba(239, 68, 68, 0.2);
-            transform: scale(1.1);
         }
 
-        /* Applied promo info in cart */
-        .applied-promo-section {
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            border-radius: 12px;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .applied-promo-details {
-            flex: 1;
-        }
-        
-        .applied-promo-code {
-            font-weight: bold;
-            color: #10b981;
-            font-family: 'Courier New', monospace;
-            font-size: 1.1rem;
-        }
-        
-        .applied-promo-desc {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-top: 4px;
-        }
-        
-        .remove-promo-btn {
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.2);
-            color: #ef4444;
-            padding: 6px 12px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .remove-promo-btn:hover {
-            background: rgba(239, 68, 68, 0.2);
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .section-padding {
-                padding-top: 3rem;
-                padding-bottom: 3rem;
-            }
-            .hero-section {
-                min-height: 500px;
-            }
-            /* Mobile header adjustment */
-            #main-header .glass {
-                margin: 1rem auto;
-                padding: 0.5rem 1rem;
-                max-width: 98%;
-            }
-            
-            .banner-title {
-                font-size: 2.5rem;
-            }
-            
-            /* Faculty card mobile adjustments */
-            .faculty-card .faculty-description {
-                font-size: 0.9rem !important;
-            }
-            
-            /* Full cart modal mobile responsiveness */
-            .full-cart-body {
-                flex-direction: column;
-            }
-            
-            .full-cart-left {
-                border-right: none;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                max-height: 50vh;
-            }
-            
-            .full-cart-right {
-                width: 100%;
-                max-height: 40vh;
-            }
-            
-            .full-cart-content {
-                height: 95vh;
-                max-height: 95vh;
-            }
-            
-            .full-cart-course-item {
-                grid-template-columns: 1fr;
-                gap: 0.5rem;
-            }
-            
-            .banner-subtitle {
-                font-size: 1.1rem;
-                padding: 0 1rem;
-            }
-            
-            .promo-section-compact {
-                grid-template-columns: 1fr;
-            }
-            
-            #main-header nav {
-                gap: 1rem;
-            }
-        }
-        
-        @media (max-width: 640px) {
-            .course-buttons {
-                flex-direction: column;
-            }
-            
-            .course-buttons button {
-                width: 100%;
-            }
-            
-            .promo-section-compact {
-                grid-template-columns: 1fr;
-            }
-            
-            #main-header nav {
-                display: none;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .call-btn span {
-                display: none;
-            }
-            
-            .call-btn {
-                padding: 8px 12px;
-            }
-            
-            .full-cart-header {
-                padding: 1rem;
-            }
-            
-            .full-cart-left, .full-cart-right {
-                padding: 1rem;
-            }
-            
-            .banner-title {
-                font-size: 2rem;
-            }
-            
-            .banner-subtitle {
-                font-size: 1rem;
-            }
+        /* Footer mobile grid - 2x2 */
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
         }
 
         /* Hero offer details center alignment */
@@ -869,11 +801,188 @@
             font-weight: 600 !important;
         }
 
-        /* Banner glass card center alignment */
-        .banner-glass-card {
-            display: inline-block;
-            margin: 0 auto;
-            text-align: center;
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .section-padding {
+                padding-top: 3rem;
+                padding-bottom: 3rem;
+            }
+            
+            /* Mobile header adjustment */
+            #main-header .glass {
+                margin: 1rem auto;
+                padding: 0.5rem 1rem;
+                max-width: 98%;
+            }
+            
+            .banner-title {
+                font-size: 2.2rem;
+                margin-bottom: 1rem;
+            }
+            
+            .banner-subtitle {
+                font-size: 1rem;
+                padding: 0 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            /* Faculty card mobile adjustments */
+            .faculty-card .faculty-description {
+                font-size: 0.85rem !important;
+            }
+            
+            /* Cart modal mobile responsiveness */
+            .full-cart-content {
+                max-width: 95%;
+                height: 85vh;
+                max-height: 85vh;
+            }
+            
+            .full-cart-header {
+                padding: 1rem;
+            }
+            
+            .full-cart-body {
+                padding: 1rem;
+            }
+            
+            .cart-course-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.75rem;
+            }
+            
+            .cart-course-details {
+                width: 100%;
+            }
+            
+            .cart-remove-btn {
+                align-self: flex-end;
+            }
+            
+            /* Course grid for mobile */
+            .course-buttons {
+                flex-direction: column;
+            }
+            
+            .course-buttons button {
+                width: 100%;
+            }
+            
+            /* Promo grid for mobile */
+            .promo-section-compact {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Hide header nav on mobile */
+            #main-header nav {
+                display: none;
+            }
+            
+            /* App section grid for mobile */
+            .app-section-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2, auto);
+            }
+            
+            /* Footer grid for mobile */
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            /* Stats section for mobile */
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .app-section-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, auto);
+            }
+            
+            .phone-mockup {
+                width: 250px;
+                height: 500px;
+                margin: 0 auto;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .banner-title {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .call-btn span {
+                display: none;
+            }
+            
+            .call-btn {
+                padding: 8px 12px;
+            }
+            
+            .feature-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .banner-title {
+                font-size: 1.6rem;
+            }
+            
+            .banner-subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .full-cart-content {
+                max-width: 100%;
+                height: 100vh;
+                max-height: 100vh;
+                border-radius: 0;
+            }
+        }
+
+        /* Fix for Play Store and social media links - no black popup */
+        .direct-link {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .direct-link:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero section features layout for mobile */
+        .mobile-features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        @media (min-width: 769px) {
+            .mobile-features-grid {
+                display: none;
+            }
+        }
+        
+        /* Desktop features grid */
+        .desktop-features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .desktop-features-grid {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -946,7 +1055,7 @@
         <a href="#contact" class="hover:text-brand-accent mobile-menu-link transition-colors duration-300" onclick="toggleMobileMenu()">Contact Us</a>
     </div>
 
-    <!-- Hero Banner Section - FIXED CENTER ALIGNMENT -->
+    <!-- Hero Banner Section with Mobile Features -->
     <section id="home" class="hero-section">
         <div class="banner-container">
             <!-- Banner slides will be inserted here by JavaScript -->
@@ -955,12 +1064,48 @@
                 <!-- Banner dots will be inserted here by JavaScript -->
             </div>
         </div>
+        
+        <!-- Mobile Features (shown only on mobile, part of hero section) -->
+        <div class="features-container md:hidden">
+            <div class="container mx-auto px-4">
+                <div class="mobile-features-grid">
+                    <div class="text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-user-graduate text-brand-primary"></i>
+                        </div>
+                        <h3 class="font-bold text-sm mb-1">Expert Tutors</h3>
+                        <p class="text-xs text-gray-400">Certified Trainers</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-globe-americas text-brand-accent"></i>
+                        </div>
+                        <h3 class="font-bold text-sm mb-1">Global Visa</h3>
+                        <p class="text-xs text-gray-400">99% Success Rate</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-mobile-alt text-brand-secondary"></i>
+                        </div>
+                        <h3 class="font-bold text-sm mb-1">Mobile App</h3>
+                        <p class="text-xs text-gray-400">Learn Anywhere</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="feature-icon">
+                            <i class="fas fa-certificate text-brand-warning"></i>
+                        </div>
+                        <h3 class="font-bold text-sm mb-1">Certified</h3>
+                        <p class="text-xs text-gray-400">ISO 9001:2015</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <!-- Features Section -->
-    <section class="py-16 bg-gradient-to-b from-brand-surface to-brand-bg">
+    <!-- Desktop Features Section (hidden on mobile) -->
+    <section class="py-16 bg-gradient-to-b from-brand-surface to-brand-bg hidden md:block">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+            <div class="desktop-features-grid">
                 <div class="animate-fade-in" style="animation-delay: 0.1s">
                     <div class="feature-icon">
                         <i class="fas fa-user-graduate text-brand-primary"></i>
@@ -1117,7 +1262,7 @@
         </div>
     </section>
 
-    <!-- App Section -->
+    <!-- App Section - MOBILE: 2 COLUMNS 2 ROWS -->
     <section id="app" class="section-padding bg-brand-surface2">
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
         
@@ -1125,18 +1270,16 @@
             <div class="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
                 <h2 class="text-5xl md:text-6xl font-bold leading-tight mb-6">Your <span class="gradient-text">Pocket Classroom</span></h2>
                 <p class="text-gray-400 text-lg mb-8">Download the TESCA App for seamless learning. Watch videos, take quizzes, and chat with tutors on the go.</p>
-                <div class="flex justify-center">
-                    <a href="https://play.google.com/store/apps/details?id=co.ted.fpqdt" target="_blank" class="flex items-center gap-4 bg-white text-black px-8 py-4 rounded-2xl font-bold hover:scale-105 transition shadow-lg shadow-white/10">
-                        <i class="fab fa-google-play text-3xl text-brand-success"></i>
-                        <div class="text-left">
-                            <div class="text-[10px] uppercase font-bold text-gray-600">Get it on</div>
-                            <div class="text-xl leading-none">Google Play</div>
-                        </div>
-                    </a>
-                </div>
+                <a href="https://play.google.com/store/apps/details?id=co.ted.fpqdt" target="_blank" class="direct-link inline-flex items-center gap-4 bg-white text-black px-8 py-4 rounded-2xl font-bold hover:scale-105 transition shadow-lg shadow-white/10">
+                    <i class="fab fa-google-play text-3xl text-brand-success"></i>
+                    <div class="text-left">
+                        <div class="text-[10px] uppercase font-bold text-gray-600">Get it on</div>
+                        <div class="text-xl leading-none">Google Play</div>
+                    </div>
+                </a>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="app-section-grid md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-8">
                 <div class="phone-mockup animate-fade-in" style="animation-delay: 0.1s">
                     <div class="phone-notch"></div>
                     <div class="phone-screen bg-gray-900 flex flex-col items-center justify-center p-6 text-center">
@@ -1145,7 +1288,7 @@
                         <p class="text-xs text-gray-500">Interactive video sessions</p>
                     </div>
                 </div>
-                <div class="phone-mockup animate-fade-in lg:translate-y-12" style="animation-delay: 0.2s">
+                <div class="phone-mockup animate-fade-in md:lg:translate-y-12" style="animation-delay: 0.2s">
                     <div class="phone-notch"></div>
                     <div class="phone-screen bg-gray-900 flex flex-col items-center justify-center p-6 text-center">
                         <div class="w-16 h-16 rounded-full bg-brand-accent/20 flex items-center justify-center mb-4"><i class="fas fa-file-alt text-brand-accent text-2xl"></i></div>
@@ -1161,7 +1304,7 @@
                         <p class="text-xs text-gray-500">Detailed analytics & results</p>
                     </div>
                 </div>
-                <div class="phone-mockup animate-fade-in lg:translate-y-12" style="animation-delay: 0.4s">
+                <div class="phone-mockup animate-fade-in md:lg:translate-y-12" style="animation-delay: 0.4s">
                     <div class="phone-notch"></div>
                     <div class="phone-screen bg-gray-900 flex flex-col items-center justify-center p-6 text-center">
                         <div class="w-16 h-16 rounded-full bg-brand-success/20 flex items-center justify-center mb-4"><i class="fas fa-comments text-brand-success text-2xl"></i></div>
@@ -1173,10 +1316,10 @@
         </div>
     </section>
 
-    <!-- Footer - REMOVED TESCA TEXT -->
+    <!-- Footer - MOBILE: 2x2 GRID -->
     <footer id="contact" class="bg-brand-surface border-t border-white/5 py-16">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            <div class="footer-grid md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-12 mb-16">
                 <div class="space-y-6">
                     <a href="#home" class="flex items-center">
                         <div class="w-24 h-24 flex items-center justify-center">
@@ -1186,7 +1329,7 @@
                     <p class="text-gray-400 text-sm leading-relaxed">
                         The leading platform for English mastery and Visa consultancy. We have helped 15,000+ students achieve their global dreams.
                     </p>
-                    <a href="https://play.google.com/store/apps/details?id=co.ted.fpqdt" target="_blank" class="inline-flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-lg hover:bg-white/10 transition">
+                    <a href="https://play.google.com/store/apps/details?id=co.ted.fpqdt" target="_blank" class="direct-link inline-flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-lg hover:bg-white/10 transition">
                         <i class="fab fa-google-play text-xl text-brand-success"></i>
                         <div class="text-left">
                             <div class="text-[9px] uppercase text-gray-400">Android App on</div>
@@ -1198,21 +1341,21 @@
                 <div>
                     <h4 class="font-bold text-white mb-6">Explore</h4>
                     <ul class="space-y-3 text-sm text-gray-400">
-                        <li><a href="#home" class="hover:text-brand-accent transition-colors duration-300">Home</a></li>
-                        <li><a href="#courses" class="hover:text-brand-accent transition-colors duration-300">All Courses</a></li>
-                        <li><a href="#faculty" class="hover:text-brand-accent transition-colors duration-300">Our Faculty</a></li>
-                        <li><a href="#app" class="hover:text-brand-accent transition-colors duration-300">Mobile App</a></li>
-                        <li><a href="#contact" class="hover:text-brand-accent transition-colors duration-300">Contact Support</a></li>
+                        <li><a href="#home" class="direct-link hover:text-brand-accent transition-colors duration-300">Home</a></li>
+                        <li><a href="#courses" class="direct-link hover:text-brand-accent transition-colors duration-300">All Courses</a></li>
+                        <li><a href="#faculty" class="direct-link hover:text-brand-accent transition-colors duration-300">Our Faculty</a></li>
+                        <li><a href="#app" class="direct-link hover:text-brand-accent transition-colors duration-300">Mobile App</a></li>
+                        <li><a href="#contact" class="direct-link hover:text-brand-accent transition-colors duration-300">Contact Support</a></li>
                     </ul>
                 </div>
 
                 <div>
                     <h4 class="font-bold text-white mb-6">Popular Courses</h4>
                     <ul class="space-y-3 text-sm text-gray-400">
-                        <li><a href="#courses" onclick="filterCourses('spoken')" class="hover:text-brand-accent transition-colors duration-300 cursor-pointer">Spoken English Basic</a></li>
-                        <li><a href="#courses" onclick="filterCourses('ielts')" class="hover:text-brand-accent transition-colors duration-300 cursor-pointer">IELTS Academic</a></li>
-                        <li><a href="#courses" onclick="filterCourses('pte')" class="hover:text-brand-accent transition-colors duration-300 cursor-pointer">PTE Fast Track</a></li>
-                        <li><a href="#courses" onclick="filterCourses('visa')" class="hover:text-brand-accent transition-colors duration-300 cursor-pointer">Student Visa Filing</a></li>
+                        <li><a href="#courses" onclick="filterCourses('spoken')" class="direct-link hover:text-brand-accent transition-colors duration-300 cursor-pointer">Spoken English Basic</a></li>
+                        <li><a href="#courses" onclick="filterCourses('ielts')" class="direct-link hover:text-brand-accent transition-colors duration-300 cursor-pointer">IELTS Academic</a></li>
+                        <li><a href="#courses" onclick="filterCourses('pte')" class="direct-link hover:text-brand-accent transition-colors duration-300 cursor-pointer">PTE Fast Track</a></li>
+                        <li><a href="#courses" onclick="filterCourses('visa')" class="direct-link hover:text-brand-accent transition-colors duration-300 cursor-pointer">Student Visa Filing</a></li>
                     </ul>
                 </div>
 
@@ -1220,14 +1363,14 @@
                     <h4 class="font-bold text-white mb-6">Get in Touch</h4>
                     <ul class="space-y-3 text-sm text-gray-400 mb-6">
                         <li class="flex items-start gap-3"><i class="fas fa-map-marker-alt mt-1 text-brand-primary"></i> <span>304, Royal Trade Center, Surat, Gujarat</span></li>
-                        <li class="flex items-center gap-3"><i class="fas fa-phone text-brand-primary"></i> <a href="tel:+918866722633" class="hover:text-brand-accent transition-colors duration-300">+91 88667 22633</a></li>
-                        <li class="flex items-center gap-3"><i class="fas fa-envelope text-brand-primary"></i> <a href="mailto:support@tesca.com" class="hover:text-brand-accent transition-colors duration-300">support@tesca.com</a></li>
+                        <li class="flex items-center gap-3"><i class="fas fa-phone text-brand-primary"></i> <a href="tel:+918866722633" class="direct-link hover:text-brand-accent transition-colors duration-300">+91 88667 22633</a></li>
+                        <li class="flex items-center gap-3"><i class="fas fa-envelope text-brand-primary"></i> <a href="mailto:support@tesca.com" class="direct-link hover:text-brand-accent transition-colors duration-300">support@tesca.com</a></li>
                     </ul>
                     <div class="flex gap-4">
-                        <a href="https://instagram.com" target="_blank" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-brand-primary hover:text-white transition duration-300"><i class="fab fa-instagram"></i></a>
-                        <a href="https://facebook.com" target="_blank" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-brand-primary hover:text-white transition duration-300"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://youtube.com" target="_blank" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-red-600 hover:text-white transition duration-300"><i class="fab fa-youtube"></i></a>
-                        <a href="https://linkedin.com" target="_blank" class="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-blue-600 hover:text-white transition duration-300"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://instagram.com" target="_blank" class="direct-link w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-brand-primary hover:text-white transition duration-300"><i class="fab fa-instagram"></i></a>
+                        <a href="https://facebook.com" target="_blank" class="direct-link w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-brand-primary hover:text-white transition duration-300"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://youtube.com" target="_blank" class="direct-link w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-red-600 hover:text-white transition duration-300"><i class="fab fa-youtube"></i></a>
+                        <a href="https://linkedin.com" target="_blank" class="direct-link w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-blue-600 hover:text-white transition duration-300"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
@@ -1235,14 +1378,14 @@
             <div class="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
                 <p>&copy; 2026 TESCA Education. All rights reserved.</p>
                 <div class="flex gap-4 mt-4 md:mt-0">
-                    <a href="#" class="hover:text-white transition-colors duration-300">Privacy Policy</a>
-                    <a href="#" class="hover:text-white transition-colors duration-300">Terms of Service</a>
+                    <a href="#" class="direct-link hover:text-white transition-colors duration-300">Privacy Policy</a>
+                    <a href="#" class="direct-link hover:text-white transition-colors duration-300">Terms of Service</a>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- NEW FULLSCREEN CART MODAL -->
+    <!-- NEW SIMPLE CART MODAL - Single column, no left/right division -->
     <div id="full-cart-modal" class="full-cart-modal">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-md" onclick="toggleCart()"></div>
         <div id="full-cart-panel" class="full-cart-content transform transition-all duration-300 scale-95 opacity-0">
@@ -1258,87 +1401,81 @@
             </div>
             
             <div class="full-cart-body">
-                <div class="full-cart-left">
-                    <h3 class="text-lg font-bold mb-4">Courses in Cart (<span id="cart-items-count">0</span>)</h3>
-                    
-                    <div id="full-cart-items">
-                        <!-- Cart items will be loaded here -->
+                <h3 class="text-lg font-bold mb-4">Courses in Cart (<span id="cart-items-count">0</span>)</h3>
+                
+                <div id="full-cart-items">
+                    <!-- Cart items will be loaded here -->
+                </div>
+                
+                <div id="empty-cart-message" class="flex flex-col items-center justify-center h-full text-gray-500 py-12">
+                    <i class="fas fa-shopping-basket text-5xl mb-4 opacity-30"></i>
+                    <p class="text-lg mb-2">Your cart is empty</p>
+                    <p class="text-sm text-gray-600">Add some courses to get started!</p>
+                </div>
+
+                <!-- Applied Promo Code Section -->
+                <div id="full-applied-promo-info" class="applied-promo-section hidden">
+                    <div class="applied-promo-details">
+                        <div class="applied-promo-code" id="full-current-promo-code"></div>
+                        <div class="applied-promo-desc" id="full-current-promo-desc"></div>
                     </div>
-                    
-                    <div id="empty-cart-message" class="flex flex-col items-center justify-center h-full text-gray-500 py-12">
-                        <i class="fas fa-shopping-basket text-5xl mb-4 opacity-30"></i>
-                        <p class="text-lg mb-2">Your cart is empty</p>
-                        <p class="text-sm text-gray-600">Add some courses to get started!</p>
+                    <button onclick="removePromo()" id="full-remove-promo-btn" class="remove-promo-btn">
+                        Remove
+                    </button>
+                </div>
+                
+                <!-- Important Note -->
+                <div class="important-note mb-4">
+                    <div class="note-title">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        IMPORTANT NOTE:
+                    </div>
+                    <div class="note-text">
+                        Choose Promo Code Wisely! Once you apply a promo code and proceed to payment, it will be permanently marked as <strong>USED</strong> and cannot be reused. Each code can be used only once per user.
                     </div>
                 </div>
                 
-                <div class="full-cart-right">
-                    <h3 class="text-lg font-bold mb-4">Order Summary</h3>
-                    
-                    <!-- Applied Promo Code Section with Remove Button -->
-                    <div id="full-applied-promo-info" class="applied-promo-section hidden">
-                        <div class="applied-promo-details">
-                            <div class="applied-promo-code" id="full-current-promo-code"></div>
-                            <div class="applied-promo-desc" id="full-current-promo-desc"></div>
-                        </div>
-                        <button onclick="removePromo()" id="full-remove-promo-btn" class="remove-promo-btn">
-                            Remove
-                        </button>
+                <!-- Promo Codes -->
+                <div class="mb-4">
+                    <p class="text-sm font-bold mb-2">Available Coupons</p>
+                    <div class="text-xs text-gray-500 mb-3">Click to apply. Each code can be used only once.</div>
+                    <div class="promo-section-compact" id="promo-buttons-container">
+                        <!-- Promo code buttons will be loaded here -->
                     </div>
                     
-                    <!-- Important Note -->
-                    <div class="important-note mb-4">
-                        <div class="note-title">
-                            <i class="fas fa-exclamation-triangle"></i>
-                            IMPORTANT NOTE:
+                    <div class="relative mt-3">
+                        <input id="full-promo-input" type="text" placeholder="ENTER PROMO CODE" class="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-sm focus:border-brand-primary outline-none font-mono uppercase text-white">
+                        <button onclick="applyPromo()" class="absolute right-2 top-2 bg-white/10 px-3 py-1 rounded text-xs font-bold hover:bg-white/20 transition duration-300">APPLY</button>
+                    </div>
+                    <div id="full-promo-status" class="text-xs h-4 mt-1"></div>
+                </div>
+                
+                <!-- Order Summary -->
+                <div class="mt-4 pt-4 border-t border-white/5">
+                    <div class="space-y-2 text-sm text-gray-400">
+                        <div class="flex justify-between">
+                            <span>Subtotal</span>
+                            <span id="full-cart-subtotal" class="text-white">₹0</span>
                         </div>
-                        <div class="note-text">
-                            Choose Promo Code Wisely! Once you apply a promo code and proceed to payment, it will be permanently marked as <strong>USED</strong> and cannot be reused. Each code can be used only once per user.
+                        <div class="flex justify-between text-brand-success">
+                            <span>Discount</span>
+                            <span id="full-cart-discount">-₹0</span>
                         </div>
+                        <div class="flex justify-between text-xs text-gray-500" id="full-discount-details"></div>
                     </div>
                     
-                    <!-- Promo Codes -->
-                    <div class="mb-4">
-                        <p class="text-sm font-bold mb-2">Available Coupons</p>
-                        <div class="text-xs text-gray-500 mb-3">Click to apply. Each code can be used only once.</div>
-                        <div class="promo-section-compact">
-                            <!-- Promo code buttons will be loaded here -->
-                        </div>
-                        
-                        <div class="relative mt-3">
-                            <input id="full-promo-input" type="text" placeholder="ENTER PROMO CODE" class="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-sm focus:border-brand-primary outline-none font-mono uppercase text-white">
-                            <button onclick="applyPromo()" class="absolute right-2 top-2 bg-white/10 px-3 py-1 rounded text-xs font-bold hover:bg-white/20 transition duration-300">APPLY</button>
-                        </div>
-                        <div id="full-promo-status" class="text-xs h-4 mt-1"></div>
+                    <div class="flex justify-between text-lg font-bold text-white pt-4 mt-4 border-t border-white/5">
+                        <span>Total Amount</span>
+                        <span id="full-cart-total">₹0</span>
                     </div>
                     
-                    <!-- Order Summary -->
-                    <div class="mt-4 pt-4 border-t border-white/5">
-                        <div class="space-y-2 text-sm text-gray-400">
-                            <div class="flex justify-between">
-                                <span>Subtotal</span>
-                                <span id="full-cart-subtotal" class="text-white">₹0</span>
-                            </div>
-                            <div class="flex justify-between text-brand-success">
-                                <span>Discount</span>
-                                <span id="full-cart-discount">-₹0</span>
-                            </div>
-                            <div class="flex justify-between text-xs text-gray-500" id="full-discount-details"></div>
-                        </div>
-                        
-                        <div class="flex justify-between text-lg font-bold text-white pt-4 mt-4 border-t border-white/5">
-                            <span>Total Amount</span>
-                            <span id="full-cart-total">₹0</span>
-                        </div>
-                        
-                        <button onclick="startPayment()" id="full-checkout-btn" class="w-full mt-6 bg-gradient-to-r from-brand-primary to-brand-secondary py-3 rounded-xl font-bold text-white shadow-lg hover:shadow-brand-primary/40 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-sm">
-                            <i class="fas fa-lock mr-2"></i>Proceed to Secure Payment
-                        </button>
-                        
-                        <p class="text-xs text-gray-500 text-center mt-3">
-                            <i class="fas fa-shield-alt mr-1"></i>100% Secure Payment
-                        </p>
-                    </div>
+                    <button onclick="startPayment()" id="full-checkout-btn" class="w-full mt-6 bg-gradient-to-r from-brand-primary to-brand-secondary py-3 rounded-xl font-bold text-white shadow-lg hover:shadow-brand-primary/40 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-sm">
+                        <i class="fas fa-lock mr-2"></i>Proceed to Secure Payment
+                    </button>
+                    
+                    <p class="text-xs text-gray-500 text-center mt-3">
+                        <i class="fas fa-shield-alt mr-1"></i>100% Secure Payment
+                    </p>
                 </div>
             </div>
         </div>
@@ -1355,7 +1492,7 @@
         </div>
     </div>
 
-    <!-- Payment Modal - WITH APPLIED CODE DISPLAY -->
+    <!-- Payment Modal -->
     <div id="payment-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-black/95 backdrop-blur-xl" onclick="closePayment()"></div>
         
@@ -1398,18 +1535,18 @@
                 <div class="text-center w-full mb-6">
                     <p class="text-xs text-gray-400 mb-3">Or pay directly via:</p>
                     <div class="flex gap-4 justify-center">
-                        <button onclick="openUPIApp('googlepay')" class="upi-app-btn bg-white rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-white/20 transition-all">
+                        <a href="upi://pay?pa=8866722633@upi&pn=TESCA_Education&am=0&cu=INR" class="upi-app-btn bg-white rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-white/20 transition-all">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg" class="h-6" alt="Google Pay">
-                        </button>
-                        <button onclick="openUPIApp('phonepe')" class="upi-app-btn bg-white rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-white/20 transition-all">
+                        </a>
+                        <a href="phonepe://pay?pa=8866722633@upi&pn=TESCA_Education&am=0&cu=INR" class="upi-app-btn bg-white rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-white/20 transition-all">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/PhonePe_Logo.svg" class="h-5" alt="PhonePe">
-                        </button>
-                        <button onclick="openUPIApp('paytm')" class="upi-app-btn bg-white rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-white/20 transition-all">
+                        </a>
+                        <a href="paytmmp://pay?pa=8866722633@upi&pn=TESCA_Education&am=0&cu=INR" class="upi-app-btn bg-white rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-white/20 transition-all">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Paytm_Logo_%28standalone%29.svg" class="h-4" alt="Paytm">
-                        </button>
-                        <button onclick="openGenericUPI()" class="upi-app-btn bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-blue-500/20 transition-all">
+                        </a>
+                        <a href="upi://pay?pa=8866722633@upi&pn=TESCA_Education&am=0&cu=INR&tn=TESCA Course Payment" class="upi-app-btn bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-blue-500/20 transition-all">
                             <i class="fas fa-mobile-alt text-white text-xl"></i>
-                        </button>
+                        </a>
                     </div>
                     <p class="text-[10px] text-gray-500 mt-2">Click any app to pay instantly</p>
                 </div>
@@ -1756,7 +1893,7 @@
             setupEventListeners();
         }
 
-        // --- 6. BANNER SYSTEM - FIXED CENTER ALIGNMENT ---
+        // --- 6. BANNER SYSTEM ---
         function renderBanners() {
             const bannerContainer = document.querySelector('.banner-container');
             const indicatorsContainer = document.getElementById('banner-indicators');
@@ -1786,8 +1923,8 @@
                                 <span class="text-4xl md:text-5xl font-bold text-white">${banner.price}</span>
                                 <span class="bg-gradient-to-r ${banner.color} text-white text-sm px-3 py-1 rounded-full font-bold">${banner.discount}</span>
                             </div>
-                            <p class="text-sm text-gray-300 mb-2">${banner.offer}</p>
-                            <div class="text-xs text-gray-500 mt-3">
+                            <p class="text-sm text-gray-300 mb-2 text-center">${banner.offer}</p>
+                            <div class="text-xs text-gray-500 mt-3 text-center">
                                 Offer ends in: <span class="countdown-timer text-white font-bold" data-timer="${banner.timer}">${banner.timer}</span>
                             </div>
                         </div>
@@ -1880,7 +2017,7 @@
             }, 500);
         }
 
-        // --- 7. COURSES SYSTEM - FIXED BUTTON ALIGNMENT ---
+        // --- 7. COURSES SYSTEM - FULLY ROUNDED BUTTONS ---
         function filterCourses(cat) {
             // Update active filter button
             document.querySelectorAll('.filter-btn').forEach(btn => {
@@ -1907,7 +2044,7 @@
                 return;
             }
             
-            // Render courses with proper button alignment
+            // Render courses with fully rounded buttons
             grid.innerHTML = filtered.map(c => {
                 const discountPercent = Math.round(((c.original - c.price) / c.original) * 100);
                 return `
@@ -1928,8 +2065,8 @@
                         </div>
 
                         <div class="course-buttons">
-                            <button onclick="openCourseDetails(${c.id})" class="py-3 rounded-xl border border-white/10 hover:bg-white/5 text-xs font-bold transition duration-300">View Details</button>
-                            <button onclick="addToCart(${c.id})" class="py-3 rounded-xl bg-gradient-to-r from-brand-primary to-brand-secondary text-white hover:opacity-90 text-xs font-bold transition duration-300">Add to Cart</button>
+                            <button onclick="openCourseDetails(${c.id})" class="py-3 rounded-full border border-white/10 hover:bg-white/5 text-xs font-bold transition duration-300">View Details</button>
+                            <button onclick="addToCart(${c.id})" class="py-3 rounded-full bg-gradient-to-r from-brand-primary to-brand-secondary text-white hover:opacity-90 text-xs font-bold transition duration-300">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -2002,10 +2139,10 @@
                 ` : ''}
 
                 <div class="flex gap-3">
-                    <button onclick="closeDetails()" class="flex-1 py-4 rounded-xl border border-white/10 hover:bg-white/5 font-bold transition duration-300">
+                    <button onclick="closeDetails()" class="flex-1 py-4 rounded-full border border-white/10 hover:bg-white/5 font-bold transition duration-300">
                         Close
                     </button>
-                    <button onclick="closeDetails(); addToCart(${course.id})" class="flex-1 py-4 rounded-xl bg-gradient-to-r from-brand-primary to-brand-secondary text-white hover:opacity-90 font-bold transition duration-300">
+                    <button onclick="closeDetails(); addToCart(${course.id})" class="flex-1 py-4 rounded-full bg-gradient-to-r from-brand-primary to-brand-secondary text-white hover:opacity-90 font-bold transition duration-300">
                         Enroll Now
                     </button>
                 </div>
@@ -2026,7 +2163,7 @@
             setTimeout(() => modal.classList.add('hidden'), 300);
         }
 
-        // --- 8. NEW FULLSCREEN CART SYSTEM ---
+        // --- 8. CART SYSTEM - Single column, no left/right division ---
         function addToCart(id) {
             if (cart.find(x => x.id === id)) {
                 showNotification('This course is already in your cart!', 'warning');
@@ -2035,7 +2172,7 @@
             
             const course = courses.find(x => x.id === id);
             cart.push(course);
-            renderFullCart();
+            renderCart();
             toggleCart(true);
             updatePromoButtonStates();
             showNotification('Course added to cart!', 'success');
@@ -2061,12 +2198,12 @@
                 }
             }
             
-            renderFullCart();
+            renderCart();
             updatePromoButtonStates();
             showNotification('Course removed from cart', 'info');
         }
 
-        function renderFullCart() {
+        function renderCart() {
             // Update cart count in header
             document.getElementById('cart-count').innerText = cart.length;
             document.getElementById('full-cart-count').innerText = `${cart.length} ${cart.length === 1 ? 'item' : 'items'}`;
@@ -2081,7 +2218,7 @@
                 emptyMessage.classList.remove('hidden');
                 checkoutBtn.disabled = true;
                 checkoutBtn.classList.add('opacity-50');
-                updateFullCartTotals(0, 0);
+                updateCartTotals(0, 0);
                 return;
             }
             
@@ -2092,17 +2229,16 @@
             container.innerHTML = cart.map(c => {
                 const discountPercent = Math.round(((c.original - c.price) / c.original) * 100);
                 return `
-                <div class="full-cart-course-item">
-                    <div class="flex flex-col">
-                        <span class="full-cart-course-type">${c.type}</span>
-                        <span class="full-cart-course-price">₹${c.price.toLocaleString()}</span>
-                        <span class="text-xs text-gray-500 line-through">₹${c.original.toLocaleString()}</span>
-                        <span class="text-xs text-brand-danger font-bold mt-1">Save ${discountPercent}%</span>
-                    </div>
-                    
-                    <div class="flex-1">
-                        <h4 class="font-bold text-white text-sm mb-2">${c.title}</h4>
+                <div class="cart-course-item">
+                    <div class="cart-course-details">
+                        <span class="cart-course-type">${c.type}</span>
+                        <h4 class="font-bold text-white text-sm mb-1">${c.title}</h4>
                         <p class="text-xs text-gray-400 mb-2">${c.desc}</p>
+                        <div class="flex items-center gap-2">
+                            <span class="cart-course-price">₹${c.price.toLocaleString()}</span>
+                            <span class="text-xs text-gray-500 line-through">₹${c.original.toLocaleString()}</span>
+                            <span class="text-xs text-brand-danger font-bold">Save ${discountPercent}%</span>
+                        </div>
                         <div class="flex flex-wrap gap-1 mt-2">
                             <span class="text-xs px-2 py-1 bg-white/5 rounded">${c.dur}</span>
                             <span class="text-xs px-2 py-1 bg-white/5 rounded">${c.lang}</span>
@@ -2110,7 +2246,7 @@
                         </div>
                     </div>
                     
-                    <button onclick="removeFromCart(${c.id})" class="full-cart-remove-btn" title="Remove from cart">
+                    <button onclick="removeFromCart(${c.id})" class="cart-remove-btn" title="Remove from cart">
                         <i class="fas fa-trash-alt text-xs"></i>
                     </button>
                 </div>
@@ -2127,11 +2263,11 @@
                 discountDetails = `${activePromo}: ${promo.discount * 100}% OFF`;
             }
             
-            updateFullCartTotals(subtotal, discount, discountDetails);
-            updateFullPromoInfo();
+            updateCartTotals(subtotal, discount, discountDetails);
+            updatePromoInfo();
         }
 
-        function updateFullCartTotals(sub, disc, details = '') {
+        function updateCartTotals(sub, disc, details = '') {
             document.getElementById('full-cart-subtotal').innerText = `₹${sub.toLocaleString()}`;
             document.getElementById('full-cart-discount').innerText = `-₹${disc.toLocaleString()}`;
             
@@ -2157,7 +2293,7 @@
                     panel.classList.remove('scale-95', 'opacity-0');
                     panel.classList.add('scale-100', 'opacity-100');
                 }, 10);
-                renderFullCart();
+                renderCart();
             } else {
                 panel.classList.remove('scale-100', 'opacity-100');
                 panel.classList.add('scale-95', 'opacity-0');
@@ -2167,9 +2303,9 @@
             }
         }
 
-        // --- 9. PROMO CODE SYSTEM FOR NEW CART ---
+        // --- 9. PROMO CODE SYSTEM ---
         function renderPromoButtons() {
-            const container = document.querySelector('#full-cart-modal .promo-section-compact');
+            const container = document.getElementById('promo-buttons-container');
             if (!container) return;
             
             container.innerHTML = Object.entries(promos).map(([code, details]) => `
@@ -2254,8 +2390,8 @@
             if (!promos[code]) {
                 activePromo = null;
                 statusEl.innerHTML = `<span class="text-brand-danger font-bold">Invalid Code</span>`;
-                updateFullPromoInfo();
-                renderFullCart();
+                updatePromoInfo();
+                renderCart();
                 return;
             }
 
@@ -2289,12 +2425,12 @@
                 </span>`;
             
             updatePromoButtonStates();
-            updateFullPromoInfo();
-            renderFullCart();
+            updatePromoInfo();
+            renderCart();
             showNotification('Promo code applied successfully!', 'success');
         }
 
-        function updateFullPromoInfo() {
+        function updatePromoInfo() {
             const infoEl = document.getElementById('full-applied-promo-info');
             const codeEl = document.getElementById('full-current-promo-code');
             const descEl = document.getElementById('full-current-promo-desc');
@@ -2336,13 +2472,13 @@
             activePromo = null;
             document.getElementById('full-promo-input').value = '';
             document.getElementById('full-promo-status').innerHTML = '';
-            updateFullPromoInfo();
+            updatePromoInfo();
             updatePromoButtonStates();
-            renderFullCart();
+            renderCart();
             showNotification('Promo code removed', 'info');
         }
 
-        // --- 10. PAYMENT SYSTEM - PERMANENTLY MARK CODES AS USED ---
+        // --- 10. PAYMENT SYSTEM ---
         function startPayment() {
             if (cart.length === 0) return;
 
@@ -2385,63 +2521,6 @@
             resetTimer();
         }
 
-        function openUPIApp(appName) {
-            const upiId = "8866722633@upi";
-            const merchantName = "TESCA Education";
-            const amount = currentPaymentAmount;
-            
-            let upiLink = "";
-            
-            switch(appName) {
-                case 'googlepay': upiLink = `tez://upi/pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR`; break;
-                case 'phonepe': upiLink = `phonepe://pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR`; break;
-                case 'paytm': upiLink = `paytmmp://pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR`; break;
-                default: upiLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR`; break;
-            }
-            
-            window.location.href = upiLink;
-            
-            setTimeout(() => {
-                if (document.hasFocus()) {
-                    alert(`Please install ${appName} to make the payment.`);
-                }
-            }, 500);
-        }
-
-        function openGenericUPI() {
-            const upiId = "8866722633@upi";
-            const merchantName = "TESCA Education";
-            const amount = currentPaymentAmount;
-            const upiLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR&tn=TESCA Course Payment`;
-            
-            window.location.href = upiLink;
-            
-            setTimeout(() => {
-                if (document.hasFocus()) {
-                    alert("Please install a UPI payment app to make the payment.");
-                }
-            }, 500);
-        }
-
-        function closePayment() {
-            document.getElementById('payment-modal').classList.add('hidden');
-            clearInterval(timerInterval);
-            
-            // When closing payment, clear the active promo
-            if (activePromo) {
-                // Already permanently marked as used, so keep it that way
-                updatePromoButtonStates();
-                updateFullPromoInfo();
-            }
-            
-            // Clear cart after successful payment (simulated)
-            cart = [];
-            activePromo = null;
-            usedPromoCodes = [];
-            renderFullCart();
-            document.getElementById('cart-count').innerText = '0';
-        }
-
         function resetTimer() {
             clearInterval(timerInterval);
             document.getElementById('qr-expired').classList.add('hidden');
@@ -2464,6 +2543,25 @@
                     document.getElementById('qr-expired').classList.remove('hidden');
                 }
             }, 1000);
+        }
+
+        function closePayment() {
+            document.getElementById('payment-modal').classList.add('hidden');
+            clearInterval(timerInterval);
+            
+            // When closing payment, clear the active promo
+            if (activePromo) {
+                // Already permanently marked as used, so keep it that way
+                updatePromoButtonStates();
+                updatePromoInfo();
+            }
+            
+            // Clear cart after successful payment (simulated)
+            cart = [];
+            activePromo = null;
+            usedPromoCodes = [];
+            renderCart();
+            document.getElementById('cart-count').innerText = '0';
         }
 
         // --- 11. UTILITY FUNCTIONS ---
