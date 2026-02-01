@@ -202,7 +202,7 @@
 
         /* Banner styles */
         .banner-container {
-            height: 500px;
+            height: 450px;
             position: relative;
             border-radius: 2rem;
             overflow: hidden;
@@ -215,7 +215,6 @@
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             height: 100%;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -225,10 +224,10 @@
         
         @media (max-width: 768px) {
             .banner-container {
-                height: 450px;
+                height: 400px;
             }
             .banner-glass {
-                padding: 1.5rem;
+                padding: 1rem;
                 overflow: hidden;
             }
         }
@@ -242,13 +241,13 @@
             object-fit: contain;
         }
         
-        /* Banner navigation buttons - ON BORDER */
+        /* Banner navigation buttons - ON BORDER & CENTERED VERTICALLY */
         .banner-nav-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(10px);
@@ -259,7 +258,7 @@
             justify-content: center;
             z-index: 30;
             transition: all 0.3s ease;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
         }
         
         .banner-nav-btn:hover {
@@ -269,19 +268,19 @@
         }
         
         .banner-nav-btn.prev {
-            left: -30px;
+            left: 20px;
         }
         
         .banner-nav-btn.next {
-            right: -30px;
+            right: 20px;
         }
         
-        /* For mobile, bring buttons slightly inside */
+        /* For mobile, adjust buttons */
         @media (max-width: 768px) {
             .banner-nav-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
             }
             .banner-nav-btn.prev {
                 left: 10px;
@@ -289,23 +288,6 @@
             .banner-nav-btn.next {
                 right: 10px;
             }
-        }
-        
-        /* Banner tag styles - fixed position */
-        .banner-tag {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #ff4757, #ff3838);
-            color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            z-index: 10;
-            box-shadow: 0 4px 15px rgba(255, 71, 87, 0.3);
         }
         
         /* Section spacing */
@@ -334,8 +316,7 @@
         
         /* Banner title spacing */
         .banner-title {
-            margin-top: 40px !important;
-            margin-bottom: 20px !important;
+            margin-bottom: 15px !important;
         }
         
         /* Call button in header */
@@ -361,6 +342,47 @@
         
         .call-btn i {
             font-size: 16px;
+            color: #10b981 !important;
+        }
+
+        /* Promo code info styles */
+        .promo-info {
+            font-size: 10px;
+            margin-top: 4px;
+            opacity: 0.8;
+        }
+
+        /* Used promo code style */
+        .used-promo {
+            opacity: 0.5;
+            cursor: not-allowed !important;
+        }
+
+        .used-promo:hover {
+            transform: none !important;
+            filter: none !important;
+        }
+
+        /* Cart item styles - compact */
+        .cart-item {
+            padding: 12px;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        /* Compact promo code section */
+        .promo-section-compact {
+            max-height: 120px;
+            overflow-y: auto;
+        }
+
+        /* Line clamp for cart titles */
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
     </style>
 </head>
@@ -402,9 +424,9 @@
                 </nav>
 
                 <div class="flex items-center gap-4">
-                    <!-- Call button with correct icon -->
+                    <!-- Fixed call button with correct icon -->
                     <a href="tel:+918866722633" class="call-btn">
-                        <i class="fas fa-phone-alt text-brand-success"></i> 
+                        <i class="fas fa-phone"></i> 
                         <span class="hidden sm:inline">Call Now</span>
                         <span class="sm:hidden">Call</span>
                     </a>
@@ -439,7 +461,7 @@
                 <!-- Banners will be inserted here by JavaScript -->
             </div>
 
-            <!-- Banner navigation buttons ON BORDER -->
+            <!-- Banner navigation buttons ON BORDER & CENTERED -->
             <button onclick="changeBanner(-1)" class="banner-nav-btn prev">
                 <i class="fas fa-chevron-left"></i>
             </button>
@@ -711,41 +733,52 @@
     <div id="cart-modal" class="fixed inset-0 z-[100] hidden">
         <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="toggleCart()"></div>
         <div id="cart-panel" class="absolute right-0 top-0 h-full w-full md:w-[450px] bg-brand-surface border-l border-white/10 flex flex-col transform transition-transform duration-300 translate-x-full shadow-2xl">
-            <div class="p-6 border-b border-white/5 flex justify-between items-center bg-black/20">
+            <div class="p-4 border-b border-white/5 flex justify-between items-center bg-black/20">
                 <h2 class="text-xl font-bold flex items-center gap-2"><i class="fas fa-shopping-cart text-brand-primary"></i> Your Cart</h2>
                 <button onclick="toggleCart()" class="text-gray-400 hover:text-white"><i class="fas fa-times text-xl"></i></button>
             </div>
             
-            <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
+            <div id="cart-items" class="flex-1 overflow-y-auto p-4">
                 <!-- Cart items will be loaded here -->
             </div>
 
-            <div class="p-6 bg-brand-surface2 border-t border-white/5">
-                <div class="mb-4">
-                    <p class="text-[10px] text-gray-400 uppercase font-bold mb-2">Tap to Apply Coupon</p>
-                    <div class="flex gap-2 overflow-x-auto pb-2">
-                        <button onclick="applySpecificCode('TESCA50')" class="px-3 py-1 bg-green-500/10 border border-green-500/30 text-green-400 rounded text-xs font-mono font-bold hover:bg-green-500/20 whitespace-nowrap">TESCA50</button>
-                        <button onclick="applySpecificCode('WELCOME10')" class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 text-blue-400 rounded text-xs font-mono font-bold hover:bg-blue-500/20 whitespace-nowrap">WELCOME10</button>
-                        <button onclick="applySpecificCode('FLASH40')" class="px-3 py-1 bg-purple-500/10 border border-purple-500/30 text-purple-400 rounded text-xs font-mono font-bold hover:bg-purple-500/20 whitespace-nowrap">FLASH40</button>
-                        <button onclick="applySpecificCode('IELTS35')" class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 rounded text-xs font-mono font-bold hover:bg-yellow-500/20 whitespace-nowrap">IELTS35</button>
-                        <button onclick="applySpecificCode('PTE45')" class="px-3 py-1 bg-pink-500/10 border border-pink-500/30 text-pink-400 rounded text-xs font-mono font-bold hover:bg-pink-500/20 whitespace-nowrap">PTE45</button>
-                        <button onclick="applySpecificCode('TOEFL30')" class="px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 rounded text-xs font-mono font-bold hover:bg-cyan-500/20 whitespace-nowrap">TOEFL30</span></button>
+            <div class="p-4 bg-brand-surface2 border-t border-white/5">
+                <!-- Promo code section with details - COMPACT -->
+                <div class="mb-3">
+                    <p class="text-[10px] text-gray-400 uppercase font-bold mb-1">Available Coupons</p>
+                    <div class="text-xs text-gray-500 mb-2">Click to apply. Each code can be used only once.</div>
+                    <div class="promo-section-compact grid grid-cols-2 gap-2 mb-3">
+                        <!-- Promo code buttons with details will be loaded by JavaScript -->
+                    </div>
+                    
+                    <!-- Applied promo info - COMPACT -->
+                    <div id="applied-promo-info" class="mt-2 p-2 bg-green-500/10 border border-green-500/20 rounded-lg hidden">
+                        <div class="flex justify-between items-center">
+                            <div class="flex-1 min-w-0">
+                                <span class="text-xs font-bold text-green-400 truncate block" id="current-promo-code"></span>
+                                <div class="text-xs text-gray-400 truncate" id="current-promo-desc"></div>
+                            </div>
+                            <button onclick="removePromo()" class="text-xs text-gray-400 hover:text-white ml-2 flex-shrink-0">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
 
-                <div class="relative mb-4">
-                    <input id="promo-input" type="text" placeholder="ENTER CODE" class="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-sm focus:border-brand-primary outline-none font-mono uppercase text-white">
-                    <button onclick="applyPromo()" class="absolute right-2 top-2 bg-white/10 px-3 py-1 rounded text-xs font-bold hover:bg-white/20 transition">APPLY</button>
+                <div class="relative mb-3">
+                    <input id="promo-input" type="text" placeholder="ENTER CODE" class="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-sm focus:border-brand-primary outline-none font-mono uppercase text-white">
+                    <button onclick="applyPromo()" class="absolute right-2 top-2 bg-white/10 px-2 py-1 rounded text-xs font-bold hover:bg-white/20 transition">APPLY</button>
                 </div>
-                <div id="promo-status" class="text-xs h-5 mb-2"></div>
+                <div id="promo-status" class="text-xs h-4 mb-2"></div>
 
-                <div class="space-y-2 text-sm text-gray-400 border-t border-white/5 pt-4">
+                <div class="space-y-1 text-sm text-gray-400 border-t border-white/5 pt-3">
                     <div class="flex justify-between"><span>Subtotal</span><span id="cart-subtotal" class="text-white">₹0</span></div>
                     <div class="flex justify-between text-brand-success"><span>Discount</span><span id="cart-discount">-₹0</span></div>
-                    <div class="flex justify-between text-xl font-bold text-white pt-2"><span>Total</span><span id="cart-total">₹0</span></div>
+                    <div class="flex justify-between text-xs text-gray-500" id="discount-details"></div>
+                    <div class="flex justify-between text-lg font-bold text-white pt-2 border-t border-white/5 mt-2"><span>Total</span><span id="cart-total">₹0</span></div>
                 </div>
 
-                <button onclick="startPayment()" id="checkout-btn" class="w-full mt-6 bg-gradient-to-r from-brand-primary to-brand-secondary py-4 rounded-xl font-bold text-white shadow-lg hover:shadow-brand-primary/40 transition disabled:opacity-50 disabled:cursor-not-allowed">
+                <button onclick="startPayment()" id="checkout-btn" class="w-full mt-4 bg-gradient-to-r from-brand-primary to-brand-secondary py-3 rounded-xl font-bold text-white shadow-lg hover:shadow-brand-primary/40 transition disabled:opacity-50 disabled:cursor-not-allowed text-sm">
                     Proceed to Pay <i class="fas fa-arrow-right ml-2"></i>
                 </button>
             </div>
@@ -832,182 +865,170 @@
     </div>
 
     <script>
-        // --- 1. SIMPLIFIED BANNERS ---
+        // --- 1. SIMPLIFIED BANNERS (NO TAGS, BETTER SPACING) ---
         const banners = [
             {
                 type: 'spoken',
-                tag: 'LIMITED TIME',
                 html: `
-                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full relative">
-                        <div class="banner-tag">LIMITED TIME</div>
-                        <h1 class="text-3xl md:text-4xl font-bold mb-4 px-4 banner-title">Speak English Like a Native in <span class="text-yellow-300">30 Days!</span></h1>
-                        <p class="text-gray-300 mb-6 px-4 text-lg md:text-xl">Join 10,000+ students who transformed their communication skills</p>
+                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full">
+                        <h1 class="text-2xl md:text-3xl font-bold mb-3 px-4 banner-title">Speak English Like a Native in <span class="text-yellow-300">30 Days!</span></h1>
+                        <p class="text-gray-300 mb-3 px-4 text-sm md:text-base">Join 10,000+ students who transformed their communication skills</p>
                         
-                        <div class="glass-card p-6 mb-6 w-full max-w-lg mx-4">
-                            <h2 class="text-yellow-300 font-bold mb-4 text-xl">🚀 LAUNCH OFFER: 40% OFF</h2>
-                            <div class="flex items-center justify-center gap-3 mb-4">
-                                <span class="text-gray-400 line-through text-lg">₹15,999</span>
-                                <span class="text-4xl md:text-5xl font-bold text-white">₹9,599</span>
+                        <div class="glass-card p-3 mb-3 w-full max-w-md mx-4">
+                            <h2 class="text-yellow-300 font-bold mb-2 text-base">🚀 LAUNCH OFFER: 40% OFF</h2>
+                            <div class="flex items-center justify-center gap-2 mb-2">
+                                <span class="text-gray-400 line-through text-sm">₹15,999</span>
+                                <span class="text-2xl md:text-3xl font-bold text-white">₹9,599</span>
                             </div>
-                            <div class="text-left space-y-3 text-base">
-                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> Live 1:1 Sessions with Certified Trainers</p>
-                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> Daily Practice Group with Native Speakers</p>
-                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> Lifetime Access to 200+ Interactive Lessons</p>
+                            <div class="text-left space-y-1 text-xs">
+                                <p class="text-green-400 flex items-start gap-1"><i class="fas fa-check mt-1 text-xs"></i> Live 1:1 Sessions with Certified Trainers</p>
+                                <p class="text-green-400 flex items-start gap-1"><i class="fas fa-check mt-1 text-xs"></i> Daily Practice Group with Native Speakers</p>
+                                <p class="text-green-400 flex items-start gap-1"><i class="fas fa-check mt-1 text-xs"></i> Lifetime Access to 200+ Interactive Lessons</p>
                             </div>
                         </div>
                         
-                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('spoken')" class="bg-yellow-300 text-blue-900 font-bold py-4 px-10 rounded-full hover:bg-yellow-400 transition text-xl transform hover:scale-105">
+                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('spoken')" class="bg-yellow-300 text-blue-900 font-bold py-2 px-6 rounded-full hover:bg-yellow-400 transition text-sm transform hover:scale-105 mt-2">
                             ENROLL NOW - 40% OFF
                         </button>
-                        <p class="text-sm text-gray-300 mt-6 px-4">Offer ends in: <span class="countdown-timer text-yellow-300 font-bold text-lg">24:00:00</span></p>
+                        <p class="text-xs text-gray-300 mt-3 px-4">Offer ends in: <span class="countdown-timer text-yellow-300 font-bold">24:00:00</span></p>
                     </div>
                 `
             },
             {
                 type: 'spoken',
-                tag: 'FLASH SALE',
                 html: `
-                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full relative">
-                        <div class="banner-tag" style="background: linear-gradient(135deg, #ff3838, #ff6b6b);">FLASH SALE</div>
-                        <h1 class="text-3xl md:text-4xl font-bold mb-4 px-4 banner-title">Get <span class="text-orange-300">50% OFF</span> + 2 FREE Months!</h1>
-                        <p class="text-gray-300 mb-6 px-4 text-lg md:text-xl">"This course changed my career!" - Rohan S., placed at Amazon</p>
+                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full">
+                        <h1 class="text-2xl md:text-3xl font-bold mb-3 px-4 banner-title">Get <span class="text-orange-300">50% OFF</span> + 2 FREE Months!</h1>
+                        <p class="text-gray-300 mb-3 px-4 text-sm md:text-base">"This course changed my career!" - Rohan S., placed at Amazon</p>
                         
-                        <div class="glass-card p-6 mb-6 w-full max-w-lg mx-4">
-                            <h2 class="text-orange-300 font-bold mb-4 text-xl">🎯 TODAY ONLY: 50% OFF</h2>
-                            <div class="flex items-center justify-center gap-3 mb-4">
-                                <span class="text-gray-400 line-through text-lg">₹15,999</span>
-                                <span class="text-4xl md:text-5xl font-bold text-white">₹7,999</span>
-                                <span class="bg-red-500 text-white text-sm px-4 py-2 rounded-lg font-bold">SAVE ₹8,000</span>
+                        <div class="glass-card p-3 mb-3 w-full max-w-md mx-4">
+                            <h2 class="text-orange-300 font-bold mb-2 text-base">🎯 TODAY ONLY: 50% OFF</h2>
+                            <div class="flex items-center justify-center gap-2 mb-2">
+                                <span class="text-gray-400 line-through text-sm">₹15,999</span>
+                                <span class="text-2xl md:text-3xl font-bold text-white">₹7,999</span>
+                                <span class="bg-red-500 text-white text-xs px-2 py-1 rounded font-bold">SAVE ₹8,000</span>
                             </div>
-                            <div class="text-left space-y-3 text-base">
-                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> FREE Job Interview Preparation Module</p>
-                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> 2 Additional Months Access EXTENDED</p>
-                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> Personal Mentor for 3 Months</p>
+                            <div class="text-left space-y-1 text-xs">
+                                <p class="text-green-400 flex items-start gap-1"><i class="fas fa-check mt-1 text-xs"></i> FREE Job Interview Preparation Module</p>
+                                <p class="text-green-400 flex items-start gap-1"><i class="fas fa-check mt-1 text-xs"></i> 2 Additional Months Access EXTENDED</p>
+                                <p class="text-green-400 flex items-start gap-1"><i class="fas fa-check mt-1 text-xs"></i> Personal Mentor for 3 Months</p>
                             </div>
                         </div>
                         
-                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('spoken')" class="bg-orange-300 text-blue-900 font-bold py-4 px-10 rounded-full hover:bg-orange-400 transition text-xl shadow-lg transform hover:scale-105">
+                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('spoken')" class="bg-orange-300 text-blue-900 font-bold py-2 px-6 rounded-full hover:bg-orange-400 transition text-sm shadow-lg transform hover:scale-105 mt-2">
                             GRAB 50% OFF + FREE BONUS
                         </button>
-                        <p class="text-sm text-gray-300 mt-6 px-4">Only <span class="text-orange-300 font-bold text-xl">12</span> seats left!</p>
+                        <p class="text-xs text-gray-300 mt-3 px-4">Only <span class="text-orange-300 font-bold">12</span> seats left!</p>
                     </div>
                 `
             },
             {
                 type: 'spoken',
-                tag: 'LAST CHANCE',
                 html: `
-                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full relative">
-                        <div class="banner-tag" style="background: linear-gradient(135deg, #000000, #434343);">LAST CHANCE</div>
-                        <h1 class="text-3xl md:text-4xl font-bold mb-4 px-4 banner-title"><span class="text-yellow-300">FINAL 10 SLOTS!</span> Get <span class="text-yellow-300">60% OFF</span></h1>
-                        <p class="text-gray-300 mb-6 px-4 text-lg md:text-xl">"I achieved fluency in just 8 weeks!" - Priya M., now in Canada</p>
+                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full">
+                        <h1 class="text-2xl md:text-3xl font-bold mb-3 px-4 banner-title"><span class="text-yellow-300">FINAL 10 SLOTS!</span> Get <span class="text-yellow-300">60% OFF</span></h1>
+                        <p class="text-gray-300 mb-3 px-4 text-sm md:text-base">"I achieved fluency in just 8 weeks!" - Priya M., now in Canada</p>
                         
-                        <div class="glass-card p-6 mb-6 w-full max-w-lg mx-4 border-2 border-dashed border-yellow-300">
-                            <h2 class="text-yellow-300 font-bold mb-4 text-xl">⚡ ULTIMATE PACKAGE: 60% OFF</h2>
-                            <div class="flex items-center justify-center gap-3 mb-4">
-                                <span class="text-gray-400 line-through text-lg">₹15,999</span>
-                                <span class="text-5xl md:text-6xl font-bold text-yellow-300">₹6,399</span>
-                                <span class="bg-black text-white text-sm px-4 py-2 rounded-lg font-bold">SAVE ₹9,600</span>
+                        <div class="glass-card p-3 mb-3 w-full max-w-md mx-4 border-2 border-dashed border-yellow-300">
+                            <h2 class="text-yellow-300 font-bold mb-2 text-base">⚡ ULTIMATE PACKAGE: 60% OFF</h2>
+                            <div class="flex items-center justify-center gap-2 mb-2">
+                                <span class="text-gray-400 line-through text-sm">₹15,999</span>
+                                <span class="text-3xl md:text-4xl font-bold text-yellow-300">₹6,399</span>
+                                <span class="bg-black text-white text-xs px-2 py-1 rounded font-bold">SAVE ₹9,600</span>
                             </div>
-                            <div class="text-left space-y-3 text-base">
-                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> IELTS Speaking Module FREE</p>
-                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> Accent Training Masterclass</p>
-                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> Business English Certificate</p>
+                            <div class="text-left space-y-1 text-xs">
+                                <p class="text-green-400 flex items-start gap-1"><i class="fas fa-check mt-1 text-xs"></i> IELTS Speaking Module FREE</p>
+                                <p class="text-green-400 flex items-start gap-1"><i class="fas fa-check mt-1 text-xs"></i> Accent Training Masterclass</p>
+                                <p class="text-green-400 flex items-start gap-1"><i class="fas fa-check mt-1 text-xs"></i> Business English Certificate</p>
                             </div>
                         </div>
                         
-                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('spoken')" class="bg-yellow-300 text-red-700 font-bold py-4 px-10 rounded-full hover:bg-yellow-400 transition text-xl shadow-xl transform hover:scale-105">
+                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('spoken')" class="bg-yellow-300 text-red-700 font-bold py-2 px-6 rounded-full hover:bg-yellow-400 transition text-sm shadow-xl transform hover:scale-105 mt-2">
                             GET 60% OFF - LAST 10 SEATS!
                         </button>
-                        <p class="text-sm text-gray-300 mt-6 px-4"><span class="text-yellow-300">🔥</span> Only <span class="text-yellow-300 font-bold text-xl">8</span> slots remaining!</p>
+                        <p class="text-xs text-gray-300 mt-3 px-4"><span class="text-yellow-300">🔥</span> Only <span class="text-yellow-300 font-bold">8</span> slots remaining!</p>
                     </div>
                 `
             },
             {
                 type: 'ielts',
-                tag: 'LAST 15 SEATS',
                 html: `
-                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full relative">
-                        <div class="banner-tag" style="background: linear-gradient(135deg, #ff3838, #ff6b6b);">LAST 15 SEATS</div>
-                        <h1 class="text-3xl md:text-4xl font-bold mb-4 px-4 banner-title">Ace IELTS with <span class="text-orange-300">8+ Band Guarantee!</span></h1>
-                        <p class="text-gray-300 mb-6 px-4 text-lg md:text-xl">Join India's #1 IELTS Prep with 94% Success Rate</p>
+                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full">
+                        <h1 class="text-2xl md:text-3xl font-bold mb-3 px-4 banner-title">Ace IELTS with <span class="text-orange-300">8+ Band Guarantee!</span></h1>
+                        <p class="text-gray-300 mb-3 px-4 text-sm md:text-base">Join India's #1 IELTS Prep with 94% Success Rate</p>
                         
-                        <div class="glass-card p-6 mb-6 w-full max-w-lg mx-4">
-                            <h2 class="text-orange-300 font-bold mb-4 text-xl">SPECIAL OFFER: 35% OFF</h2>
-                            <div class="flex items-center justify-center gap-3 mb-4">
-                                <span class="text-gray-400 line-through text-lg">₹24,999</span>
-                                <span class="text-4xl md:text-5xl font-bold text-white">₹16,249</span>
-                                <span class="bg-red-500 text-white text-sm px-4 py-2 rounded-lg font-bold">SAVE ₹8,750</span>
+                        <div class="glass-card p-3 mb-3 w-full max-w-md mx-4">
+                            <h2 class="text-orange-300 font-bold mb-2 text-base">SPECIAL OFFER: 35% OFF</h2>
+                            <div class="flex items-center justify-center gap-2 mb-2">
+                                <span class="text-gray-400 line-through text-sm">₹24,999</span>
+                                <span class="text-2xl md:text-3xl font-bold text-white">₹16,249</span>
+                                <span class="bg-red-500 text-white text-xs px-2 py-1 rounded font-bold">SAVE ₹8,750</span>
                             </div>
-                            <div class="text-left space-y-3 text-base">
-                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> 40+ Live Sessions with Band 9 Trainers</p>
-                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> 5 Full Mock Tests with Evaluation</p>
-                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> FREE Spoken English Course (Worth ₹9,999)</p>
+                            <div class="text-left space-y-1 text-xs">
+                                <p class="text-green-400 flex items-start gap-1"><i class="fas fa-check mt-1 text-xs"></i> 40+ Live Sessions with Band 9 Trainers</p>
+                                <p class="text-green-400 flex items-start gap-1"><i class="fas fa-check mt-1 text-xs"></i> 5 Full Mock Tests with Evaluation</p>
+                                <p class="text-green-400 flex items-start gap-1"><i class="fas fa-check mt-1 text-xs"></i> FREE Spoken English Course (Worth ₹9,999)</p>
                             </div>
                         </div>
                         
-                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('ielts')" class="bg-orange-300 text-blue-900 font-bold py-4 px-10 rounded-full hover:bg-orange-400 transition text-xl transform hover:scale-105">
+                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('ielts')" class="bg-orange-300 text-blue-900 font-bold py-2 px-6 rounded-full hover:bg-orange-400 transition text-sm transform hover:scale-105 mt-2">
                             GET IELTS + FREE SPOKEN ENGLISH
                         </button>
-                        <p class="text-sm text-gray-300 mt-6 px-4"><span class="text-orange-300">🎯</span> 1,287 students achieved 8+ bands</p>
+                        <p class="text-xs text-gray-300 mt-3 px-4"><span class="text-orange-300">🎯</span> 1,287 students achieved 8+ bands</p>
                     </div>
                 `
             },
             {
                 type: 'ielts',
-                tag: 'FLASH SALE',
                 html: `
-                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full relative">
-                        <div class="banner-tag" style="background: linear-gradient(135deg, #ff3838, #ff6b6b);">FLASH SALE</div>
-                        <h1 class="text-3xl md:text-4xl font-bold mb-4 px-4 banner-title">IELTS <span class="text-yellow-300">CRASH COURSE</span></h1>
-                        <p class="text-gray-300 mb-6 px-4 text-lg md:text-xl">6-Week Intensive Program | Band 7+ Guaranteed</p>
+                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full">
+                        <h1 class="text-2xl md:text-3xl font-bold mb-3 px-4 banner-title">IELTS <span class="text-yellow-300">CRASH COURSE</span></h1>
+                        <p class="text-gray-300 mb-3 px-4 text-sm md:text-base">6-Week Intensive Program | Band 7+ Guaranteed</p>
                         
-                        <div class="glass-card p-6 mb-6 w-full max-w-lg mx-4 border-2 border-yellow-300">
-                            <h2 class="text-yellow-300 font-bold mb-4 text-xl">FLASH SALE: 45% OFF</h2>
-                            <div class="flex items-center justify-center gap-3 mb-4">
-                                <span class="text-gray-400 line-through text-lg">₹29,999</span>
-                                <span class="text-5xl md:text-6xl font-bold text-yellow-300">₹16,499</span>
+                        <div class="glass-card p-3 mb-3 w-full max-w-md mx-4 border-2 border-yellow-300">
+                            <h2 class="text-yellow-300 font-bold mb-2 text-base">FLASH SALE: 45% OFF</h2>
+                            <div class="flex items-center justify-center gap-2 mb-2">
+                                <span class="text-gray-400 line-through text-sm">₹29,999</span>
+                                <span class="text-3xl md:text-4xl font-bold text-yellow-300">₹16,499</span>
                             </div>
-                            <div class="text-left space-y-3 text-base">
-                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> Band 7+ Guarantee or 50% Refund</p>
-                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> FREE Visa SOP Review</p>
-                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> Spoken English Module Included</p>
+                            <div class="text-left space-y-1 text-xs">
+                                <p class="text-green-400 flex items-start gap-1"><i class="fas fa-check mt-1 text-xs"></i> Band 7+ Guarantee or 50% Refund</p>
+                                <p class="text-green-400 flex items-start gap-1"><i class="fas fa-check mt-1 text-xs"></i> FREE Visa SOP Review</p>
+                                <p class="text-green-400 flex items-start gap-1"><i class="fas fa-check mt-1 text-xs"></i> Spoken English Module Included</p>
                             </div>
                         </div>
                         
-                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('ielts')" class="bg-yellow-300 text-blue-900 font-bold py-4 px-10 rounded-full hover:bg-yellow-400 transition text-xl shadow-lg transform hover:scale-105">
+                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('ielts')" class="bg-yellow-300 text-blue-900 font-bold py-2 px-6 rounded-full hover:bg-yellow-400 transition text-sm shadow-lg transform hover:scale-105 mt-2">
                             ENROLL NOW - BAND 7+ GUARANTEED
                         </button>
-                        <p class="text-sm text-gray-300 mt-6 px-4"><span class="text-yellow-300">⏰</span> Only <span class="font-bold text-xl">12</span> seats left!</p>
+                        <p class="text-xs text-gray-300 mt-3 px-4"><span class="text-yellow-300">⏰</span> Only <span class="font-bold">12</span> seats left!</p>
                     </div>
                 `
             },
             {
                 type: 'pte',
-                tag: 'LIMITED TIME',
                 html: `
-                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full relative">
-                        <div class="banner-tag">LIMITED TIME</div>
-                        <h1 class="text-3xl md:text-4xl font-bold mb-4 px-4 banner-title">PTE <span class="text-cyan-300">90/90 Guarantee</span> in 4 Weeks!</h1>
-                        <p class="text-gray-300 mb-6 px-4 text-lg md:text-xl">India's Highest PTE Success Rate | 87% Score 79+</p>
+                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full">
+                        <h1 class="text-2xl md:text-3xl font-bold mb-3 px-4 banner-title">PTE <span class="text-cyan-300">90/90 Guarantee</span> in 4 Weeks!</h1>
+                        <p class="text-gray-300 mb-3 px-4 text-sm md:text-base">India's Highest PTE Success Rate | 87% Score 79+</p>
                         
-                        <div class="glass-card p-6 mb-6 w-full max-w-lg mx-4">
-                            <h2 class="text-cyan-300 font-bold mb-4 text-xl">LAUNCH OFFER: 40% OFF</h2>
-                            <div class="flex items-center justify-center gap-3 mb-4">
-                                <span class="text-gray-400 line-through text-lg">₹22,999</span>
-                                <span class="text-4xl md:text-5xl font-bold text-white">₹13,799</span>
+                        <div class="glass-card p-3 mb-3 w-full max-w-md mx-4">
+                            <h2 class="text-cyan-300 font-bold mb-2 text-base">LAUNCH OFFER: 40% OFF</h2>
+                            <div class="flex items-center justify-center gap-2 mb-2">
+                                <span class="text-gray-400 line-through text-sm">₹22,999</span>
+                                <span class="text-2xl md:text-3xl font-bold text-white">₹13,799</span>
                             </div>
-                            <div class="text-left space-y-3 text-base">
-                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> Daily Practice with AI Scoring</p>
-                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> FREE Spoken English Fluency Course</p>
-                                <p class="text-green-400 flex items-start gap-3"><i class="fas fa-check mt-1"></i> Unlimited Mock Tests & Personal Trainer</p>
+                            <div class="text-left space-y-1 text-xs">
+                                <p class="text-green-400 flex items-start gap-1"><i class="fas fa-check mt-1 text-xs"></i> Daily Practice with AI Scoring</p>
+                                <p class="text-green-400 flex items-start gap-1"><i class="fas fa-check mt-1 text-xs"></i> FREE Spoken English Fluency Course</p>
+                                <p class="text-green-400 flex items-start gap-1"><i class="fas fa-check mt-1 text-xs"></i> Unlimited Mock Tests & Personal Trainer</p>
                             </div>
                         </div>
                         
-                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('pte')" class="bg-cyan-300 text-purple-900 font-bold py-4 px-10 rounded-full hover:bg-cyan-400 transition text-xl transform hover:scale-105">
+                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('pte')" class="bg-cyan-300 text-purple-900 font-bold py-2 px-6 rounded-full hover:bg-cyan-400 transition text-sm transform hover:scale-105 mt-2">
                             SCORE 79+ WITH 40% OFF
                         </button>
-                        <p class="text-sm text-gray-300 mt-6 px-4"><span class="text-cyan-300">📊</span> 2,134 PTE high scorers</p>
+                        <p class="text-xs text-gray-300 mt-3 px-4"><span class="text-cyan-300">📊</span> 2,134 PTE high scorers</p>
                     </div>
                 `
             }
@@ -1019,89 +1040,129 @@
                 id: 1, type: 'spoken', title: 'Spoken English Basic (40% OFF)', price: 9599, original: 15999, 
                 dur: '2 Months', lang: 'Hindi/English', cert: 'Yes',
                 desc: 'Build a strong foundation in English grammar and vocabulary. Includes Pronunciation Masterclass.',
-                curriculum: ['Tenses & Grammar Rules', '500+ Daily Vocabulary', 'Sentence Structure', 'Basic Conversation', 'Pronunciation Masterclass'] 
+                curriculum: ['Tenses & Grammar Rules', '500+ Daily Vocabulary', 'Sentence Structure', 'Basic Conversation', 'Pronunciation Masterclass'],
+                applicablePromos: ['TESCA50', 'WELCOME10', 'FLASH40']
             },
             { 
                 id: 2, type: 'spoken', title: 'Fluent Speaker Pro (50% OFF)', price: 7999, original: 15999, 
                 dur: '3 Months', lang: 'English', cert: 'Yes',
                 desc: 'Become a confident speaker with Job Interview Prep Module included.',
-                curriculum: ['Public Speaking', 'Debate Sessions', 'Accent Neutralization', 'Body Language', 'Job Interview Prep Module'] 
+                curriculum: ['Public Speaking', 'Debate Sessions', 'Accent Neutralization', 'Body Language', 'Job Interview Prep Module'],
+                applicablePromos: ['TESCA50', 'WELCOME10', 'FLASH40']
             },
             { 
                 id: 3, type: 'spoken', title: 'Business Communication (60% OFF)', price: 6399, original: 15999, 
                 dur: '2.5 Months', lang: 'English', cert: 'Yes',
                 desc: 'Master corporate English with ALL bonuses included.',
-                curriculum: ['Email Etiquette', 'Interview Prep', 'Presentation Skills', 'Corporate Vocabulary', 'IELTS Speaking Module', 'Accent Training'] 
+                curriculum: ['Email Etiquette', 'Interview Prep', 'Presentation Skills', 'Corporate Vocabulary', 'IELTS Speaking Module', 'Accent Training'],
+                applicablePromos: ['TESCA50', 'WELCOME10', 'FLASH40']
             },
             { 
                 id: 4, type: 'spoken', title: 'Ultimate English Mastery (70% OFF)', price: 5999, original: 19999, 
                 dur: '4 Months', lang: 'English', cert: 'Yes',
                 desc: 'Complete package with 70% discount and money-back guarantee.',
-                curriculum: ['All Previous Modules', 'LinkedIn Profile Optimization', '30-Day Money Back', 'Pay in 3 Months Installment'] 
+                curriculum: ['All Previous Modules', 'LinkedIn Profile Optimization', '30-Day Money Back', 'Pay in 3 Months Installment'],
+                applicablePromos: ['TESCA50', 'WELCOME10', 'FLASH40']
             },
             // 2 IELTS Courses
             { 
                 id: 5, type: 'ielts', title: 'IELTS Academic (35% OFF)', price: 16249, original: 24999, 
                 dur: '3 Months', lang: 'English', cert: 'Yes',
                 desc: 'Complete preparation for students aiming for foreign universities with FREE Spoken English.',
-                curriculum: ['Reading & Listening Modules', 'Writing Task 1 & 2', 'Speaking Mock Tests', 'Band 8 Strategy', 'FREE Spoken English Course'] 
+                curriculum: ['Reading & Listening Modules', 'Writing Task 1 & 2', 'Speaking Mock Tests', 'Band 8 Strategy', 'FREE Spoken English Course'],
+                applicablePromos: ['IELTS35', 'WELCOME10', 'FLASH40']
             },
             { 
                 id: 6, type: 'ielts', title: 'IELTS Crash Course (45% OFF)', price: 16499, original: 29999, 
                 dur: '6 Weeks', lang: 'English', cert: 'Yes',
                 desc: '6-Week Intensive Program with Money-Back Guarantee.',
-                curriculum: ['Band 7+ Guarantee', 'Visa SOP Review', 'Spoken English Module', 'Mock Tests with Evaluation'] 
+                curriculum: ['Band 7+ Guarantee', 'Visa SOP Review', 'Spoken English Module', 'Mock Tests with Evaluation'],
+                applicablePromos: ['IELTS35', 'WELCOME10', 'FLASH40']
             },
             // 2 PTE Courses
             { 
                 id: 7, type: 'pte', title: 'PTE Fast Track (40% OFF)', price: 13799, original: 22999, 
                 dur: '4 Weeks', lang: 'English', cert: 'Yes',
                 desc: 'Crash course for PTE with AI-based scoring tricks.',
-                curriculum: ['Speaking Templates', 'Writing Templates', 'AI Scoring Hacks', 'Mock Tests', 'FREE Spoken English Course'] 
+                curriculum: ['Speaking Templates', 'Writing Templates', 'AI Scoring Hacks', 'Mock Tests', 'FREE Spoken English Course'],
+                applicablePromos: ['PTE45', 'WELCOME10', 'FLASH40']
             },
             { 
                 id: 8, type: 'pte', title: 'PTE Mastery (50% OFF)', price: 17499, original: 34998, 
                 dur: '2 Months', lang: 'English', cert: 'Yes',
                 desc: 'Complete PTE preparation with ₹10,000 cashback opportunity.',
-                curriculum: ['90/90 Score Strategy', '1-Year Spoken English Access', '6 Months Speaking Club', 'Cashback on 85+ Score'] 
+                curriculum: ['90/90 Score Strategy', '1-Year Spoken English Access', '6 Months Speaking Club', 'Cashback on 85+ Score'],
+                applicablePromos: ['PTE45', 'WELCOME10', 'FLASH40']
             },
             // 2 TOEFL Courses
             { 
                 id: 9, type: 'toefl', title: 'TOEFL Academic (35% OFF)', price: 18849, original: 28999, 
                 dur: '12 Weeks', lang: 'English', cert: 'Yes',
                 desc: 'Specialized Training for US/Canada University Admissions.',
-                curriculum: ['115/120 Score Strategy', 'University Application Guide', 'Advanced Spoken English', 'SOP Assistance'] 
+                curriculum: ['115/120 Score Strategy', 'University Application Guide', 'Advanced Spoken English', 'SOP Assistance'],
+                applicablePromos: ['TOEFL30', 'WELCOME10', 'FLASH40']
             },
             { 
                 id: 10, type: 'toefl', title: 'TOEFL Platinum', price: 14999, original: 26999, 
                 dur: '10 Weeks', lang: 'English', cert: 'Yes',
                 desc: 'Score Improvement Guarantee with all bonuses.',
-                curriculum: ['20+ Points Improvement', 'Spoken English for Interviews', 'Academic Writing', '3 Mock Interviews'] 
+                curriculum: ['20+ Points Improvement', 'Spoken English for Interviews', 'Academic Writing', '3 Mock Interviews'],
+                applicablePromos: ['TOEFL30', 'WELCOME10', 'FLASH40']
             },
             // 2 Visa Courses
             { 
                 id: 11, type: 'visa', title: 'Visa Success Package', price: 19999, original: 34999, 
                 dur: 'Until Approval', lang: 'English/Hindi', cert: 'No',
                 desc: 'End-to-end guidance for study visa applications.',
-                curriculum: ['Profile Assessment', 'University Shortlisting', 'SOP Drafting', 'Visa Filing Assistance', 'FREE Spoken English Course'] 
+                curriculum: ['Profile Assessment', 'University Shortlisting', 'SOP Drafting', 'Visa Filing Assistance', 'FREE Spoken English Course'],
+                applicablePromos: ['VISA25', 'WELCOME10', 'FLASH40']
             },
             { 
                 id: 12, type: 'visa', title: 'Urgent Visa Express (30% OFF)', price: 27999, original: 39999, 
                 dur: '7 Days Processing', lang: 'English/Hindi', cert: 'No',
                 desc: 'Urgent visa processing with 7-day guarantee.',
-                curriculum: ['7-Day Processing', 'Interview Preparation', 'Documentation Help', 'Spoken English Crash Course'] 
+                curriculum: ['7-Day Processing', 'Interview Preparation', 'Documentation Help', 'Spoken English Crash Course'],
+                applicablePromos: ['VISA25', 'WELCOME10', 'FLASH40']
             }
         ];
 
+        // Updated promos with course-specific conditions and descriptions
         const promos = {
-            'TESCA50': 0.50,
-            'WELCOME10': 0.10,
-            'FLASH40': 0.40,
-            'IELTS35': 0.35,
-            'PTE45': 0.45,
-            'TOEFL30': 0.30,
-            'VISA25': 0.25,
-            'FIRST5': 0.05
+            'TESCA50': { 
+                discount: 0.50, 
+                description: '50% OFF on Spoken English',
+                applicableTypes: ['spoken']
+            },
+            'WELCOME10': { 
+                discount: 0.10, 
+                description: '10% OFF on Any Course',
+                applicableTypes: ['spoken', 'ielts', 'pte', 'toefl', 'visa']
+            },
+            'FLASH40': { 
+                discount: 0.40, 
+                description: '40% FLASH SALE',
+                applicableTypes: ['spoken', 'ielts', 'pte', 'toefl', 'visa']
+            },
+            'IELTS35': { 
+                discount: 0.35, 
+                description: '35% OFF on IELTS',
+                applicableTypes: ['ielts']
+            },
+            'PTE45': { 
+                discount: 0.45, 
+                description: '45% OFF on PTE',
+                applicableTypes: ['pte']
+            },
+            'TOEFL30': { 
+                discount: 0.30, 
+                description: '30% OFF on TOEFL',
+                applicableTypes: ['toefl']
+            },
+            'VISA25': { 
+                discount: 0.25, 
+                description: '25% OFF on Visa',
+                applicableTypes: ['visa']
+            }
         };
 
         // --- 2. STATE ---
@@ -1111,6 +1172,8 @@
         let timerInterval;
         let currentPaymentAmount = 0;
         let bannerTimers = {};
+        let usedPromoCodes = []; // Track used promo codes
+        let promoButtons = {}; // Store promo button elements
 
         // --- 3. INIT & LOADER ---
         window.onload = () => {
@@ -1125,6 +1188,7 @@
 
             renderBanners();
             filterCourses('all');
+            renderPromoButtons();
             
             // Add event listeners for mobile menu links
             document.querySelectorAll('.mobile-menu-link').forEach(link => {
@@ -1218,11 +1282,6 @@
                 `${secs.toString().padStart(2, '0')}`;
         }
 
-        // Reset timer function
-        function resetTimer(timerId) {
-            startCountdown(timerId, 24 * 60 * 60);
-        }
-
         // --- 5. COURSE RENDERER ---
         function filterCourses(cat) {
             // UI Toggle
@@ -1257,7 +1316,7 @@
                     <div class="absolute top-4 right-4 bg-brand-danger text-[10px] font-bold px-3 py-1 rounded-full animate-pulse">${discountPercent}% OFF</div>
                     <div class="mb-4">
                         <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">${c.type}</span>
-                        <h3 class="text-xl font-bold mt-1 group-hover:text-brand-accent transition">${c.title}</h3>
+                        <h3 class="text-xl font-bold mt-1 group-hover:text-brand-accent transition line-clamp-2">${c.title}</h3>
                     </div>
                     <p class="text-sm text-gray-400 mb-6 line-clamp-2">${c.desc}</p>
                     
@@ -1282,6 +1341,9 @@
 
             const isMobile = window.innerWidth < 768;
             const discountPercent = Math.round(((c.original - c.price) / c.original) * 100);
+            
+            // Get applicable promos for this course
+            const applicablePromos = c.applicablePromos || [];
             
             content.innerHTML = `
                 <div class="flex flex-col ${isMobile ? '' : 'md:flex-row'} gap-6 mb-6">
@@ -1323,6 +1385,21 @@
                     </ul>
                 </div>
 
+                ${applicablePromos.length > 0 ? `
+                <div class="mb-6 p-4 bg-white/5 rounded-xl">
+                    <h4 class="font-bold text-white mb-2 text-sm">Applicable Coupons:</h4>
+                    <div class="flex flex-wrap gap-2">
+                        ${applicablePromos.map(code => {
+                            const promo = promos[code];
+                            return `
+                            <span class="text-xs px-2 py-1 rounded bg-green-500/10 text-green-400 border border-green-500/30">
+                                ${code} - ${promo.description}
+                            </span>`;
+                        }).join('')}
+                    </div>
+                </div>
+                ` : ''}
+
                 <button onclick="closeDetails(); addToCart(${c.id})" class="w-full bg-gradient-to-r from-brand-primary to-brand-secondary py-4 rounded-xl font-bold text-white hover:opacity-90 transition">
                     Enroll Now for ₹${c.price.toLocaleString()}
                 </button>
@@ -1355,17 +1432,39 @@
         // --- 6. CART SYSTEM ---
         function addToCart(id) {
             if(cart.find(x => x.id === id)) return alert("This course is already in your cart!");
-            cart.push(courses.find(x => x.id === id));
+            
+            const course = courses.find(x => x.id === id);
+            cart.push(course);
             renderCart();
             toggleCart(true);
+            updatePromoButtonStates();
         }
 
         function removeFromCart(id) {
+            // Remove course from cart
             cart = cart.filter(x => x.id !== id);
-            if(cart.length === 0) {
-                removePromo();
+            
+            // If active promo exists, check if it's still valid
+            if (activePromo) {
+                const promo = promos[activePromo];
+                const isStillValid = cart.some(course => 
+                    promo.applicableTypes.includes(course.type) || 
+                    (course.applicablePromos && course.applicablePromos.includes(activePromo))
+                );
+                
+                if (!isStillValid) {
+                    // Remove promo and make it available again
+                    const index = usedPromoCodes.indexOf(activePromo);
+                    if (index > -1) {
+                        usedPromoCodes.splice(index, 1);
+                    }
+                    activePromo = null;
+                    document.getElementById('promo-input').value = '';
+                }
             }
+            
             renderCart();
+            updatePromoButtonStates();
         }
 
         function toggleCart(forceOpen = false) {
@@ -1381,41 +1480,155 @@
             }
         }
 
+        function renderPromoButtons() {
+            const container = document.querySelector('#cart-modal .promo-section-compact');
+            if (!container) return;
+            
+            container.innerHTML = Object.entries(promos).map(([code, details]) => {
+                return `
+                <button onclick="applySpecificCode('${code}')" id="promo-btn-${code}" 
+                        class="px-2 py-1 bg-blue-500/10 border border-blue-500/30 text-blue-400 rounded text-xs font-mono font-bold hover:bg-blue-500/20 transition-all text-center">
+                    <div class="font-bold">${code}</div>
+                    <div class="promo-info truncate">${details.description}</div>
+                </button>
+                `;
+            }).join('');
+            
+            // Store references to promo buttons
+            Object.keys(promos).forEach(code => {
+                promoButtons[code] = document.getElementById(`promo-btn-${code}`);
+            });
+            
+            updatePromoButtonStates();
+        }
+
+        function updatePromoButtonStates() {
+            Object.keys(promos).forEach(code => {
+                const button = promoButtons[code];
+                if (!button) return;
+                
+                const promo = promos[code];
+                const isUsed = usedPromoCodes.includes(code);
+                
+                // Check if any course in cart is eligible for this promo
+                const isEligible = cart.some(course => {
+                    return promo.applicableTypes.includes(course.type) ||
+                           (course.applicablePromos && course.applicablePromos.includes(code));
+                });
+                
+                if (isUsed) {
+                    button.classList.add('used-promo', 'opacity-50');
+                    button.classList.remove('hover:bg-blue-500/20', 'bg-blue-500/10');
+                    button.classList.add('bg-gray-500/10', 'border-gray-500/30', 'text-gray-500');
+                    button.title = 'Already used';
+                    button.disabled = true;
+                } else if (!isEligible) {
+                    button.classList.add('opacity-50');
+                    button.classList.remove('hover:bg-blue-500/20');
+                    button.title = 'Not applicable to courses in cart';
+                    button.disabled = true;
+                } else {
+                    button.classList.remove('used-promo', 'opacity-50', 'bg-gray-500/10', 'border-gray-500/30', 'text-gray-500');
+                    button.classList.add('bg-blue-500/10', 'border-blue-500/30', 'text-blue-400', 'hover:bg-blue-500/20');
+                    button.title = 'Click to apply';
+                    button.disabled = false;
+                }
+            });
+        }
+
         function applySpecificCode(code) {
+            // Check if already used
+            if (usedPromoCodes.includes(code)) {
+                document.getElementById('promo-status').innerHTML = 
+                    `<span class="text-brand-danger font-bold">Already used</span>`;
+                return;
+            }
+            
             document.getElementById('promo-input').value = code;
             applyPromo();
         }
 
         function applyPromo() {
             if(cart.length === 0) {
-                document.getElementById('promo-status').innerHTML = '<span class="text-brand-danger font-bold"><i class="fas fa-exclamation-triangle"></i> Add a course first!</span>';
+                document.getElementById('promo-status').innerHTML = 
+                    `<span class="text-brand-danger font-bold">Add a course first!</span>`;
                 return;
             }
 
             const code = document.getElementById('promo-input').value.toUpperCase().trim();
             const statusEl = document.getElementById('promo-status');
 
-            if(promos[code]) {
-                activePromo = code;
-                statusEl.innerHTML = `
-                    <span class="text-brand-success font-bold">
-                        <i class="fas fa-check"></i> Applied! ${promos[code]*100}% OFF
-                        <button onclick="removePromo()" class="ml-2 text-xs text-gray-400 hover:text-white">
-                            <i class="fas fa-times"></i> Remove
-                        </button>
-                    </span>`;
-                renderCart();
-            } else {
+            if(!promos[code]) {
                 activePromo = null;
                 statusEl.innerHTML = `<span class="text-brand-danger font-bold">Invalid Code</span>`;
+                updatePromoInfo();
                 renderCart();
+                return;
+            }
+
+            // Check if already used
+            if (usedPromoCodes.includes(code)) {
+                statusEl.innerHTML = 
+                    `<span class="text-brand-danger font-bold">Already used</span>`;
+                return;
+            }
+
+            const promo = promos[code];
+            
+            // Check if any course in cart is eligible for this promo
+            const isEligible = cart.some(course => {
+                return promo.applicableTypes.includes(course.type) ||
+                       (course.applicablePromos && course.applicablePromos.includes(code));
+            });
+
+            if(!isEligible) {
+                statusEl.innerHTML = 
+                    `<span class="text-brand-warning font-bold">Not applicable</span>`;
+                return;
+            }
+
+            activePromo = code;
+            usedPromoCodes.push(code);
+            
+            statusEl.innerHTML = `
+                <span class="text-brand-success font-bold">
+                    Applied! ${promo.discount*100}% OFF
+                </span>`;
+            
+            updatePromoButtonStates();
+            updatePromoInfo();
+            renderCart();
+        }
+
+        function updatePromoInfo() {
+            const infoEl = document.getElementById('applied-promo-info');
+            const codeEl = document.getElementById('current-promo-code');
+            const descEl = document.getElementById('current-promo-desc');
+            
+            if (activePromo && promos[activePromo]) {
+                const promo = promos[activePromo];
+                codeEl.textContent = `${activePromo} - ${promo.discount*100}% OFF`;
+                descEl.textContent = promo.description;
+                infoEl.classList.remove('hidden');
+            } else {
+                infoEl.classList.add('hidden');
             }
         }
 
         function removePromo() {
+            if (activePromo) {
+                // Remove from used promos when user manually removes it
+                const index = usedPromoCodes.indexOf(activePromo);
+                if (index > -1) {
+                    usedPromoCodes.splice(index, 1);
+                }
+            }
+            
             activePromo = null;
             document.getElementById('promo-input').value = '';
             document.getElementById('promo-status').innerHTML = '';
+            updatePromoInfo();
+            updatePromoButtonStates();
             renderCart();
         }
 
@@ -1426,9 +1639,9 @@
 
             if(cart.length === 0) {
                 container.innerHTML = `
-                    <div class="flex flex-col items-center justify-center h-64 text-gray-500">
+                    <div class="flex flex-col items-center justify-center h-48 text-gray-500">
                         <i class="fas fa-shopping-basket text-4xl mb-4 opacity-30"></i>
-                        <p>Your cart is empty</p>
+                        <p class="text-sm">Your cart is empty</p>
                     </div>
                 `;
                 btn.disabled = true;
@@ -1439,29 +1652,48 @@
 
             btn.disabled = false;
             btn.classList.remove('opacity-50');
-            container.innerHTML = cart.map(c => `
-                <div class="bg-white/5 p-4 rounded-xl flex justify-between items-center group hover:bg-white/10 transition">
-                    <div>
-                        <h4 class="font-bold text-sm text-white">${c.title}</h4>
-                        <div class="text-xs text-brand-accent mt-1">₹${c.price.toLocaleString()}</div>
+            container.innerHTML = cart.map(c => {
+                return `
+                <div class="cart-item">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1 min-w-0 mr-2">
+                            <h4 class="font-bold text-sm text-white line-clamp-2">${c.title}</h4>
+                            <div class="text-xs text-brand-accent mt-1">₹${c.price.toLocaleString()}</div>
+                            <div class="text-[10px] text-gray-500 mt-1">${c.type} • ${c.dur}</div>
+                        </div>
+                        <button onclick="removeFromCart(${c.id})" class="w-7 h-7 rounded-full bg-black/20 flex items-center justify-center text-gray-400 hover:text-brand-danger hover:bg-white transition flex-shrink-0">
+                            <i class="fas fa-trash-alt text-xs"></i>
+                        </button>
                     </div>
-                    <button onclick="removeFromCart(${c.id})" class="w-8 h-8 rounded-full bg-black/20 flex items-center justify-center text-gray-400 hover:text-brand-danger hover:bg-white transition">
-                        <i class="fas fa-trash-alt text-xs"></i>
-                    </button>
                 </div>
-            `).join('');
+            `}).join('');
 
             const subtotal = cart.reduce((acc, item) => acc + item.price, 0);
             let discount = 0;
-            if(activePromo) {
-                discount = Math.floor(subtotal * promos[activePromo]);
+            let discountDetails = '';
+            
+            if(activePromo && promos[activePromo]) {
+                const promo = promos[activePromo];
+                discount = Math.floor(subtotal * promo.discount);
+                discountDetails = `${activePromo}: ${promo.discount*100}% OFF`;
             }
-            updateTotals(subtotal, discount);
+            
+            updateTotals(subtotal, discount, discountDetails);
         }
 
-        function updateTotals(sub, disc) {
+        function updateTotals(sub, disc, details = '') {
             document.getElementById('cart-subtotal').innerText = `₹${sub.toLocaleString()}`;
             document.getElementById('cart-discount').innerText = `-₹${disc.toLocaleString()}`;
+            
+            const discountDetailsEl = document.getElementById('discount-details');
+            if (details) {
+                discountDetailsEl.innerHTML = `<span class="text-brand-success">${details}</span>`;
+                discountDetailsEl.classList.remove('hidden');
+            } else {
+                discountDetailsEl.innerHTML = '';
+                discountDetailsEl.classList.add('hidden');
+            }
+            
             document.getElementById('cart-total').innerText = `₹${(sub - disc).toLocaleString()}`;
         }
 
