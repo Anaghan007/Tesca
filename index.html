@@ -143,10 +143,9 @@
 
         /* Header fully rounded */
         #main-header .glass {
-            border-radius: 0 0 2rem 2rem;
-            margin: 0 auto;
-            max-width: 1200px;
-            width: calc(100% - 2rem);
+            border-radius: 9999px;
+            margin: 1rem auto;
+            max-width: 95%;
         }
 
         /* Center course section title */
@@ -172,6 +171,15 @@
             #details-content {
                 padding: 1.5rem;
             }
+            /* Larger QR code on mobile */
+            #qr-image {
+                width: 280px !important;
+                height: 280px !important;
+            }
+            .phone-mockup {
+                width: 280px;
+                height: 560px;
+            }
         }
 
         /* Faculty card hover effects */
@@ -192,11 +200,88 @@
             filter: brightness(1.2);
         }
 
-        /* Responsive QR code */
-        @media (max-width: 640px) {
-            .qr-responsive {
-                width: 280px !important;
-                height: 280px !important;
+        /* Banner styles */
+        .banner-container {
+            height: 400px;
+            position: relative;
+        }
+        
+        .banner-glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        @media (max-width: 768px) {
+            .banner-container {
+                height: 350px;
+            }
+            .banner-glass {
+                padding: 1.5rem;
+                overflow-y: auto;
+            }
+        }
+        
+        /* Logo without background */
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+        
+        /* Banner navigation buttons */
+        .banner-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 30;
+            transition: all 0.3s ease;
+        }
+        
+        .banner-nav-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .banner-nav-btn.prev {
+            left: 20px;
+        }
+        
+        .banner-nav-btn.next {
+            right: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .banner-nav-btn {
+                width: 40px;
+                height: 40px;
+                top: auto;
+                bottom: 20px;
+                transform: none;
+            }
+            .banner-nav-btn.prev {
+                left: 20px;
+                right: auto;
+            }
+            .banner-nav-btn.next {
+                right: 20px;
+                left: auto;
             }
         }
     </style>
@@ -208,10 +293,11 @@
 
     <div id="loader" class="fixed inset-0 bg-black z-[9999] flex flex-col items-center justify-center transition-opacity duration-700">
         <div class="mb-8 animate-pulse">
-             <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-brand-primary to-brand-accent flex items-center justify-center">
-                <span class="text-4xl font-bold text-white">T</span>
-             </div>
-             </div>
+            <!-- Logo without background -->
+            <div class="w-20 h-20 flex items-center justify-center">
+                <img src="Logo.png" alt="TESCA Logo" class="logo-img w-16 h-16">
+            </div>
+        </div>
         
         <div class="w-48 h-[2px] progress-bar-bg">
             <div id="loader-bar" class="h-full progress-bar-fill w-0"></div>
@@ -220,39 +306,40 @@
     </div>
 
     <header class="fixed top-0 w-full z-50 transition-all duration-300" id="main-header">
-        <div class="container mx-auto px-4">
-            <div class="glass border-b border-white/5 backdrop-blur-md">
-                <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-                    <a href="#home" class="flex items-center gap-3 group">
-                        <div class="w-10 h-10 rounded-lg bg-gradient-to-tr from-brand-primary to-brand-accent flex items-center justify-center text-white font-bold text-lg group-hover:shadow-[0_0_15px_rgba(99,102,241,0.5)] transition">T</div>
-                        <span class="font-bold text-xl tracking-wide">TESCA</span>
-                    </a>
-
-                    <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
-                        <a href="#home" class="hover:text-white transition-colors">Home</a>
-                        <a href="#courses" class="hover:text-white transition-colors">Courses</a>
-                        <a href="#faculty" class="hover:text-white transition-colors">Our Faculty</a>
-                        <a href="#app" class="hover:text-white transition-colors">Mobile App</a>
-                        <a href="#contact" class="hover:text-white transition-colors">Contact</a>
-                    </nav>
-
-                    <div class="flex items-center gap-5">
-                        <a href="tel:+918866722633" class="hidden sm:flex items-center gap-2 text-xs font-bold text-white bg-white/10 px-4 py-2 rounded-full hover:bg-white/20 transition">
-                            <!-- Fixed phone icon direction -->
-                            <i class="fas fa-phone-flip text-brand-success transform rotate-90"></i> Help
-                        </a>
-                        
-                        <button onclick="toggleCart()" class="relative group">
-                            <div class="p-2 rounded-full hover:bg-white/10 transition">
-                                <i class="fas fa-shopping-bag text-xl text-white"></i>
-                            </div>
-                            <span id="cart-count" class="absolute top-0 right-0 bg-brand-danger text-[10px] w-5 h-5 flex items-center justify-center rounded-full border-2 border-brand-bg font-bold">0</span>
-                        </button>
-                        
-                        <button class="md:hidden text-white text-xl" onclick="toggleMobileMenu()">
-                            <i class="fas fa-bars"></i>
-                        </button>
+        <div class="glass border border-white/5 backdrop-blur-md">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <a href="#home" class="flex items-center gap-3 group">
+                    <!-- Logo without background -->
+                    <div class="w-10 h-10 flex items-center justify-center">
+                        <img src="Logo.png" alt="TESCA" class="logo-img w-8 h-8">
                     </div>
+                    <span class="font-bold text-xl tracking-wide">TESCA</span>
+                </a>
+
+                <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
+                    <a href="#home" class="hover:text-white transition-colors">Home</a>
+                    <a href="#courses" class="hover:text-white transition-colors">Courses</a>
+                    <a href="#faculty" class="hover:text-white transition-colors">Our Faculty</a>
+                    <a href="#app" class="hover:text-white transition-colors">Mobile App</a>
+                    <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+                </nav>
+
+                <div class="flex items-center gap-5">
+                    <!-- Fixed phone icon direction -->
+                    <a href="tel:+918866722633" class="hidden sm:flex items-center gap-2 text-xs font-bold text-white bg-white/10 px-4 py-2 rounded-full hover:bg-white/20 transition">
+                        <i class="fas fa-phone-alt text-brand-success"></i> Help
+                    </a>
+                    
+                    <button onclick="toggleCart()" class="relative group">
+                        <div class="p-2 rounded-full hover:bg-white/10 transition">
+                            <i class="fas fa-shopping-bag text-xl text-white"></i>
+                        </div>
+                        <span id="cart-count" class="absolute top-0 right-0 bg-brand-danger text-[10px] w-5 h-5 flex items-center justify-center rounded-full border-2 border-brand-bg font-bold">0</span>
+                    </button>
+                    
+                    <button class="md:hidden text-white text-xl" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -268,14 +355,18 @@
     </div>
 
     <section id="home" class="relative pt-32 pb-16 container mx-auto px-4">
-        <div class="relative w-full h-[550px] rounded-[2.5rem] overflow-hidden shadow-2xl border border-white/10">
+        <div class="relative banner-container rounded-[2.5rem] overflow-hidden shadow-2xl">
             <div id="banner-wrapper" class="w-full h-full">
-                </div>
-
-            <div class="absolute bottom-8 left-0 w-full flex justify-center gap-4 z-20">
-                <button onclick="changeBanner(-1)" class="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-white hover:text-black transition"><i class="fas fa-chevron-left"></i></button>
-                <button onclick="changeBanner(1)" class="w-12 h-12 rounded-full glass flex items-center justify-center hover:bg-white hover:text-black transition"><i class="fas fa-chevron-right"></i></button>
+                <!-- Banners will be inserted here by JavaScript -->
             </div>
+
+            <!-- Banner navigation buttons on sides -->
+            <button onclick="changeBanner(-1)" class="banner-nav-btn prev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button onclick="changeBanner(1)" class="banner-nav-btn next">
+                <i class="fas fa-chevron-right"></i>
+            </button>
         </div>
     </section>
 
@@ -315,13 +406,16 @@
             <div class="flex flex-wrap gap-3 justify-center">
                 <button onclick="filterCourses('all')" class="filter-btn active px-6 py-3 rounded-full border border-white/10 bg-white/5 text-sm font-bold transition">All Courses</button>
                 <button onclick="filterCourses('spoken')" class="filter-btn px-6 py-3 rounded-full border border-white/10 bg-white/5 text-sm font-bold transition">Spoken English</button>
-                <button onclick="filterCourses('exam')" class="filter-btn px-6 py-3 rounded-full border border-white/10 bg-white/5 text-sm font-bold transition">IELTS / PTE</button>
+                <button onclick="filterCourses('ielts')" class="filter-btn px-6 py-3 rounded-full border border-white/10 bg-white/5 text-sm font-bold transition">IELTS</button>
+                <button onclick="filterCourses('pte')" class="filter-btn px-6 py-3 rounded-full border border-white/10 bg-white/5 text-sm font-bold transition">PTE</button>
+                <button onclick="filterCourses('toefl')" class="filter-btn px-6 py-3 rounded-full border border-white/10 bg-white/5 text-sm font-bold transition">TOEFL</button>
                 <button onclick="filterCourses('visa')" class="filter-btn px-6 py-3 rounded-full border border-white/10 bg-white/5 text-sm font-bold transition">Visa</button>
             </div>
         </div>
 
         <div id="course-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            </div>
+            <!-- Courses will be loaded here -->
+        </div>
     </section>
 
     <section id="faculty" class="py-24 bg-gradient-to-b from-brand-surface to-brand-bg">
@@ -333,17 +427,16 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Nikunj Dhanani - UPDATED: Title between photo and name -->
+                <!-- Nikunj Dhanani -->
                 <div class="faculty-card glass-card p-8 rounded-3xl text-center">
-                    <div class="relative mb-4">
+                    <div class="relative mb-6">
                         <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-brand-primary to-purple-600 flex items-center justify-center text-4xl font-bold text-white mb-4">
                             ND
                         </div>
-                        <!-- Title moved here -->
-                        <div class="bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full inline-block mb-2">Founder</div>
                     </div>
                     <div class="mb-3">
                         <h3 class="text-2xl font-bold">Nikunj Dhanani</h3>
+                        <div class="bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full inline-block mb-2 mt-2">Founder</div>
                     </div>
                     <p class="text-sm text-brand-accent font-bold mb-4">CEO & Lead Visa Consultant</p>
                     <p class="text-gray-400 text-sm mb-6">With 12+ years in international education, Nikunj has successfully placed 5000+ students in top global universities. His expertise in visa documentation has achieved a remarkable 99.2% success rate.</p>
@@ -353,17 +446,16 @@
                     </div>
                 </div>
 
-                <!-- Vishal Faldu - UPDATED: Title between photo and name -->
+                <!-- Vishal Faldu -->
                 <div class="faculty-card glass-card p-8 rounded-3xl text-center">
-                    <div class="relative mb-4">
+                    <div class="relative mb-6">
                         <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-brand-warning to-orange-500 flex items-center justify-center text-4xl font-bold text-white mb-4">
                             VF
                         </div>
-                        <!-- Title moved here -->
-                        <div class="bg-blue-500/20 text-blue-400 text-xs font-bold px-3 py-1 rounded-full inline-block mb-2">Co-Founder</div>
                     </div>
                     <div class="mb-3">
                         <h3 class="text-2xl font-bold">Vishal Faldu</h3>
+                        <div class="bg-blue-500/20 text-blue-400 text-xs font-bold px-3 py-1 rounded-full inline-block mb-2 mt-2">Co-Founder</div>
                     </div>
                     <p class="text-sm text-brand-warning font-bold mb-4">IELTS/PTE Master Trainer</p>
                     <p class="text-gray-400 text-sm mb-6">A British Council certified trainer with 8+ years experience. Specializes in helping students achieve Band 8+ in IELTS and 85+ in PTE. Known for his unique "Score Booster" techniques.</p>
@@ -373,17 +465,16 @@
                     </div>
                 </div>
 
-                <!-- Kiran Sir - UPDATED: Title between photo and name -->
+                <!-- Kiran Sir -->
                 <div class="faculty-card glass-card p-8 rounded-3xl text-center">
-                    <div class="relative mb-4">
+                    <div class="relative mb-6">
                         <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-brand-accent to-cyan-500 flex items-center justify-center text-4xl font-bold text-white mb-4">
                             KS
                         </div>
-                        <!-- Title moved here -->
-                        <div class="bg-brand-primary/20 text-brand-primary text-xs font-bold px-3 py-1 rounded-full inline-block mb-2">Head Mentor</div>
                     </div>
                     <div class="mb-3">
                         <h3 class="text-2xl font-bold">Kiran Sir</h3>
+                        <div class="bg-brand-primary/20 text-brand-primary text-xs font-bold px-3 py-1 rounded-full inline-block mb-2 mt-2">Head Mentor</div>
                     </div>
                     <p class="text-sm text-cyan-400 font-bold mb-4">Spoken English Guru</p>
                     <p class="text-gray-400 text-sm mb-6">25+ years of transforming students into confident English speakers. Former corporate trainer at multinational companies. His "Zero to Hero" methodology has helped 10,000+ students overcome hesitation.</p>
@@ -473,7 +564,9 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
                 <div class="space-y-6">
                     <a href="#home" class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded bg-gradient-to-br from-brand-primary to-brand-accent flex items-center justify-center font-bold text-white">T</div>
+                        <div class="w-10 h-10 flex items-center justify-center">
+                            <img src="Logo.png" alt="TESCA" class="logo-img w-8 h-8">
+                        </div>
                         <span class="font-bold text-2xl">TESCA</span>
                     </a>
                     <p class="text-gray-400 text-sm leading-relaxed">
@@ -503,8 +596,8 @@
                     <h4 class="font-bold text-white mb-6">Popular Courses</h4>
                     <ul class="space-y-3 text-sm text-gray-400">
                         <li><a href="#courses" onclick="filterCourses('spoken')" class="hover:text-brand-accent transition-colors cursor-pointer">Spoken English Basic</a></li>
-                        <li><a href="#courses" onclick="filterCourses('exam')" class="hover:text-brand-accent transition-colors cursor-pointer">IELTS Academic</a></li>
-                        <li><a href="#courses" onclick="filterCourses('exam')" class="hover:text-brand-accent transition-colors cursor-pointer">PTE Fast Track</a></li>
+                        <li><a href="#courses" onclick="filterCourses('ielts')" class="hover:text-brand-accent transition-colors cursor-pointer">IELTS Academic</a></li>
+                        <li><a href="#courses" onclick="filterCourses('pte')" class="hover:text-brand-accent transition-colors cursor-pointer">PTE Fast Track</a></li>
                         <li><a href="#courses" onclick="filterCourses('visa')" class="hover:text-brand-accent transition-colors cursor-pointer">Student Visa Filing</a></li>
                     </ul>
                 </div>
@@ -535,6 +628,7 @@
         </div>
     </footer>
 
+    <!-- Cart Modal -->
     <div id="cart-modal" class="fixed inset-0 z-[100] hidden">
         <div class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity" onclick="toggleCart()"></div>
         <div id="cart-panel" class="absolute right-0 top-0 h-full w-full md:w-[450px] bg-brand-surface border-l border-white/10 flex flex-col transform transition-transform duration-300 translate-x-full shadow-2xl">
@@ -544,7 +638,8 @@
             </div>
             
             <div id="cart-items" class="flex-1 overflow-y-auto p-6 space-y-4">
-                </div>
+                <!-- Cart items will be loaded here -->
+            </div>
 
             <div class="p-6 bg-brand-surface2 border-t border-white/5">
                 <div class="mb-4">
@@ -552,6 +647,10 @@
                     <div class="flex gap-2 overflow-x-auto pb-2">
                         <button onclick="applySpecificCode('TESCA50')" class="px-3 py-1 bg-green-500/10 border border-green-500/30 text-green-400 rounded text-xs font-mono font-bold hover:bg-green-500/20 whitespace-nowrap">TESCA50</button>
                         <button onclick="applySpecificCode('WELCOME10')" class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 text-blue-400 rounded text-xs font-mono font-bold hover:bg-blue-500/20 whitespace-nowrap">WELCOME10</button>
+                        <button onclick="applySpecificCode('FLASH40')" class="px-3 py-1 bg-purple-500/10 border border-purple-500/30 text-purple-400 rounded text-xs font-mono font-bold hover:bg-purple-500/20 whitespace-nowrap">FLASH40</button>
+                        <button onclick="applySpecificCode('IELTS35')" class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 rounded text-xs font-mono font-bold hover:bg-yellow-500/20 whitespace-nowrap">IELTS35</button>
+                        <button onclick="applySpecificCode('PTE45')" class="px-3 py-1 bg-pink-500/10 border border-pink-500/30 text-pink-400 rounded text-xs font-mono font-bold hover:bg-pink-500/20 whitespace-nowrap">PTE45</button>
+                        <button onclick="applySpecificCode('TOEFL30')" class="px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 rounded text-xs font-mono font-bold hover:bg-cyan-500/20 whitespace-nowrap">TOEFL30</span></button>
                     </div>
                 </div>
 
@@ -574,19 +673,22 @@
         </div>
     </div>
 
+    <!-- Course Details Modal -->
     <div id="details-modal" class="fixed inset-0 z-[150] hidden flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-md" onclick="closeDetails()"></div>
         <div id="details-panel" class="relative bg-brand-surface w-full max-w-2xl rounded-2xl border border-white/10 shadow-2xl transform transition-all scale-95 opacity-0 overflow-hidden">
             <div id="details-content" class="p-8 overflow-y-auto">
-                </div>
+                <!-- Details content will be loaded here -->
+            </div>
             <button onclick="closeDetails()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 text-white"><i class="fas fa-times"></i></button>
         </div>
     </div>
 
+    <!-- Payment Modal -->
     <div id="payment-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-black/95 backdrop-blur-xl" onclick="closePayment()"></div>
         
-        <div class="relative bg-[#121212] w-full max-w-[90%] sm:max-w-[350px] rounded-3xl border border-white/10 shadow-2xl flex flex-col items-center overflow-hidden animate-slide-up">
+        <div class="relative bg-[#121212] w-full max-w-[350px] rounded-3xl border border-white/10 shadow-2xl flex flex-col items-center overflow-hidden animate-slide-up">
             
             <div class="w-full bg-gradient-to-r from-brand-primary to-brand-secondary p-3 text-center">
                 <h3 class="font-bold text-white text-base tracking-wide">Secure Payment</h3>
@@ -599,8 +701,7 @@
                 </div>
 
                 <div class="relative bg-white p-3 rounded-2xl shadow-inner mb-4">
-                    <!-- QR Code with responsive sizing -->
-                    <img id="qr-image" src="" alt="Scan QR" class="qr-responsive w-56 h-56 sm:w-44 sm:h-44 object-contain mx-auto">
+                    <img id="qr-image" src="" alt="Scan QR" class="w-44 h-44 object-contain mx-auto">
                     
                     <div id="qr-expired" class="absolute inset-0 bg-white/95 flex flex-col items-center justify-center rounded-2xl hidden">
                         <span class="text-black font-bold text-xs mb-2">QR Expired</span>
@@ -626,7 +727,7 @@
                         <button onclick="openUPIApp('paytm')" class="upi-app-btn bg-white rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-white/20 transition-all">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Paytm_Logo_%28standalone%29.svg" class="h-4" alt="Paytm">
                         </button>
-                        <button onclick="openUPIApp('generic')" class="upi-app-btn bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-blue-500/20 transition-all">
+                        <button onclick="openGenericUPI()" class="upi-app-btn bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-blue-500/20 transition-all">
                             <i class="fas fa-mobile-alt text-white text-xl"></i>
                         </button>
                     </div>
@@ -651,58 +752,268 @@
         </div>
     </div>
 
-
     <script>
-        // --- 1. DATASETS ---
+        // --- 1. SIMPLIFIED BANNERS ---
         const banners = [
-            { h: "Become Global Ready", p: "Master English & Study Abroad", btn: "Start Learning", bg: "linear-gradient(135deg, #1e3c72, #2a5298)" },
-            { h: "Flat 50% Discount", p: "Use Code: TESCA50 Today!", btn: "Grab Offer", bg: "linear-gradient(135deg, #D4145A, #FBB03B)" },
-            { h: "IELTS Band 8.0+", p: "Expert Coaching for 100% Success", btn: "Join Batch", bg: "linear-gradient(135deg, #009245, #FCEE21)" },
-            { h: "TESCA Mobile App", p: "Your Personal Tutor in Pocket", btn: "Download Now", bg: "linear-gradient(135deg, #000000, #434343)" }
+            {
+                type: 'spoken',
+                html: `
+                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full">
+                        <div class="absolute top-4 right-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">LIMITED TIME</div>
+                        <h1 class="text-2xl md:text-3xl font-bold mb-2">Speak English Like a Native in <span class="text-yellow-300">30 Days!</span></h1>
+                        <p class="text-gray-300 mb-4">Join 10,000+ students who transformed their communication skills</p>
+                        
+                        <div class="glass-card p-4 mb-4 w-full max-w-md">
+                            <h2 class="text-yellow-300 font-bold mb-2">🚀 LAUNCH OFFER: 40% OFF</h2>
+                            <div class="flex items-center justify-center gap-2 mb-2">
+                                <span class="text-gray-400 line-through">₹15,999</span>
+                                <span class="text-2xl font-bold text-white">₹9,599</span>
+                            </div>
+                            <div class="text-left space-y-1 text-sm">
+                                <p class="text-green-400">✓ Live 1:1 Sessions with Certified Trainers</p>
+                                <p class="text-green-400">✓ Daily Practice Group with Native Speakers</p>
+                                <p class="text-green-400">✓ Lifetime Access to 200+ Interactive Lessons</p>
+                            </div>
+                        </div>
+                        
+                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('spoken')" class="bg-yellow-300 text-blue-900 font-bold py-2 px-6 rounded-full hover:bg-yellow-400 transition">
+                            ENROLL NOW - 40% OFF
+                        </button>
+                        <p class="text-xs text-gray-400 mt-4">Offer ends in: <span class="text-yellow-300 font-bold">24:00:00</span></p>
+                    </div>
+                `
+            },
+            {
+                type: 'spoken',
+                html: `
+                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full">
+                        <div class="absolute top-4 right-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">FLASH SALE</div>
+                        <h1 class="text-2xl md:text-3xl font-bold mb-2">Get <span class="text-orange-300">50% OFF</span> + 2 FREE Months!</h1>
+                        <p class="text-gray-300 mb-4">"This course changed my career!" - Rohan S., placed at Amazon</p>
+                        
+                        <div class="glass-card p-4 mb-4 w-full max-w-md">
+                            <h2 class="text-orange-300 font-bold mb-2">🎯 TODAY ONLY: 50% OFF</h2>
+                            <div class="flex items-center justify-center gap-2 mb-2">
+                                <span class="text-gray-400 line-through">₹15,999</span>
+                                <span class="text-2xl font-bold text-white">₹7,999</span>
+                                <span class="bg-red-500 text-white text-xs px-2 py-1 rounded">SAVE ₹8,000</span>
+                            </div>
+                            <div class="text-left space-y-1 text-sm">
+                                <p class="text-green-400">✓ FREE Job Interview Preparation Module</p>
+                                <p class="text-green-400">✓ 2 Additional Months Access EXTENDED</p>
+                                <p class="text-green-400">✓ Personal Mentor for 3 Months</p>
+                            </div>
+                        </div>
+                        
+                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('spoken')" class="bg-orange-300 text-blue-900 font-bold py-2 px-6 rounded-full hover:bg-orange-400 transition shadow-lg">
+                            GRAB 50% OFF + FREE BONUS
+                        </button>
+                        <p class="text-xs text-gray-400 mt-4">Only <span class="text-orange-300 font-bold">12</span> seats left!</p>
+                    </div>
+                `
+            },
+            {
+                type: 'spoken',
+                html: `
+                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full">
+                        <div class="absolute top-4 right-4 bg-black text-white text-xs font-bold px-3 py-1 rounded-full">LAST CHANCE</div>
+                        <h1 class="text-2xl md:text-3xl font-bold mb-2"><span class="text-yellow-300">FINAL 10 SLOTS!</span> Get <span class="text-yellow-300">60% OFF</span></h1>
+                        <p class="text-gray-300 mb-4">"I achieved fluency in just 8 weeks!" - Priya M., now in Canada</p>
+                        
+                        <div class="glass-card p-4 mb-4 w-full max-w-md border-2 border-dashed border-yellow-300">
+                            <h2 class="text-yellow-300 font-bold mb-2">⚡ ULTIMATE PACKAGE: 60% OFF</h2>
+                            <div class="flex items-center justify-center gap-2 mb-2">
+                                <span class="text-gray-400 line-through">₹15,999</span>
+                                <span class="text-3xl font-bold text-yellow-300">₹6,399</span>
+                                <span class="bg-black text-white text-xs px-2 py-1 rounded">SAVE ₹9,600</span>
+                            </div>
+                            <div class="text-left space-y-1 text-sm">
+                                <p class="text-green-400">✓ IELTS Speaking Module FREE</p>
+                                <p class="text-green-400">✓ Accent Training Masterclass</p>
+                                <p class="text-green-400">✓ Business English Certificate</p>
+                            </div>
+                        </div>
+                        
+                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('spoken')" class="bg-yellow-300 text-red-700 font-bold py-3 px-8 rounded-full hover:bg-yellow-400 transition shadow-xl">
+                            GET 60% OFF - LAST 10 SEATS!
+                        </button>
+                        <p class="text-xs text-gray-400 mt-4"><span class="text-yellow-300">🔥</span> Only <span class="text-yellow-300 font-bold">8</span> slots remaining!</p>
+                    </div>
+                `
+            },
+            {
+                type: 'ielts',
+                html: `
+                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full">
+                        <h1 class="text-2xl md:text-3xl font-bold mb-2">Ace IELTS with <span class="text-orange-300">8+ Band Guarantee!</span></h1>
+                        <p class="text-gray-300 mb-4">Join India's #1 IELTS Prep with 94% Success Rate</p>
+                        
+                        <div class="glass-card p-4 mb-4 w-full max-w-md">
+                            <h2 class="text-orange-300 font-bold mb-2">SPECIAL OFFER: 35% OFF</h2>
+                            <div class="flex items-center justify-center gap-2 mb-2">
+                                <span class="text-gray-400 line-through">₹24,999</span>
+                                <span class="text-2xl font-bold text-white">₹16,249</span>
+                                <span class="bg-red-500 text-white text-xs px-2 py-1 rounded">SAVE ₹8,750</span>
+                            </div>
+                            <div class="text-left space-y-1 text-sm">
+                                <p class="text-green-400">✓ 40+ Live Sessions with Band 9 Trainers</p>
+                                <p class="text-green-400">✓ 5 Full Mock Tests with Evaluation</p>
+                                <p class="text-green-400">✓ FREE Spoken English Course (Worth ₹9,999)</p>
+                            </div>
+                        </div>
+                        
+                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('ielts')" class="bg-orange-300 text-blue-900 font-bold py-2 px-6 rounded-full hover:bg-orange-400 transition">
+                            GET IELTS + FREE SPOKEN ENGLISH
+                        </button>
+                        <p class="text-xs text-gray-400 mt-4"><span class="text-orange-300">🎯</span> 1,287 students achieved 8+ bands</p>
+                    </div>
+                `
+            },
+            {
+                type: 'ielts',
+                html: `
+                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full">
+                        <div class="absolute top-4 right-4 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">LAST 15 SEATS</div>
+                        <h1 class="text-2xl md:text-3xl font-bold mb-2">IELTS <span class="text-yellow-300">CRASH COURSE</span></h1>
+                        <p class="text-gray-300 mb-4">6-Week Intensive Program | Band 7+ Guaranteed</p>
+                        
+                        <div class="glass-card p-4 mb-4 w-full max-w-md border-2 border-yellow-300">
+                            <h2 class="text-yellow-300 font-bold mb-2">FLASH SALE: 45% OFF</h2>
+                            <div class="flex items-center justify-center gap-2 mb-2">
+                                <span class="text-gray-400 line-through">₹29,999</span>
+                                <span class="text-3xl font-bold text-yellow-300">₹16,499</span>
+                            </div>
+                            <div class="text-left space-y-1 text-sm">
+                                <p class="text-green-400">✓ Band 7+ Guarantee or 50% Refund</p>
+                                <p class="text-green-400">✓ FREE Visa SOP Review</p>
+                                <p class="text-green-400">✓ Spoken English Module Included</p>
+                            </div>
+                        </div>
+                        
+                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('ielts')" class="bg-yellow-300 text-blue-900 font-bold py-2 px-6 rounded-full hover:bg-yellow-400 transition shadow-lg">
+                            ENROLL NOW - BAND 7+ GUARANTEED
+                        </button>
+                        <p class="text-xs text-gray-400 mt-4"><span class="text-yellow-300">⏰</span> Only <span class="font-bold">12</span> seats left!</p>
+                    </div>
+                `
+            },
+            {
+                type: 'pte',
+                html: `
+                    <div class="banner-glass flex flex-col items-center justify-center text-center h-full">
+                        <h1 class="text-2xl md:text-3xl font-bold mb-2">PTE <span class="text-cyan-300">90/90 Guarantee</span> in 4 Weeks!</h1>
+                        <p class="text-gray-300 mb-4">India's Highest PTE Success Rate | 87% Score 79+</p>
+                        
+                        <div class="glass-card p-4 mb-4 w-full max-w-md">
+                            <h2 class="text-cyan-300 font-bold mb-2">LAUNCH OFFER: 40% OFF</h2>
+                            <div class="flex items-center justify-center gap-2 mb-2">
+                                <span class="text-gray-400 line-through">₹22,999</span>
+                                <span class="text-2xl font-bold text-white">₹13,799</span>
+                            </div>
+                            <div class="text-left space-y-1 text-sm">
+                                <p class="text-green-400">✓ Daily Practice with AI Scoring</p>
+                                <p class="text-green-400">✓ FREE Spoken English Fluency Course</p>
+                                <p class="text-green-400">✓ Unlimited Mock Tests & Personal Trainer</p>
+                            </div>
+                        </div>
+                        
+                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'}); filterCourses('pte')" class="bg-cyan-300 text-purple-900 font-bold py-2 px-6 rounded-full hover:bg-cyan-400 transition">
+                            SCORE 79+ WITH 40% OFF
+                        </button>
+                        <p class="text-xs text-gray-400 mt-4"><span class="text-cyan-300">📊</span> 2,134 PTE high scorers</p>
+                    </div>
+                `
+            }
         ];
 
         const courses = [
+            // 4 Spoken English Courses
             { 
-                id: 1, type: 'spoken', title: 'Spoken English Basic', price: 2500, original: 5000, 
+                id: 1, type: 'spoken', title: 'Spoken English Basic (40% OFF)', price: 9599, original: 15999, 
                 dur: '2 Months', lang: 'Hindi/English', cert: 'Yes',
-                desc: 'Build a strong foundation in English grammar and vocabulary.',
-                curriculum: ['Tenses & Grammar Rules', '500+ Daily Vocabulary', 'Sentence Structure', 'Basic Conversation'] 
+                desc: 'Build a strong foundation in English grammar and vocabulary. Includes Pronunciation Masterclass.',
+                curriculum: ['Tenses & Grammar Rules', '500+ Daily Vocabulary', 'Sentence Structure', 'Basic Conversation', 'Pronunciation Masterclass'] 
             },
             { 
-                id: 2, type: 'spoken', title: 'Fluent Speaker Pro', price: 4500, original: 9000, 
+                id: 2, type: 'spoken', title: 'Fluent Speaker Pro (50% OFF)', price: 7999, original: 15999, 
                 dur: '3 Months', lang: 'English', cert: 'Yes',
-                desc: 'Become a confident speaker and remove hesitation.',
-                curriculum: ['Public Speaking', 'Debate Sessions', 'Accent Neutralization', 'Body Language'] 
+                desc: 'Become a confident speaker with Job Interview Prep Module included.',
+                curriculum: ['Public Speaking', 'Debate Sessions', 'Accent Neutralization', 'Body Language', 'Job Interview Prep Module'] 
             },
             { 
-                id: 3, type: 'spoken', title: 'Business Communication', price: 6000, original: 12000, 
+                id: 3, type: 'spoken', title: 'Business Communication (60% OFF)', price: 6399, original: 15999, 
                 dur: '2.5 Months', lang: 'English', cert: 'Yes',
-                desc: 'Master corporate English for job interviews and office work.',
-                curriculum: ['Email Etiquette', 'Interview Prep', 'Presentation Skills', 'Corporate Vocabulary'] 
+                desc: 'Master corporate English with ALL bonuses included.',
+                curriculum: ['Email Etiquette', 'Interview Prep', 'Presentation Skills', 'Corporate Vocabulary', 'IELTS Speaking Module', 'Accent Training'] 
             },
             { 
-                id: 4, type: 'exam', title: 'IELTS Academic', price: 8000, original: 16000, 
+                id: 4, type: 'spoken', title: 'Ultimate English Mastery (70% OFF)', price: 5999, original: 19999, 
+                dur: '4 Months', lang: 'English', cert: 'Yes',
+                desc: 'Complete package with 70% discount and money-back guarantee.',
+                curriculum: ['All Previous Modules', 'LinkedIn Profile Optimization', '30-Day Money Back', 'Pay in 3 Months Installment'] 
+            },
+            // 2 IELTS Courses
+            { 
+                id: 5, type: 'ielts', title: 'IELTS Academic (35% OFF)', price: 16249, original: 24999, 
                 dur: '3 Months', lang: 'English', cert: 'Yes',
-                desc: 'Complete preparation for students aiming for foreign universities.',
-                curriculum: ['Reading & Listening Modules', 'Writing Task 1 & 2', 'Speaking Mock Tests', 'Band 8 Strategy'] 
+                desc: 'Complete preparation for students aiming for foreign universities with FREE Spoken English.',
+                curriculum: ['Reading & Listening Modules', 'Writing Task 1 & 2', 'Speaking Mock Tests', 'Band 8 Strategy', 'FREE Spoken English Course'] 
             },
             { 
-                id: 5, type: 'exam', title: 'PTE Fast Track', price: 7500, original: 15000, 
-                dur: '1 Month', lang: 'English', cert: 'Yes',
+                id: 6, type: 'ielts', title: 'IELTS Crash Course (45% OFF)', price: 16499, original: 29999, 
+                dur: '6 Weeks', lang: 'English', cert: 'Yes',
+                desc: '6-Week Intensive Program with Money-Back Guarantee.',
+                curriculum: ['Band 7+ Guarantee', 'Visa SOP Review', 'Spoken English Module', 'Mock Tests with Evaluation'] 
+            },
+            // 2 PTE Courses
+            { 
+                id: 7, type: 'pte', title: 'PTE Fast Track (40% OFF)', price: 13799, original: 22999, 
+                dur: '4 Weeks', lang: 'English', cert: 'Yes',
                 desc: 'Crash course for PTE with AI-based scoring tricks.',
-                curriculum: ['Speaking Templates', 'Writing Templates', 'AI Scoring Hacks', 'Mock Tests'] 
+                curriculum: ['Speaking Templates', 'Writing Templates', 'AI Scoring Hacks', 'Mock Tests', 'FREE Spoken English Course'] 
             },
             { 
-                id: 6, type: 'visa', title: 'Student Visa Consult', price: 5000, original: 10000, 
-                dur: 'Until Approval', lang: 'English', cert: 'No',
+                id: 8, type: 'pte', title: 'PTE Mastery (50% OFF)', price: 17499, original: 34998, 
+                dur: '2 Months', lang: 'English', cert: 'Yes',
+                desc: 'Complete PTE preparation with ₹10,000 cashback opportunity.',
+                curriculum: ['90/90 Score Strategy', '1-Year Spoken English Access', '6 Months Speaking Club', 'Cashback on 85+ Score'] 
+            },
+            // 2 TOEFL Courses
+            { 
+                id: 9, type: 'toefl', title: 'TOEFL Academic (35% OFF)', price: 18849, original: 28999, 
+                dur: '12 Weeks', lang: 'English', cert: 'Yes',
+                desc: 'Specialized Training for US/Canada University Admissions.',
+                curriculum: ['115/120 Score Strategy', 'University Application Guide', 'Advanced Spoken English', 'SOP Assistance'] 
+            },
+            { 
+                id: 10, type: 'toefl', title: 'TOEFL Platinum', price: 14999, original: 26999, 
+                dur: '10 Weeks', lang: 'English', cert: 'Yes',
+                desc: 'Score Improvement Guarantee with all bonuses.',
+                curriculum: ['20+ Points Improvement', 'Spoken English for Interviews', 'Academic Writing', '3 Mock Interviews'] 
+            },
+            // 2 Visa Courses
+            { 
+                id: 11, type: 'visa', title: 'Visa Success Package', price: 19999, original: 34999, 
+                dur: 'Until Approval', lang: 'English/Hindi', cert: 'No',
                 desc: 'End-to-end guidance for study visa applications.',
-                curriculum: ['Profile Assessment', 'University Shortlisting', 'SOP Drafting', 'Visa Filing Assistance'] 
+                curriculum: ['Profile Assessment', 'University Shortlisting', 'SOP Drafting', 'Visa Filing Assistance', 'FREE Spoken English Course'] 
+            },
+            { 
+                id: 12, type: 'visa', title: 'Urgent Visa Express (30% OFF)', price: 27999, original: 39999, 
+                dur: '7 Days Processing', lang: 'English/Hindi', cert: 'No',
+                desc: 'Urgent visa processing with 7-day guarantee.',
+                curriculum: ['7-Day Processing', 'Interview Preparation', 'Documentation Help', 'Spoken English Crash Course'] 
             }
         ];
 
         const promos = {
             'TESCA50': 0.50,
             'WELCOME10': 0.10,
+            'FLASH40': 0.40,
+            'IELTS35': 0.35,
+            'PTE45': 0.45,
+            'TOEFL30': 0.30,
+            'VISA25': 0.25,
             'FIRST5': 0.05
         };
 
@@ -716,7 +1027,7 @@
         // --- 3. INIT & LOADER ---
         window.onload = () => {
             const bar = document.getElementById('loader-bar');
-            bar.style.width = '100%'; // Trigger animation
+            bar.style.width = '100%';
             
             setTimeout(() => {
                 const loader = document.getElementById('loader');
@@ -726,19 +1037,18 @@
 
             renderBanners();
             filterCourses('all');
+            
+            // Start banner timer
+            startBannerTimers();
         };
 
         // --- 4. BANNER LOGIC ---
         function renderBanners() {
             const wrapper = document.getElementById('banner-wrapper');
             wrapper.innerHTML = banners.map((b, i) => `
-                <div id="banner-${i}" class="absolute inset-0 flex flex-col items-center justify-center text-center px-4 transition-opacity duration-1000"
-                     style="background: ${b.bg}; opacity: ${i===0?1:0}; pointer-events: ${i===0?'all':'none'}">
-                    <div class="transform translate-y-0 transition-transform duration-700">
-                        <h2 class="text-4xl md:text-7xl font-bold mb-4 drop-shadow-lg">${b.h}</h2>
-                        <p class="text-xl md:text-2xl text-white/90 mb-8 font-light">${b.p}</p>
-                        <button onclick="document.getElementById('courses').scrollIntoView({behavior:'smooth'})" class="px-10 py-4 bg-white text-black rounded-full font-bold hover:scale-105 transition shadow-xl">${b.btn}</button>
-                    </div>
+                <div id="banner-${i}" class="absolute inset-0 transition-opacity duration-1000"
+                     style="opacity: ${i===0?1:0}; pointer-events: ${i===0?'all':'none'}">
+                    ${b.html}
                 </div>
             `).join('');
         }
@@ -750,7 +1060,48 @@
             document.getElementById(`banner-${bannerIndex}`).style.opacity = '1';
             document.getElementById(`banner-${bannerIndex}`).style.pointerEvents = 'all';
         }
-        setInterval(() => changeBanner(1), 5000);
+
+        // Auto rotate banners every 8 seconds
+        setInterval(() => changeBanner(1), 8000);
+
+        function startBannerTimers() {
+            // Initialize all timers
+            banners.forEach((banner, index) => {
+                const bannerElement = document.getElementById(`banner-${index}`);
+                if (bannerElement) {
+                    const timerElements = bannerElement.querySelectorAll('.countdown-timer');
+                    timerElements.forEach(timer => {
+                        if (timer.innerText.includes(':')) {
+                            startCountdown(timer, '24:00:00');
+                        }
+                    });
+                }
+            });
+        }
+
+        function startCountdown(timerElement, initialTime) {
+            let time = initialTime;
+            const parts = time.split(':').map(Number);
+            let totalSeconds = parts[0] * 3600 + parts[1] * 60 + parts[2];
+            
+            const interval = setInterval(() => {
+                if (totalSeconds <= 0) {
+                    clearInterval(interval);
+                    timerElement.innerText = '00:00:00';
+                    return;
+                }
+                
+                totalSeconds--;
+                const hours = Math.floor(totalSeconds / 3600);
+                const minutes = Math.floor((totalSeconds % 3600) / 60);
+                const seconds = totalSeconds % 60;
+                
+                timerElement.innerText = 
+                    `${hours.toString().padStart(2, '0')}:` +
+                    `${minutes.toString().padStart(2, '0')}:` +
+                    `${seconds.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
 
         // --- 5. COURSE RENDERER ---
         function filterCourses(cat) {
@@ -760,7 +1111,9 @@
                 btn.classList.add('border-white/10');
                 if(cat === 'all' && btn.innerText.includes('All')) btn.classList.add('active');
                 if(cat === 'spoken' && btn.innerText.includes('Spoken')) btn.classList.add('active');
-                if(cat === 'exam' && btn.innerText.includes('IELTS')) btn.classList.add('active');
+                if(cat === 'ielts' && btn.innerText.includes('IELTS')) btn.classList.add('active');
+                if(cat === 'pte' && btn.innerText.includes('PTE')) btn.classList.add('active');
+                if(cat === 'toefl' && btn.innerText.includes('TOEFL')) btn.classList.add('active');
                 if(cat === 'visa' && btn.innerText.includes('Visa')) btn.classList.add('active');
             });
 
@@ -777,9 +1130,11 @@
                 return;
             }
             
-            grid.innerHTML = filtered.map(c => `
+            grid.innerHTML = filtered.map(c => {
+                const discountPercent = Math.round(((c.original - c.price) / c.original) * 100);
+                return `
                 <div class="glass-card p-6 rounded-3xl relative group hover:-translate-y-2 transition duration-300">
-                    <div class="absolute top-4 right-4 bg-brand-danger text-[10px] font-bold px-3 py-1 rounded-full animate-pulse">50% OFF</div>
+                    <div class="absolute top-4 right-4 bg-brand-danger text-[10px] font-bold px-3 py-1 rounded-full animate-pulse">${discountPercent}% OFF</div>
                     <div class="mb-4">
                         <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">${c.type}</span>
                         <h3 class="text-xl font-bold mt-1 group-hover:text-brand-accent transition">${c.title}</h3>
@@ -787,8 +1142,8 @@
                     <p class="text-sm text-gray-400 mb-6 line-clamp-2">${c.desc}</p>
                     
                     <div class="flex items-end gap-2 mb-6 border-t border-white/5 pt-4">
-                        <span class="text-2xl font-bold text-white">₹${c.price}</span>
-                        <span class="text-sm text-gray-500 line-through mb-1">₹${c.original}</span>
+                        <span class="text-2xl font-bold text-white">₹${c.price.toLocaleString()}</span>
+                        <span class="text-sm text-gray-500 line-through mb-1">₹${c.original.toLocaleString()}</span>
                     </div>
 
                     <div class="flex gap-3">
@@ -796,7 +1151,7 @@
                         <button onclick="addToCart(${c.id})" class="flex-1 py-3 rounded-xl bg-white text-black hover:bg-gray-200 text-xs font-bold transition">Add to Cart</button>
                     </div>
                 </div>
-            `).join('');
+            `}).join('');
         }
 
         function openCourseDetails(id) {
@@ -805,18 +1160,20 @@
             const panel = document.getElementById('details-panel');
             const content = document.getElementById('details-content');
 
-            // Responsive design for mobile
             const isMobile = window.innerWidth < 768;
+            const discountPercent = Math.round(((c.original - c.price) / c.original) * 100);
             
             content.innerHTML = `
                 <div class="flex flex-col ${isMobile ? '' : 'md:flex-row'} gap-6 mb-6">
                     <div class="flex-1">
+                        <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">${c.type}</span>
                         <h2 class="text-2xl ${isMobile ? '' : 'text-3xl'} font-bold text-brand-accent mb-2">${c.title}</h2>
                         <p class="text-gray-400 text-sm ${isMobile ? 'text-xs' : ''}">${c.desc}</p>
                     </div>
                     <div class="text-right">
-                        <div class="text-2xl ${isMobile ? '' : 'text-3xl'} font-bold text-white">₹${c.price}</div>
-                        <div class="text-sm text-gray-500 line-through">₹${c.original}</div>
+                        <div class="text-2xl ${isMobile ? '' : 'text-3xl'} font-bold text-white">₹${c.price.toLocaleString()}</div>
+                        <div class="text-sm text-gray-500 line-through">₹${c.original.toLocaleString()}</div>
+                        <div class="text-xs text-brand-danger font-bold">Save ${discountPercent}%</div>
                     </div>
                 </div>
 
@@ -846,12 +1203,11 @@
                     </ul>
                 </div>
 
-                <button onclick="closeDetails(); addToCart(${c.id})" class="w-full bg-brand-primary py-4 rounded-xl font-bold text-white hover:bg-brand-secondary transition">
-                    Enroll Now for ₹${c.price}
+                <button onclick="closeDetails(); addToCart(${c.id})" class="w-full bg-gradient-to-r from-brand-primary to-brand-secondary py-4 rounded-xl font-bold text-white hover:opacity-90 transition">
+                    Enroll Now for ₹${c.price.toLocaleString()}
                 </button>
             `;
 
-            // Adjust modal size for mobile
             if (isMobile) {
                 panel.style.maxWidth = '95%';
                 panel.style.maxHeight = '85vh';
@@ -871,7 +1227,6 @@
             panel.classList.add('scale-95', 'opacity-0');
             setTimeout(() => {
                 modal.classList.add('hidden');
-                // Reset panel styles
                 panel.style.maxWidth = '';
                 panel.style.maxHeight = '';
             }, 300);
@@ -887,7 +1242,6 @@
 
         function removeFromCart(id) {
             cart = cart.filter(x => x.id !== id);
-            // If cart becomes empty, remove promo
             if(cart.length === 0) {
                 removePromo();
             }
@@ -913,7 +1267,6 @@
         }
 
         function applyPromo() {
-            // Logic Check: Empty Cart
             if(cart.length === 0) {
                 document.getElementById('promo-status').innerHTML = '<span class="text-brand-danger font-bold"><i class="fas fa-exclamation-triangle"></i> Add a course first!</span>';
                 return;
@@ -947,12 +1300,10 @@
         }
 
         function renderCart() {
-            // Count
             document.getElementById('cart-count').innerText = cart.length;
             const container = document.getElementById('cart-items');
             const btn = document.getElementById('checkout-btn');
 
-            // Empty State
             if(cart.length === 0) {
                 container.innerHTML = `
                     <div class="flex flex-col items-center justify-center h-64 text-gray-500">
@@ -966,14 +1317,13 @@
                 return;
             }
 
-            // List Items
             btn.disabled = false;
             btn.classList.remove('opacity-50');
             container.innerHTML = cart.map(c => `
                 <div class="bg-white/5 p-4 rounded-xl flex justify-between items-center group hover:bg-white/10 transition">
                     <div>
                         <h4 class="font-bold text-sm text-white">${c.title}</h4>
-                        <div class="text-xs text-brand-accent mt-1">₹${c.price}</div>
+                        <div class="text-xs text-brand-accent mt-1">₹${c.price.toLocaleString()}</div>
                     </div>
                     <button onclick="removeFromCart(${c.id})" class="w-8 h-8 rounded-full bg-black/20 flex items-center justify-center text-gray-400 hover:text-brand-danger hover:bg-white transition">
                         <i class="fas fa-trash-alt text-xs"></i>
@@ -981,7 +1331,6 @@
                 </div>
             `).join('');
 
-            // Calculate
             const subtotal = cart.reduce((acc, item) => acc + item.price, 0);
             let discount = 0;
             if(activePromo) {
@@ -991,29 +1340,25 @@
         }
 
         function updateTotals(sub, disc) {
-            document.getElementById('cart-subtotal').innerText = `₹${sub}`;
-            document.getElementById('cart-discount').innerText = `-₹${disc}`;
-            document.getElementById('cart-total').innerText = `₹${sub - disc}`;
+            document.getElementById('cart-subtotal').innerText = `₹${sub.toLocaleString()}`;
+            document.getElementById('cart-discount').innerText = `-₹${disc.toLocaleString()}`;
+            document.getElementById('cart-total').innerText = `₹${(sub - disc).toLocaleString()}`;
         }
 
         // --- 7. PAYMENT QR LOGIC ---
         function startPayment() {
-            // Double Check
             if(cart.length === 0) return;
 
-            const totalStr = document.getElementById('cart-total').innerText.replace('₹', '');
+            const totalStr = document.getElementById('cart-total').innerText.replace('₹', '').replace(/,/g, '');
             const amount = parseInt(totalStr);
             currentPaymentAmount = amount;
 
-            toggleCart(); // Close Cart
+            toggleCart();
             
-            // Set Modal Data
-            document.getElementById('pay-final-amount').innerText = `₹${amount}`;
+            document.getElementById('pay-final-amount').innerText = `₹${amount.toLocaleString()}`;
             document.getElementById('payment-modal').classList.remove('hidden');
 
-            // Generate UPI QR (Dynamic Amount)
-            const upiString = `upi://pay?pa=8866722633@upi&pn=TESCA_Education&am=${amount}&cu=INR`;
-            // Using QR Server API
+            const upiString = `upi://pay?pa=8866722633@upi&pn=TESCA_Education&am=${amount}&cu=INR&tn=TESCA Course Payment`;
             const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&margin=10&data=${encodeURIComponent(upiString)}`;
             document.getElementById('qr-image').src = qrUrl;
 
@@ -1025,51 +1370,43 @@
             const merchantName = "TESCA Education";
             const amount = currentPaymentAmount;
             
-            // Different UPI links for different apps
-            let upiLink;
+            let upiLink = "";
             
             switch(appName) {
                 case 'googlepay':
-                    // Google Pay uses UPI deep link format
-                    upiLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR&tn=TESCA Course Payment`;
-                    // Try to open Google Pay first
-                    window.location.href = `tez://upi/pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR`;
+                    upiLink = `tez://upi/pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR`;
                     break;
-                    
                 case 'phonepe':
-                    // PhonePe specific deep link
-                    upiLink = `phonepe://upi/pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR`;
-                    window.location.href = upiLink;
+                    upiLink = `phonepe://pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR`;
                     break;
-                    
                 case 'paytm':
-                    // Paytm specific deep link
-                    upiLink = `paytmmp://upi/pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR`;
-                    window.location.href = upiLink;
+                    upiLink = `paytmmp://pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR`;
                     break;
-                    
-                case 'generic':
                 default:
-                    // Generic UPI link that opens UPI app selector
-                    upiLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR&tn=TESCA Course Payment`;
-                    window.location.href = upiLink;
+                    upiLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR`;
                     break;
             }
             
-            // Fallback - if app not installed, open generic UPI link after delay
+            window.location.href = upiLink;
+            
             setTimeout(() => {
                 if(document.hasFocus()) {
-                    // App didn't open, try generic UPI link
-                    if(appName !== 'generic') {
-                        window.location.href = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR&tn=TESCA Course Payment`;
-                    }
-                    
-                    // Second fallback - if still not working, show alert
-                    setTimeout(() => {
-                        if(document.hasFocus()) {
-                            alert(`If payment app didn't open, please manually open your UPI app and pay to: ${upiId} for ₹${amount}`);
-                        }
-                    }, 1000);
+                    alert(`Please install ${appName} to make the payment.`);
+                }
+            }, 500);
+        }
+
+        function openGenericUPI() {
+            const upiId = "8866722633@upi";
+            const merchantName = "TESCA Education";
+            const amount = currentPaymentAmount;
+            const upiLink = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(merchantName)}&am=${amount}&cu=INR&tn=TESCA Course Payment`;
+            
+            window.location.href = upiLink;
+            
+            setTimeout(() => {
+                if(document.hasFocus()) {
+                    alert("Please install a UPI payment app to make the payment.");
                 }
             }, 500);
         }
@@ -1083,7 +1420,7 @@
             clearInterval(timerInterval);
             document.getElementById('qr-expired').classList.add('hidden');
             
-            let timeLeft = 60; // 60 seconds
+            let timeLeft = 60;
             const timerDisplay = document.getElementById('timer');
             timerDisplay.innerText = "01:00";
             timerDisplay.classList.remove('text-gray-500');
