@@ -68,11 +68,11 @@
             padding: 0;
         }
 
-        /* Hero section - INCREASED HEIGHT FOR DESKTOP */
+        /* Hero section - ADJUSTED HEIGHT FOR DESKTOP */
         .hero-section {
-            height: 110vh; /* Increased from 100vh */
-            min-height: 700px; /* Increased from 600px */
-            max-height: 1000px; /* Increased from 900px */
+            height: 105vh; /* Adjusted from 110vh to 105vh */
+            min-height: 700px;
+            max-height: 1000px;
             width: 100%;
             position: relative;
             overflow: hidden;
@@ -95,7 +95,7 @@
         /* For large desktop screens */
         @media (min-width: 1025px) {
             .hero-section {
-                height: 110vh;
+                height: 105vh;
                 min-height: 800px;
                 max-height: 1100px;
             }
@@ -137,12 +137,12 @@
             text-align: center;
             z-index: 3;
             position: relative;
-            padding-top: 80px; /* Increased from 60px */
+            padding-top: 80px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 80vh; /* Increased from 70vh */
+            min-height: 80vh;
         }
 
         /* Banner overlay */
@@ -186,7 +186,7 @@
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #555; }
 
-        /* REALISTIC PHONE FRAME */
+        /* REALISTIC PHONE FRAME - Updated for app section */
         .phone-mockup {
             width: 300px;
             height: 600px;
@@ -220,9 +220,11 @@
             box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
         }
 
-        /* Header styling - IMPROVED TRANSPARENCY */
+        /* Header styling - IMPROVED TRANSPARENCY - FIXED */
         #main-header {
             transition: all 0.3s ease;
+            background: transparent !important;
+            backdrop-filter: none !important;
         }
         
         #main-header .glass {
@@ -230,14 +232,18 @@
             margin: 1.5rem auto;
             max-width: 95%;
             padding: 0.5rem 2rem;
-            background: rgba(255, 255, 255, 0.008); /* More transparent */
-            backdrop-filter: blur(8px); /* Reduced blur */
-            border: 1px solid rgba(255, 255, 255, 0.08); /* Slightly more visible border */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            background: rgba(255, 255, 255, 0.05) !important; /* Increased transparency */
+            backdrop-filter: blur(12px) !important; /* Added blur */
+            -webkit-backdrop-filter: blur(12px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important; /* More visible border */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
         }
         
-        #main-header.scrolled {
-            background: rgba(5, 5, 7, 0.7); /* Only show background when scrolled */
+        #main-header.scrolled .glass {
+            background: rgba(5, 5, 7, 0.7) !important; /* Darker when scrolled */
+            backdrop-filter: blur(16px) !important;
+            -webkit-backdrop-filter: blur(16px) !important;
+            border-color: rgba(255, 255, 255, 0.15) !important;
         }
         
         /* Fix header links spacing */
@@ -251,7 +257,7 @@
             white-space: nowrap;
             padding: 0.5rem 0;
             position: relative;
-            color: rgba(255, 255, 255, 0.9) !important; /* Brighter text */
+            color: rgba(255, 255, 255, 0.95) !important; /* Brighter text */
             font-weight: 500;
             transition: all 0.3s ease;
         }
@@ -269,7 +275,7 @@
             width: 0;
             height: 2px;
             background: linear-gradient(90deg, #6366f1, #8b5cf6);
-            opacity: 0.7;
+            opacity: 0.8;
             transition: width 0.3s ease;
         }
         
@@ -337,7 +343,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 50px;
             padding: 10px 20px;
             color: white;
@@ -345,13 +351,13 @@
             font-weight: 600;
             font-size: 14px;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .call-btn:hover {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.2);
             transform: translateY(-2px);
-            border-color: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.3);
         }
         
         .call-btn i {
@@ -637,9 +643,9 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Banner title styles - INCREASED FOR TALLER BANNER */
+        /* Banner title styles */
         .banner-title {
-            font-size: 4rem; /* Increased from 3.5rem */
+            font-size: 4rem;
             line-height: 1.1;
             margin-bottom: 1.5rem;
             font-weight: 800;
@@ -829,30 +835,68 @@
             line-height: 1.4;
         }
 
-        /* App section grid for mobile */
-        .app-section-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-template-rows: repeat(2, auto);
-            gap: 1.5rem;
+        /* App section grid for desktop - FULL PHONE MOCKUP */
+        .app-section-desktop {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 4rem;
+            margin-top: 4rem;
         }
         
-        .app-section-grid .phone-mockup {
-            width: 100%;
-            height: 280px;
-            border: 8px solid #1a1a1a;
-            border-radius: 25px;
+        .app-section-desktop .full-phone-mockup {
+            width: 320px;
+            height: 640px;
+            border: 14px solid #1a1a1a;
+            border-radius: 45px;
+            overflow: hidden;
+            background: #000;
+            position: relative;
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6);
+            transition: transform 0.5s ease;
         }
         
-        .app-section-grid .phone-notch {
-            width: 80px;
-            height: 20px;
+        .app-section-desktop .full-phone-mockup:hover {
+            transform: translateY(-15px) rotate(2deg);
         }
         
-        .app-section-grid .phone-screen {
-            padding: 1rem;
+        .app-section-desktop .phone-notch {
+            width: 140px;
+            height: 35px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
         }
-
+        
+        .app-section-desktop .phone-screen {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        }
+        
+        /* App features list for desktop */
+        .app-features-list {
+            max-width: 500px;
+        }
+        
+        .app-features-list .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .app-features-list .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            font-size: 1.5rem;
+            margin: 0;
+            flex-shrink: 0;
+        }
+        
         /* Footer mobile grid */
         .footer-grid {
             display: grid;
@@ -919,9 +963,9 @@
                 padding: 0.5rem 1rem;
                 max-width: 98%;
                 border-radius: 20px;
-                background: rgba(255, 255, 255, 0.02);
+                background: rgba(255, 255, 255, 0.08);
                 backdrop-filter: blur(16px);
-                border: 1px solid rgba(255, 255, 255, 0.05);
+                border: 1px solid rgba(255, 255, 255, 0.1);
             }
             
             /* Banner adjustments for mobile - IMPROVED */
@@ -1086,7 +1130,9 @@
                 font-size: 2rem !important;
             }
             
+            /* Mobile grid for app section */
             .app-section-grid {
+                display: grid;
                 grid-template-columns: repeat(2, 1fr);
                 grid-template-rows: repeat(2, auto);
                 gap: 1rem;
@@ -1097,6 +1143,11 @@
                 height: 200px;
                 border-width: 6px;
                 border-radius: 20px;
+            }
+            
+            /* Hide desktop app section on mobile */
+            .app-section-desktop {
+                display: none;
             }
             
             /* Footer mobile */
@@ -1319,6 +1370,16 @@
             .banner-content {
                 padding-top: 80px;
             }
+            
+            /* Hide mobile app grid on desktop */
+            .app-section-grid {
+                display: none;
+            }
+            
+            /* Show desktop app section */
+            .app-section-desktop {
+                display: flex;
+            }
         }
 
         /* Fix for Play Store and social media links */
@@ -1391,7 +1452,7 @@
         <div class="mt-4 text-xs text-gray-500 font-mono tracking-widest">LOADING...</div>
     </div>
 
-    <!-- Header - IMPROVED TRANSPARENCY -->
+    <!-- Header - FIXED TRANSPARENCY -->
     <header id="main-header" class="fixed top-0 w-full z-50 transition-all duration-300">
         <div class="glass">
             <div class="container mx-auto px-4 py-2 flex justify-between items-center">
@@ -1440,7 +1501,7 @@
         <a href="#contact" class="hover:text-brand-accent mobile-menu-link transition-colors duration-300" onclick="toggleMobileMenu()">Contact Us</a>
     </div>
 
-    <!-- Hero Banner Section - INCREASED HEIGHT -->
+    <!-- Hero Banner Section - ADJUSTED HEIGHT -->
     <section id="home" class="hero-section">
         <div class="banner-container">
             <!-- Banner Navigation Arrows -->
@@ -1656,12 +1717,12 @@
         </div>
     </section>
 
-    <!-- App Section -->
+    <!-- App Section - IMPROVED WITH FULL PHONE MOCKUP FOR DESKTOP -->
     <section id="app" class="section-padding bg-brand-surface2">
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
         
         <div class="container mx-auto px-4 relative z-10 mobile-optimized-section">
-            <div class="text-center max-w-3xl mx-auto mb-16 animate-fade-in mobile-optimized">
+            <div class="text-center max-w-3xl mx-auto mb-8 animate-fade-in mobile-optimized">
                 <h2 class="mobile-optimized-heading text-5xl md:text-6xl font-bold leading-tight mb-6">Your <span class="gradient-text">Pocket Classroom</span></h2>
                 <p class="mobile-optimized-text text-gray-400 text-lg mb-8">Download the TESCA App for seamless learning. Watch videos, take quizzes, and chat with tutors on the go.</p>
                 <a href="https://play.google.com/store/apps/details?id=co.ted.fpqdt" target="_blank" class="direct-link inline-flex items-center gap-4 bg-white text-black px-8 py-4 rounded-2xl font-bold hover:scale-105 transition shadow-lg shadow-white/10">
@@ -1673,7 +1734,8 @@
                 </a>
             </div>
 
-            <div class="app-section-grid md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-8">
+            <!-- Mobile Grid (shown only on mobile) -->
+            <div class="app-section-grid md:hidden">
                 <div class="phone-mockup animate-fade-in" style="animation-delay: 0.1s">
                     <div class="phone-notch"></div>
                     <div class="phone-screen bg-gray-900 flex flex-col items-center justify-center p-6 text-center">
@@ -1682,7 +1744,7 @@
                         <p class="text-xs text-gray-500">Interactive video sessions</p>
                     </div>
                 </div>
-                <div class="phone-mockup animate-fade-in md:lg:translate-y-12" style="animation-delay: 0.2s">
+                <div class="phone-mockup animate-fade-in" style="animation-delay: 0.2s">
                     <div class="phone-notch"></div>
                     <div class="phone-screen bg-gray-900 flex flex-col items-center justify-center p-6 text-center">
                         <div class="w-16 h-16 rounded-full bg-brand-accent/20 flex items-center justify-center mb-4"><i class="fas fa-file-alt text-brand-accent text-2xl"></i></div>
@@ -1698,12 +1760,108 @@
                         <p class="text-xs text-gray-500">Detailed analytics & results</p>
                     </div>
                 </div>
-                <div class="phone-mockup animate-fade-in md:lg:translate-y-12" style="animation-delay: 0.4s">
+                <div class="phone-mockup animate-fade-in" style="animation-delay: 0.4s">
                     <div class="phone-notch"></div>
                     <div class="phone-screen bg-gray-900 flex flex-col items-center justify-center p-6 text-center">
                         <div class="w-16 h-16 rounded-full bg-brand-success/20 flex items-center justify-center mb-4"><i class="fas fa-comments text-brand-success text-2xl"></i></div>
                         <h4 class="font-bold text-lg mb-2">Tutor Chat</h4>
                         <p class="text-xs text-gray-500">Instant doubt solving</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desktop Layout with Full Phone Mockup -->
+            <div class="app-section-desktop hidden md:flex">
+                <div class="full-phone-mockup animate-float">
+                    <div class="phone-notch"></div>
+                    <div class="phone-screen">
+                        <div class="flex flex-col items-center justify-center h-full">
+                            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-brand-primary to-brand-secondary flex items-center justify-center mb-6">
+                                <i class="fas fa-graduation-cap text-white text-3xl"></i>
+                            </div>
+                            <h3 class="text-xl font-bold mb-2 text-center">TESCA Learning App</h3>
+                            <p class="text-gray-400 text-sm text-center mb-6">Your Personal English Coach</p>
+                            
+                            <div class="space-y-4 w-full px-6">
+                                <div class="flex items-center gap-3 p-3 bg-white/5 rounded-xl">
+                                    <div class="w-10 h-10 rounded-lg bg-brand-primary/20 flex items-center justify-center">
+                                        <i class="fas fa-play text-brand-primary"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-sm">Live Classes</h4>
+                                        <p class="text-xs text-gray-400">Daily interactive sessions</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center gap-3 p-3 bg-white/5 rounded-xl">
+                                    <div class="w-10 h-10 rounded-lg bg-brand-accent/20 flex items-center justify-center">
+                                        <i class="fas fa-book text-brand-accent"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-sm">Study Material</h4>
+                                        <p class="text-xs text-gray-400">1000+ PDFs & E-books</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-center gap-3 p-3 bg-white/5 rounded-xl">
+                                    <div class="w-10 h-10 rounded-lg bg-brand-success/20 flex items-center justify-center">
+                                        <i class="fas fa-chart-line text-brand-success"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-sm">Progress Tracker</h4>
+                                        <p class="text-xs text-gray-400">Real-time analytics</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-8 w-full px-6">
+                                <a href="https://play.google.com/store/apps/details?id=co.ted.fpqdt" target="_blank" class="direct-link block w-full bg-gradient-to-r from-brand-primary to-brand-secondary text-white py-3 rounded-xl text-center font-bold hover:opacity-90 transition">
+                                    <i class="fab fa-google-play mr-2"></i>Download Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="app-features-list">
+                    <div class="feature-item animate-fade-in" style="animation-delay: 0.1s">
+                        <div class="feature-icon bg-brand-primary/20">
+                            <i class="fas fa-video text-brand-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xl mb-2">Live Interactive Classes</h3>
+                            <p class="text-gray-400">Join daily live sessions with expert tutors. Ask questions in real-time and get instant feedback.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item animate-fade-in" style="animation-delay: 0.2s">
+                        <div class="feature-icon bg-brand-accent/20">
+                            <i class="fas fa-download text-brand-accent"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xl mb-2">Download & Study Offline</h3>
+                            <p class="text-gray-400">Download study materials and watch recorded lectures offline. Learn anytime, anywhere.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item animate-fade-in" style="animation-delay: 0.3s">
+                        <div class="feature-icon bg-brand-success/20">
+                            <i class="fas fa-chart-bar text-brand-success"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xl mb-2">Personalized Progress Reports</h3>
+                            <p class="text-gray-400">Track your improvement with detailed analytics and personalized recommendations.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item animate-fade-in" style="animation-delay: 0.4s">
+                        <div class="feature-icon bg-brand-warning/20">
+                            <i class="fas fa-comments text-brand-warning"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-xl mb-2">24/7 Tutor Support</h3>
+                            <p class="text-gray-400">Get instant help from tutors via chat. Clear your doubts anytime with our dedicated support team.</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2992,12 +3150,8 @@
                 const header = document.getElementById('main-header');
                 if (window.scrollY > 50) {
                     header.classList.add('scrolled');
-                    header.style.background = 'rgba(5, 5, 7, 0.85)';
-                    header.style.backdropFilter = 'blur(16px)';
                 } else {
                     header.classList.remove('scrolled');
-                    header.style.background = 'rgba(255, 255, 255, 0.008)';
-                    header.style.backdropFilter = 'blur(8px)';
                 }
             });
 
