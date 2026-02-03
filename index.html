@@ -36,7 +36,8 @@
                         'float': 'float 6s ease-in-out infinite',
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'slide-up': 'slideUp 0.5s ease-out forwards',
-                        'fade-in': 'fadeIn 0.8s ease-out'
+                        'fade-in': 'fadeIn 0.8s ease-out',
+                        'slide-in': 'slideIn 0.5s ease-out'
                     },
                     keyframes: {
                         float: {
@@ -50,6 +51,10 @@
                         fadeIn: {
                             '0%': { opacity: '0' },
                             '100%': { opacity: '1' },
+                        },
+                        slideIn: {
+                            '0%': { transform: 'translateX(-20px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' },
                         }
                     }
                 }
@@ -68,11 +73,11 @@
             padding: 0;
         }
 
-        /* Hero section - ADJUSTED HEIGHT FOR DESKTOP */
+        /* Hero section - OPTIMIZED HEIGHT */
         .hero-section {
-            height: 105vh; /* Adjusted from 110vh to 105vh */
+            height: 100vh;
             min-height: 700px;
-            max-height: 1000px;
+            max-height: 900px;
             width: 100%;
             position: relative;
             overflow: hidden;
@@ -83,25 +88,43 @@
             justify-content: center;
         }
 
-        /* For medium desktop screens */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .hero-section {
-                height: 105vh;
-                min-height: 650px;
-                max-height: 900px;
-            }
-        }
-
         /* For large desktop screens */
-        @media (min-width: 1025px) {
+        @media (min-width: 1920px) {
             .hero-section {
-                height: 105vh;
-                min-height: 800px;
-                max-height: 1100px;
+                height: 100vh;
+                max-height: 100vh;
             }
         }
 
-        /* Banner container - IMPROVED FOR DUAL SCREEN */
+        /* For medium desktop screens */
+        @media (min-width: 1024px) and (max-width: 1440px) {
+            .hero-section {
+                height: 100vh;
+                min-height: 800px;
+                max-height: 950px;
+            }
+        }
+
+        /* For tablets */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .hero-section {
+                height: 90vh;
+                min-height: 600px;
+                max-height: 800px;
+            }
+        }
+
+        /* For mobile */
+        @media (max-width: 767px) {
+            .hero-section {
+                height: 100vh !important;
+                min-height: 100vh;
+                max-height: 100vh;
+                padding-top: 70px;
+            }
+        }
+
+        /* Banner container */
         .banner-container {
             width: 100%;
             height: 100%;
@@ -137,12 +160,12 @@
             text-align: center;
             z-index: 3;
             position: relative;
-            padding-top: 80px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 80vh;
+            min-height: 75vh;
+            padding-top: 20px;
         }
 
         /* Banner overlay */
@@ -186,7 +209,7 @@
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #555; }
 
-        /* REALISTIC PHONE FRAME - Updated for app section */
+        /* REALISTIC PHONE FRAME */
         .phone-mockup {
             width: 300px;
             height: 600px;
@@ -210,6 +233,12 @@
             background-size: cover;
             background-position: center;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            overflow: hidden;
         }
 
         /* Filter Button Active State */
@@ -220,7 +249,7 @@
             box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
         }
 
-        /* Header styling - IMPROVED TRANSPARENCY - FIXED */
+        /* Header styling */
         #main-header {
             transition: all 0.3s ease;
             background: transparent !important;
@@ -230,26 +259,28 @@
         #main-header .glass {
             border-radius: 9999px;
             margin: 1.5rem auto;
-            max-width: 95%;
-            padding: 0.5rem 2rem;
-            background: rgba(255, 255, 255, 0.05) !important; /* Increased transparency */
-            backdrop-filter: blur(12px) !important; /* Added blur */
-            -webkit-backdrop-filter: blur(12px) !important;
-            border: 1px solid rgba(255, 255, 255, 0.1) !important; /* More visible border */
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            max-width: 90%;
+            padding: 0.75rem 2.5rem;
+            background: rgba(255, 255, 255, 0.08) !important;
+            backdrop-filter: blur(16px) !important;
+            -webkit-backdrop-filter: blur(16px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
         }
         
         #main-header.scrolled .glass {
-            background: rgba(5, 5, 7, 0.7) !important; /* Darker when scrolled */
-            backdrop-filter: blur(16px) !important;
-            -webkit-backdrop-filter: blur(16px) !important;
-            border-color: rgba(255, 255, 255, 0.15) !important;
+            background: rgba(5, 5, 7, 0.85) !important;
+            backdrop-filter: blur(24px) !important;
+            -webkit-backdrop-filter: blur(24px) !important;
+            border-color: rgba(255, 255, 255, 0.2) !important;
+            margin: 0.5rem auto;
+            padding: 0.5rem 2rem;
         }
         
-        /* Fix header links spacing */
+        /* Header links spacing */
         #main-header nav {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
             margin: 0 auto;
         }
         
@@ -257,8 +288,10 @@
             white-space: nowrap;
             padding: 0.5rem 0;
             position: relative;
-            color: rgba(255, 255, 255, 0.95) !important; /* Brighter text */
-            font-weight: 500;
+            color: rgba(255, 255, 255, 0.95) !important;
+            font-weight: 600;
+            font-size: 15px;
+            letter-spacing: 0.3px;
             transition: all 0.3s ease;
         }
         
@@ -273,15 +306,14 @@
             bottom: 0;
             left: 0;
             width: 0;
-            height: 2px;
+            height: 3px;
             background: linear-gradient(90deg, #6366f1, #8b5cf6);
-            opacity: 0.8;
+            border-radius: 2px;
             transition: width 0.3s ease;
         }
         
         #main-header nav a:hover::after {
             width: 100%;
-            opacity: 1;
         }
 
         /* Logo styling */
@@ -338,83 +370,148 @@
             margin: 0 5px;
         }
 
-        /* Call button in header - IMPROVED VISIBILITY */
+        /* Call button in header */
         .call-btn {
             display: flex;
             align-items: center;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.1);
+            gap: 10px;
+            background: linear-gradient(90deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.15));
             border-radius: 50px;
-            padding: 10px 20px;
+            padding: 12px 24px;
             color: white;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
+            font-weight: 700;
+            font-size: 15px;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
         }
         
         .call-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: linear-gradient(90deg, rgba(99, 102, 241, 0.25), rgba(139, 92, 246, 0.25));
             transform: translateY(-2px);
-            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.3);
+            border-color: rgba(99, 102, 241, 0.5);
         }
         
         .call-btn i {
-            font-size: 16px;
+            font-size: 18px;
             color: #10b981 !important;
         }
 
-        /* Promo code info styles */
-        .promo-info {
-            font-size: 10px;
-            margin-top: 4px;
-            opacity: 0.8;
-        }
-        
-        /* Remove scroll from promo section */
+        /* Promo code system */
         .promo-section-compact {
-            max-height: none;
-            overflow-y: visible;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
+            gap: 10px;
             padding-bottom: 8px;
         }
 
-        /* Used promo code style */
-        .used-promo {
-            opacity: 0.5;
-            cursor: not-allowed !important;
-            background: rgba(107, 114, 128, 0.1) !important;
-            border-color: rgba(107, 114, 128, 0.3) !important;
-            color: rgba(107, 114, 128, 0.8) !important;
-        }
-
-        .used-promo:hover {
-            transform: none !important;
-            filter: none !important;
-        }
-
-        /* Permanent used promo code style */
-        .permanent-used {
-            background: rgba(239, 68, 68, 0.1) !important;
-            border-color: rgba(239, 68, 68, 0.3) !important;
-            color: rgba(239, 68, 68, 0.8) !important;
+        .promo-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
             position: relative;
+            overflow: hidden;
         }
         
-        .permanent-used::after {
-            content: 'USED';
+        .promo-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .promo-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .promo-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+        
+        .promo-card.active {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.1) 100%);
+            border-color: #6366f1;
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);
+        }
+        
+        .promo-card.active::before {
+            transform: scaleX(1);
+        }
+        
+        .promo-code {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+            font-size: 16px;
+            color: #6366f1;
+            margin-bottom: 4px;
+        }
+        
+        .promo-desc {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 6px;
+        }
+        
+        .promo-validity {
+            font-size: 10px;
+            color: #10b981;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        
+        .promo-discount {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(90deg, #10b981, #059669);
+            color: white;
+            font-size: 11px;
+            font-weight: bold;
+            padding: 2px 8px;
+            border-radius: 20px;
+        }
+        
+        .used-promo {
+            opacity: 0.6;
+            cursor: not-allowed;
+            background: rgba(107, 114, 128, 0.1);
+            border-color: rgba(107, 114, 128, 0.3);
+        }
+        
+        .used-promo .promo-code {
+            color: rgba(107, 114, 128, 0.8);
+        }
+        
+        .used-promo:hover {
+            transform: none !important;
+            box-shadow: none !important;
+            border-color: rgba(107, 114, 128, 0.3) !important;
+        }
+        
+        .used-badge {
             position: absolute;
             top: -5px;
             right: -5px;
             background: #ef4444;
             color: white;
-            font-size: 8px;
-            padding: 1px 4px;
-            border-radius: 4px;
+            font-size: 9px;
+            padding: 2px 6px;
+            border-radius: 10px;
             font-weight: bold;
+            z-index: 2;
         }
 
         /* NEW CART MODAL */
@@ -511,14 +608,26 @@
 
         /* Applied promo info in cart */
         .applied-promo-section {
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.2);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.1) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.3);
             border-radius: 12px;
             padding: 1rem;
             margin: 1rem 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .applied-promo-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #10b981, #059669);
         }
         
         .applied-promo-details {
@@ -529,20 +638,27 @@
             font-weight: bold;
             color: #10b981;
             font-family: 'Courier New', monospace;
-            font-size: 1rem;
+            font-size: 1.1rem;
+            margin-bottom: 4px;
         }
         
         .applied-promo-desc {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.9);
             margin-top: 4px;
+        }
+        
+        .applied-promo-savings {
+            font-size: 0.8rem;
+            color: #10b981;
+            font-weight: bold;
         }
         
         .remove-promo-btn {
             background: rgba(239, 68, 68, 0.1);
             border: 1px solid rgba(239, 68, 68, 0.2);
             color: #ef4444;
-            padding: 6px 12px;
+            padding: 8px 16px;
             border-radius: 8px;
             font-size: 0.85rem;
             font-weight: bold;
@@ -553,6 +669,7 @@
         
         .remove-promo-btn:hover {
             background: rgba(239, 68, 68, 0.2);
+            transform: scale(1.05);
         }
 
         /* Line clamp for cart titles */
@@ -570,14 +687,14 @@
 
         /* Section spacing */
         .section-padding {
-            padding-top: 5rem;
-            padding-bottom: 5rem;
+            padding-top: 6rem;
+            padding-bottom: 6rem;
         }
 
-        /* Banner indicator dots */
+        /* Banner indicator dots - ADJUSTED SPACING */
         .banner-indicators {
             position: absolute;
-            bottom: 30px;
+            bottom: 40px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -643,27 +760,28 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Banner title styles */
+        /* Banner title styles - ADJUSTED SPACING */
         .banner-title {
             font-size: 4rem;
             line-height: 1.1;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             font-weight: 800;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            margin-top: 0;
         }
 
         /* Banner subtitle */
         .banner-subtitle {
             font-size: 1.25rem;
             line-height: 1.6;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             opacity: 0.9;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
         }
 
-        /* Banner CTA button */
+        /* Banner CTA button - ADJUSTED SPACING */
         .banner-cta {
             font-size: 1.1rem;
             padding: 1rem 2.5rem;
@@ -673,7 +791,7 @@
             letter-spacing: 1px;
             transition: all 0.3s ease;
             display: inline-block;
-            margin: 1rem auto 0;
+            margin: 0.5rem auto 0;
         }
 
         /* Feature icons */
@@ -695,8 +813,12 @@
             display: flex;
             justify-content: center;
             align-items: stretch;
-            gap: 2rem;
+            gap: 2.5rem;
             flex-wrap: wrap;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 10;
         }
         
         .desktop-features-grid > div {
@@ -705,8 +827,21 @@
             align-items: center;
             text-align: center;
             flex: 1;
-            min-width: 200px;
-            max-width: 250px;
+            min-width: 220px;
+            max-width: 280px;
+            padding: 2rem 1.5rem;
+            background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .desktop-features-grid > div:hover {
+            transform: translateY(-10px);
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
         }
 
         /* Gradient text */
@@ -735,12 +870,15 @@
             height: 100%;
             display: flex;
             flex-direction: column;
+            border-radius: 20px;
+            overflow: hidden;
         }
         
         .course-card .course-content {
             flex: 1;
             display: flex;
             flex-direction: column;
+            padding: 1.5rem;
         }
         
         .course-card .course-description {
@@ -770,9 +908,11 @@
             justify-content: center;
             white-space: nowrap;
             border-radius: 9999px !important;
+            font-weight: 600;
+            border-radius: 50px !important;
         }
 
-        /* Loader - NO SPIN ANIMATION */
+        /* Loader */
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
@@ -814,7 +954,7 @@
             background: rgba(245, 158, 11, 0.1);
             border: 1px solid rgba(245, 158, 11, 0.2);
             border-radius: 10px;
-            padding: 10px;
+            padding: 12px;
             margin-bottom: 15px;
             border-left: 4px solid #f59e0b;
         }
@@ -822,25 +962,25 @@
         .important-note .note-title {
             color: #f59e0b;
             font-weight: bold;
-            font-size: 12px;
-            margin-bottom: 4px;
+            font-size: 13px;
+            margin-bottom: 6px;
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 8px;
         }
         
         .important-note .note-text {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 11px;
-            line-height: 1.4;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 12px;
+            line-height: 1.5;
         }
 
-        /* App section grid for desktop - FULL PHONE MOCKUP */
+        /* App section for desktop */
         .app-section-desktop {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 4rem;
+            gap: 5rem;
             margin-top: 4rem;
         }
         
@@ -857,7 +997,7 @@
         }
         
         .app-section-desktop .full-phone-mockup:hover {
-            transform: translateY(-15px) rotate(2deg);
+            transform: translateY(-15px);
         }
         
         .app-section-desktop .phone-notch {
@@ -867,13 +1007,16 @@
             border-bottom-right-radius: 20px;
         }
         
+        /* FIXED PHONE SCREEN OVERLAP */
         .app-section-desktop .phone-screen {
-            padding: 2rem;
+            padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            overflow: hidden;
+            height: 100%;
         }
         
         /* App features list for desktop */
@@ -884,8 +1027,8 @@
         .app-features-list .feature-item {
             display: flex;
             align-items: flex-start;
-            gap: 1rem;
-            margin-bottom: 2rem;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
         }
         
         .app-features-list .feature-icon {
@@ -912,6 +1055,7 @@
             justify-content: center;
             width: 100%;
             margin: 0 auto;
+            padding: 1.5rem !important;
         }
 
         /* Faculty designation styling */
@@ -920,229 +1064,445 @@
             font-weight: 600 !important;
         }
 
-        /* NEW: Mobile view improvements */
-        .mobile-optimized {
-            font-size: 0.9rem;
-            line-height: 1.5;
+        /* ============================================ */
+        /* IMPROVED PHONE MOCKUP SCREENS - OPTIMIZED FOR MOBILE */
+        /* ============================================ */
+        
+        .app-screen-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, #0F1016 0%, #050507 100%);
+            overflow: hidden;
         }
         
-        .mobile-optimized h2 {
-            font-size: 2rem !important;
-            line-height: 1.2;
+        .app-screen-header {
+            padding: 1rem 1rem 0.75rem;
+            text-align: center;
+            background: rgba(99, 102, 241, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
         
-        .mobile-optimized h3 {
-            font-size: 1.3rem !important;
+        .app-screen-logo {
+            width: 45px;
+            height: 45px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.5rem;
         }
         
-        .mobile-optimized p {
-            font-size: 0.9rem !important;
+        .app-screen-body {
+            flex: 1;
+            padding: 1rem 0.75rem;
+            overflow-y: auto;
         }
         
-        .mobile-optimized .btn {
-            padding: 0.8rem 1.5rem !important;
-            font-size: 0.9rem !important;
+        .app-menu-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem;
+            margin-bottom: 0.4rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .app-menu-item:hover {
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateX(3px);
+        }
+        
+        .app-menu-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            background: rgba(99, 102, 241, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6366f1;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+        
+        .app-menu-text {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .app-menu-text h4 {
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .app-menu-text p {
+            font-size: 0.65rem;
+            color: rgba(255, 255, 255, 0.6);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .app-screen-footer {
+            padding: 0.75rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
         }
 
-        /* Mobile view adjustments */
+        /* ============================================ */
+        /* FIXED PROMO CODE APPLY BUTTON */
+        /* ============================================ */
+        
+        .promo-input-container {
+            position: relative;
+            margin-top: 1rem;
+        }
+        
+        .promo-input-container input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 12px 100px 12px 15px;
+            font-size: 14px;
+            color: white;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        
+        .promo-input-container input:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+        }
+        
+        .promo-input-container .apply-btn {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            height: calc(100% - 10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .promo-input-container .apply-btn:hover {
+            background: linear-gradient(90deg, #5558e8, #7a4cf5);
+            transform: translateY(-50%) scale(1.05);
+        }
+        
+        .promo-input-container .apply-btn:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        /* ============================================ */
+        /* MOBILE VIEW - IMPROVED SPACING */
+        /* ============================================ */
+        
         @media (max-width: 768px) {
-            /* IMPROVED MOBILE VIEW */
-            body.mobile-view {
+            /* MOBILE BODY STYLES */
+            body {
                 font-size: 16px;
                 line-height: 1.6;
             }
             
-            .section-padding {
-                padding-top: 3rem;
-                padding-bottom: 3rem;
+            .mobile-view .section-padding {
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
             }
             
-            /* Mobile header adjustment */
+            /* MOBILE HEADER */
             #main-header .glass {
-                margin: 0.5rem auto;
-                padding: 0.5rem 1rem;
-                max-width: 98%;
-                border-radius: 20px;
-                background: rgba(255, 255, 255, 0.08);
-                backdrop-filter: blur(16px);
-                border: 1px solid rgba(255, 255, 255, 0.1);
+                margin: 0.75rem auto;
+                padding: 0.5rem 1.2rem;
+                max-width: 95%;
+                border-radius: 50px !important;
+                background: rgba(255, 255, 255, 0.1) !important;
+                backdrop-filter: blur(20px) !important;
+                border: 1px solid rgba(255, 255, 255, 0.15) !important;
             }
             
-            /* Banner adjustments for mobile - IMPROVED */
-            .hero-section {
-                height: 90vh;
-                min-height: 500px;
-                max-height: 700px;
-                padding-top: 70px;
+            #main-header .logo-img {
+                max-width: 100px;
+                max-height: 40px;
             }
             
-            .banner-container {
-                height: 100%;
+            .call-btn {
+                padding: 8px 14px;
+                font-size: 14px;
+                border-radius: 50px !important;
             }
             
-            .banner-content {
-                padding-top: 20px;
-                min-height: 50vh;
-                justify-content: flex-start;
-                padding: 1rem;
-            }
-            
-            .banner-title {
-                font-size: 1.8rem !important;
-                margin-bottom: 0.8rem;
-                line-height: 1.3;
-            }
-            
-            .banner-subtitle {
-                font-size: 0.95rem !important;
-                padding: 0 0.5rem;
-                margin-bottom: 1rem;
-                line-height: 1.5;
-            }
-            
-            .banner-offer-details {
-                padding: 0.8rem !important;
-                margin: 0.5rem 0;
-            }
-            
-            .banner-offer-details .text-4xl {
-                font-size: 1.8rem !important;
-            }
-            
-            .banner-cta {
-                font-size: 0.9rem !important;
-                padding: 0.8rem 1.5rem !important;
-                margin-top: 0.5rem;
-            }
-            
-            /* Hide arrows on mobile */
-            .banner-nav-arrow {
+            .call-btn span {
                 display: none;
             }
             
-            /* Mobile features - shown at bottom of hero section */
-            .mobile-features-container {
-                position: absolute;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                background: rgba(5, 5, 7, 0.95);
-                backdrop-filter: blur(10px);
-                border-top: 1px solid rgba(255, 255, 255, 0.1);
-                padding: 15px 0;
-                z-index: 5;
+            /* MOBILE HERO SECTION - OPTIMIZED SPACING */
+            .mobile-view .hero-section {
+                height: 100vh !important;
+                min-height: 100vh;
+                max-height: 100vh;
+                padding-top: 80px !important;
+                margin-bottom: 0;
+            }
+            
+            .mobile-view .banner-content {
+                padding-top: 30px !important;
+                min-height: 70vh;
+                justify-content: center;
+                padding: 1rem;
+            }
+            
+            .mobile-view .banner-title {
+                font-size: 2rem !important;
+                line-height: 1.2;
+                margin-bottom: 0.8rem;
+                margin-top: 0;
+                padding-top: 0;
+            }
+            
+            .mobile-view .banner-subtitle {
+                font-size: 0.95rem !important;
+                line-height: 1.5;
+                margin-bottom: 1.2rem;
+                padding: 0 0.5rem;
+            }
+            
+            .mobile-view .banner-offer-details {
+                padding: 1rem !important;
+                margin: 0.8rem 0;
+                border-radius: 16px;
+            }
+            
+            .mobile-view .banner-offer-details .text-4xl {
+                font-size: 1.8rem !important;
+            }
+            
+            .mobile-view .banner-cta {
+                font-size: 0.9rem !important;
+                padding: 0.8rem 1.8rem !important;
+                margin-top: 0.5rem;
+                margin-bottom: 1rem;
+                border-radius: 50px !important;
+            }
+            
+            /* BANNER INDICATOR SPACING - OPTIMIZED */
+            .mobile-view .banner-indicators {
+                bottom: 20px !important;
+            }
+            
+            /* BANNER ARROWS IN MOBILE */
+            .mobile-view .banner-nav-arrow {
+                display: flex !important;
+                width: 38px !important;
+                height: 38px !important;
+                font-size: 1rem !important;
+                z-index: 25;
+            }
+            
+            .mobile-view .banner-nav-arrow.prev {
+                left: 10px !important;
+            }
+            
+            .mobile-view .banner-nav-arrow.next {
+                right: 10px !important;
+            }
+            
+            /* Hide desktop features on mobile */
+            .desktop-features-grid {
+                display: none !important;
+            }
+            
+            /* MOBILE FEATURES SECTION */
+            #features {
+                padding: 3rem 1rem !important;
+                background: linear-gradient(to bottom, #0F1016, #050507);
             }
             
             .mobile-features-grid {
                 display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 0.5rem;
-                padding: 0 0.5rem;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
             }
             
-            .mobile-feature-item {
+            .mobile-feature-card {
+                background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
+                border: 1px solid rgba(255, 255, 255, 0.05);
+                border-radius: 16px;
+                padding: 1.5rem 1rem;
                 text-align: center;
-                padding: 8px 4px;
+                transition: all 0.3s ease;
+            }
+            
+            .mobile-feature-card:hover {
+                transform: translateY(-5px);
+                border-color: rgba(99, 102, 241, 0.3);
             }
             
             .mobile-feature-icon {
-                width: 40px;
-                height: 40px;
-                border-radius: 12px;
+                width: 60px;
+                height: 60px;
+                border-radius: 16px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                margin: 0 auto 0.5rem;
-                font-size: 1rem;
-                background: rgba(255, 255, 255, 0.05);
-                border: 1px solid rgba(255, 255, 255, 0.1);
+                margin: 0 auto 1rem;
+                font-size: 1.5rem;
+                background: rgba(99, 102, 241, 0.1);
+                border: 1px solid rgba(99, 102, 241, 0.2);
             }
             
-            .mobile-feature-item h3 {
-                font-size: 0.75rem !important;
-                margin-bottom: 0.2rem;
-                font-weight: 600;
-            }
-            
-            .mobile-feature-item p {
-                font-size: 0.65rem !important;
-                color: rgba(255, 255, 255, 0.7);
-            }
-            
-            /* Courses section mobile */
-            #courses h2 {
-                font-size: 2rem !important;
-                line-height: 1.2;
-                margin-bottom: 1rem;
-            }
-            
-            #courses p {
-                font-size: 0.9rem !important;
-                padding: 0 1rem;
-            }
-            
-            .filter-btn {
-                padding: 0.5rem 1rem !important;
-                font-size: 0.8rem !important;
-                margin: 0.2rem;
-            }
-            
-            .course-card {
-                padding: 1rem !important;
-                margin-bottom: 1rem;
-            }
-            
-            .course-card h3 {
+            .mobile-feature-card h3 {
                 font-size: 1.1rem !important;
-                line-height: 1.3;
+                margin-bottom: 0.5rem;
+                font-weight: 700;
             }
             
-            .course-card .text-2xl {
-                font-size: 1.3rem !important;
-            }
-            
-            /* Faculty section mobile */
-            #faculty h2 {
-                font-size: 2rem !important;
-                line-height: 1.2;
-            }
-            
-            .faculty-card {
-                padding: 1.5rem !important;
-                margin-bottom: 1.5rem;
-            }
-            
-            .faculty-card h3 {
-                font-size: 1.3rem !important;
-            }
-            
-            .faculty-designation {
-                font-size: 0.9rem !important;
-            }
-            
-            .faculty-description p {
+            .mobile-feature-card p {
                 font-size: 0.85rem !important;
-                line-height: 1.5;
+                color: rgba(255, 255, 255, 0.7);
+                line-height: 1.4;
             }
             
-            /* App section mobile */
-            #app h2 {
-                font-size: 2rem !important;
+            /* MOBILE COURSES SECTION */
+            .mobile-view #courses {
+                padding: 3rem 1rem !important;
+                background: #050507;
             }
             
-            /* Mobile grid for app section */
-            .app-section-grid {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                grid-template-rows: repeat(2, auto);
-                gap: 1rem;
-                margin-top: 2rem;
+            .mobile-view #courses h2 {
+                font-size: 2.2rem !important;
+                line-height: 1.2;
+                margin-bottom: 1rem;
+                text-align: center;
             }
             
-            .app-section-grid .phone-mockup {
-                height: 200px;
-                border-width: 6px;
+            .mobile-view #courses p {
+                font-size: 0.95rem !important;
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+            
+            .mobile-view .filter-btn {
+                padding: 0.6rem 1.2rem !important;
+                font-size: 0.85rem !important;
+                margin: 0.2rem;
+                border-radius: 50px !important;
+            }
+            
+            .mobile-view .course-card {
+                margin-bottom: 1.5rem;
+                border-radius: 16px;
+                overflow: hidden;
+            }
+            
+            .mobile-view .course-card h3 {
+                font-size: 1.2rem !important;
+                line-height: 1.3;
+                margin-bottom: 0.8rem;
+            }
+            
+            .mobile-view .course-buttons {
+                width: 100%;
+            }
+            
+            .mobile-view .course-buttons button {
+                width: 100%;
+                padding: 0.9rem !important;
+                border-radius: 50px !important;
+                border-radius: 9999px !important;
+            }
+            
+            /* MOBILE FACULTY SECTION */
+            .mobile-view #faculty {
+                padding: 3rem 1rem !important;
+                background: linear-gradient(to bottom, #0F1016, #050507);
+            }
+            
+            .mobile-view #faculty h2 {
+                font-size: 2.2rem !important;
+                line-height: 1.2;
+                margin-bottom: 2rem;
+                text-align: center;
+            }
+            
+            .mobile-view .faculty-card {
+                margin-bottom: 2rem;
                 border-radius: 20px;
+                padding: 1.5rem !important;
+            }
+            
+            .mobile-view .faculty-card h3 {
+                font-size: 1.3rem !important;
+            }
+            
+            .mobile-view .faculty-designation {
+                font-size: 0.95rem !important;
+            }
+            
+            .mobile-view .faculty-description p {
+                font-size: 0.9rem !important;
+                line-height: 1.6;
+            }
+            
+            /* MOBILE APP SECTION - IMPROVED MOCKUP */
+            .mobile-view #app {
+                padding: 3rem 1rem !important;
+                background: #050507;
+            }
+            
+            .mobile-view #app h2 {
+                font-size: 2.2rem !important;
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+            
+            .mobile-view .phone-mockup {
+                width: 280px;
+                height: 560px;
+                border-width: 10px;
+                border-radius: 30px;
+                margin: 0 auto 2rem;
+            }
+            
+            /* IMPROVED MOBILE MOCKUP CONTENT - NO OVERLAPPING */
+            .mobile-view .phone-screen {
+                padding: 0;
+                overflow: hidden;
+            }
+            
+            /* IMPROVED APP FEATURES LAYOUT */
+            .mobile-view .app-features-list .feature-item {
+                margin-bottom: 1.5rem;
+                flex-direction: column;
+                text-align: center;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .mobile-view .app-features-list .feature-icon {
+                margin-bottom: 0;
             }
             
             /* Hide desktop app section on mobile */
@@ -1150,64 +1510,64 @@
                 display: none;
             }
             
-            /* Footer mobile */
-            .footer-grid {
+            /* Show mobile app section */
+            .mobile-app-section {
+                display: flex !important;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            /* MOBILE FOOTER */
+            .mobile-view footer {
+                padding: 3rem 1rem !important;
+            }
+            
+            .mobile-view .footer-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 2.5rem;
             }
             
-            /* Stats section for mobile */
-            .stat-number {
-                font-size: 2.2rem !important;
-            }
-            
-            /* Hide desktop features on mobile */
-            .desktop-features-grid {
-                display: none;
-            }
-            
-            /* Cart modal mobile */
-            .full-cart-content {
+            /* MOBILE CART MODAL */
+            .mobile-view .full-cart-content {
                 max-width: 95%;
-                height: 85vh;
-                max-height: 85vh;
+                height: 90vh;
+                max-height: 90vh;
+                border-radius: 20px;
             }
             
-            .full-cart-header {
+            .mobile-view .full-cart-header {
                 padding: 1rem;
             }
             
-            .full-cart-body {
+            .mobile-view .full-cart-body {
                 padding: 1rem;
             }
             
-            .cart-course-item {
+            .mobile-view .cart-course-item {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 0.75rem;
+                gap: 1rem;
+                padding: 1rem;
             }
             
-            .cart-course-details {
-                width: 100%;
-            }
-            
-            .cart-remove-btn {
+            .mobile-view .cart-remove-btn {
                 align-self: flex-end;
             }
             
-            /* Course grid for mobile */
-            .course-buttons {
-                flex-direction: column;
-            }
-            
-            .course-buttons button {
-                width: 100%;
-                padding: 0.8rem !important;
-            }
-            
-            /* Promo grid for mobile */
-            .promo-section-compact {
+            /* MOBILE PROMO CODE SYSTEM */
+            .mobile-view .promo-section-compact {
                 grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            
+            .mobile-view .promo-card {
+                padding: 1rem;
+            }
+            
+            /* CART BUTTONS IN MOBILE */
+            .mobile-view #full-checkout-btn {
+                padding: 1rem !important;
+                border-radius: 12px !important;
             }
             
             /* Hide header nav on mobile */
@@ -1220,164 +1580,200 @@
                 display: block;
             }
             
-            /* Adjust banner indicators for mobile */
-            .banner-indicators {
-                bottom: 80px;
-            }
-            
-            /* Mobile menu improvements */
+            /* MOBILE MENU IMPROVEMENTS */
             #mobile-menu {
-                font-size: 1.5rem;
+                font-size: 1.8rem;
+                background: rgba(5, 5, 7, 0.98);
+                backdrop-filter: blur(20px);
             }
             
             .mobile-menu-link {
-                padding: 0.8rem 0;
+                padding: 1rem 0;
+                display: block;
+                text-align: center;
+                transition: all 0.3s ease;
+            }
+            
+            .mobile-menu-link:hover {
+                transform: scale(1.05);
+                color: #6366f1;
+            }
+            
+            /* Adjust banner indicators for mobile */
+            .banner-indicators {
+                bottom: 20px;
             }
             
             /* Payment modal mobile */
-            #payment-modal .max-w-\[350px\] {
+            .mobile-view #payment-modal .max-w-\[350px\] {
                 max-width: 90% !important;
-            }
-        }
-        
-        @media (max-width: 640px) {
-            /* Extra small devices */
-            .hero-section {
-                min-height: 450px;
-                max-height: 600px;
+                margin: 1rem;
             }
             
-            .banner-title {
-                font-size: 1.6rem !important;
+            /* Stats section for mobile */
+            .mobile-view .stat-number {
+                font-size: 2.5rem !important;
             }
             
-            .banner-subtitle {
-                font-size: 0.85rem !important;
+            /* PROMO CODES IN CART */
+            .mobile-view .cart-promo-section {
+                display: block !important;
             }
             
-            .app-section-grid {
-                grid-template-columns: 1fr;
-                grid-template-rows: repeat(4, auto);
+            /* MOBILE PROMO INPUT */
+            .mobile-view .promo-input-container input {
+                padding: 12px 90px 12px 12px;
+                font-size: 13px;
             }
             
-            .phone-mockup {
-                width: 250px;
-                height: 500px;
-                margin: 0 auto;
-            }
-            
-            .mobile-features-grid {
-                grid-template-columns: repeat(2, 2fr);
-                gap: 0.5rem;
-            }
-            
-            .mobile-feature-icon {
-                width: 35px;
-                height: 35px;
-                font-size: 0.9rem;
-            }
-            
-            #courses h2, #faculty h2, #app h2 {
-                font-size: 1.8rem !important;
+            .mobile-view .promo-input-container .apply-btn {
+                padding: 6px 12px;
+                font-size: 11px;
+                height: calc(100% - 12px);
             }
         }
         
         @media (max-width: 480px) {
-            /* Very small devices */
-            .call-btn span {
-                display: none;
+            /* Extra small devices */
+            .mobile-view .hero-section {
+                min-height: 100vh;
             }
             
-            .call-btn {
-                padding: 8px 12px;
+            .mobile-view .banner-title {
+                font-size: 1.8rem !important;
             }
             
-            .feature-icon {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
+            .mobile-view .banner-subtitle {
+                font-size: 0.9rem !important;
             }
             
-            .banner-title {
-                font-size: 1.5rem !important;
+            .mobile-features-grid {
+                grid-template-columns: 1fr;
             }
             
-            .banner-subtitle {
-                font-size: 0.8rem !important;
+            .mobile-view .phone-mockup {
+                width: 250px;
+                height: 500px;
             }
             
-            .full-cart-content {
+            .mobile-view #courses h2,
+            .mobile-view #faculty h2,
+            .mobile-view #app h2 {
+                font-size: 2rem !important;
+            }
+            
+            .mobile-view .full-cart-content {
                 max-width: 100%;
                 height: 100vh;
                 max-height: 100vh;
                 border-radius: 0;
             }
             
-            .mobile-features-grid {
-                grid-template-columns: repeat(4, 1fr);
+            /* Banner arrows for very small devices */
+            .mobile-view .banner-nav-arrow {
+                width: 35px !important;
+                height: 35px !important;
+                font-size: 0.9rem !important;
             }
             
-            .mobile-feature-item h3 {
-                font-size: 0.7rem !important;
+            .mobile-view .banner-nav-arrow.prev {
+                left: 5px !important;
             }
             
-            .mobile-feature-item p {
-                font-size: 0.6rem !important;
+            .mobile-view .banner-nav-arrow.next {
+                right: 5px !important;
+            }
+        }
+        
+        @media (max-width: 320px) {
+            /* Very small devices */
+            .mobile-view .banner-title {
+                font-size: 1.6rem !important;
             }
             
-            .banner-indicators {
-                bottom: 70px;
+            .mobile-view .banner-subtitle {
+                font-size: 0.85rem !important;
+            }
+            
+            .mobile-view .filter-btn {
+                padding: 0.5rem 1rem !important;
+                font-size: 0.8rem !important;
+            }
+            
+            .mobile-view .phone-mockup {
+                width: 220px;
+                height: 440px;
+            }
+            
+            .mobile-view .banner-nav-arrow {
+                width: 30px !important;
+                height: 30px !important;
+                font-size: 0.8rem !important;
             }
         }
 
-        /* Dual screen / split screen adjustments */
-        @media (max-width: 1024px) and (min-height: 600px) {
-            .hero-section {
-                max-height: 700px;
-            }
-            
-            .banner-content {
-                min-height: 60vh;
-            }
-            
-            .banner-title {
-                font-size: 2.5rem !important;
-            }
-            
-            .banner-subtitle {
-                font-size: 1.1rem !important;
-            }
-        }
-
-        /* Desktop view adjustments */
+        /* ============================================ */
+        /* DESKTOP/PC/LAPTOP VIEW - OPTIMIZED BANNER SPACING */
+        /* ============================================ */
+        
         @media (min-width: 769px) {
-            /* Hide mobile features on desktop */
-            .mobile-features-container {
+            /* DESKTOP HEADER */
+            #main-header nav {
+                display: flex;
+            }
+            
+            #main-header .md\\:hidden {
                 display: none;
             }
             
-            /* Show desktop features */
+            /* DESKTOP HERO SECTION - OPTIMIZED SPACING */
+            .hero-section {
+                height: 100vh;
+            }
+            
+            .banner-content {
+                min-height: 70vh;
+            }
+            
+            .banner-title {
+                margin-bottom: 1rem;
+            }
+            
+            .banner-subtitle {
+                margin-bottom: 1.5rem;
+            }
+            
+            .banner-cta {
+                margin-top: 0.5rem;
+                margin-bottom: 1rem;
+            }
+            
+            /* Banner indicator position */
+            .banner-indicators {
+                bottom: 40px;
+            }
+            
+            /* DESKTOP FEATURES */
             .desktop-features-grid {
                 display: flex;
             }
             
-            /* Show banner arrows on desktop */
-            .banner-nav-arrow {
+            /* DESKTOP APP SECTION */
+            .app-section-desktop {
                 display: flex;
             }
             
-            /* Banner adjustments for desktop */
-            .banner-content {
-                padding-top: 80px;
-            }
-            
-            /* Hide mobile app grid on desktop */
-            .app-section-grid {
+            .mobile-app-section {
                 display: none;
             }
             
-            /* Show desktop app section */
-            .app-section-desktop {
+            /* DESKTOP FOOTER */
+            .footer-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            /* Banner arrows on desktop */
+            .banner-nav-arrow {
                 display: flex;
             }
         }
@@ -1392,42 +1788,351 @@
             opacity: 0.8;
         }
 
-        /* Add class for mobile optimization */
-        @media (max-width: 768px) {
-            .mobile-optimized-text {
-                font-size: 0.9rem !important;
-                line-height: 1.6;
+        /* Desktop view adjustments */
+        @media (min-width: 1024px) and (max-width: 1440px) {
+            /* Medium desktop adjustments - OPTIMIZED BANNER */
+            #main-header .glass {
+                max-width: 95%;
             }
             
-            .mobile-optimized-heading {
-                font-size: 1.8rem !important;
-                line-height: 1.2;
-                margin-bottom: 1rem !important;
+            .banner-content {
+                min-height: 75vh;
             }
             
-            .mobile-optimized-section {
-                padding: 2rem 1rem !important;
+            .banner-title {
+                font-size: 3.5rem;
+                margin-bottom: 1rem;
             }
             
-            .mobile-optimized-grid {
-                gap: 1rem !important;
+            .banner-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .desktop-features-grid > div {
+                min-width: 200px;
+                padding: 1.8rem 1.2rem;
+            }
+            
+            .app-section-desktop {
+                gap: 4rem;
+            }
+            
+            /* Fix logo cutting in laptop view */
+            .app-section-desktop .full-phone-mockup {
+                width: 300px;
+                height: 600px;
+            }
+        }
+        
+        @media (min-width: 1441px) {
+            /* Large desktop/PC adjustments */
+            #main-header .glass {
+                max-width: 1400px;
+            }
+            
+            .container {
+                max-width: 1400px;
+            }
+            
+            .banner-content {
+                min-height: 75vh;
+            }
+            
+            .desktop-features-grid {
+                gap: 3rem;
+            }
+            
+            .desktop-features-grid > div {
+                min-width: 250px;
+                padding: 2.5rem 2rem;
+            }
+            
+            .app-section-desktop {
+                gap: 6rem;
             }
         }
 
         /* Banner arrow visibility on medium screens */
         @media (max-width: 1024px) and (min-width: 769px) {
             .banner-nav-arrow {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
             }
             
             .banner-nav-arrow.prev {
-                left: 15px;
+                left: 20px;
             }
             
             .banner-nav-arrow.next {
-                right: 15px;
+                right: 20px;
+            }
+        }
+
+        /* Mobile App Section */
+        .mobile-app-section {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .mobile-app-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin-top: 2rem;
+            width: 100%;
+        }
+        
+        .mobile-app-feature {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-app-feature:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+        
+        .mobile-app-feature-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: rgba(99, 102, 241, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.2rem;
+            color: #6366f1;
+        }
+
+        /* CART PROMO CODE SECTION */
+        .cart-promo-section {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: block !important;
+        }
+        
+        .cart-promo-section h4 {
+            font-size: 1rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        /* Course details in card */
+        .course-details-container {
+            margin: 1rem 0;
+            padding: 1rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .course-curriculum-list {
+            margin-top: 0.5rem;
+        }
+        
+        .course-curriculum-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .course-curriculum-item i {
+            color: #10b981;
+            font-size: 10px;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+        
+        .course-promo-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 0.5rem;
+        }
+        
+        .course-promo-tag {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            background: rgba(99, 102, 241, 0.1);
+            color: #8b5cf6;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+        
+        /* Ensure promo codes are visible in cart */
+        #promo-buttons-container {
+            display: grid;
+        }
+
+        /* Improved mobile mockup for app section */
+        .mobile-app-mockup-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* Compact phone screen content */
+        .compact-phone-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            width: 100%;
+            padding: 1.5rem;
+        }
+
+        .compact-phone-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .compact-phone-features {
+            width: 100%;
+            margin-bottom: 1.5rem;
+        }
+
+        .compact-phone-feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px;
+            margin-bottom: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+        }
+
+        .compact-phone-feature-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            background: rgba(99, 102, 241, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6366f1;
+            font-size: 14px;
+        }
+
+        .compact-phone-footer {
+            width: 100%;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        /* ============================================ */
+        /* LAPTOP SPECIFIC OPTIMIZATIONS */
+        /* ============================================ */
+        @media (min-width: 1024px) and (max-width: 1440px) {
+            .banner-content {
+                min-height: 75vh;
+                padding-top: 40px;
+            }
+            
+            .banner-title {
+                margin-bottom: 1rem;
+                font-size: 3.5rem;
+            }
+            
+            .banner-subtitle {
+                margin-bottom: 1.5rem;
+                font-size: 1.1rem;
+            }
+            
+            .banner-offer-details {
+                margin: 1rem 0;
+                padding: 1.2rem !important;
+            }
+            
+            .banner-cta {
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem;
+            }
+            
+            .banner-indicators {
+                bottom: 50px;
+            }
+        }
+
+        /* ============================================ */
+        /* IMPROVED MOBILE MOCKUP - NO OVERLAPPING */
+        /* ============================================ */
+        @media (max-width: 768px) {
+            .mobile-view .app-screen-content {
+                padding: 0;
+            }
+            
+            .mobile-view .app-screen-header {
+                padding: 0.8rem 0.75rem 0.5rem;
+            }
+            
+            .mobile-view .app-screen-logo {
+                width: 40px;
+                height: 40px;
+                margin-bottom: 0.4rem;
+            }
+            
+            .mobile-view .app-screen-header h4 {
+                font-size: 0.8rem;
+                margin-bottom: 0.1rem;
+            }
+            
+            .mobile-view .app-screen-header p {
+                font-size: 0.6rem;
+                margin: 0;
+            }
+            
+            .mobile-view .app-screen-body {
+                padding: 0.75rem 0.6rem;
+                flex: 1;
+                overflow-y: auto;
+                max-height: calc(100% - 120px);
+            }
+            
+            .mobile-view .app-menu-item {
+                padding: 0.5rem;
+                margin-bottom: 0.35rem;
+                min-height: 50px;
+            }
+            
+            .mobile-view .app-menu-icon {
+                width: 28px;
+                height: 28px;
+                font-size: 0.7rem;
+            }
+            
+            .mobile-view .app-menu-text h4 {
+                font-size: 0.7rem;
+                margin-bottom: 0;
+            }
+            
+            .mobile-view .app-menu-text p {
+                font-size: 0.6rem;
+            }
+            
+            .mobile-view .app-screen-footer {
+                padding: 0.5rem;
+                min-height: 40px;
+            }
+            
+            .mobile-view .app-screen-footer p {
+                font-size: 0.55rem;
+                margin: 0;
             }
         }
     </style>
@@ -1452,12 +2157,12 @@
         <div class="mt-4 text-xs text-gray-500 font-mono tracking-widest">LOADING...</div>
     </div>
 
-    <!-- Header - FIXED TRANSPARENCY -->
+    <!-- Header -->
     <header id="main-header" class="fixed top-0 w-full z-50 transition-all duration-300">
         <div class="glass">
-            <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+            <div class="container mx-auto px-4 py-1 flex justify-between items-center">
                 <a href="#home" class="flex items-center group">
-                    <div class="w-14 h-14 flex items-center justify-center">
+                    <div class="w-16 h-16 flex items-center justify-center">
                         <img src="Logo.png" alt="TESCA" class="logo-img w-full h-full">
                     </div>
                 </a>
@@ -1470,7 +2175,7 @@
                     <a href="#contact" class="hover:text-white transition-colors duration-300">Contact</a>
                 </nav>
 
-                <div class="flex items-center gap-4">
+                <div class="flex items-center gap-5">
                     <a href="tel:+918866722633" class="call-btn">
                         <i class="fas fa-phone"></i> 
                         <span class="hidden sm:inline">Call Now</span>
@@ -1492,8 +2197,8 @@
     </header>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="fixed inset-0 z-40 bg-brand-bg/95 backdrop-blur-xl hidden flex-col items-center justify-center gap-8 text-2xl font-bold transition-all duration-400">
-        <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 text-gray-400 p-2 hover:text-white transition-colors duration-300"><i class="fas fa-times text-3xl"></i></button>
+    <div id="mobile-menu" class="fixed inset-0 z-40 bg-brand-bg/98 backdrop-blur-xl hidden flex-col items-center justify-center gap-8 text-2xl font-bold transition-all duration-400">
+        <button onclick="toggleMobileMenu()" class="absolute top-8 right-8 text-gray-400 p-2 hover:text-white transition-colors duration-300"><i class="fas fa-times text-3xl"></i></button>
         <a href="#home" class="hover:text-brand-accent mobile-menu-link transition-colors duration-300" onclick="toggleMobileMenu()">Home</a>
         <a href="#courses" class="hover:text-brand-accent mobile-menu-link transition-colors duration-300" onclick="toggleMobileMenu()">Courses</a>
         <a href="#faculty" class="hover:text-brand-accent mobile-menu-link transition-colors duration-300" onclick="toggleMobileMenu()">Our Faculty</a>
@@ -1501,7 +2206,7 @@
         <a href="#contact" class="hover:text-brand-accent mobile-menu-link transition-colors duration-300" onclick="toggleMobileMenu()">Contact Us</a>
     </div>
 
-    <!-- Hero Banner Section - ADJUSTED HEIGHT -->
+    <!-- Hero Banner Section -->
     <section id="home" class="hero-section">
         <div class="banner-container">
             <!-- Banner Navigation Arrows -->
@@ -1519,75 +2224,83 @@
                 <!-- Banner dots will be inserted here by JavaScript -->
             </div>
         </div>
-        
-        <!-- Mobile Features Container (shown only on mobile, part of hero section) -->
-        <div class="mobile-features-container">
-            <div class="container mx-auto px-4">
-                <div class="mobile-features-grid">
-                    <div class="mobile-feature-item">
-                        <div class="mobile-feature-icon">
-                            <i class="fas fa-user-graduate text-brand-primary"></i>
-                        </div>
-                        <h3 class="font-bold text-sm mb-1">Expert Tutors</h3>
-                        <p class="text-xs text-gray-400">Certified Trainers</p>
-                    </div>
-                    <div class="mobile-feature-item">
-                        <div class="mobile-feature-icon">
-                            <i class="fas fa-globe-americas text-brand-accent"></i>
-                        </div>
-                        <h3 class="font-bold text-sm mb-1">Global Visa</h3>
-                        <p class="text-xs text-gray-400">99% Success Rate</p>
-                    </div>
-                    <div class="mobile-feature-item">
-                        <div class="mobile-feature-icon">
-                            <i class="fas fa-mobile-alt text-brand-secondary"></i>
-                        </div>
-                        <h3 class="font-bold text-sm mb-1">Mobile App</h3>
-                        <p class="text-xs text-gray-400">Learn Anywhere</p>
-                    </div>
-                    <div class="mobile-feature-item">
-                        <div class="mobile-feature-icon">
-                            <i class="fas fa-certificate text-brand-warning"></i>
-                        </div>
-                        <h3 class="font-bold text-sm mb-1">Certified</h3>
-                        <p class="text-xs text-gray-400">ISO 9001:2015</p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 
-    <!-- Desktop Features Section (hidden on mobile) -->
-    <section class="py-16 bg-gradient-to-b from-brand-surface to-brand-bg hidden md:block">
+    <!-- Desktop Features Section -->
+    <section class="py-12 bg-gradient-to-b from-brand-surface to-brand-bg hidden md:block">
         <div class="container mx-auto px-4">
             <div class="desktop-features-grid">
                 <div class="animate-fade-in" style="animation-delay: 0.1s">
                     <div class="feature-icon">
                         <i class="fas fa-user-graduate text-brand-primary"></i>
                     </div>
-                    <h3 class="font-bold text-lg mb-2">Expert Tutors</h3>
+                    <h3 class="font-bold text-xl mb-3">Expert Tutors</h3>
                     <p class="text-sm text-gray-400">Certified Trainers from UK/USA</p>
                 </div>
                 <div class="animate-fade-in" style="animation-delay: 0.2s">
                     <div class="feature-icon">
                         <i class="fas fa-globe-americas text-brand-accent"></i>
                     </div>
-                    <h3 class="font-bold text-lg mb-2">Global Visa</h3>
+                    <h3 class="font-bold text-xl mb-3">Global Visa</h3>
                     <p class="text-sm text-gray-400">99% Success Rate in Filing</p>
                 </div>
                 <div class="animate-fade-in" style="animation-delay: 0.3s">
                     <div class="feature-icon">
                         <i class="fas fa-mobile-alt text-brand-secondary"></i>
                     </div>
-                    <h3 class="font-bold text-lg mb-2">Mobile App</h3>
+                    <h3 class="font-bold text-xl mb-3">Mobile App</h3>
                     <p class="text-sm text-gray-400">Learn Anytime, Anywhere</p>
                 </div>
                 <div class="animate-fade-in" style="animation-delay: 0.4s">
                     <div class="feature-icon">
                         <i class="fas fa-certificate text-brand-warning"></i>
                     </div>
-                    <h3 class="font-bold text-lg mb-2">Certified</h3>
+                    <h3 class="font-bold text-xl mb-3">Certified</h3>
                     <p class="text-sm text-gray-400">ISO 9001:2015 Certified</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Features Section -->
+    <section id="features" class="hidden md:hidden py-12">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl font-bold mb-4">Why Choose TESCA?</h2>
+                <p class="text-gray-400">Premium education with guaranteed results</p>
+            </div>
+            
+            <div class="mobile-features-grid">
+                <div class="mobile-feature-card animate-slide-in" style="animation-delay: 0.1s">
+                    <div class="mobile-feature-icon">
+                        <i class="fas fa-user-graduate text-brand-primary"></i>
+                    </div>
+                    <h3>Expert Tutors</h3>
+                    <p>Certified Trainers from UK/USA</p>
+                </div>
+                
+                <div class="mobile-feature-card animate-slide-in" style="animation-delay: 0.2s">
+                    <div class="mobile-feature-icon">
+                        <i class="fas fa-globe-americas text-brand-accent"></i>
+                    </div>
+                    <h3>Global Visa</h3>
+                    <p>99% Success Rate in Filing</p>
+                </div>
+                
+                <div class="mobile-feature-card animate-slide-in" style="animation-delay: 0.3s">
+                    <div class="mobile-feature-icon">
+                        <i class="fas fa-mobile-alt text-brand-secondary"></i>
+                    </div>
+                    <h3>Mobile App</h3>
+                    <p>Learn Anytime, Anywhere</p>
+                </div>
+                
+                <div class="mobile-feature-card animate-slide-in" style="animation-delay: 0.4s">
+                    <div class="mobile-feature-icon">
+                        <i class="fas fa-certificate text-brand-warning"></i>
+                    </div>
+                    <h3>Certified</h3>
+                    <p>ISO 9001:2015 Certified</p>
                 </div>
             </div>
         </div>
@@ -1596,10 +2309,10 @@
     <!-- Courses Section -->
     <section id="courses" class="section-padding bg-brand-bg">
         <div class="container mx-auto px-4">
-            <div class="text-center max-w-3xl mx-auto mb-16 animate-fade-in mobile-optimized">
+            <div class="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
                 <span class="text-brand-accent font-bold tracking-widest text-sm uppercase mb-4 block">Upgrade Your Skills</span>
-                <h2 class="mobile-optimized-heading text-5xl md:text-6xl font-bold leading-tight mb-6">Explore Our <span class="gradient-text">Premium Courses</span></h2>
-                <p class="mobile-optimized-text text-gray-400 text-lg">Select a category to filter courses. All courses come with a completion certificate and lifetime app access.</p>
+                <h2 class="text-5xl md:text-6xl font-bold leading-tight mb-6">Explore Our <span class="gradient-text">Premium Courses</span></h2>
+                <p class="text-gray-400 text-lg">Select a category to filter courses. All courses come with a completion certificate and lifetime app access.</p>
             </div>
             
             <div class="flex flex-wrap gap-3 justify-center mb-12 animate-fade-in" style="animation-delay: 0.2s">
@@ -1620,13 +2333,13 @@
     <!-- Faculty Section -->
     <section id="faculty" class="section-padding bg-gradient-to-b from-brand-surface to-brand-bg">
         <div class="container mx-auto px-4">
-            <div class="text-center max-w-3xl mx-auto mb-16 animate-fade-in mobile-optimized">
+            <div class="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
                 <span class="text-brand-accent font-bold tracking-widest text-sm uppercase mb-4 block">Meet Our Experts</span>
-                <h2 class="mobile-optimized-heading text-5xl md:text-6xl font-bold leading-tight mb-6">World-Class <span class="gradient-text">Faculty Team</span></h2>
-                <p class="mobile-optimized-text text-gray-400 text-lg">Learn from industry veterans with decades of combined experience in English training and global visa consultancy.</p>
+                <h2 class="text-5xl md:text-6xl font-bold leading-tight mb-6">World-Class <span class="gradient-text">Faculty Team</span></h2>
+                <p class="text-gray-400 text-lg">Learn from industry veterans with decades of combined experience in English training and global visa consultancy.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 mobile-optimized-grid">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
                 <!-- Nikunj Dhanani -->
                 <div class="faculty-card glass-card p-8 rounded-3xl text-center animate-fade-in" style="animation-delay: 0.1s">
                     <div class="faculty-content">
@@ -1636,12 +2349,12 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <h3 class="text-2xl font-bold mobile-optimized-heading">Nikunj Dhanani</h3>
+                            <h3 class="text-2xl font-bold">Nikunj Dhanani</h3>
                             <div class="bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full inline-block mb-2 mt-2">Founder</div>
                         </div>
                         <p class="faculty-designation text-sm text-brand-accent font-bold mb-4">CEO & Lead Visa Consultant</p>
                         <div class="faculty-description mb-6">
-                            <p class="mobile-optimized-text text-gray-400">With 12+ years in international education, Nikunj has successfully placed 5000+ students in top global universities. His expertise in visa documentation has achieved a remarkable 99.2% success rate.</p>
+                            <p class="text-gray-400">With 12+ years in international education, Nikunj has successfully placed 5000+ students in top global universities. His expertise in visa documentation has achieved a remarkable 99.2% success rate.</p>
                         </div>
                         <div class="flex justify-center space-x-3 mt-auto">
                             <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full">UK Visa Expert</span>
@@ -1659,12 +2372,12 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <h3 class="text-2xl font-bold mobile-optimized-heading">Vishal Faldu</h3>
+                            <h3 class="text-2xl font-bold">Vishal Faldu</h3>
                             <div class="bg-blue-500/20 text-blue-400 text-xs font-bold px-3 py-1 rounded-full inline-block mb-2 mt-2">Co-Founder</div>
                         </div>
                         <p class="faculty-designation text-sm text-brand-warning font-bold mb-4">IELTS/PTE Master Trainer</p>
                         <div class="faculty-description mb-6">
-                            <p class="mobile-optimized-text text-gray-400">A British Council certified trainer with 8+ years experience. Specializes in helping students achieve Band 8+ in IELTS and 85+ in PTE. Known for his unique "Score Booster" techniques.</p>
+                            <p class="text-gray-400">A British Council certified trainer with 8+ years experience. Specializes in helping students achieve Band 8+ in IELTS and 85+ in PTE. Known for his unique "Score Booster" techniques.</p>
                         </div>
                         <div class="flex justify-center space-x-3 mt-auto">
                             <span class="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs rounded-full">IELTS Band 9</span>
@@ -1673,21 +2386,21 @@
                     </div>
                 </div>
 
-                <!-- Kiran Sir -->
+                <!-- Kiran Lathiya -->
                 <div class="faculty-card glass-card p-8 rounded-3xl text-center animate-fade-in" style="animation-delay: 0.3s">
                     <div class="faculty-content">
                         <div class="relative mb-6">
                             <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-brand-accent to-cyan-500 flex items-center justify-center text-4xl font-bold text-white mb-4">
-                                KS
+                                KL
                             </div>
                         </div>
                         <div class="mb-3">
-                            <h3 class="text-2xl font-bold mobile-optimized-heading">Kiran Sir</h3>
+                            <h3 class="text-2xl font-bold">Kiran Lathiya</h3>
                             <div class="bg-brand-primary/20 text-brand-primary text-xs font-bold px-3 py-1 rounded-full inline-block mb-2 mt-2">Head Mentor</div>
                         </div>
                         <p class="faculty-designation text-sm text-cyan-400 font-bold mb-4">Spoken English Guru</p>
                         <div class="faculty-description mb-6">
-                            <p class="mobile-optimized-text text-gray-400">25+ years of transforming students into confident English speakers. Former corporate trainer at multinational companies. His "Zero to Hero" methodology has helped 10,000+ students overcome hesitation.</p>
+                            <p class="text-gray-400">25+ years of transforming students into confident English speakers. Former corporate trainer at multinational companies. His "Zero to Hero" methodology has helped 10,000+ students overcome hesitation.</p>
                         </div>
                         <div class="flex justify-center space-x-3 mt-auto">
                             <span class="px-3 py-1 bg-cyan-500/10 text-cyan-400 text-xs rounded-full">Accent Trainer</span>
@@ -1717,14 +2430,14 @@
         </div>
     </section>
 
-    <!-- App Section - IMPROVED WITH FULL PHONE MOCKUP FOR DESKTOP -->
+    <!-- App Section -->
     <section id="app" class="section-padding bg-brand-surface2">
         <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
         
-        <div class="container mx-auto px-4 relative z-10 mobile-optimized-section">
-            <div class="text-center max-w-3xl mx-auto mb-8 animate-fade-in mobile-optimized">
-                <h2 class="mobile-optimized-heading text-5xl md:text-6xl font-bold leading-tight mb-6">Your <span class="gradient-text">Pocket Classroom</span></h2>
-                <p class="mobile-optimized-text text-gray-400 text-lg mb-8">Download the TESCA App for seamless learning. Watch videos, take quizzes, and chat with tutors on the go.</p>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-8 animate-fade-in">
+                <h2 class="text-5xl md:text-6xl font-bold leading-tight mb-6">Your <span class="gradient-text">Pocket Classroom</span></h2>
+                <p class="text-gray-400 text-lg mb-8">Download the TESCA App for seamless learning. Watch videos, take quizzes, and chat with tutors on the go.</p>
                 <a href="https://play.google.com/store/apps/details?id=co.ted.fpqdt" target="_blank" class="direct-link inline-flex items-center gap-4 bg-white text-black px-8 py-4 rounded-2xl font-bold hover:scale-105 transition shadow-lg shadow-white/10">
                     <i class="fab fa-google-play text-3xl text-brand-success"></i>
                     <div class="text-left">
@@ -1734,90 +2447,91 @@
                 </a>
             </div>
 
-            <!-- Mobile Grid (shown only on mobile) -->
-            <div class="app-section-grid md:hidden">
-                <div class="phone-mockup animate-fade-in" style="animation-delay: 0.1s">
-                    <div class="phone-notch"></div>
-                    <div class="phone-screen bg-gray-900 flex flex-col items-center justify-center p-6 text-center">
-                        <div class="w-16 h-16 rounded-full bg-brand-primary/20 flex items-center justify-center mb-4"><i class="fas fa-play text-brand-primary text-2xl"></i></div>
-                        <h4 class="font-bold text-lg mb-2">Live Classes</h4>
-                        <p class="text-xs text-gray-500">Interactive video sessions</p>
-                    </div>
-                </div>
-                <div class="phone-mockup animate-fade-in" style="animation-delay: 0.2s">
-                    <div class="phone-notch"></div>
-                    <div class="phone-screen bg-gray-900 flex flex-col items-center justify-center p-6 text-center">
-                        <div class="w-16 h-16 rounded-full bg-brand-accent/20 flex items-center justify-center mb-4"><i class="fas fa-file-alt text-brand-accent text-2xl"></i></div>
-                        <h4 class="font-bold text-lg mb-2">Study Material</h4>
-                        <p class="text-xs text-gray-500">PDFs & E-books included</p>
-                    </div>
-                </div>
-                <div class="phone-mockup animate-fade-in" style="animation-delay: 0.3s">
-                    <div class="phone-notch"></div>
-                    <div class="phone-screen bg-gray-900 flex flex-col items-center justify-center p-6 text-center">
-                        <div class="w-16 h-16 rounded-full bg-brand-secondary/20 flex items-center justify-center mb-4"><i class="fas fa-chart-line text-brand-secondary text-2xl"></i></div>
-                        <h4 class="font-bold text-lg mb-2">Track Progress</h4>
-                        <p class="text-xs text-gray-500">Detailed analytics & results</p>
-                    </div>
-                </div>
-                <div class="phone-mockup animate-fade-in" style="animation-delay: 0.4s">
-                    <div class="phone-notch"></div>
-                    <div class="phone-screen bg-gray-900 flex flex-col items-center justify-center p-6 text-center">
-                        <div class="w-16 h-16 rounded-full bg-brand-success/20 flex items-center justify-center mb-4"><i class="fas fa-comments text-brand-success text-2xl"></i></div>
-                        <h4 class="font-bold text-lg mb-2">Tutor Chat</h4>
-                        <p class="text-xs text-gray-500">Instant doubt solving</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Desktop Layout with Full Phone Mockup -->
-            <div class="app-section-desktop hidden md:flex">
-                <div class="full-phone-mockup animate-float">
+            <!-- Desktop Layout -->
+            <div class="app-section-desktop">
+                <div class="full-phone-mockup">
                     <div class="phone-notch"></div>
                     <div class="phone-screen">
-                        <div class="flex flex-col items-center justify-center h-full">
-                            <div class="w-20 h-20 rounded-full bg-gradient-to-br from-brand-primary to-brand-secondary flex items-center justify-center mb-6">
-                                <i class="fas fa-graduation-cap text-white text-3xl"></i>
-                            </div>
-                            <h3 class="text-xl font-bold mb-2 text-center">TESCA Learning App</h3>
-                            <p class="text-gray-400 text-sm text-center mb-6">Your Personal English Coach</p>
-                            
-                            <div class="space-y-4 w-full px-6">
-                                <div class="flex items-center gap-3 p-3 bg-white/5 rounded-xl">
-                                    <div class="w-10 h-10 rounded-lg bg-brand-primary/20 flex items-center justify-center">
-                                        <i class="fas fa-play text-brand-primary"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-bold text-sm">Live Classes</h4>
-                                        <p class="text-xs text-gray-400">Daily interactive sessions</p>
-                                    </div>
+                        <div class="app-screen-content">
+                            <div class="app-screen-header">
+                                <div class="app-screen-logo">
+                                    <i class="fas fa-graduation-cap text-white text-xl"></i>
                                 </div>
-                                
-                                <div class="flex items-center gap-3 p-3 bg-white/5 rounded-xl">
-                                    <div class="w-10 h-10 rounded-lg bg-brand-accent/20 flex items-center justify-center">
-                                        <i class="fas fa-book text-brand-accent"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-bold text-sm">Study Material</h4>
-                                        <p class="text-xs text-gray-400">1000+ PDFs & E-books</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="flex items-center gap-3 p-3 bg-white/5 rounded-xl">
-                                    <div class="w-10 h-10 rounded-lg bg-brand-success/20 flex items-center justify-center">
-                                        <i class="fas fa-chart-line text-brand-success"></i>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-bold text-sm">Progress Tracker</h4>
-                                        <p class="text-xs text-gray-400">Real-time analytics</p>
-                                    </div>
-                                </div>
+                                <h4 class="text-white font-bold text-sm">TESCA Learning</h4>
+                                <p class="text-gray-400 text-xs mt-1">Version 2.5.1</p>
                             </div>
                             
-                            <div class="mt-8 w-full px-6">
-                                <a href="https://play.google.com/store/apps/details?id=co.ted.fpqdt" target="_blank" class="direct-link block w-full bg-gradient-to-r from-brand-primary to-brand-secondary text-white py-3 rounded-xl text-center font-bold hover:opacity-90 transition">
-                                    <i class="fab fa-google-play mr-2"></i>Download Now
-                                </a>
+                            <div class="app-screen-body">
+                                <div class="app-menu-item">
+                                    <div class="app-menu-icon">
+                                        <i class="fas fa-video"></i>
+                                    </div>
+                                    <div class="app-menu-text">
+                                        <h4>Live Classes</h4>
+                                        <p>Daily interactive sessions</p>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-gray-500 text-xs"></i>
+                                </div>
+                                
+                                <div class="app-menu-item">
+                                    <div class="app-menu-icon">
+                                        <i class="fas fa-book"></i>
+                                    </div>
+                                    <div class="app-menu-text">
+                                        <h4>Study Materials</h4>
+                                        <p>1000+ PDFs & E-books</p>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-gray-500 text-xs"></i>
+                                </div>
+                                
+                                <div class="app-menu-item">
+                                    <div class="app-menu-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <div class="app-menu-text">
+                                        <h4>Progress Tracker</h4>
+                                        <p>Real-time analytics</p>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-gray-500 text-xs"></i>
+                                </div>
+                                
+                                <div class="app-menu-item">
+                                    <div class="app-menu-icon">
+                                        <i class="fas fa-comments"></i>
+                                    </div>
+                                    <div class="app-menu-text">
+                                        <h4>Tutor Support</h4>
+                                        <p>24/7 chat assistance</p>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-gray-500 text-xs"></i>
+                                </div>
+                                
+                                <div class="app-menu-item">
+                                    <div class="app-menu-icon">
+                                        <i class="fas fa-download"></i>
+                                    </div>
+                                    <div class="app-menu-text">
+                                        <h4>Download Content</h4>
+                                        <p>Study offline anytime</p>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-gray-500 text-xs"></i>
+                                </div>
+                                
+                                <div class="app-menu-item">
+                                    <div class="app-menu-icon">
+                                        <i class="fas fa-certificate"></i>
+                                    </div>
+                                    <div class="app-menu-text">
+                                        <h4>Certifications</h4>
+                                        <p>Digital certificates</p>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-gray-500 text-xs"></i>
+                                </div>
+                            </div>
+                            
+                            <div class="app-screen-footer">
+                                <div class="w-10 h-1 bg-gray-700 rounded-full mx-auto mb-2"></div>
+                                <p class="text-gray-500 text-xs">Swipe up for more</p>
                             </div>
                         </div>
                     </div>
@@ -1865,20 +2579,125 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Mobile App Section -->
+            <div class="mobile-app-section">
+                <div class="mobile-app-mockup-container">
+                    <div class="phone-mockup mb-8">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <div class="app-screen-content">
+                                <div class="app-screen-header">
+                                    <div class="app-screen-logo">
+                                        <i class="fas fa-graduation-cap text-white text-lg"></i>
+                                    </div>
+                                    <h4 class="text-white font-bold text-xs">TESCA Learning</h4>
+                                    <p class="text-gray-400 text-xs mt-1">Mobile App</p>
+                                </div>
+                                
+                                <div class="app-screen-body">
+                                    <div class="app-menu-item">
+                                        <div class="app-menu-icon">
+                                            <i class="fas fa-video"></i>
+                                        </div>
+                                        <div class="app-menu-text">
+                                            <h4>Live Classes</h4>
+                                            <p>Interactive sessions</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="app-menu-item">
+                                        <div class="app-menu-icon">
+                                            <i class="fas fa-book"></i>
+                                        </div>
+                                        <div class="app-menu-text">
+                                            <h4>Study Materials</h4>
+                                            <p>PDFs & E-books</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="app-menu-item">
+                                        <div class="app-menu-icon">
+                                            <i class="fas fa-chart-line"></i>
+                                        </div>
+                                        <div class="app-menu-text">
+                                            <h4>Progress Tracker</h4>
+                                            <p>Analytics dashboard</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="app-menu-item">
+                                        <div class="app-menu-icon">
+                                            <i class="fas fa-comments"></i>
+                                        </div>
+                                        <div class="app-menu-text">
+                                            <h4>Tutor Support</h4>
+                                            <p>Chat with experts</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="app-screen-footer">
+                                    <div class="w-8 h-1 bg-gray-700 rounded-full mx-auto mb-1"></div>
+                                    <p class="text-gray-500 text-xs">Swipe for more</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mobile-app-features">
+                        <div class="mobile-app-feature">
+                            <div class="mobile-app-feature-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <h4 class="font-bold text-sm mb-1">Live Classes</h4>
+                            <p class="text-xs text-gray-400">Daily interactive sessions</p>
+                        </div>
+                        
+                        <div class="mobile-app-feature">
+                            <div class="mobile-app-feature-icon">
+                                <i class="fas fa-download"></i>
+                            </div>
+                            <h4 class="font-bold text-sm mb-1">Study Offline</h4>
+                            <p class="text-xs text-gray-400">Download materials</p>
+                        </div>
+                        
+                        <div class="mobile-app-feature">
+                            <div class="mobile-app-feature-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <h4 class="font-bold text-sm mb-1">Progress Reports</h4>
+                            <p class="text-xs text-gray-400">Track improvement</p>
+                        </div>
+                        
+                        <div class="mobile-app-feature">
+                            <div class="mobile-app-feature-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <h4 class="font-bold text-sm mb-1">24/7 Support</h4>
+                            <p class="text-xs text-gray-400">Instant doubt solving</p>
+                        </div>
+                    </div>
+                    
+                    <a href="https://play.google.com/store/apps/details?id=co.ted.fpqdt" target="_blank" class="direct-link mt-8 w-full max-w-xs bg-gradient-to-r from-brand-primary to-brand-secondary text-white py-3 rounded-xl text-center font-bold hover:opacity-90 transition">
+                        <i class="fab fa-google-play mr-2"></i>Download App
+                    </a>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer id="contact" class="bg-brand-surface border-t border-white/5 py-16">
         <div class="container mx-auto px-4">
-            <div class="footer-grid md:grid md:grid-cols-2 lg:grid-cols-4 md:gap-12 mb-16">
+            <div class="footer-grid mb-16">
                 <div class="space-y-6">
                     <a href="#home" class="flex items-center">
                         <div class="w-24 h-24 flex items-center justify-center">
                             <img src="Logo.png" alt="TESCA" class="logo-img w-full h-full">
                         </div>
                     </a>
-                    <p class="mobile-optimized-text text-gray-400 text-sm leading-relaxed">
+                    <p class="text-gray-400 text-sm leading-relaxed">
                         The leading platform for English mastery and Visa consultancy. We have helped 15,000+ students achieve their global dreams.
                     </p>
                     <a href="https://play.google.com/store/apps/details?id=co.ted.fpqdt" target="_blank" class="direct-link inline-flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-lg hover:bg-white/10 transition">
@@ -1970,6 +2789,7 @@
                     <div class="applied-promo-details">
                         <div class="applied-promo-code" id="full-current-promo-code"></div>
                         <div class="applied-promo-desc" id="full-current-promo-desc"></div>
+                        <div class="applied-promo-savings" id="full-promo-savings"></div>
                     </div>
                     <button onclick="removePromo()" id="full-remove-promo-btn" class="remove-promo-btn">
                         Remove
@@ -1987,19 +2807,20 @@
                     </div>
                 </div>
                 
-                <!-- Promo Codes -->
-                <div class="mb-4">
-                    <p class="text-sm font-bold mb-2">Available Coupons</p>
-                    <div class="text-xs text-gray-500 mb-3">Click to apply. Each code can be used only once.</div>
+                <!-- PROMO CODE SECTION -->
+                <div class="cart-promo-section">
+                    <h4>Apply Promo Code</h4>
+                    
                     <div class="promo-section-compact" id="promo-buttons-container">
-                        <!-- Promo code buttons will be loaded here -->
+                        <!-- Promo code cards will be loaded here -->
                     </div>
                     
-                    <div class="relative mt-3">
-                        <input id="full-promo-input" type="text" placeholder="ENTER PROMO CODE" class="w-full bg-black/40 border border-white/10 rounded-lg px-3 py-2 text-sm focus:border-brand-primary outline-none font-mono uppercase text-white">
-                        <button onclick="applyPromo()" class="absolute right-2 top-2 bg-white/10 px-3 py-1 rounded text-xs font-bold hover:bg-white/20 transition duration-300">APPLY</button>
+                    <!-- FIXED PROMO CODE INPUT -->
+                    <div class="promo-input-container">
+                        <input id="full-promo-input" type="text" placeholder="ENTER PROMO CODE" class="w-full">
+                        <button onclick="applyPromo()" class="apply-btn">APPLY</button>
                     </div>
-                    <div id="full-promo-status" class="text-xs h-4 mt-1"></div>
+                    <div id="full-promo-status" class="text-xs h-6 mt-2 flex items-center"></div>
                 </div>
                 
                 <!-- Order Summary -->
@@ -2030,17 +2851,6 @@
                     </p>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- Course Details Modal -->
-    <div id="details-modal" class="fixed inset-0 z-[150] hidden flex items-center justify-center p-4">
-        <div class="absolute inset-0 bg-black/80 backdrop-blur-md" onclick="closeDetails()"></div>
-        <div id="details-panel" class="relative bg-brand-surface w-full max-w-2xl rounded-2xl border border-white/10 shadow-2xl transform transition-all duration-300 scale-95 opacity-0 overflow-hidden">
-            <div id="details-content" class="p-8 overflow-y-auto">
-                <!-- Details content will be loaded here -->
-            </div>
-            <button onclick="closeDetails()" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 text-white transition duration-300"><i class="fas fa-times"></i></button>
         </div>
     </div>
 
@@ -2087,16 +2897,17 @@
                 <div class="text-center w-full mb-6">
                     <p class="text-xs text-gray-400 mb-3">Or pay directly via:</p>
                     <div class="flex gap-4 justify-center">
-                        <a href="upi://pay?pa=8866722633@upi&pn=TESCA_Education&am=0&cu=INR" class="upi-app-btn bg-white rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-white/20 transition-all">
+                        <!-- These buttons will have dynamic href with correct amount -->
+                        <a id="google-pay-btn" href="#" class="upi-app-btn bg-white rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-white/20 transition-all">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg" class="h-6" alt="Google Pay">
                         </a>
-                        <a href="phonepe://pay?pa=8866722633@upi&pn=TESCA_Education&am=0&cu=INR" class="upi-app-btn bg-white rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-white/20 transition-all">
+                        <a id="phonepe-btn" href="#" class="upi-app-btn bg-white rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-white/20 transition-all">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/PhonePe_Logo.svg" class="h-5" alt="PhonePe">
                         </a>
-                        <a href="paytmmp://pay?pa=8866722633@upi&pn=TESCA_Education&am=0&cu=INR" class="upi-app-btn bg-white rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-white/20 transition-all">
+                        <a id="paytm-btn" href="#" class="upi-app-btn bg-white rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-white/20 transition-all">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Paytm_Logo_%28standalone%29.svg" class="h-4" alt="Paytm">
                         </a>
-                        <a href="upi://pay?pa=8866722633@upi&pn=TESCA_Education&am=0&cu=INR&tn=TESCA Course Payment" class="upi-app-btn bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-blue-500/20 transition-all">
+                        <a id="any-upi-btn" href="#" class="upi-app-btn bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-blue-500/20 transition-all">
                             <i class="fas fa-mobile-alt text-white text-xl"></i>
                         </a>
                     </div>
@@ -2133,8 +2944,7 @@
                 discount: '40% OFF',
                 offer: 'Limited Time Offer: Get 40% OFF + FREE Interview Preparation',
                 cta: 'Start Your Journey',
-                color: 'from-yellow-400 to-orange-500',
-                timer: '24:00:00'
+                color: 'from-yellow-400 to-orange-500'
             },
             {
                 type: 'ielts',
@@ -2145,8 +2955,7 @@
                 discount: '35% OFF',
                 offer: 'SPECIAL: Get FREE Spoken English Course (Worth ₹9,999)',
                 cta: 'Get Band 8+',
-                color: 'from-blue-500 to-purple-600',
-                timer: '18:30:00'
+                color: 'from-blue-500 to-purple-600'
             },
             {
                 type: 'pte',
@@ -2157,8 +2966,7 @@
                 discount: '40% OFF',
                 offer: 'Launch Offer: 40% OFF + FREE Spoken English Course',
                 cta: 'Score 90/90',
-                color: 'from-cyan-400 to-blue-500',
-                timer: '12:45:00'
+                color: 'from-cyan-400 to-blue-500'
             },
             {
                 type: 'spoken',
@@ -2169,8 +2977,7 @@
                 discount: '40% OFF',
                 offer: 'Includes: Email Writing, Presentations, Negotiation Skills',
                 cta: 'Master Business English',
-                color: 'from-green-400 to-emerald-600',
-                timer: '36:15:00'
+                color: 'from-green-400 to-emerald-600'
             },
             {
                 type: 'visa',
@@ -2181,8 +2988,7 @@
                 discount: '43% OFF',
                 offer: 'University Selection + SOP Writing + Visa Filing + Mock Interviews',
                 cta: 'Get Visa Assistance',
-                color: 'from-red-400 to-pink-600',
-                timer: '48:20:00'
+                color: 'from-red-400 to-pink-600'
             },
             {
                 type: 'ielts',
@@ -2193,8 +2999,7 @@
                 discount: '50% OFF',
                 offer: 'FLASH SALE: 50% OFF + FREE Visa SOP Review',
                 cta: 'Enroll Now',
-                color: 'from-orange-400 to-red-500',
-                timer: '06:15:00'
+                color: 'from-orange-400 to-red-500'
             },
             {
                 type: 'toefl',
@@ -2205,8 +3010,7 @@
                 discount: '40% OFF',
                 offer: 'Includes University Application Guidance',
                 cta: 'Achieve 115+',
-                color: 'from-indigo-400 to-purple-500',
-                timer: '24:30:00'
+                color: 'from-indigo-400 to-purple-500'
             },
             {
                 type: 'spoken',
@@ -2217,8 +3021,7 @@
                 discount: '40% OFF',
                 offer: 'American & British Accent Training',
                 cta: 'Perfect Your Accent',
-                color: 'from-pink-400 to-rose-500',
-                timer: '16:45:00'
+                color: 'from-pink-400 to-rose-500'
             },
             {
                 type: 'pte',
@@ -2229,8 +3032,7 @@
                 discount: '41% OFF',
                 offer: 'AI Scoring + Personal Trainer',
                 cta: 'Join Bootcamp',
-                color: 'from-teal-400 to-cyan-500',
-                timer: '08:30:00'
+                color: 'from-teal-400 to-cyan-500'
             },
             {
                 type: 'visa',
@@ -2241,8 +3043,7 @@
                 discount: '44% OFF',
                 offer: 'IELTS + PTE + Visa Filing + Job Search Assistance',
                 cta: 'Start PR Process',
-                color: 'from-red-500 to-orange-500',
-                timer: '72:00:00'
+                color: 'from-red-500 to-orange-500'
             },
             {
                 type: 'ielts',
@@ -2253,8 +3054,7 @@
                 discount: '41% OFF',
                 offer: 'Focus on Writing Task 2 & Speaking Part 3',
                 cta: 'Master IELTS',
-                color: 'from-blue-600 to-indigo-600',
-                timer: '12:00:00'
+                color: 'from-blue-600 to-indigo-600'
             },
             {
                 type: 'spoken',
@@ -2265,8 +3065,7 @@
                 discount: '47% OFF',
                 offer: 'All Modules + Certification + Placement Assistance',
                 cta: 'Become Fluent',
-                color: 'from-purple-500 to-pink-500',
-                timer: '96:00:00'
+                color: 'from-purple-500 to-pink-500'
             }
         ];
 
@@ -2358,42 +3157,56 @@
             }
         ];
 
-        // --- 3. PROMO CODES ---
+        // --- 3. PROMO CODES - IMPROVED SYSTEM ---
         const promos = {
             'TESCA50': { 
                 discount: 0.50, 
-                description: '50% OFF on Spoken English',
-                applicableTypes: ['spoken']
+                description: '50% OFF on Spoken English Courses',
+                applicableTypes: ['spoken'],
+                validity: 'Valid till 31 Dec 2026',
+                minAmount: 5000
             },
             'WELCOME10': { 
                 discount: 0.10, 
-                description: '10% OFF on Any Course',
-                applicableTypes: ['spoken', 'ielts', 'pte', 'toefl', 'visa']
+                description: '10% OFF on Any Course (First Purchase)',
+                applicableTypes: ['spoken', 'ielts', 'pte', 'toefl', 'visa'],
+                validity: 'New Users Only',
+                minAmount: 3000
             },
             'FLASH40': { 
                 discount: 0.40, 
-                description: '40% FLASH SALE',
-                applicableTypes: ['spoken', 'ielts', 'pte', 'toefl', 'visa']
+                description: '40% FLASH SALE - Limited Time',
+                applicableTypes: ['spoken', 'ielts', 'pte', 'toefl', 'visa'],
+                validity: 'Valid for 48 hours',
+                minAmount: 8000
             },
             'IELTS35': { 
                 discount: 0.35, 
-                description: '35% OFF on IELTS',
-                applicableTypes: ['ielts']
+                description: '35% OFF on IELTS Courses',
+                applicableTypes: ['ielts'],
+                validity: 'Valid till 30 Nov 2026',
+                minAmount: 10000
             },
             'PTE45': { 
                 discount: 0.45, 
-                description: '45% OFF on PTE',
-                applicableTypes: ['pte']
+                description: '45% OFF on PTE Courses',
+                applicableTypes: ['pte'],
+                validity: 'Valid till 15 Dec 2026',
+                minAmount: 12000
             },
             'TOEFL30': { 
                 discount: 0.30, 
-                description: '30% OFF on TOEFL',
-                applicableTypes: ['toefl']
+                description: '30% OFF on TOEFL Courses',
+                applicableTypes: ['toefl'],
+                validity: 'Valid till 20 Dec 2026',
+                minAmount: 14000
             },
             'VISA25': { 
                 discount: 0.25, 
-                description: '25% OFF on Visa',
-                applicableTypes: ['visa']
+                description: '25% OFF on Visa Services',
+                applicableTypes: ['visa'],
+                validity: 'Valid till 31 Jan 2027',
+                minAmount: 15000
             }
         };
 
@@ -2410,6 +3223,12 @@
 
         // --- 5. INITIALIZATION ---
         window.onload = () => {
+            // Check if mobile view
+            if (window.innerWidth <= 768) {
+                document.body.classList.add('mobile-view');
+                document.getElementById('features').classList.remove('hidden');
+            }
+            
             // Loader animation
             const bar = document.getElementById('loader-bar');
             let progress = 0;
@@ -2440,13 +3259,11 @@
             renderBanners();
             startBannerRotation();
             filterCourses('all');
-            renderPromoButtons();
+            renderPromoCards();
             setupEventListeners();
             
-            // Add mobile optimization class
-            if (window.innerWidth <= 768) {
-                document.body.classList.add('mobile-view');
-            }
+            // Add scroll listener for header
+            window.addEventListener('scroll', handleScroll);
         }
 
         // --- 6. BANNER SYSTEM WITH ARROWS ---
@@ -2465,29 +3282,35 @@
                 const slide = document.createElement('div');
                 slide.className = `banner-slide ${index === 0 ? 'active' : ''}`;
                 slide.id = `banner-${index}`;
+                
+                // Check if mobile view for responsive styling
+                const isMobile = window.innerWidth <= 768;
+                const titleSize = isMobile ? 'text-3xl' : '';
+                const subtitleSize = isMobile ? 'text-base' : '';
+                const priceSize = isMobile ? 'text-3xl' : 'text-4xl md:text-5xl';
+                const originalSize = isMobile ? 'text-lg' : 'text-2xl';
+                const ctaSize = isMobile ? 'text-sm py-3 px-6' : '';
+                
                 slide.innerHTML = `
                     <div class="banner-content">
-                        <h1 class="banner-title text-white mb-6 mobile-optimized-heading">
+                        <h1 class="banner-title text-white mb-6 ${titleSize}">
                             ${banner.title}
                         </h1>
-                        <p class="banner-subtitle text-gray-300 mb-8 mobile-optimized-text">
+                        <p class="banner-subtitle text-gray-300 mb-8 ${subtitleSize}">
                             ${banner.subtitle}
                         </p>
                         
-                        <div class="glass-card p-6 rounded-2xl mb-8 banner-offer-details">
+                        <div class="glass-card p-6 rounded-2xl mb-8 banner-offer-details ${isMobile ? 'p-4' : ''}">
                             <div class="flex items-center justify-center gap-4 mb-4 flex-wrap">
-                                <span class="text-2xl text-gray-400 line-through mobile-optimized-text">${banner.originalPrice}</span>
-                                <span class="text-4xl md:text-5xl font-bold text-white mobile-optimized-heading">${banner.price}</span>
+                                <span class="${originalSize} text-gray-400 line-through">${banner.originalPrice}</span>
+                                <span class="${priceSize} font-bold text-white">${banner.price}</span>
                                 <span class="bg-gradient-to-r ${banner.color} text-white text-sm px-3 py-1 rounded-full font-bold">${banner.discount}</span>
                             </div>
-                            <p class="text-sm text-gray-300 mb-2 text-center mobile-optimized-text">${banner.offer}</p>
-                            <div class="text-xs text-gray-500 mt-3 text-center mobile-optimized-text">
-                                Offer ends in: <span class="countdown-timer text-white font-bold" data-timer="${banner.timer}">${banner.timer}</span>
-                            </div>
+                            <p class="text-sm text-gray-300 mb-2 text-center ${isMobile ? 'text-xs' : ''}">${banner.offer}</p>
                         </div>
                         
                         <div class="text-center">
-                            <button onclick="scrollToCourses('${banner.type}')" class="banner-cta bg-gradient-to-r ${banner.color} text-white hover:opacity-90 shadow-lg mobile-optimized-text">
+                            <button onclick="scrollToCourses('${banner.type}')" class="banner-cta bg-gradient-to-r ${banner.color} text-white hover:opacity-90 shadow-lg ${ctaSize}">
                                 ${banner.cta} →
                             </button>
                         </div>
@@ -2502,8 +3325,6 @@
                 dot.onclick = () => goToBanner(index);
                 indicatorsContainer.appendChild(dot);
             });
-            
-            startBannerTimers();
         }
 
         function startBannerRotation() {
@@ -2542,25 +3363,6 @@
             goToBanner(prevIndex);
         }
 
-        function startBannerTimers() {
-            setInterval(() => {
-                document.querySelectorAll('.countdown-timer').forEach(timer => {
-                    const timeStr = timer.textContent;
-                    const [hours, minutes, seconds] = timeStr.split(':').map(Number);
-                    
-                    let totalSeconds = hours * 3600 + minutes * 60 + seconds;
-                    if (totalSeconds > 0) {
-                        totalSeconds--;
-                        const newHours = Math.floor(totalSeconds / 3600);
-                        const newMinutes = Math.floor((totalSeconds % 3600) / 60);
-                        const newSeconds = totalSeconds % 60;
-                        
-                        timer.textContent = `${newHours.toString().padStart(2, '0')}:${newMinutes.toString().padStart(2, '0')}:${newSeconds.toString().padStart(2, '0')}`;
-                    }
-                });
-            }, 1000);
-        }
-
         function scrollToCourses(type) {
             const coursesSection = document.getElementById('courses');
             coursesSection.scrollIntoView({ behavior: 'smooth' });
@@ -2589,7 +3391,7 @@
                 grid.innerHTML = `
                     <div class="col-span-3 flex flex-col items-center justify-center py-16 text-gray-400">
                         <i class="fas fa-book-open text-5xl mb-4 opacity-30"></i>
-                        <p class="text-lg mobile-optimized-text">No courses found in this category</p>
+                        <p class="text-lg">No courses found in this category</p>
                     </div>
                 `;
                 return;
@@ -2597,120 +3399,79 @@
             
             grid.innerHTML = filtered.map(c => {
                 const discountPercent = Math.round(((c.original - c.price) / c.original) * 100);
+                const isMobile = window.innerWidth <= 768;
+                
                 return `
-                <div class="course-card glass-card p-6 rounded-3xl animate-fade-in">
+                <div class="course-card glass-card animate-fade-in">
                     <div class="course-content">
                         <div class="absolute top-4 right-4 bg-brand-danger text-xs font-bold px-3 py-1 rounded-full">${discountPercent}% OFF</div>
                         <div class="mb-4">
                             <span class="text-xs font-bold text-brand-accent uppercase tracking-widest">${c.type}</span>
-                            <h3 class="text-xl font-bold mt-2 mb-3 line-clamp-2 mobile-optimized-heading">${c.title}</h3>
-                            <div class="course-description">
-                                <p class="text-sm text-gray-400 line-clamp-2 mobile-optimized-text">${c.desc}</p>
+                            <h3 class="text-xl font-bold mt-2 mb-3 line-clamp-2">${c.title}</h3>
+                            <div class="mb-3">
+                                <p class="text-sm text-gray-400">${c.desc}</p>
                             </div>
                         </div>
                         
+                        <div class="course-details-container">
+                            <div class="mb-3">
+                                <h4 class="font-bold text-white text-sm mb-2">Course Details:</h4>
+                                <div class="flex flex-wrap gap-2 mb-3">
+                                    <span class="text-xs px-2 py-1 bg-white/5 rounded">${c.dur}</span>
+                                    <span class="text-xs px-2 py-1 bg-white/5 rounded">${c.lang}</span>
+                                    ${c.cert === 'Yes' ? '<span class="text-xs px-2 py-1 bg-green-500/10 text-green-400 rounded">Certificate</span>' : ''}
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <h4 class="font-bold text-white text-sm mb-2">What You'll Learn:</h4>
+                                <div class="course-curriculum-list">
+                                    ${c.curriculum.slice(0, isMobile ? 2 : 3).map(item => `
+                                        <div class="course-curriculum-item">
+                                            <i class="fas fa-check"></i>
+                                            <span class="text-xs">${item}</span>
+                                        </div>
+                                    `).join('')}
+                                    ${c.curriculum.length > (isMobile ? 2 : 3) ? `
+                                        <div class="course-curriculum-item">
+                                            <i class="fas fa-plus"></i>
+                                            <span class="text-xs">+${c.curriculum.length - (isMobile ? 2 : 3)} more modules</span>
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            </div>
+                            
+                            ${c.applicablePromos && c.applicablePromos.length > 0 ? `
+                            <div class="mb-2">
+                                <h4 class="font-bold text-white text-sm mb-2">Applicable Promo Codes:</h4>
+                                <div class="course-promo-tags">
+                                    ${c.applicablePromos.map(code => {
+                                        const promo = promos[code];
+                                        const isPermanentlyUsed = permanentUsedPromoCodes.includes(code);
+                                        return `
+                                        <span class="course-promo-tag ${isPermanentlyUsed ? 'opacity-50' : ''}">
+                                            ${code} ${isPermanentlyUsed ? '(Used)' : ''}
+                                        </span>`;
+                                    }).join('')}
+                                </div>
+                            </div>
+                            ` : ''}
+                        </div>
+                        
                         <div class="flex items-end gap-2 mb-6 border-t border-white/5 pt-4">
-                            <span class="text-2xl font-bold text-white mobile-optimized-heading">₹${c.price.toLocaleString()}</span>
-                            <span class="text-sm text-gray-500 line-through mb-1 mobile-optimized-text">₹${c.original.toLocaleString()}</span>
+                            <span class="text-2xl font-bold text-white">₹${c.price.toLocaleString()}</span>
+                            <span class="text-sm text-gray-500 line-through mb-1">₹${c.original.toLocaleString()}</span>
                         </div>
 
                         <div class="course-buttons">
-                            <button onclick="openCourseDetails(${c.id})" class="py-3 rounded-full border border-white/10 hover:bg-white/5 text-xs font-bold transition duration-300 mobile-optimized-text">View Details</button>
-                            <button onclick="addToCart(${c.id})" class="py-3 rounded-full bg-gradient-to-r from-brand-primary to-brand-secondary text-white hover:opacity-90 text-xs font-bold transition duration-300 mobile-optimized-text">Add to Cart</button>
+                            <button onclick="addToCart(${c.id})" class="w-full py-3 rounded-full bg-gradient-to-r from-brand-primary to-brand-secondary text-white hover:opacity-90 text-xs font-bold transition duration-300">
+                                <i class="fas fa-shopping-cart mr-2"></i>Add to Cart
+                            </button>
                         </div>
                     </div>
                 </div>
                 `;
             }).join('');
-        }
-
-        function openCourseDetails(id) {
-            const course = courses.find(c => c.id === id);
-            const modal = document.getElementById('details-modal');
-            const panel = document.getElementById('details-panel');
-            const content = document.getElementById('details-content');
-
-            const discountPercent = Math.round(((course.original - course.price) / course.original) * 100);
-            
-            content.innerHTML = `
-                <div class="flex flex-col md:flex-row gap-6 mb-6">
-                    <div class="flex-1">
-                        <span class="text-xs font-bold text-brand-accent uppercase tracking-widest">${course.type}</span>
-                        <h2 class="text-2xl md:text-3xl font-bold text-white mb-2 mobile-optimized-heading">${course.title}</h2>
-                        <p class="text-gray-400 text-sm mobile-optimized-text">${course.desc}</p>
-                    </div>
-                    <div class="text-right">
-                        <div class="text-2xl md:text-3xl font-bold text-white mobile-optimized-heading">₹${course.price.toLocaleString()}</div>
-                        <div class="text-sm text-gray-500 line-through mobile-optimized-text">₹${course.original.toLocaleString()}</div>
-                        <div class="text-xs text-brand-danger font-bold">Save ${discountPercent}%</div>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-                    <div class="bg-white/5 p-3 rounded-xl text-center">
-                        <div class="text-xs text-gray-500">Duration</div>
-                        <div class="font-bold text-sm">${course.dur}</div>
-                    </div>
-                    <div class="bg-white/5 p-3 rounded-xl text-center">
-                        <div class="text-xs text-gray-500">Language</div>
-                        <div class="font-bold text-sm">${course.lang}</div>
-                    </div>
-                    <div class="bg-white/5 p-3 rounded-xl text-center">
-                        <div class="text-xs text-gray-500">Certificate</div>
-                        <div class="font-bold text-sm text-brand-success">${course.cert}</div>
-                    </div>
-                </div>
-
-                <div class="mb-8">
-                    <h4 class="font-bold text-white mb-4 border-b border-white/10 pb-2 mobile-optimized-heading">What You'll Learn</h4>
-                    <ul class="space-y-3">
-                        ${course.curriculum.map(item => `
-                            <li class="flex items-start gap-3 text-sm text-gray-300 mobile-optimized-text">
-                                <i class="fas fa-check-circle text-brand-primary mt-0.5"></i> ${item}
-                            </li>
-                        `).join('')}
-                    </ul>
-                </div>
-
-                ${course.applicablePromos && course.applicablePromos.length > 0 ? `
-                <div class="mb-6 p-4 bg-white/5 rounded-xl">
-                    <h4 class="font-bold text-white mb-2 text-sm mobile-optimized-heading">Applicable Coupons:</h4>
-                    <div class="flex flex-wrap gap-2">
-                        ${course.applicablePromos.map(code => {
-                            const promo = promos[code];
-                            const isPermanentlyUsed = permanentUsedPromoCodes.includes(code);
-                            return `
-                            <span class="text-xs px-2 py-1 rounded ${isPermanentlyUsed ? 'bg-red-500/10 text-red-400 border-red-500/30' : 'bg-green-500/10 text-green-400 border-green-500/30'} border mobile-optimized-text">
-                                ${code} - ${promo.description} ${isPermanentlyUsed ? '(Permanently Used)' : ''}
-                            </span>`;
-                        }).join('')}
-                    </div>
-                </div>
-                ` : ''}
-
-                <div class="flex gap-3">
-                    <button onclick="closeDetails()" class="flex-1 py-4 rounded-full border border-white/10 hover:bg-white/5 font-bold transition duration-300 mobile-optimized-text">
-                        Close
-                    </button>
-                    <button onclick="closeDetails(); addToCart(${course.id})" class="flex-1 py-4 rounded-full bg-gradient-to-r from-brand-primary to-brand-secondary text-white hover:opacity-90 font-bold transition duration-300 mobile-optimized-text">
-                        Enroll Now
-                    </button>
-                </div>
-            `;
-
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                panel.classList.remove('scale-95', 'opacity-0');
-                panel.classList.add('scale-100', 'opacity-100');
-            }, 10);
-        }
-
-        function closeDetails() {
-            const modal = document.getElementById('details-modal');
-            const panel = document.getElementById('details-panel');
-            panel.classList.remove('scale-100', 'opacity-100');
-            panel.classList.add('scale-95', 'opacity-0');
-            setTimeout(() => modal.classList.add('hidden'), 300);
         }
 
         // --- 8. CART SYSTEM ---
@@ -2724,7 +3485,7 @@
             cart.push(course);
             renderCart();
             toggleCart(true);
-            updatePromoButtonStates();
+            updatePromoCards();
             showNotification('Course added to cart!', 'success');
         }
 
@@ -2747,7 +3508,7 @@
             }
             
             renderCart();
-            updatePromoButtonStates();
+            updatePromoCards();
             showNotification('Course removed from cart', 'info');
         }
 
@@ -2779,17 +3540,17 @@
                 <div class="cart-course-item">
                     <div class="cart-course-details">
                         <span class="cart-course-type">${c.type}</span>
-                        <h4 class="font-bold text-white text-sm mb-1 mobile-optimized-heading">${c.title}</h4>
-                        <p class="text-xs text-gray-400 mb-2 mobile-optimized-text">${c.desc}</p>
+                        <h4 class="font-bold text-white text-sm mb-1">${c.title}</h4>
+                        <p class="text-xs text-gray-400 mb-2">${c.desc}</p>
                         <div class="flex items-center gap-2">
                             <span class="cart-course-price">₹${c.price.toLocaleString()}</span>
                             <span class="text-xs text-gray-500 line-through">₹${c.original.toLocaleString()}</span>
                             <span class="text-xs text-brand-danger font-bold">Save ${discountPercent}%</span>
                         </div>
                         <div class="flex flex-wrap gap-1 mt-2">
-                            <span class="text-xs px-2 py-1 bg-white/5 rounded mobile-optimized-text">${c.dur}</span>
-                            <span class="text-xs px-2 py-1 bg-white/5 rounded mobile-optimized-text">${c.lang}</span>
-                            ${c.cert === 'Yes' ? '<span class="text-xs px-2 py-1 bg-green-500/10 text-green-400 rounded mobile-optimized-text">Certificate</span>' : ''}
+                            <span class="text-xs px-2 py-1 bg-white/5 rounded">${c.dur}</span>
+                            <span class="text-xs px-2 py-1 bg-white/5 rounded">${c.lang}</span>
+                            ${c.cert === 'Yes' ? '<span class="text-xs px-2 py-1 bg-green-500/10 text-green-400 rounded">Certificate</span>' : ''}
                         </div>
                     </div>
                     
@@ -2803,15 +3564,17 @@
             const subtotal = cart.reduce((acc, item) => acc + item.price, 0);
             let discount = 0;
             let discountDetails = '';
+            let savingsText = '';
             
             if (activePromo && promos[activePromo]) {
                 const promo = promos[activePromo];
                 discount = Math.floor(subtotal * promo.discount);
                 discountDetails = `${activePromo}: ${promo.discount * 100}% OFF`;
+                savingsText = `You save ₹${discount.toLocaleString()}`;
             }
             
             updateCartTotals(subtotal, discount, discountDetails);
-            updatePromoInfo();
+            updatePromoInfo(savingsText);
         }
 
         function updateCartTotals(sub, disc, details = '') {
@@ -2841,6 +3604,7 @@
                     panel.classList.add('scale-100', 'opacity-100');
                 }, 10);
                 renderCart();
+                updatePromoCards();
             } else {
                 panel.classList.remove('scale-100', 'opacity-100');
                 panel.classList.add('scale-95', 'opacity-0');
@@ -2851,58 +3615,82 @@
         }
 
         // --- 9. PROMO CODE SYSTEM ---
-        function renderPromoButtons() {
+        function renderPromoCards() {
             const container = document.getElementById('promo-buttons-container');
             if (!container) return;
             
-            container.innerHTML = Object.entries(promos).map(([code, details]) => `
-                <button onclick="applySpecificCode('${code}')" id="promo-btn-${code}" 
-                        class="px-2 py-1 bg-blue-500/10 border border-blue-500/30 text-blue-400 rounded text-xs font-mono font-bold hover:bg-blue-500/20 transition-all duration-300 text-center relative mobile-optimized-text">
-                    <div class="font-bold">${code}</div>
-                    <div class="promo-info truncate">${details.description}</div>
-                </button>
-            `).join('');
-            
-            Object.keys(promos).forEach(code => {
-                promoButtons[code] = document.getElementById(`promo-btn-${code}`);
+            const applicablePromos = Object.entries(promos).filter(([code, promo]) => {
+                // Check if any course in cart is eligible for this promo
+                return cart.some(course => 
+                    promo.applicableTypes.includes(course.type) ||
+                    (course.applicablePromos && course.applicablePromos.includes(code))
+                );
             });
             
-            updatePromoButtonStates();
+            container.innerHTML = applicablePromos.map(([code, details]) => {
+                const isPermanentlyUsed = permanentUsedPromoCodes.includes(code);
+                const isApplied = activePromo === code;
+                
+                return `
+                <div onclick="applySpecificCode('${code}')" id="promo-card-${code}" 
+                     class="promo-card ${isPermanentlyUsed ? 'used-promo' : ''} ${isApplied ? 'active' : ''}"
+                     ${isPermanentlyUsed ? 'style="cursor: not-allowed;"' : 'style="cursor: pointer;"'}>
+                    ${isPermanentlyUsed ? '<div class="used-badge">USED</div>' : ''}
+                    <div class="promo-discount">${details.discount * 100}% OFF</div>
+                    <div class="promo-code">${code}</div>
+                    <div class="promo-desc">${details.description}</div>
+                    <div class="promo-validity">
+                        <i class="fas fa-calendar-alt text-xs"></i>
+                        ${details.validity}
+                    </div>
+                    ${isApplied ? '<div class="absolute bottom-2 right-2 text-green-400"><i class="fas fa-check-circle"></i></div>' : ''}
+                </div>
+                `;
+            }).join('');
+            
+            // Store promo card elements
+            applicablePromos.forEach(([code]) => {
+                promoButtons[code] = document.getElementById(`promo-card-${code}`);
+            });
         }
 
-        function updatePromoButtonStates() {
-            Object.keys(promos).forEach(code => {
-                const button = promoButtons[code];
-                if (!button) return;
+        function updatePromoCards() {
+            Object.keys(promoButtons).forEach(code => {
+                const card = promoButtons[code];
+                if (!card) return;
                 
                 const promo = promos[code];
                 const isPermanentlyUsed = permanentUsedPromoCodes.includes(code);
-                const isTempUsed = usedPromoCodes.includes(code);
+                const isApplied = activePromo === code;
                 
+                // Check eligibility based on current cart
                 const isEligible = cart.some(course => 
                     promo.applicableTypes.includes(course.type) ||
                     (course.applicablePromos && course.applicablePromos.includes(code))
                 );
                 
+                const subtotal = cart.reduce((acc, item) => acc + item.price, 0);
+                const meetsMinAmount = subtotal >= promo.minAmount;
+                
                 if (isPermanentlyUsed) {
-                    button.classList.add('permanent-used', 'opacity-50');
-                    button.classList.remove('hover:bg-blue-500/20', 'bg-blue-500/10');
-                    button.title = 'Permanently Used - Cannot be used again';
-                    button.disabled = true;
-                } else if (isTempUsed) {
-                    button.classList.add('used-promo');
-                    button.title = 'Applied - Remove before proceeding to payment';
-                    button.disabled = false;
-                } else if (!isEligible) {
-                    button.classList.add('opacity-50');
-                    button.classList.remove('hover:bg-blue-500/20');
-                    button.title = 'Not applicable to courses in cart';
-                    button.disabled = true;
+                    card.classList.add('used-promo');
+                    card.classList.remove('active');
+                    card.querySelector('.used-badge')?.remove();
+                    card.innerHTML += '<div class="used-badge">USED</div>';
+                    card.style.cursor = 'not-allowed';
+                } else if (!isEligible || !meetsMinAmount) {
+                    card.classList.remove('active');
+                    card.style.opacity = '0.5';
+                    card.style.cursor = 'not-allowed';
+                } else if (isApplied) {
+                    card.classList.add('active');
+                    card.classList.remove('used-promo');
+                    card.style.opacity = '1';
+                    card.style.cursor = 'pointer';
                 } else {
-                    button.classList.remove('permanent-used', 'used-promo', 'opacity-50');
-                    button.classList.add('hover:bg-blue-500/20');
-                    button.title = 'Click to apply';
-                    button.disabled = false;
+                    card.classList.remove('active', 'used-promo');
+                    card.style.opacity = '1';
+                    card.style.cursor = 'pointer';
                 }
             });
         }
@@ -2910,13 +3698,13 @@
         function applySpecificCode(code) {
             if (permanentUsedPromoCodes.includes(code)) {
                 document.getElementById('full-promo-status').innerHTML = 
-                    `<span class="text-brand-danger font-bold mobile-optimized-text">Permanently Used - Cannot be used again</span>`;
+                    `<span class="text-brand-danger font-bold">Permanently Used - Cannot be used again</span>`;
                 return;
             }
             
-            if (usedPromoCodes.includes(code)) {
+            if (activePromo === code) {
                 document.getElementById('full-promo-status').innerHTML = 
-                    `<span class="text-brand-warning font-bold mobile-optimized-text">Already applied</span>`;
+                    `<span class="text-brand-warning font-bold">Already applied</span>`;
                 return;
             }
             
@@ -2927,7 +3715,7 @@
         function applyPromo() {
             if (cart.length === 0) {
                 document.getElementById('full-promo-status').innerHTML = 
-                    `<span class="text-brand-danger font-bold mobile-optimized-text">Add a course first!</span>`;
+                    `<span class="text-brand-danger font-bold">Add a course first!</span>`;
                 return;
             }
 
@@ -2936,19 +3724,20 @@
 
             if (!promos[code]) {
                 activePromo = null;
-                statusEl.innerHTML = `<span class="text-brand-danger font-bold mobile-optimized-text">Invalid Code</span>`;
+                statusEl.innerHTML = `<span class="text-brand-danger font-bold">Invalid Code</span>`;
                 updatePromoInfo();
                 renderCart();
+                updatePromoCards();
                 return;
             }
 
             if (permanentUsedPromoCodes.includes(code)) {
-                statusEl.innerHTML = `<span class="text-brand-danger font-bold mobile-optimized-text">Permanently Used - Cannot be used again</span>`;
+                statusEl.innerHTML = `<span class="text-brand-danger font-bold">Permanently Used - Cannot be used again</span>`;
                 return;
             }
 
-            if (usedPromoCodes.includes(code)) {
-                statusEl.innerHTML = `<span class="text-brand-warning font-bold mobile-optimized-text">Already applied</span>`;
+            if (activePromo === code) {
+                statusEl.innerHTML = `<span class="text-brand-warning font-bold">Already applied</span>`;
                 return;
             }
 
@@ -2959,28 +3748,34 @@
             );
 
             if (!isEligible) {
-                statusEl.innerHTML = `<span class="text-brand-warning font-bold mobile-optimized-text">Not applicable to courses in cart</span>`;
+                statusEl.innerHTML = `<span class="text-brand-warning font-bold">Not applicable to courses in cart</span>`;
+                return;
+            }
+
+            const subtotal = cart.reduce((acc, item) => acc + item.price, 0);
+            if (subtotal < promo.minAmount) {
+                statusEl.innerHTML = `<span class="text-brand-warning font-bold">Minimum order value ₹${promo.minAmount} required</span>`;
                 return;
             }
 
             activePromo = code;
-            usedPromoCodes.push(code);
             
             statusEl.innerHTML = `
-                <span class="text-brand-success font-bold mobile-optimized-text">
-                    Applied! ${promo.discount * 100}% OFF
+                <span class="text-brand-success font-bold">
+                    <i class="fas fa-check-circle mr-1"></i> Applied! ${promo.discount * 100}% OFF
                 </span>`;
             
-            updatePromoButtonStates();
+            updatePromoCards();
             updatePromoInfo();
             renderCart();
             showNotification('Promo code applied successfully!', 'success');
         }
 
-        function updatePromoInfo() {
+        function updatePromoInfo(savingsText = '') {
             const infoEl = document.getElementById('full-applied-promo-info');
             const codeEl = document.getElementById('full-current-promo-code');
             const descEl = document.getElementById('full-current-promo-desc');
+            const savingsEl = document.getElementById('full-promo-savings');
             const removeBtn = document.getElementById('full-remove-promo-btn');
             
             if (activePromo && promos[activePromo]) {
@@ -2989,6 +3784,7 @@
                 
                 codeEl.textContent = `${activePromo} - ${promo.discount * 100}% OFF`;
                 descEl.textContent = isPermanentlyUsed ? 'Permanently Used' : promo.description;
+                savingsEl.textContent = savingsText || `You save ${promo.discount * 100}%`;
                 
                 if (isPermanentlyUsed) {
                     removeBtn.style.display = 'none';
@@ -3008,16 +3804,13 @@
                     showNotification('This promo code is permanently used and cannot be removed', 'warning');
                     return;
                 }
-                
-                const index = usedPromoCodes.indexOf(activePromo);
-                if (index > -1) usedPromoCodes.splice(index, 1);
             }
             
             activePromo = null;
             document.getElementById('full-promo-input').value = '';
             document.getElementById('full-promo-status').innerHTML = '';
             updatePromoInfo();
-            updatePromoButtonStates();
+            updatePromoCards();
             renderCart();
             showNotification('Promo code removed', 'info');
         }
@@ -3033,11 +3826,6 @@
             if (activePromo && !permanentUsedPromoCodes.includes(activePromo)) {
                 permanentUsedPromoCodes.push(activePromo);
                 localStorage.setItem('tescaPermanentUsedPromos', JSON.stringify(permanentUsedPromoCodes));
-                
-                const tempIndex = usedPromoCodes.indexOf(activePromo);
-                if (tempIndex > -1) {
-                    usedPromoCodes.splice(tempIndex, 1);
-                }
             }
             
             const appliedCodeDisplay = document.getElementById('applied-code-display');
@@ -3055,9 +3843,16 @@
             document.getElementById('pay-final-amount').innerText = `₹${amount.toLocaleString()}`;
             document.getElementById('payment-modal').classList.remove('hidden');
 
+            // Generate UPI string with correct amount
             const upiString = `upi://pay?pa=8866722633@upi&pn=TESCA_Education&am=${amount}&cu=INR&tn=TESCA Course Payment`;
             const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&margin=10&data=${encodeURIComponent(upiString)}`;
             document.getElementById('qr-image').src = qrUrl;
+
+            // Update app buttons with correct amount
+            document.getElementById('google-pay-btn').href = `upi://pay?pa=8866722633@upi&pn=TESCA_Education&am=${amount}&cu=INR`;
+            document.getElementById('phonepe-btn').href = `phonepe://pay?pa=8866722633@upi&pn=TESCA_Education&am=${amount}&cu=INR`;
+            document.getElementById('paytm-btn').href = `paytmmp://pay?pa=8866722633@upi&pn=TESCA_Education&am=${amount}&cu=INR`;
+            document.getElementById('any-upi-btn').href = `upi://pay?pa=8866722633@upi&pn=TESCA_Education&am=${amount}&cu=INR&tn=TESCA Course Payment`;
 
             resetTimer();
         }
@@ -3091,7 +3886,7 @@
             clearInterval(timerInterval);
             
             if (activePromo) {
-                updatePromoButtonStates();
+                updatePromoCards();
                 updatePromoInfo();
             }
             
@@ -3131,7 +3926,7 @@
             notification.innerHTML = `
                 <div class="flex items-center gap-2">
                     <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'}"></i>
-                    <span class="mobile-optimized-text">${message}</span>
+                    <span>${message}</span>
                 </div>
             `;
             
@@ -3145,15 +3940,17 @@
             }, 3000);
         }
 
+        function handleScroll() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        }
+
         function setupEventListeners() {
-            window.addEventListener('scroll', () => {
-                const header = document.getElementById('main-header');
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
+            window.addEventListener('scroll', handleScroll);
 
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
@@ -3194,15 +3991,25 @@
                     if (!paymentModal.classList.contains('hidden')) {
                         closePayment();
                     }
+                    
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        toggleMobileMenu();
+                    }
                 }
             });
             
             window.addEventListener('resize', () => {
                 if (window.innerWidth <= 768) {
                     document.body.classList.add('mobile-view');
+                    document.getElementById('features').classList.remove('hidden');
                 } else {
                     document.body.classList.remove('mobile-view');
+                    document.getElementById('features').classList.add('hidden');
                 }
+                
+                // Re-render banners for responsive adjustments
+                renderBanners();
             });
         }
     </script>
