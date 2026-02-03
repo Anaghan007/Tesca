@@ -73,7 +73,7 @@
             padding: 0;
         }
 
-        /* Hero section - ADJUSTED HEIGHT FOR DESKTOP */
+        /* Hero section - ADJUSTED FOR LAPTOP SPACING */
         .hero-section {
             height: 100vh;
             min-height: 700px;
@@ -88,6 +88,25 @@
             justify-content: center;
         }
 
+        /* LAPTOP VIEW SPACING IMPROVEMENTS */
+        @media (min-width: 1024px) and (max-width: 1440px) {
+            .hero-section {
+                height: 100vh;
+                min-height: 800px;
+                max-height: 100vh;
+            }
+            
+            /* Reduced space between header and banner heading */
+            .banner-content {
+                padding-top: 80px !important;
+            }
+            
+            /* Reduced space between CTA and dots */
+            .banner-indicators {
+                bottom: 30px !important;
+            }
+        }
+
         /* For large desktop screens */
         @media (min-width: 1920px) {
             .hero-section {
@@ -96,31 +115,90 @@
             }
         }
 
-        /* For medium desktop screens - REDUCED HEIGHT FOR BETTER SPACING */
-        @media (min-width: 1024px) and (max-width: 1440px) {
-            .hero-section {
-                height: 90vh;
-                min-height: 700px;
-                max-height: 900px;
-            }
-        }
-
         /* For tablets */
         @media (min-width: 768px) and (max-width: 1023px) {
             .hero-section {
-                height: 85vh;
+                height: 90vh;
                 min-height: 600px;
-                max-height: 750px;
+                max-height: 800px;
             }
         }
 
-        /* For mobile - REDUCED SPACING */
+        /* MOBILE VIEW - COMPACT BANNER */
         @media (max-width: 767px) {
             .hero-section {
-                height: 90vh !important;
-                min-height: 90vh;
-                max-height: 90vh;
+                height: 100vh !important;
+                min-height: 100vh;
+                max-height: 100vh;
                 padding-top: 70px;
+            }
+            
+            /* Drastically reduced spacing in mobile banner */
+            .banner-content {
+                padding-top: 20px !important;
+                min-height: auto !important;
+                justify-content: flex-start !important;
+            }
+            
+            .banner-title {
+                font-size: 1.8rem !important;
+                line-height: 1.2;
+                margin-bottom: 0.75rem !important;
+                margin-top: 10px !important;
+            }
+            
+            .banner-subtitle {
+                font-size: 0.85rem !important;
+                line-height: 1.4;
+                margin-bottom: 1rem !important;
+                padding: 0 0.5rem;
+            }
+            
+            .banner-offer-details {
+                padding: 0.75rem !important;
+                margin: 0.75rem 0 !important;
+                border-radius: 12px;
+            }
+            
+            .banner-offer-details .text-4xl {
+                font-size: 1.5rem !important;
+            }
+            
+            .banner-offer-details .text-2xl {
+                font-size: 1rem !important;
+            }
+            
+            .banner-cta {
+                font-size: 0.85rem !important;
+                padding: 0.75rem 1.5rem !important;
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem !important;
+            }
+            
+            /* Reduced space between CTA and dots */
+            .banner-indicators {
+                bottom: 15px !important;
+                gap: 6px;
+            }
+            
+            .banner-dot {
+                width: 8px;
+                height: 8px;
+            }
+            
+            /* Adjust banner arrows for mobile */
+            .banner-nav-arrow {
+                width: 36px !important;
+                height: 36px !important;
+                font-size: 0.9rem !important;
+            }
+            
+            .banner-nav-arrow.prev {
+                left: 10px !important;
+            }
+            
+            .banner-nav-arrow.next {
+                right: 10px !important;
             }
         }
 
@@ -165,7 +243,6 @@
             align-items: center;
             justify-content: center;
             min-height: 80vh;
-            padding-top: 60px; /* Added spacing from header */
         }
 
         /* Banner overlay */
@@ -209,7 +286,7 @@
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #555; }
 
-        /* REALISTIC PHONE FRAME - IMPROVED FOR MOBILE */
+        /* REALISTIC PHONE FRAME */
         .phone-mockup {
             width: 300px;
             height: 600px;
@@ -249,7 +326,7 @@
             box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
         }
 
-        /* Header styling - IMPROVED SPACING */
+        /* Header styling */
         #main-header {
             transition: all 0.3s ease;
             background: transparent !important;
@@ -325,7 +402,7 @@
             object-fit: contain;
         }
 
-        /* Faculty card - REDUCED SPACE BETWEEN LOGO AND NAME */
+        /* Faculty card - REDUCED SPACE BETWEEN NAME AND LOGO */
         .faculty-card {
             transition: all 0.3s ease;
             height: 100%;
@@ -339,8 +416,15 @@
             flex-direction: column;
         }
         
-        .faculty-avatar-container {
-            margin-bottom: 1.5rem !important; /* Reduced from 2rem */
+        /* Reduced margin for faculty initial circle */
+        .faculty-card .relative.mb-6 {
+            margin-bottom: 1rem !important;
+        }
+        
+        .faculty-card .w-32.h-32 {
+            width: 5rem !important;
+            height: 5rem !important;
+            margin-bottom: 0.5rem !important;
         }
         
         .faculty-card .faculty-description {
@@ -695,10 +779,10 @@
             padding-bottom: 6rem;
         }
 
-        /* Banner indicator dots - ADJUSTED SPACING FOR LAPTOP AND MOBILE */
+        /* Banner indicator dots */
         .banner-indicators {
             position: absolute;
-            bottom: 40px; /* Reduced from 60px for laptop */
+            bottom: 60px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -764,11 +848,11 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Banner title styles - ADJUSTED FOR BETTER SPACING */
+        /* Banner title styles */
         .banner-title {
             font-size: 4rem;
             line-height: 1.1;
-            margin-bottom: 1rem; /* Reduced from 1.5rem */
+            margin-bottom: 1.5rem;
             font-weight: 800;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
@@ -777,7 +861,7 @@
         .banner-subtitle {
             font-size: 1.25rem;
             line-height: 1.6;
-            margin-bottom: 1.5rem; /* Reduced from 2rem */
+            margin-bottom: 2rem;
             opacity: 0.9;
             max-width: 600px;
             margin-left: auto;
@@ -794,7 +878,7 @@
             letter-spacing: 1px;
             transition: all 0.3s ease;
             display: inline-block;
-            margin: 0.5rem auto 0; /* Reduced from 1rem */
+            margin: 1rem auto 0;
         }
 
         /* Feature icons */
@@ -978,71 +1062,158 @@
             line-height: 1.5;
         }
 
-        /* App section for desktop */
-        .app-section-desktop {
-            display: flex;
+        /* NEW APP SECTION STYLES - FROM PROVIDED CODE */
+        .full-phone-mockup { 
+            width: 310px; 
+            height: 620px; 
+            border: 12px solid #1a1a1a; 
+            border-radius: 54px; 
+            background: #000; 
+            position: relative; 
+            overflow: hidden; 
+            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.8); 
+        }
+
+        .phone-notch { 
+            position: absolute; 
+            top: 0; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            width: 140px; 
+            height: 28px; 
+            background: #1a1a1a; 
+            border-bottom-left-radius: 20px; 
+            border-bottom-right-radius: 20px; 
+            z-index: 20; 
+        }
+        
+        .inner-screen { 
+            height: 100%; 
+            width: 100%; 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center; 
+            background: #08080a; 
+            padding: 25px; 
+            text-align: center;
+        }
+
+        /* Premium Logo Styling */
+        .premium-logo-wrapper {
+            position: relative; 
+            width: 85px; 
+            height: 85px; 
+            margin-bottom: 15px;
+            display: flex; 
+            align-items: center; 
             justify-content: center;
-            align-items: center;
-            gap: 5rem;
-            margin-top: 4rem;
         }
-        
-        .app-section-desktop .full-phone-mockup {
-            width: 320px;
-            height: 640px;
-            border: 14px solid #1a1a1a;
-            border-radius: 45px;
-            overflow: hidden;
-            background: #000;
-            position: relative;
-            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.6);
-            transition: transform 0.5s ease;
+        .logo-glass-ring {
+            position: absolute; 
+            inset: 0; 
+            border-radius: 24px;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            backdrop-filter: blur(5px); 
+            transform: rotate(-5deg);
         }
-        
-        .app-section-desktop .full-phone-mockup:hover {
-            transform: translateY(-15px);
+        .logo-main-box {
+            position: relative; 
+            width: 70px; 
+            height: 70px; 
+            border-radius: 20px;
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.5); 
+            z-index: 2;
         }
-        
-        .app-section-desktop .phone-notch {
-            width: 140px;
-            height: 35px;
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
+
+        /* Readable Feature List */
+        .mock-item { 
+            width: 100%; 
+            background: rgba(255,255,255,0.04); 
+            padding: 16px; 
+            border-radius: 18px; 
+            border: 1px solid rgba(255,255,255,0.08); 
+            display: flex; 
+            align-items: center; 
+            gap: 15px;
         }
-        
-        /* IMPROVED PHONE SCREEN - NO CUTTING */
-        .app-section-desktop .phone-screen {
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-            overflow: hidden;
-            height: 100%;
+
+        .mock-title { 
+            font-size: 14px; 
+            font-weight: 800; 
+            color: #fff; 
+            margin-bottom: 1px; 
         }
-        
-        /* App features list for desktop */
-        .app-features-list {
-            max-width: 500px;
+        .mock-desc { 
+            font-size: 12px; 
+            color: #94a3b8; 
+            font-weight: 500; 
         }
-        
-        .app-features-list .feature-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1.5rem;
-            margin-bottom: 2.5rem;
+
+        /* Mobile improvements for new app section */
+        @media (max-width: 768px) {
+            .full-phone-mockup {
+                width: 280px;
+                height: 560px;
+                border-radius: 40px;
+                border-width: 10px;
+            }
+            
+            .phone-notch {
+                width: 120px;
+                height: 24px;
+            }
+            
+            .inner-screen {
+                padding: 20px;
+            }
+            
+            .premium-logo-wrapper {
+                width: 70px;
+                height: 70px;
+                margin-bottom: 10px;
+            }
+            
+            .logo-main-box {
+                width: 60px;
+                height: 60px;
+                border-radius: 16px;
+            }
+            
+            .logo-main-box i {
+                font-size: 1.5rem;
+            }
+            
+            .mock-item {
+                padding: 12px;
+                gap: 12px;
+                border-radius: 14px;
+                margin-bottom: 8px;
+            }
+            
+            .mock-title {
+                font-size: 12px;
+            }
+            
+            .mock-desc {
+                font-size: 10px;
+            }
+            
+            .inner-screen h4 {
+                font-size: 1rem;
+            }
+            
+            .inner-screen p.text-\[11px\] {
+                font-size: 9px;
+                margin-bottom: 1.5rem;
+            }
         }
-        
-        .app-features-list .feature-icon {
-            width: 60px;
-            height: 60px;
-            border-radius: 16px;
-            font-size: 1.5rem;
-            margin: 0;
-            flex-shrink: 0;
-        }
-        
+
         /* Footer mobile grid */
         .footer-grid {
             display: grid;
@@ -1050,7 +1221,7 @@
             gap: 2rem;
         }
 
-        /* Hero offer details */
+        /* Hero offer details center alignment */
         .banner-offer-details {
             display: flex;
             flex-direction: column;
@@ -1058,7 +1229,7 @@
             justify-content: center;
             width: 100%;
             margin: 0 auto;
-            padding: 1rem !important; /* Reduced padding */
+            padding: 1.5rem !important;
         }
 
         /* Faculty designation styling */
@@ -1072,160 +1243,13 @@
             scroll-behavior: smooth;
         }
 
-        /* Section spacing */
+        /* Section spacing - DIFFERENT FOR DESKTOP AND MOBILE */
         .section-padding {
             padding-top: 6rem;
             padding-bottom: 6rem;
         }
 
-        /* ============================================ */
-        /* IMPROVED PHONE MOCKUP SCREENS - FIXED FOR MOBILE */
-        /* ============================================ */
-        
-        .app-screen-content {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            background: linear-gradient(135deg, #0F1016 0%, #050507 100%);
-            overflow: hidden;
-        }
-        
-        .app-screen-header {
-            padding: 1.5rem 1rem 1rem;
-            text-align: center;
-            background: rgba(99, 102, 241, 0.1);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .app-screen-logo {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 0.75rem;
-        }
-        
-        .app-screen-body {
-            flex: 1;
-            padding: 1.5rem 1rem;
-            overflow-y: auto;
-        }
-        
-        .app-menu-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            padding: 0.75rem;
-            margin-bottom: 0.5rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 10px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-        }
-        
-        .app-menu-item:hover {
-            background: rgba(99, 102, 241, 0.1);
-            transform: translateX(5px);
-        }
-        
-        .app-menu-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
-            background: rgba(99, 102, 241, 0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #6366f1;
-            font-size: 0.9rem;
-        }
-        
-        .app-menu-text {
-            flex: 1;
-        }
-        
-        .app-menu-text h4 {
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-        
-        .app-menu-text p {
-            font-size: 0.7rem;
-            color: rgba(255, 255, 255, 0.6);
-        }
-        
-        .app-screen-footer {
-            padding: 1rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            text-align: center;
-        }
-
-        /* ============================================ */
-        /* PROMO CODE APPLY BUTTON */
-        /* ============================================ */
-        
-        .promo-input-container {
-            position: relative;
-            margin-top: 1rem;
-        }
-        
-        .promo-input-container input {
-            width: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 12px 100px 12px 15px;
-            font-size: 14px;
-            color: white;
-            font-family: 'Courier New', monospace;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
-        
-        .promo-input-container input:focus {
-            outline: none;
-            border-color: #6366f1;
-            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
-        }
-        
-        .promo-input-container .apply-btn {
-            position: absolute;
-            right: 5px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: linear-gradient(90deg, #6366f1, #8b5cf6);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            height: calc(100% - 10px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .promo-input-container .apply-btn:hover {
-            background: linear-gradient(90deg, #5558e8, #7a4cf5);
-            transform: translateY(-50%) scale(1.05);
-        }
-        
-        .promo-input-container .apply-btn:active {
-            transform: translateY(-50%) scale(0.95);
-        }
-
-        /* ============================================ */
-        /* MOBILE VIEW - IMPROVED WITH BETTER SPACING */
-        /* ============================================ */
-        
+        /* Mobile view adjustments */
         @media (max-width: 768px) {
             /* MOBILE BODY STYLES */
             body {
@@ -1264,74 +1288,33 @@
                 display: none;
             }
             
-            /* MOBILE HERO SECTION - IMPROVED SPACING */
-            .mobile-view .hero-section {
-                height: 85vh !important;
-                min-height: 85vh;
-                max-height: 85vh;
-                padding-top: 60px !important; /* Reduced */
+            /* Hide header nav on mobile */
+            #main-header nav {
+                display: none;
             }
             
-            .mobile-view .banner-content {
-                padding-top: 20px !important; /* Reduced from 40px */
-                min-height: 65vh;
-                justify-content: center;
-                padding: 0.5rem;
+            /* Show mobile menu button */
+            #main-header .md\\:hidden {
+                display: block;
             }
             
-            .mobile-view .banner-title {
-                font-size: 2rem !important;
-                line-height: 1.2;
-                margin-bottom: 0.75rem; /* Reduced */
-                margin-top: 0;
-                padding-top: 0;
+            /* MOBILE MENU IMPROVEMENTS */
+            #mobile-menu {
+                font-size: 1.8rem;
+                background: rgba(5, 5, 7, 0.98);
+                backdrop-filter: blur(20px);
             }
             
-            .mobile-view .banner-subtitle {
-                font-size: 0.9rem !important; /* Reduced */
-                line-height: 1.5;
-                margin-bottom: 1rem; /* Reduced */
-                padding: 0 0.5rem;
+            .mobile-menu-link {
+                padding: 1rem 0;
+                display: block;
+                text-align: center;
+                transition: all 0.3s ease;
             }
             
-            .mobile-view .banner-offer-details {
-                padding: 0.75rem !important; /* Reduced */
-                margin: 0.5rem 0; /* Reduced */
-                border-radius: 16px;
-            }
-            
-            .mobile-view .banner-offer-details .text-4xl {
-                font-size: 1.5rem !important; /* Reduced */
-            }
-            
-            .mobile-view .banner-cta {
-                font-size: 0.85rem !important;
-                padding: 0.8rem 1.8rem !important; /* Adjusted */
-                margin-top: 0.5rem;
-                margin-bottom: 1rem; /* Reduced */
-                border-radius: 50px !important;
-            }
-            
-            /* FIXED BANNER INDICATOR SPACING - CLOSER TO CTA */
-            .mobile-view .banner-indicators {
-                bottom: 15px !important; /* Moved up closer */
-            }
-            
-            /* BANNER ARROWS FOR MOBILE */
-            .mobile-view .banner-nav-arrow {
-                display: flex !important;
-                width: 40px !important;
-                height: 40px !important;
-                font-size: 1rem !important;
-                z-index: 25;
-            }
-            
-            .mobile-view .banner-nav-arrow.prev {
-                left: 10px !important;
-            }
-            
-            .mobile-view .banner-nav-arrow.next {
-                right: 10px !important;
+            .mobile-menu-link:hover {
+                transform: scale(1.05);
+                color: #6366f1;
             }
             
             /* Hide desktop features on mobile */
@@ -1439,7 +1422,7 @@
                 border-radius: 9999px !important;
             }
             
-            /* MOBILE FACULTY SECTION - REDUCED SPACING */
+            /* MOBILE FACULTY SECTION */
             .mobile-view #faculty {
                 padding: 3rem 1rem !important;
                 background: linear-gradient(to bottom, #0F1016, #050507);
@@ -1448,7 +1431,7 @@
             .mobile-view #faculty h2 {
                 font-size: 2.2rem !important;
                 line-height: 1.2;
-                margin-bottom: 1.5rem; /* Reduced */
+                margin-bottom: 2rem;
                 text-align: center;
             }
             
@@ -1460,121 +1443,15 @@
             
             .mobile-view .faculty-card h3 {
                 font-size: 1.3rem !important;
-                margin-bottom: 0.5rem !important; /* Reduced */
             }
             
             .mobile-view .faculty-designation {
                 font-size: 0.95rem !important;
-                margin-bottom: 1rem !important; /* Reduced */
             }
             
             .mobile-view .faculty-description p {
                 font-size: 0.9rem !important;
                 line-height: 1.6;
-            }
-            
-            /* MOBILE APP SECTION - IMPROVED MOCKUP */
-            .mobile-view #app {
-                padding: 3rem 1rem !important;
-                background: #050507;
-            }
-            
-            .mobile-view #app h2 {
-                font-size: 2.2rem !important;
-                text-align: center;
-                margin-bottom: 2rem;
-            }
-            
-            .mobile-view .phone-mockup {
-                width: 260px; /* Slightly smaller for mobile */
-                height: 520px; /* Slightly smaller for mobile */
-                border-width: 10px;
-                border-radius: 30px;
-                margin: 0 auto 2rem;
-            }
-            
-            /* IMPROVED MOBILE MOCKUP CONTENT - NO SCROLLING, CENTERED */
-            .mobile-view .phone-screen {
-                padding: 0;
-                overflow: hidden;
-            }
-            
-            /* IMPROVED MOBILE APP CONTENT - FITS PERFECTLY */
-            .mobile-view .app-screen-content {
-                padding: 0.5rem;
-                height: 100%;
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-            }
-            
-            .mobile-view .app-screen-header {
-                padding: 1rem 0.5rem 0.75rem;
-                flex-shrink: 0;
-            }
-            
-            .mobile-view .app-screen-logo {
-                width: 40px;
-                height: 40px;
-                margin-bottom: 0.5rem;
-            }
-            
-            .mobile-view .app-screen-body {
-                flex: 1;
-                padding: 0.75rem 0.5rem;
-                overflow-y: visible; /* No scrolling */
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
-            
-            .mobile-view .app-menu-item {
-                padding: 0.6rem;
-                margin-bottom: 0.4rem;
-            }
-            
-            .mobile-view .app-menu-icon {
-                width: 32px;
-                height: 32px;
-                font-size: 0.8rem;
-            }
-            
-            .mobile-view .app-menu-text h4 {
-                font-size: 0.75rem;
-            }
-            
-            .mobile-view .app-menu-text p {
-                font-size: 0.65rem;
-            }
-            
-            .mobile-view .app-screen-footer {
-                padding: 0.75rem;
-                flex-shrink: 0;
-            }
-            
-            /* IMPROVED APP FEATURES LAYOUT */
-            .mobile-view .app-features-list .feature-item {
-                margin-bottom: 1.5rem;
-                flex-direction: column;
-                text-align: center;
-                align-items: center;
-                gap: 1rem;
-            }
-            
-            .mobile-view .app-features-list .feature-icon {
-                margin-bottom: 0;
-            }
-            
-            /* Hide desktop app section on mobile */
-            .app-section-desktop {
-                display: none;
-            }
-            
-            /* Show mobile app section */
-            .mobile-app-section {
-                display: flex !important;
-                flex-direction: column;
-                align-items: center;
             }
             
             /* MOBILE FOOTER */
@@ -1587,83 +1464,6 @@
                 gap: 2.5rem;
             }
             
-            /* MOBILE CART MODAL */
-            .mobile-view .full-cart-content {
-                max-width: 95%;
-                height: 90vh;
-                max-height: 90vh;
-                border-radius: 20px;
-            }
-            
-            .mobile-view .full-cart-header {
-                padding: 1rem;
-            }
-            
-            .mobile-view .full-cart-body {
-                padding: 1rem;
-            }
-            
-            .mobile-view .cart-course-item {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-                padding: 1rem;
-            }
-            
-            .mobile-view .cart-remove-btn {
-                align-self: flex-end;
-            }
-            
-            /* MOBILE PROMO CODE SYSTEM */
-            .mobile-view .promo-section-compact {
-                grid-template-columns: 1fr;
-                gap: 8px;
-            }
-            
-            .mobile-view .promo-card {
-                padding: 1rem;
-            }
-            
-            /* FIXED CART BUTTONS IN MOBILE */
-            .mobile-view #full-checkout-btn {
-                padding: 1rem !important;
-                border-radius: 12px !important;
-            }
-            
-            /* Hide header nav on mobile */
-            #main-header nav {
-                display: none;
-            }
-            
-            /* Show mobile menu button */
-            #main-header .md\\:hidden {
-                display: block;
-            }
-            
-            /* MOBILE MENU IMPROVEMENTS */
-            #mobile-menu {
-                font-size: 1.8rem;
-                background: rgba(5, 5, 7, 0.98);
-                backdrop-filter: blur(20px);
-            }
-            
-            .mobile-menu-link {
-                padding: 1rem 0;
-                display: block;
-                text-align: center;
-                transition: all 0.3s ease;
-            }
-            
-            .mobile-menu-link:hover {
-                transform: scale(1.05);
-                color: #6366f1;
-            }
-            
-            /* Adjust banner indicators for mobile */
-            .banner-indicators {
-                bottom: 15px;
-            }
-            
             /* Payment modal mobile */
             .mobile-view #payment-modal .max-w-\[350px\] {
                 max-width: 90% !important;
@@ -1673,11 +1473,6 @@
             /* Stats section for mobile */
             .mobile-view .stat-number {
                 font-size: 2.5rem !important;
-            }
-            
-            /* PROMO CODES IN CART */
-            .mobile-view .cart-promo-section {
-                display: block !important;
             }
             
             /* MOBILE PROMO INPUT */
@@ -1696,24 +1491,24 @@
         @media (max-width: 480px) {
             /* Extra small devices */
             .mobile-view .hero-section {
-                min-height: 85vh;
+                min-height: 100vh;
             }
             
             .mobile-view .banner-title {
-                font-size: 1.7rem !important;
+                font-size: 1.6rem !important;
             }
             
             .mobile-view .banner-subtitle {
-                font-size: 0.85rem !important;
+                font-size: 0.8rem !important;
             }
             
             .mobile-features-grid {
                 grid-template-columns: 1fr;
             }
             
-            .mobile-view .phone-mockup {
-                width: 240px;
-                height: 480px;
+            .mobile-view .full-phone-mockup {
+                width: 260px;
+                height: 520px;
             }
             
             .mobile-view #courses h2,
@@ -1722,26 +1517,19 @@
                 font-size: 2rem !important;
             }
             
-            .mobile-view .full-cart-content {
-                max-width: 100%;
-                height: 100vh;
-                max-height: 100vh;
-                border-radius: 0;
-            }
-            
             /* Banner arrows for very small devices */
             .mobile-view .banner-nav-arrow {
-                width: 35px !important;
-                height: 35px !important;
-                font-size: 0.9rem !important;
+                width: 32px !important;
+                height: 32px !important;
+                font-size: 0.8rem !important;
             }
             
             .mobile-view .banner-nav-arrow.prev {
-                left: 5px !important;
+                left: 8px !important;
             }
             
             .mobile-view .banner-nav-arrow.next {
-                right: 5px !important;
+                right: 8px !important;
             }
         }
         
@@ -1752,7 +1540,7 @@
             }
             
             .mobile-view .banner-subtitle {
-                font-size: 0.8rem !important;
+                font-size: 0.75rem !important;
             }
             
             .mobile-view .filter-btn {
@@ -1760,22 +1548,19 @@
                 font-size: 0.8rem !important;
             }
             
-            .mobile-view .phone-mockup {
-                width: 220px;
-                height: 440px;
+            .mobile-view .full-phone-mockup {
+                width: 240px;
+                height: 480px;
             }
             
             .mobile-view .banner-nav-arrow {
                 width: 30px !important;
                 height: 30px !important;
-                font-size: 0.8rem !important;
+                font-size: 0.75rem !important;
             }
         }
 
-        /* ============================================ */
-        /* DESKTOP/PC/LAPTOP VIEW - IMPROVED SPACING */
-        /* ============================================ */
-        
+        /* DESKTOP/PC/LAPTOP VIEW */
         @media (min-width: 769px) {
             /* DESKTOP HEADER */
             #main-header nav {
@@ -1786,44 +1571,13 @@
                 display: none;
             }
             
-            /* DESKTOP HERO SECTION - ADJUSTED SPACING */
+            /* DESKTOP HERO SECTION */
             .hero-section {
-                height: 90vh; /* Reduced from 100vh */
-                min-height: 700px;
-                max-height: 850px; /* Reduced */
-            }
-            
-            .banner-content {
-                padding-top: 80px; /* Space from header */
-                padding-bottom: 40px; /* Space to dots */
-            }
-            
-            /* BANNER INDICATORS CLOSER TO CONTENT */
-            .banner-indicators {
-                bottom: 50px; /* Closer to content */
+                height: 100vh;
             }
             
             /* DESKTOP FEATURES */
             .desktop-features-grid {
-                display: flex;
-            }
-            
-            /* DESKTOP APP SECTION */
-            .app-section-desktop {
-                display: flex;
-            }
-            
-            .mobile-app-section {
-                display: none;
-            }
-            
-            /* DESKTOP FOOTER */
-            .footer-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-            
-            /* Banner arrows on desktop */
-            .banner-nav-arrow {
                 display: flex;
             }
         }
@@ -1850,23 +1604,10 @@
                 padding: 1.8rem 1.2rem;
             }
             
-            .app-section-desktop {
-                gap: 4rem;
-            }
-            
             /* Fix logo cutting in laptop view */
-            .app-section-desktop .full-phone-mockup {
+            .full-phone-mockup {
                 width: 300px;
                 height: 600px;
-            }
-            
-            /* Adjusted banner spacing for laptop */
-            .banner-content {
-                padding-top: 70px;
-            }
-            
-            .banner-indicators {
-                bottom: 45px;
             }
         }
         
@@ -1888,14 +1629,6 @@
                 min-width: 250px;
                 padding: 2.5rem 2rem;
             }
-            
-            .app-section-desktop {
-                gap: 6rem;
-            }
-            
-            .banner-content {
-                padding-top: 100px;
-            }
         }
 
         /* Banner arrow visibility on medium screens */
@@ -1913,57 +1646,6 @@
             .banner-nav-arrow.next {
                 right: 20px;
             }
-            
-            .banner-content {
-                padding-top: 70px;
-            }
-            
-            .banner-indicators {
-                bottom: 45px;
-            }
-        }
-
-        /* Mobile App Section */
-        .mobile-app-section {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-        }
-        
-        .mobile-app-features {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-top: 2rem;
-            width: 100%;
-        }
-        
-        .mobile-app-feature {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 16px;
-            padding: 1.5rem 1rem;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .mobile-app-feature:hover {
-            transform: translateY(-5px);
-            border-color: rgba(99, 102, 241, 0.3);
-        }
-        
-        .mobile-app-feature-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            background: rgba(99, 102, 241, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 1.2rem;
-            color: #6366f1;
         }
 
         /* FIXED CART PROMO CODE SECTION */
@@ -2030,13 +1712,58 @@
             display: grid;
         }
 
-        /* Improved mobile mockup for app section */
-        .mobile-app-mockup-container {
+        /* Promo input container */
+        .promo-input-container {
+            position: relative;
+            margin-top: 1rem;
+        }
+        
+        .promo-input-container input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 12px 100px 12px 15px;
+            font-size: 14px;
+            color: white;
+            font-family: 'Courier New', monospace;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+        
+        .promo-input-container input:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+        }
+        
+        .promo-input-container .apply-btn {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            height: calc(100% - 10px);
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 100%;
+        }
+        
+        .promo-input-container .apply-btn:hover {
+            background: linear-gradient(90deg, #5558e8, #7a4cf5);
+            transform: translateY(-50%) scale(1.05);
+        }
+        
+        .promo-input-container .apply-btn:active {
+            transform: translateY(-50%) scale(0.95);
         }
     </style>
 </head>
@@ -2233,7 +1960,7 @@
         </div>
     </section>
 
-    <!-- Faculty Section - UPDATED WITH REDUCED SPACING -->
+    <!-- Faculty Section - WITH REDUCED SPACE BETWEEN NAME AND LOGO -->
     <section id="faculty" class="section-padding bg-gradient-to-b from-brand-surface to-brand-bg">
         <div class="container mx-auto px-4">
             <div class="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
@@ -2243,19 +1970,19 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-                <!-- Nikunj Dhanani - REDUCED SPACING -->
+                <!-- Nikunj Dhanani -->
                 <div class="faculty-card glass-card p-8 rounded-3xl text-center animate-fade-in" style="animation-delay: 0.1s">
                     <div class="faculty-content">
-                        <div class="faculty-avatar-container relative mb-4"> <!-- Changed from mb-6 -->
-                            <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-brand-primary to-purple-600 flex items-center justify-center text-4xl font-bold text-white">
+                        <div class="relative mb-4"> <!-- Reduced from mb-6 -->
+                            <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-brand-primary to-purple-600 flex items-center justify-center text-2xl font-bold text-white mb-2"> <!-- Reduced size -->
                                 ND
                             </div>
                         </div>
                         <div class="mb-3">
                             <h3 class="text-2xl font-bold">Nikunj Dhanani</h3>
-                            <div class="bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full inline-block mb-2 mt-2">Founder</div>
+                            <div class="bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full inline-block mt-2">Founder</div>
                         </div>
-                        <p class="faculty-designation text-sm text-brand-accent font-bold mb-3">CEO & Lead Visa Consultant</p>
+                        <p class="faculty-designation text-sm text-brand-accent font-bold mb-4">CEO & Lead Visa Consultant</p>
                         <div class="faculty-description mb-6">
                             <p class="text-gray-400">With 12+ years in international education, Nikunj has successfully placed 5000+ students in top global universities. His expertise in visa documentation has achieved a remarkable 99.2% success rate.</p>
                         </div>
@@ -2266,19 +1993,19 @@
                     </div>
                 </div>
 
-                <!-- Vishal Faldu - REDUCED SPACING -->
+                <!-- Vishal Faldu -->
                 <div class="faculty-card glass-card p-8 rounded-3xl text-center animate-fade-in" style="animation-delay: 0.2s">
                     <div class="faculty-content">
-                        <div class="faculty-avatar-container relative mb-4"> <!-- Changed from mb-6 -->
-                            <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-brand-warning to-orange-500 flex items-center justify-center text-4xl font-bold text-white">
+                        <div class="relative mb-4"> <!-- Reduced from mb-6 -->
+                            <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-brand-warning to-orange-500 flex items-center justify-center text-2xl font-bold text-white mb-2"> <!-- Reduced size -->
                                 VF
                             </div>
                         </div>
                         <div class="mb-3">
                             <h3 class="text-2xl font-bold">Vishal Faldu</h3>
-                            <div class="bg-blue-500/20 text-blue-400 text-xs font-bold px-3 py-1 rounded-full inline-block mb-2 mt-2">Co-Founder</div>
+                            <div class="bg-blue-500/20 text-blue-400 text-xs font-bold px-3 py-1 rounded-full inline-block mt-2">Co-Founder</div>
                         </div>
-                        <p class="faculty-designation text-sm text-brand-warning font-bold mb-3">IELTS/PTE Master Trainer</p>
+                        <p class="faculty-designation text-sm text-brand-warning font-bold mb-4">IELTS/PTE Master Trainer</p>
                         <div class="faculty-description mb-6">
                             <p class="text-gray-400">A British Council certified trainer with 8+ years experience. Specializes in helping students achieve Band 8+ in IELTS and 85+ in PTE. Known for his unique "Score Booster" techniques.</p>
                         </div>
@@ -2289,19 +2016,19 @@
                     </div>
                 </div>
 
-                <!-- Kiran Lathiya - REDUCED SPACING -->
+                <!-- Kiran Lathiya -->
                 <div class="faculty-card glass-card p-8 rounded-3xl text-center animate-fade-in" style="animation-delay: 0.3s">
                     <div class="faculty-content">
-                        <div class="faculty-avatar-container relative mb-4"> <!-- Changed from mb-6 -->
-                            <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-brand-accent to-cyan-500 flex items-center justify-center text-4xl font-bold text-white">
+                        <div class="relative mb-4"> <!-- Reduced from mb-6 -->
+                            <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-brand-accent to-cyan-500 flex items-center justify-center text-2xl font-bold text-white mb-2"> <!-- Reduced size -->
                                 KL
                             </div>
                         </div>
                         <div class="mb-3">
                             <h3 class="text-2xl font-bold">Kiran Lathiya</h3>
-                            <div class="bg-brand-primary/20 text-brand-primary text-xs font-bold px-3 py-1 rounded-full inline-block mb-2 mt-2">Head Mentor</div>
+                            <div class="bg-brand-primary/20 text-brand-primary text-xs font-bold px-3 py-1 rounded-full inline-block mt-2">Head Mentor</div>
                         </div>
-                        <p class="faculty-designation text-sm text-cyan-400 font-bold mb-3">Spoken English Guru</p>
+                        <p class="faculty-designation text-sm text-cyan-400 font-bold mb-4">Spoken English Guru</p>
                         <div class="faculty-description mb-6">
                             <p class="text-gray-400">25+ years of transforming students into confident English speakers. Former corporate trainer at multinational companies. His "Zero to Hero" methodology has helped 10,000+ students overcome hesitation.</p>
                         </div>
@@ -2333,260 +2060,74 @@
         </div>
     </section>
 
-    <!-- App Section -->
-    <section id="app" class="section-padding bg-brand-surface2">
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10"></div>
-        
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="text-center max-w-3xl mx-auto mb-8 animate-fade-in">
-                <h2 class="text-5xl md:text-6xl font-bold leading-tight mb-6">Your <span class="gradient-text">Pocket Classroom</span></h2>
-                <p class="text-gray-400 text-lg mb-8">Download the TESCA App for seamless learning. Watch videos, take quizzes, and chat with tutors on the go.</p>
-                <a href="https://play.google.com/store/apps/details?id=co.ted.fpqdt" target="_blank" class="direct-link inline-flex items-center gap-4 bg-white text-black px-8 py-4 rounded-2xl font-bold hover:scale-105 transition shadow-lg shadow-white/10">
+    <!-- NEW APP SECTION - USING PROVIDED DESIGN -->
+    <section id="app" class="py-24 relative overflow-hidden bg-brand-bg">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-20 relative z-10">
+            
+            <div class="full-phone-mockup shrink-0">
+                <div class="phone-notch"></div>
+                
+                <div class="inner-screen">
+                    
+                    <div class="premium-logo-wrapper">
+                        <div class="logo-glass-ring"></div>
+                        <div class="logo-main-box">
+                            <i class="fas fa-graduation-cap text-white text-3xl"></i>
+                        </div>
+                    </div>
+
+                    <h4 class="text-white font-black text-xl mb-1 tracking-widest uppercase">TESCA</h4>
+                    <p class="text-[11px] text-gray-500 uppercase tracking-[0.4em] mb-10 font-black">Official App</p>
+                    
+                    <div class="w-full space-y-4">
+                        <div class="mock-item">
+                            <div class="w-10 h-10 rounded-xl bg-brand-primary/20 flex items-center justify-center text-brand-primary text-lg flex-shrink-0">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="text-left">
+                                <p class="mock-title">Live Classes</p>
+                                <p class="mock-desc">Daily interactive Video</p>
+                            </div>
+                        </div>
+                        <div class="mock-item">
+                            <div class="w-10 h-10 rounded-xl bg-brand-success/20 flex items-center justify-center text-brand-success text-lg flex-shrink-0">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="text-left">
+                                <p class="mock-title">Study Hub</p>
+                                <p class="mock-desc">Full Library of PDF's</p>
+                            </div>
+                        </div>
+                        <div class="mock-item">
+                            <div class="w-10 h-10 rounded-xl bg-brand-accent/20 flex items-center justify-center text-brand-accent text-lg flex-shrink-0">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <div class="text-left">
+                                <p class="mock-title">Tutor Chat</p>
+                                <p class="mock-desc">24/7 Expert Support</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-xl text-center md:text-left">
+                <span class="text-brand-primary font-black text-sm tracking-[0.3em] uppercase mb-4 block">Modern Learning</span>
+                <h2 class="text-6xl font-black mb-8 leading-tight">Mastery on <br><span class="text-brand-primary">the Go.</span></h2>
+                <p class="text-gray-400 text-xl mb-10 leading-relaxed font-medium">
+                    Carry your classroom in your pocket. Access live sessions, premium study materials, 
+                    and track your visa application status directly from the official TESCA app.
+                </p>
+                
+                <a href="https://play.google.com/store/apps/details?id=co.ted.fpqdt" target="_blank" class="direct-link inline-flex items-center gap-4 bg-white text-black px-12 py-5 rounded-[2rem] font-black hover:scale-105 transition-all shadow-2xl">
                     <i class="fab fa-google-play text-3xl text-brand-success"></i>
                     <div class="text-left">
-                        <div class="text-[10px] uppercase font-bold text-gray-600">Get it on</div>
-                        <div class="text-xl leading-none">Google Play</div>
+                        <div class="text-[11px] text-gray-500 uppercase font-black tracking-tighter leading-none mb-1">Available on</div>
+                        <div class="text-2xl leading-none">Google Play</div>
                     </div>
                 </a>
             </div>
-
-            <!-- Desktop Layout -->
-            <div class="app-section-desktop">
-                <div class="full-phone-mockup">
-                    <div class="phone-notch"></div>
-                    <div class="phone-screen">
-                        <div class="app-screen-content">
-                            <div class="app-screen-header">
-                                <div class="app-screen-logo">
-                                    <i class="fas fa-graduation-cap text-white text-xl"></i>
-                                </div>
-                                <h4 class="text-white font-bold text-sm">TESCA Learning</h4>
-                                <p class="text-gray-400 text-xs mt-1">Version 2.5.1</p>
-                            </div>
-                            
-                            <div class="app-screen-body">
-                                <div class="app-menu-item">
-                                    <div class="app-menu-icon">
-                                        <i class="fas fa-video"></i>
-                                    </div>
-                                    <div class="app-menu-text">
-                                        <h4>Live Classes</h4>
-                                        <p>Daily interactive sessions</p>
-                                    </div>
-                                    <i class="fas fa-chevron-right text-gray-500 text-xs"></i>
-                                </div>
-                                
-                                <div class="app-menu-item">
-                                    <div class="app-menu-icon">
-                                        <i class="fas fa-book"></i>
-                                    </div>
-                                    <div class="app-menu-text">
-                                        <h4>Study Materials</h4>
-                                        <p>1000+ PDFs & E-books</p>
-                                    </div>
-                                    <i class="fas fa-chevron-right text-gray-500 text-xs"></i>
-                                </div>
-                                
-                                <div class="app-menu-item">
-                                    <div class="app-menu-icon">
-                                        <i class="fas fa-chart-line"></i>
-                                    </div>
-                                    <div class="app-menu-text">
-                                        <h4>Progress Tracker</h4>
-                                        <p>Real-time analytics</p>
-                                    </div>
-                                    <i class="fas fa-chevron-right text-gray-500 text-xs"></i>
-                                </div>
-                                
-                                <div class="app-menu-item">
-                                    <div class="app-menu-icon">
-                                        <i class="fas fa-comments"></i>
-                                    </div>
-                                    <div class="app-menu-text">
-                                        <h4>Tutor Support</h4>
-                                        <p>24/7 chat assistance</p>
-                                    </div>
-                                    <i class="fas fa-chevron-right text-gray-500 text-xs"></i>
-                                </div>
-                                
-                                <div class="app-menu-item">
-                                    <div class="app-menu-icon">
-                                        <i class="fas fa-download"></i>
-                                    </div>
-                                    <div class="app-menu-text">
-                                        <h4>Download Content</h4>
-                                        <p>Study offline anytime</p>
-                                    </div>
-                                    <i class="fas fa-chevron-right text-gray-500 text-xs"></i>
-                                </div>
-                                
-                                <div class="app-menu-item">
-                                    <div class="app-menu-icon">
-                                        <i class="fas fa-certificate"></i>
-                                    </div>
-                                    <div class="app-menu-text">
-                                        <h4>Certifications</h4>
-                                        <p>Digital certificates</p>
-                                    </div>
-                                    <i class="fas fa-chevron-right text-gray-500 text-xs"></i>
-                                </div>
-                            </div>
-                            
-                            <div class="app-screen-footer">
-                                <div class="w-10 h-1 bg-gray-700 rounded-full mx-auto mb-2"></div>
-                                <p class="text-gray-500 text-xs">Swipe up for more</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="app-features-list">
-                    <div class="feature-item animate-fade-in" style="animation-delay: 0.1s">
-                        <div class="feature-icon bg-brand-primary/20">
-                            <i class="fas fa-video text-brand-primary"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-xl mb-2">Live Interactive Classes</h3>
-                            <p class="text-gray-400">Join daily live sessions with expert tutors. Ask questions in real-time and get instant feedback.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="feature-item animate-fade-in" style="animation-delay: 0.2s">
-                        <div class="feature-icon bg-brand-accent/20">
-                            <i class="fas fa-download text-brand-accent"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-xl mb-2">Download & Study Offline</h3>
-                            <p class="text-gray-400">Download study materials and watch recorded lectures offline. Learn anytime, anywhere.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="feature-item animate-fade-in" style="animation-delay: 0.3s">
-                        <div class="feature-icon bg-brand-success/20">
-                            <i class="fas fa-chart-bar text-brand-success"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-xl mb-2">Personalized Progress Reports</h3>
-                            <p class="text-gray-400">Track your improvement with detailed analytics and personalized recommendations.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="feature-item animate-fade-in" style="animation-delay: 0.4s">
-                        <div class="feature-icon bg-brand-warning/20">
-                            <i class="fas fa-comments text-brand-warning"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-xl mb-2">24/7 Tutor Support</h3>
-                            <p class="text-gray-400">Get instant help from tutors via chat. Clear your doubts anytime with our dedicated support team.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mobile App Section - IMPROVED -->
-            <div class="mobile-app-section">
-                <div class="mobile-app-mockup-container">
-                    <div class="phone-mockup mb-8">
-                        <div class="phone-notch"></div>
-                        <div class="phone-screen">
-                            <div class="app-screen-content">
-                                <div class="app-screen-header">
-                                    <div class="app-screen-logo">
-                                        <i class="fas fa-graduation-cap text-white text-lg"></i>
-                                    </div>
-                                    <h4 class="text-white font-bold text-xs">TESCA Learning</h4>
-                                    <p class="text-gray-400 text-xs mt-1">Mobile App</p>
-                                </div>
-                                
-                                <div class="app-screen-body">
-                                    <div class="app-menu-item">
-                                        <div class="app-menu-icon">
-                                            <i class="fas fa-video"></i>
-                                        </div>
-                                        <div class="app-menu-text">
-                                            <h4>Live Classes</h4>
-                                            <p>Interactive sessions</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="app-menu-item">
-                                        <div class="app-menu-icon">
-                                            <i class="fas fa-book"></i>
-                                        </div>
-                                        <div class="app-menu-text">
-                                            <h4>Study Materials</h4>
-                                            <p>PDFs & E-books</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="app-menu-item">
-                                        <div class="app-menu-icon">
-                                            <i class="fas fa-chart-line"></i>
-                                        </div>
-                                        <div class="app-menu-text">
-                                            <h4>Progress Tracker</h4>
-                                            <p>Analytics dashboard</p>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="app-menu-item">
-                                        <div class="app-menu-icon">
-                                            <i class="fas fa-comments"></i>
-                                        </div>
-                                        <div class="app-menu-text">
-                                            <h4>Tutor Support</h4>
-                                            <p>Chat with experts</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <div class="app-screen-footer">
-                                    <div class="w-8 h-1 bg-gray-700 rounded-full mx-auto mb-1"></div>
-                                    <p class="text-gray-500 text-xs">Swipe for more</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mobile-app-features">
-                        <div class="mobile-app-feature">
-                            <div class="mobile-app-feature-icon">
-                                <i class="fas fa-video"></i>
-                            </div>
-                            <h4 class="font-bold text-sm mb-1">Live Classes</h4>
-                            <p class="text-xs text-gray-400">Daily interactive sessions</p>
-                        </div>
-                        
-                        <div class="mobile-app-feature">
-                            <div class="mobile-app-feature-icon">
-                                <i class="fas fa-download"></i>
-                            </div>
-                            <h4 class="font-bold text-sm mb-1">Study Offline</h4>
-                            <p class="text-xs text-gray-400">Download materials</p>
-                        </div>
-                        
-                        <div class="mobile-app-feature">
-                            <div class="mobile-app-feature-icon">
-                                <i class="fas fa-chart-bar"></i>
-                            </div>
-                            <h4 class="font-bold text-sm mb-1">Progress Reports</h4>
-                            <p class="text-xs text-gray-400">Track improvement</p>
-                        </div>
-                        
-                        <div class="mobile-app-feature">
-                            <div class="mobile-app-feature-icon">
-                                <i class="fas fa-comments"></i>
-                            </div>
-                            <h4 class="font-bold text-sm mb-1">24/7 Support</h4>
-                            <p class="text-xs text-gray-400">Instant doubt solving</p>
-                        </div>
-                    </div>
-                    
-                    <a href="https://play.google.com/store/apps/details?id=co.ted.fpqdt" target="_blank" class="direct-link mt-8 w-full max-w-xs bg-gradient-to-r from-brand-primary to-brand-secondary text-white py-3 rounded-xl text-center font-bold hover:opacity-90 transition">
-                        <i class="fab fa-google-play mr-2"></i>Download App
-                    </a>
-                </div>
-            </div>
+            
         </div>
     </section>
 
@@ -2643,8 +2184,8 @@
                     <div class="flex gap-4">
                         <a href="https://instagram.com" target="_blank" class="direct-link w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-brand-primary hover:text-white transition duration-300"><i class="fab fa-instagram"></i></a>
                         <a href="https://facebook.com" target="_blank" class="direct-link w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-brand-primary hover:text-white transition duration-300"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://youtube.com" target="_blank" class="direct-link w-10 h-10 rounded-full glass flex items-center justify-content: center hover:bg-red-600 hover:text-white transition duration-300"><i class="fab fa-youtube"></i></a>
-                        <a href="https://linkedin.com" target="_blank" class="direct-link w-10 h-10 rounded-full glass flex items-center justify-content: center hover:bg-blue-600 hover:text-white transition duration-300"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://youtube.com" target="_blank" class="direct-link w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-red-600 hover:text-white transition duration-300"><i class="fab fa-youtube"></i></a>
+                        <a href="https://linkedin.com" target="_blank" class="direct-link w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-blue-600 hover:text-white transition duration-300"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
             </div>
@@ -2718,7 +2259,7 @@
                         <!-- Promo code cards will be loaded here -->
                     </div>
                     
-                    <!-- PROMO CODE INPUT -->
+                    <!-- PROMO CODE INPUT WITH APPLY BUTTON -->
                     <div class="promo-input-container">
                         <input id="full-promo-input" type="text" placeholder="ENTER PROMO CODE" class="w-full">
                         <button onclick="applyPromo()" class="apply-btn">APPLY</button>
@@ -2757,7 +2298,7 @@
         </div>
     </div>
 
-    <!-- Payment Modal - FIXED FOR BHIM APP -->
+    <!-- Payment Modal -->
     <div id="payment-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-black/95 backdrop-blur-xl" onclick="closePayment()"></div>
         
@@ -2800,7 +2341,7 @@
                 <div class="text-center w-full mb-6">
                     <p class="text-xs text-gray-400 mb-3">Or pay directly via:</p>
                     <div class="flex gap-4 justify-center">
-                        <!-- UPI Payment Links - FIXED FOR ALL APPS INCLUDING BHIM -->
+                        <!-- These buttons will have dynamic href with correct amount -->
                         <a id="google-pay-btn" href="#" class="upi-app-btn bg-white rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-white/20 transition-all">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg" class="h-6" alt="Google Pay">
                         </a>
@@ -3188,23 +2729,23 @@
                 
                 // Check if mobile view for responsive styling
                 const isMobile = window.innerWidth <= 768;
-                const titleSize = isMobile ? 'text-3xl' : 'text-5xl md:text-6xl';
-                const subtitleSize = isMobile ? 'text-base' : 'text-xl';
+                const titleSize = isMobile ? 'text-3xl' : '';
+                const subtitleSize = isMobile ? 'text-base' : '';
                 const priceSize = isMobile ? 'text-3xl' : 'text-4xl md:text-5xl';
                 const originalSize = isMobile ? 'text-lg' : 'text-2xl';
-                const ctaSize = isMobile ? 'text-sm py-3 px-6' : 'text-lg py-4 px-8';
+                const ctaSize = isMobile ? 'text-sm py-3 px-6' : '';
                 
                 slide.innerHTML = `
                     <div class="banner-content">
-                        <h1 class="banner-title text-white mb-4 ${titleSize}">
+                        <h1 class="banner-title text-white mb-6 ${titleSize}">
                             ${banner.title}
                         </h1>
-                        <p class="banner-subtitle text-gray-300 mb-6 ${subtitleSize}">
+                        <p class="banner-subtitle text-gray-300 mb-8 ${subtitleSize}">
                             ${banner.subtitle}
                         </p>
                         
-                        <div class="glass-card p-6 rounded-2xl mb-6 banner-offer-details ${isMobile ? 'p-4' : ''}">
-                            <div class="flex items-center justify-center gap-4 mb-3 flex-wrap">
+                        <div class="glass-card p-6 rounded-2xl mb-8 banner-offer-details ${isMobile ? 'p-4' : ''}">
+                            <div class="flex items-center justify-center gap-4 mb-4 flex-wrap">
                                 <span class="${originalSize} text-gray-400 line-through">${banner.originalPrice}</span>
                                 <span class="${priceSize} font-bold text-white">${banner.price}</span>
                                 <span class="bg-gradient-to-r ${banner.color} text-white text-sm px-3 py-1 rounded-full font-bold">${banner.discount}</span>
@@ -3718,12 +3259,12 @@
             showNotification('Promo code removed', 'info');
         }
 
-        // --- 10. PAYMENT SYSTEM - FIXED FOR ALL APPS INCLUDING BHIM ---
+        // --- 10. PAYMENT SYSTEM - FIXED FOR ALL UPI APPS ---
         function startPayment() {
             if (cart.length === 0) return;
 
             const totalStr = document.getElementById('full-cart-total').innerText.replace('₹', '').replace(/,/g, '');
-            const amount = parseFloat(totalStr);
+            const amount = parseInt(totalStr);
             currentPaymentAmount = amount;
 
             if (activePromo && !permanentUsedPromoCodes.includes(activePromo)) {
@@ -3746,32 +3287,32 @@
             document.getElementById('pay-final-amount').innerText = `₹${amount.toLocaleString()}`;
             document.getElementById('payment-modal').classList.remove('hidden');
 
-            // FIXED: Generate QR code with proper UPI string that works for all apps including BHIM
+            // FIXED: Generate UPI string that works with ALL UPI apps including BHIM
             const upiId = '8866722633@upi';
-            const receiverName = 'TESCA Education';
+            const payeeName = 'TESCA Education';
             const note = 'TESCA Course Payment';
             
-            // UPI string that works for all apps
-            const upiString = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(receiverName)}&am=${amount}&cu=INR&tn=${encodeURIComponent(note)}`;
+            // URL encode all parameters
+            const encodedNote = encodeURIComponent(note);
+            const encodedPayeeName = encodeURIComponent(payeeName);
             
-            // Generate QR code using a reliable service
-            const qrUrl = `https://quickchart.io/qr?text=${encodeURIComponent(upiString)}&size=250&margin=10`;
+            // UPI string for QR code
+            const upiString = `upi://pay?pa=${upiId}&pn=${encodedPayeeName}&am=${amount}&cu=INR&tn=${encodedNote}`;
+            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&margin=10&data=${encodeURIComponent(upiString)}`;
             document.getElementById('qr-image').src = qrUrl;
 
-            // FIXED: Update all payment app links with proper UPI strings
-            // Google Pay
-            document.getElementById('google-pay-btn').href = `tez://upi/pay?pa=${upiId}&pn=${encodeURIComponent(receiverName)}&am=${amount}&cu=INR&tn=${encodeURIComponent(note)}`;
+            // FIXED: Update app buttons with proper UPI URLs that work with all apps
+            const googlePayUrl = `upi://pay?pa=${upiId}&pn=${encodedPayeeName}&am=${amount}&cu=INR`;
+            const phonePeUrl = `phonepe://pay?pa=${upiId}&pn=${encodedPayeeName}&am=${amount}&cu=INR`;
+            const paytmUrl = `paytmmp://pay?pa=${upiId}&pn=${encodedPayeeName}&am=${amount}&cu=INR`;
             
-            // PhonePe
-            document.getElementById('phonepe-btn').href = `phonepe://pay?pa=${upiId}&pn=${encodeURIComponent(receiverName)}&am=${amount}&cu=INR`;
+            // For BHIM/Any UPI app - using simple format
+            const anyUpiUrl = `upi://pay?pa=${upiId}&pn=${encodedPayeeName}&am=${amount}&cu=INR&tn=${encodedNote}`;
             
-            // Paytm
-            document.getElementById('paytm-btn').href = `paytmmp://pay?pa=${upiId}&pn=${encodeURIComponent(receiverName)}&am=${amount}&cu=INR`;
-            
-            // BHIM/Any UPI App - Using a simpler UPI string that works for BHIM
-            // BHIM has issues with long notes, so using a shorter one
-            const bhimUpiString = `upi://pay?pa=${upiId}&pn=${encodeURIComponent(receiverName)}&am=${amount}&cu=INR&tn=TESCA`;
-            document.getElementById('any-upi-btn').href = bhimUpiString;
+            document.getElementById('google-pay-btn').href = googlePayUrl;
+            document.getElementById('phonepe-btn').href = phonePeUrl;
+            document.getElementById('paytm-btn').href = paytmUrl;
+            document.getElementById('any-upi-btn').href = anyUpiUrl;
 
             resetTimer();
         }
