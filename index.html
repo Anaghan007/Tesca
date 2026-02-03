@@ -68,11 +68,11 @@
             padding: 0;
         }
 
-        /* Hero section - FIXED FOR ALL SCREENS */
+        /* Hero section - INCREASED HEIGHT FOR DESKTOP */
         .hero-section {
-            height: 100vh;
-            min-height: 600px;
-            max-height: 900px;
+            height: 110vh; /* Increased from 100vh */
+            min-height: 700px; /* Increased from 600px */
+            max-height: 1000px; /* Increased from 900px */
             width: 100%;
             position: relative;
             overflow: hidden;
@@ -81,6 +81,24 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+        }
+
+        /* For medium desktop screens */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero-section {
+                height: 105vh;
+                min-height: 650px;
+                max-height: 900px;
+            }
+        }
+
+        /* For large desktop screens */
+        @media (min-width: 1025px) {
+            .hero-section {
+                height: 110vh;
+                min-height: 800px;
+                max-height: 1100px;
+            }
         }
 
         /* Banner container - IMPROVED FOR DUAL SCREEN */
@@ -119,12 +137,12 @@
             text-align: center;
             z-index: 3;
             position: relative;
-            padding-top: 60px;
+            padding-top: 80px; /* Increased from 60px */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 70vh;
+            min-height: 80vh; /* Increased from 70vh */
         }
 
         /* Banner overlay */
@@ -202,7 +220,7 @@
             box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
         }
 
-        /* Header styling - FULLY ROUNDED CENTERED */
+        /* Header styling - IMPROVED TRANSPARENCY */
         #main-header {
             transition: all 0.3s ease;
         }
@@ -212,9 +230,14 @@
             margin: 1.5rem auto;
             max-width: 95%;
             padding: 0.5rem 2rem;
-            background: rgba(255, 255, 255, 0.02);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.008); /* More transparent */
+            backdrop-filter: blur(8px); /* Reduced blur */
+            border: 1px solid rgba(255, 255, 255, 0.08); /* Slightly more visible border */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+        
+        #main-header.scrolled {
+            background: rgba(5, 5, 7, 0.7); /* Only show background when scrolled */
         }
         
         /* Fix header links spacing */
@@ -228,6 +251,14 @@
             white-space: nowrap;
             padding: 0.5rem 0;
             position: relative;
+            color: rgba(255, 255, 255, 0.9) !important; /* Brighter text */
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        #main-header nav a:hover {
+            color: white !important;
+            transform: translateY(-2px);
         }
         
         #main-header nav a::after {
@@ -238,11 +269,13 @@
             width: 0;
             height: 2px;
             background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            opacity: 0.7;
             transition: width 0.3s ease;
         }
         
         #main-header nav a:hover::after {
             width: 100%;
+            opacity: 1;
         }
 
         /* Logo styling */
@@ -299,25 +332,26 @@
             margin: 0 5px;
         }
 
-        /* Call button in header */
+        /* Call button in header - IMPROVED VISIBILITY */
         .call-btn {
             display: flex;
             align-items: center;
             gap: 8px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.08);
             border-radius: 50px;
             padding: 10px 20px;
             color: white;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: 600;
             font-size: 14px;
             transition: all 0.3s ease;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
         
         .call-btn:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.15);
             transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.25);
         }
         
         .call-btn i {
@@ -603,9 +637,9 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Banner title styles */
+        /* Banner title styles - INCREASED FOR TALLER BANNER */
         .banner-title {
-            font-size: 3.5rem;
+            font-size: 4rem; /* Increased from 3.5rem */
             line-height: 1.1;
             margin-bottom: 1.5rem;
             font-weight: 800;
@@ -885,6 +919,9 @@
                 padding: 0.5rem 1rem;
                 max-width: 98%;
                 border-radius: 20px;
+                background: rgba(255, 255, 255, 0.02);
+                backdrop-filter: blur(16px);
+                border: 1px solid rgba(255, 255, 255, 0.05);
             }
             
             /* Banner adjustments for mobile - IMPROVED */
@@ -1354,7 +1391,7 @@
         <div class="mt-4 text-xs text-gray-500 font-mono tracking-widest">LOADING...</div>
     </div>
 
-    <!-- Header - FULLY ROUNDED CENTERED -->
+    <!-- Header - IMPROVED TRANSPARENCY -->
     <header id="main-header" class="fixed top-0 w-full z-50 transition-all duration-300">
         <div class="glass">
             <div class="container mx-auto px-4 py-2 flex justify-between items-center">
@@ -1364,7 +1401,7 @@
                     </div>
                 </a>
 
-                <nav class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
+                <nav class="hidden md:flex gap-8 text-sm font-medium">
                     <a href="#home" class="hover:text-white transition-colors duration-300">Home</a>
                     <a href="#courses" class="hover:text-white transition-colors duration-300">Courses</a>
                     <a href="#faculty" class="hover:text-white transition-colors duration-300">Our Faculty</a>
@@ -1403,7 +1440,7 @@
         <a href="#contact" class="hover:text-brand-accent mobile-menu-link transition-colors duration-300" onclick="toggleMobileMenu()">Contact Us</a>
     </div>
 
-    <!-- Hero Banner Section -->
+    <!-- Hero Banner Section - INCREASED HEIGHT -->
     <section id="home" class="hero-section">
         <div class="banner-container">
             <!-- Banner Navigation Arrows -->
@@ -2953,12 +2990,14 @@
         function setupEventListeners() {
             window.addEventListener('scroll', () => {
                 const header = document.getElementById('main-header');
-                if (window.scrollY > 100) {
-                    header.style.background = 'rgba(5, 5, 7, 0.95)';
-                    header.style.backdropFilter = 'blur(10px)';
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                    header.style.background = 'rgba(5, 5, 7, 0.85)';
+                    header.style.backdropFilter = 'blur(16px)';
                 } else {
-                    header.style.background = '';
-                    header.style.backdropFilter = '';
+                    header.classList.remove('scrolled');
+                    header.style.background = 'rgba(255, 255, 255, 0.008)';
+                    header.style.backdropFilter = 'blur(8px)';
                 }
             });
 
