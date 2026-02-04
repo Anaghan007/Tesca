@@ -73,11 +73,9 @@
             padding: 0;
         }
 
-        /* Hero section - ADJUSTED FOR LAPTOP SPACING */
+        /* Hero section - FULL SCREEN COVER */
         .hero-section {
             height: 100vh;
-            min-height: 700px;
-            max-height: 950px;
             width: 100%;
             position: relative;
             overflow: hidden;
@@ -88,121 +86,7 @@
             justify-content: center;
         }
 
-        /* LAPTOP VIEW SPACING IMPROVEMENTS */
-        @media (min-width: 1024px) and (max-width: 1440px) {
-            .hero-section {
-                height: 100vh;
-                min-height: 800px;
-                max-height: 100vh;
-            }
-            
-            /* Reduced space between header and banner heading */
-            .banner-content {
-                padding-top: 80px !important;
-            }
-            
-            /* Reduced space between CTA and dots */
-            .banner-indicators {
-                bottom: 30px !important;
-            }
-        }
-
-        /* For large desktop screens */
-        @media (min-width: 1920px) {
-            .hero-section {
-                height: 100vh;
-                max-height: 100vh;
-            }
-        }
-
-        /* For tablets */
-        @media (min-width: 768px) and (max-width: 1023px) {
-            .hero-section {
-                height: 90vh;
-                min-height: 600px;
-                max-height: 800px;
-            }
-        }
-
-        /* MOBILE VIEW - COMPACT BANNER */
-        @media (max-width: 767px) {
-            .hero-section {
-                height: 100vh !important;
-                min-height: 100vh;
-                max-height: 100vh;
-                padding-top: 70px;
-            }
-            
-            /* Drastically reduced spacing in mobile banner */
-            .banner-content {
-                padding-top: 20px !important;
-                min-height: auto !important;
-                justify-content: flex-start !important;
-            }
-            
-            .banner-title {
-                font-size: 1.8rem !important;
-                line-height: 1.2;
-                margin-bottom: 0.75rem !important;
-                margin-top: 10px !important;
-            }
-            
-            .banner-subtitle {
-                font-size: 0.85rem !important;
-                line-height: 1.4;
-                margin-bottom: 1rem !important;
-                padding: 0 0.5rem;
-            }
-            
-            .banner-offer-details {
-                padding: 0.75rem !important;
-                margin: 0.75rem 0 !important;
-                border-radius: 12px;
-            }
-            
-            .banner-offer-details .text-4xl {
-                font-size: 1.5rem !important;
-            }
-            
-            .banner-offer-details .text-2xl {
-                font-size: 1rem !important;
-            }
-            
-            .banner-cta {
-                font-size: 0.85rem !important;
-                padding: 0.75rem 1.5rem !important;
-                margin-top: 0.5rem;
-                margin-bottom: 0.5rem !important;
-            }
-            
-            /* Reduced space between CTA and dots */
-            .banner-indicators {
-                bottom: 15px !important;
-                gap: 6px;
-            }
-            
-            .banner-dot {
-                width: 8px;
-                height: 8px;
-            }
-            
-            /* Adjust banner arrows for mobile */
-            .banner-nav-arrow {
-                width: 36px !important;
-                height: 36px !important;
-                font-size: 0.9rem !important;
-            }
-            
-            .banner-nav-arrow.prev {
-                left: 10px !important;
-            }
-            
-            .banner-nav-arrow.next {
-                right: 10px !important;
-            }
-        }
-
-        /* Banner container */
+        /* Banner container - FIXED FOR FULL SCREEN */
         .banner-container {
             width: 100%;
             height: 100%;
@@ -211,6 +95,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            min-height: 100vh;
         }
         
         .banner-slide {
@@ -219,12 +104,13 @@
             left: 0;
             width: 100%;
             height: 100%;
+            min-height: 100vh;
             opacity: 0;
             transition: opacity 0.8s ease-in-out;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 1.5rem;
+            padding: 2rem;
         }
         
         .banner-slide.active {
@@ -242,7 +128,10 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            padding-top: 120px; /* INCREASED FROM 80px TO 120px */
+            padding-bottom: 100px;
             min-height: 80vh;
+            margin-top: 80px; /* INCREASED FROM 20px TO 80px */
         }
 
         /* Banner overlay */
@@ -252,7 +141,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(5, 5, 7, 0.85) 0%, rgba(15, 16, 22, 0.7) 100%);
+            background: linear-gradient(135deg, rgba(5, 5, 7, 0.9) 0%, rgba(15, 16, 22, 0.8) 100%);
             z-index: 1;
         }
 
@@ -286,51 +175,12 @@
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #555; }
 
-        /* REALISTIC PHONE FRAME */
-        .phone-mockup {
-            width: 300px;
-            height: 600px;
-            border: 12px solid #1a1a1a;
-            border-radius: 40px;
-            overflow: hidden;
-            background: #000;
-            position: relative;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-            transition: transform 0.4s ease;
-            margin: 0 auto;
-        }
-        .phone-mockup:hover { transform: translateY(-10px); }
-        .phone-notch {
-            position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-            width: 120px; height: 30px; background: #1a1a1a;
-            border-bottom-left-radius: 16px; border-bottom-right-radius: 16px; z-index: 20;
-        }
-        .phone-screen {
-            width: 100%; height: 100%;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 0;
-            overflow: hidden;
-        }
-
-        /* Filter Button Active State */
-        .filter-btn.active {
-            background: linear-gradient(90deg, #6366f1, #8b5cf6);
-            border-color: transparent;
-            color: white;
-            box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
-        }
-
         /* Header styling */
         #main-header {
             transition: all 0.3s ease;
             background: transparent !important;
             backdrop-filter: none !important;
+            height: 80px; /* Fixed header height */
         }
         
         #main-header .glass {
@@ -402,35 +252,56 @@
             object-fit: contain;
         }
 
-        /* Faculty card - REDUCED SPACE BETWEEN NAME AND LOGO */
+        /* Faculty card - IMPROVED SPACING */
         .faculty-card {
             transition: all 0.3s ease;
             height: 100%;
             display: flex;
             flex-direction: column;
+            border-radius: 24px;
+            overflow: hidden;
         }
         
         .faculty-card .faculty-content {
             flex: 1;
             display: flex;
             flex-direction: column;
+            padding: 2rem;
         }
         
-        /* Reduced margin for faculty initial circle */
-        .faculty-card .relative.mb-6 {
-            margin-bottom: 1rem !important;
+        /* Improved spacing for faculty photo */
+        .faculty-photo-container {
+            margin-bottom: 1.5rem !important;
         }
         
-        .faculty-card .w-32.h-32 {
-            width: 5rem !important;
-            height: 5rem !important;
+        .faculty-initial-circle {
+            width: 100px !important;
+            height: 100px !important;
+            margin: 0 auto 1rem auto !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+        }
+        
+        .faculty-name {
             margin-bottom: 0.5rem !important;
+        }
+        
+        .faculty-designation {
+            margin-bottom: 1.5rem !important;
+            font-size: 1.1rem !important;
+            font-weight: 600 !important;
         }
         
         .faculty-card .faculty-description {
             flex: 1;
-            font-size: 0.95rem !important;
-            line-height: 1.6 !important;
+            font-size: 1rem !important;
+            line-height: 1.7 !important;
+            margin-bottom: 1.5rem;
         }
         
         .faculty-card:hover {
@@ -779,31 +650,6 @@
             padding-bottom: 6rem;
         }
 
-        /* Banner indicator dots */
-        .banner-indicators {
-            position: absolute;
-            bottom: 60px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 10;
-        }
-        
-        .banner-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .banner-dot.active {
-            background: #ffffff;
-            transform: scale(1.3);
-        }
-
         /* Banner Navigation Arrows */
         .banner-nav-arrow {
             position: absolute;
@@ -879,56 +725,6 @@
             transition: all 0.3s ease;
             display: inline-block;
             margin: 1rem auto 0;
-        }
-
-        /* Feature icons */
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-            font-size: 1.8rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Desktop features grid */
-        .desktop-features-grid {
-            display: flex;
-            justify-content: center;
-            align-items: stretch;
-            gap: 2.5rem;
-            flex-wrap: wrap;
-            margin-top: 2rem;
-            margin-bottom: 2rem;
-            position: relative;
-            z-index: 10;
-        }
-        
-        .desktop-features-grid > div {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            flex: 1;
-            min-width: 220px;
-            max-width: 280px;
-            padding: 2rem 1.5rem;
-            background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .desktop-features-grid > div:hover {
-            transform: translateY(-10px);
-            border-color: rgba(99, 102, 241, 0.3);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
         }
 
         /* Gradient text */
@@ -1062,7 +858,7 @@
             line-height: 1.5;
         }
 
-        /* NEW APP SECTION STYLES - FROM PROVIDED CODE */
+        /* NEW APP SECTION STYLES */
         .full-phone-mockup { 
             width: 310px; 
             height: 620px; 
@@ -1155,433 +951,6 @@
             font-weight: 500; 
         }
 
-        /* Mobile improvements for new app section */
-        @media (max-width: 768px) {
-            .full-phone-mockup {
-                width: 280px;
-                height: 560px;
-                border-radius: 40px;
-                border-width: 10px;
-            }
-            
-            .phone-notch {
-                width: 120px;
-                height: 24px;
-            }
-            
-            .inner-screen {
-                padding: 20px;
-            }
-            
-            .premium-logo-wrapper {
-                width: 70px;
-                height: 70px;
-                margin-bottom: 10px;
-            }
-            
-            .logo-main-box {
-                width: 60px;
-                height: 60px;
-                border-radius: 16px;
-            }
-            
-            .logo-main-box i {
-                font-size: 1.5rem;
-            }
-            
-            .mock-item {
-                padding: 12px;
-                gap: 12px;
-                border-radius: 14px;
-                margin-bottom: 8px;
-            }
-            
-            .mock-title {
-                font-size: 12px;
-            }
-            
-            .mock-desc {
-                font-size: 10px;
-            }
-            
-            .inner-screen h4 {
-                font-size: 1rem;
-            }
-            
-            .inner-screen p.text-\[11px\] {
-                font-size: 9px;
-                margin-bottom: 1.5rem;
-            }
-        }
-
-        /* Footer mobile grid */
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-        }
-
-        /* Hero offer details center alignment */
-        .banner-offer-details {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            margin: 0 auto;
-            padding: 1.5rem !important;
-        }
-
-        /* Faculty designation styling */
-        .faculty-designation {
-            font-size: 1rem !important;
-            font-weight: 600 !important;
-        }
-
-        /* Smooth scroll behavior */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Section spacing - DIFFERENT FOR DESKTOP AND MOBILE */
-        .section-padding {
-            padding-top: 6rem;
-            padding-bottom: 6rem;
-        }
-
-        /* Mobile view adjustments */
-        @media (max-width: 768px) {
-            /* MOBILE BODY STYLES */
-            body {
-                font-size: 16px;
-                line-height: 1.6;
-            }
-            
-            .mobile-view .section-padding {
-                padding-top: 3rem !important;
-                padding-bottom: 3rem !important;
-            }
-            
-            /* MOBILE HEADER */
-            #main-header .glass {
-                margin: 0.75rem auto;
-                padding: 0.5rem 1.2rem;
-                max-width: 95%;
-                border-radius: 50px !important;
-                background: rgba(255, 255, 255, 0.1) !important;
-                backdrop-filter: blur(20px) !important;
-                border: 1px solid rgba(255, 255, 255, 0.15) !important;
-            }
-            
-            #main-header .logo-img {
-                max-width: 100px;
-                max-height: 40px;
-            }
-            
-            .call-btn {
-                padding: 8px 14px;
-                font-size: 14px;
-                border-radius: 50px !important;
-            }
-            
-            .call-btn span {
-                display: none;
-            }
-            
-            /* Hide header nav on mobile */
-            #main-header nav {
-                display: none;
-            }
-            
-            /* Show mobile menu button */
-            #main-header .md\\:hidden {
-                display: block;
-            }
-            
-            /* MOBILE MENU IMPROVEMENTS */
-            #mobile-menu {
-                font-size: 1.8rem;
-                background: rgba(5, 5, 7, 0.98);
-                backdrop-filter: blur(20px);
-            }
-            
-            .mobile-menu-link {
-                padding: 1rem 0;
-                display: block;
-                text-align: center;
-                transition: all 0.3s ease;
-            }
-            
-            .mobile-menu-link:hover {
-                transform: scale(1.05);
-                color: #6366f1;
-            }
-            
-            /* Hide desktop features on mobile */
-            .desktop-features-grid {
-                display: none !important;
-            }
-            
-            /* MOBILE FEATURES SECTION */
-            #features {
-                padding: 3rem 1rem !important;
-                background: linear-gradient(to bottom, #0F1016, #050507);
-            }
-            
-            .mobile-features-grid {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-            
-            .mobile-feature-card {
-                background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
-                border: 1px solid rgba(255, 255, 255, 0.05);
-                border-radius: 16px;
-                padding: 1.5rem 1rem;
-                text-align: center;
-                transition: all 0.3s ease;
-            }
-            
-            .mobile-feature-card:hover {
-                transform: translateY(-5px);
-                border-color: rgba(99, 102, 241, 0.3);
-            }
-            
-            .mobile-feature-icon {
-                width: 60px;
-                height: 60px;
-                border-radius: 16px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin: 0 auto 1rem;
-                font-size: 1.5rem;
-                background: rgba(99, 102, 241, 0.1);
-                border: 1px solid rgba(99, 102, 241, 0.2);
-            }
-            
-            .mobile-feature-card h3 {
-                font-size: 1.1rem !important;
-                margin-bottom: 0.5rem;
-                font-weight: 700;
-            }
-            
-            .mobile-feature-card p {
-                font-size: 0.85rem !important;
-                color: rgba(255, 255, 255, 0.7);
-                line-height: 1.4;
-            }
-            
-            /* MOBILE COURSES SECTION */
-            .mobile-view #courses {
-                padding: 3rem 1rem !important;
-                background: #050507;
-            }
-            
-            .mobile-view #courses h2 {
-                font-size: 2.2rem !important;
-                line-height: 1.2;
-                margin-bottom: 1rem;
-                text-align: center;
-            }
-            
-            .mobile-view #courses p {
-                font-size: 0.95rem !important;
-                text-align: center;
-                margin-bottom: 2rem;
-            }
-            
-            .mobile-view .filter-btn {
-                padding: 0.6rem 1.2rem !important;
-                font-size: 0.85rem !important;
-                margin: 0.2rem;
-                border-radius: 50px !important;
-            }
-            
-            .mobile-view .course-card {
-                margin-bottom: 1.5rem;
-                border-radius: 16px;
-                overflow: hidden;
-            }
-            
-            .mobile-view .course-card h3 {
-                font-size: 1.2rem !important;
-                line-height: 1.3;
-                margin-bottom: 0.8rem;
-            }
-            
-            .mobile-view .course-buttons {
-                width: 100%;
-            }
-            
-            .mobile-view .course-buttons button {
-                width: 100%;
-                padding: 0.9rem !important;
-                border-radius: 50px !important;
-                border-radius: 9999px !important;
-            }
-            
-            /* MOBILE FACULTY SECTION */
-            .mobile-view #faculty {
-                padding: 3rem 1rem !important;
-                background: linear-gradient(to bottom, #0F1016, #050507);
-            }
-            
-            .mobile-view #faculty h2 {
-                font-size: 2.2rem !important;
-                line-height: 1.2;
-                margin-bottom: 2rem;
-                text-align: center;
-            }
-            
-            .mobile-view .faculty-card {
-                margin-bottom: 2rem;
-                border-radius: 20px;
-                padding: 1.5rem !important;
-            }
-            
-            .mobile-view .faculty-card h3 {
-                font-size: 1.3rem !important;
-            }
-            
-            .mobile-view .faculty-designation {
-                font-size: 0.95rem !important;
-            }
-            
-            .mobile-view .faculty-description p {
-                font-size: 0.9rem !important;
-                line-height: 1.6;
-            }
-            
-            /* MOBILE FOOTER */
-            .mobile-view footer {
-                padding: 3rem 1rem !important;
-            }
-            
-            .mobile-view .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-            
-            /* Payment modal mobile */
-            .mobile-view #payment-modal .max-w-\[350px\] {
-                max-width: 90% !important;
-                margin: 1rem;
-            }
-            
-            /* Stats section for mobile */
-            .mobile-view .stat-number {
-                font-size: 2.5rem !important;
-            }
-            
-            /* MOBILE PROMO INPUT */
-            .mobile-view .promo-input-container input {
-                padding: 12px 90px 12px 12px;
-                font-size: 13px;
-            }
-            
-            .mobile-view .promo-input-container .apply-btn {
-                padding: 6px 12px;
-                font-size: 11px;
-                height: calc(100% - 12px);
-            }
-        }
-        
-        @media (max-width: 480px) {
-            /* Extra small devices */
-            .mobile-view .hero-section {
-                min-height: 100vh;
-            }
-            
-            .mobile-view .banner-title {
-                font-size: 1.6rem !important;
-            }
-            
-            .mobile-view .banner-subtitle {
-                font-size: 0.8rem !important;
-            }
-            
-            .mobile-features-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .mobile-view .full-phone-mockup {
-                width: 260px;
-                height: 520px;
-            }
-            
-            .mobile-view #courses h2,
-            .mobile-view #faculty h2,
-            .mobile-view #app h2 {
-                font-size: 2rem !important;
-            }
-            
-            /* Banner arrows for very small devices */
-            .mobile-view .banner-nav-arrow {
-                width: 32px !important;
-                height: 32px !important;
-                font-size: 0.8rem !important;
-            }
-            
-            .mobile-view .banner-nav-arrow.prev {
-                left: 8px !important;
-            }
-            
-            .mobile-view .banner-nav-arrow.next {
-                right: 8px !important;
-            }
-        }
-        
-        @media (max-width: 320px) {
-            /* Very small devices */
-            .mobile-view .banner-title {
-                font-size: 1.5rem !important;
-            }
-            
-            .mobile-view .banner-subtitle {
-                font-size: 0.75rem !important;
-            }
-            
-            .mobile-view .filter-btn {
-                padding: 0.5rem 1rem !important;
-                font-size: 0.8rem !important;
-            }
-            
-            .mobile-view .full-phone-mockup {
-                width: 240px;
-                height: 480px;
-            }
-            
-            .mobile-view .banner-nav-arrow {
-                width: 30px !important;
-                height: 30px !important;
-                font-size: 0.75rem !important;
-            }
-        }
-
-        /* DESKTOP/PC/LAPTOP VIEW */
-        @media (min-width: 769px) {
-            /* DESKTOP HEADER */
-            #main-header nav {
-                display: flex;
-            }
-            
-            #main-header .md\\:hidden {
-                display: none;
-            }
-            
-            /* DESKTOP HERO SECTION */
-            .hero-section {
-                height: 100vh;
-            }
-            
-            /* DESKTOP FEATURES */
-            .desktop-features-grid {
-                display: flex;
-            }
-        }
-
         /* Fix for Play Store and social media links */
         .direct-link {
             text-decoration: none;
@@ -1592,60 +961,29 @@
             opacity: 0.8;
         }
 
-        /* Desktop view adjustments */
-        @media (min-width: 1024px) and (max-width: 1440px) {
-            /* Medium desktop adjustments */
-            #main-header .glass {
-                max-width: 95%;
-            }
-            
-            .desktop-features-grid > div {
-                min-width: 200px;
-                padding: 1.8rem 1.2rem;
-            }
-            
-            /* Fix logo cutting in laptop view */
-            .full-phone-mockup {
-                width: 300px;
-                height: 600px;
-            }
+        /* Payment modal styles */
+        .payment-app-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
         
-        @media (min-width: 1441px) {
-            /* Large desktop/PC adjustments */
-            #main-header .glass {
-                max-width: 1400px;
-            }
-            
-            .container {
-                max-width: 1400px;
-            }
-            
-            .desktop-features-grid {
-                gap: 3rem;
-            }
-            
-            .desktop-features-grid > div {
-                min-width: 250px;
-                padding: 2.5rem 2rem;
-            }
+        .payment-app-icon:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
-
-        /* Banner arrow visibility on medium screens */
-        @media (max-width: 1024px) and (min-width: 769px) {
-            .banner-nav-arrow {
-                width: 45px;
-                height: 45px;
-                font-size: 1.3rem;
-            }
-            
-            .banner-nav-arrow.prev {
-                left: 20px;
-            }
-            
-            .banner-nav-arrow.next {
-                right: 20px;
-            }
+        
+        .upi-payment-link {
+            display: block;
+            width: 100%;
+            text-decoration: none;
+            color: inherit;
         }
 
         /* FIXED CART PROMO CODE SECTION */
@@ -1765,6 +1103,526 @@
         .promo-input-container .apply-btn:active {
             transform: translateY(-50%) scale(0.95);
         }
+
+        /* Filter Button Active State */
+        .filter-btn.active {
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            border-color: transparent;
+            color: white;
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Banner content centering fix */
+        .banner-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            height: 100%;
+        }
+
+        /* NEW: Course details in payment modal */
+        .payment-course-details {
+            max-height: 120px;
+            overflow-y: auto;
+            margin-top: 12px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .payment-course-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 12px;
+        }
+        
+        .payment-course-item:last-child {
+            border-bottom: none;
+        }
+        
+        .payment-course-name {
+            flex: 1;
+            text-align: left;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 11px;
+        }
+        
+        .payment-course-price {
+            color: #10b981;
+            font-weight: bold;
+            margin-left: 10px;
+            white-space: nowrap;
+            font-size: 11px;
+        }
+
+        /* ORIGINAL QR CODE STYLE */
+        .qr-code-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            padding: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .qr-code-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .qr-expired-overlay {
+            position: absolute;
+            inset: 0;
+            background: white;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+        
+        .qr-expired-overlay.hidden {
+            display: none;
+        }
+
+        /* Mobile improvements */
+        @media (max-width: 768px) {
+            /* MOBILE BODY STYLES */
+            body {
+                font-size: 16px;
+                line-height: 1.6;
+            }
+            
+            .mobile-view .section-padding {
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
+            }
+            
+            /* MOBILE HEADER */
+            #main-header .glass {
+                margin: 0.75rem auto;
+                padding: 0.5rem 1.2rem;
+                max-width: 95%;
+                border-radius: 50px !important;
+                background: rgba(255, 255, 255, 0.1) !important;
+                backdrop-filter: blur(20px) !important;
+                border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            }
+            
+            #main-header .logo-img {
+                max-width: 100px;
+                max-height: 40px;
+            }
+            
+            .call-btn {
+                padding: 8px 14px;
+                font-size: 14px;
+                border-radius: 50px !important;
+            }
+            
+            .call-btn span {
+                display: none;
+            }
+            
+            /* Hide header nav on mobile */
+            #main-header nav {
+                display: none;
+            }
+            
+            /* Show mobile menu button */
+            #main-header .md\\:hidden {
+                display: block;
+            }
+            
+            /* MOBILE MENU IMPROVEMENTS */
+            #mobile-menu {
+                font-size: 1.8rem;
+                background: rgba(5, 5, 7, 0.98);
+                backdrop-filter: blur(20px);
+            }
+            
+            .mobile-menu-link {
+                padding: 1rem 0;
+                display: block;
+                text-align: center;
+                transition: all 0.3s ease;
+            }
+            
+            .mobile-menu-link:hover {
+                transform: scale(1.05);
+                color: #6366f1;
+            }
+            
+            /* MOBILE BANNER - CENTERED CONTENT */
+            .hero-section {
+                height: 100vh !important;
+                min-height: 100vh;
+            }
+            
+            .banner-content {
+                padding-top: 100px !important; /* Increased for mobile */
+                padding-bottom: 40px !important;
+                justify-content: center !important;
+                margin-top: 40px !important; /* Added margin for mobile */
+            }
+            
+            .banner-title {
+                font-size: 2.2rem !important;
+                line-height: 1.2;
+                margin-bottom: 1rem !important;
+                margin-top: 0 !important;
+            }
+            
+            .banner-subtitle {
+                font-size: 1rem !important;
+                line-height: 1.5;
+                margin-bottom: 1.5rem !important;
+                padding: 0 1rem;
+            }
+            
+            .banner-offer-details {
+                padding: 1.5rem !important;
+                margin: 1rem 0 !important;
+                border-radius: 16px;
+            }
+            
+            .banner-offer-details .text-4xl {
+                font-size: 2rem !important;
+            }
+            
+            .banner-offer-details .text-2xl {
+                font-size: 1.2rem !important;
+            }
+            
+            .banner-cta {
+                font-size: 1rem !important;
+                padding: 1rem 2.5rem !important;
+                margin-top: 1rem;
+                margin-bottom: 1rem !important;
+            }
+            
+            /* Hide banner arrows on mobile */
+            .banner-nav-arrow {
+                display: none !important;
+            }
+            
+            /* MOBILE COURSES SECTION */
+            .mobile-view #courses {
+                padding: 3rem 1rem !important;
+                background: #050507;
+            }
+            
+            .mobile-view #courses h2 {
+                font-size: 2.2rem !important;
+                line-height: 1.2;
+                margin-bottom: 1rem;
+                text-align: center;
+            }
+            
+            .mobile-view #courses p {
+                font-size: 0.95rem !important;
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+            
+            .mobile-view .filter-btn {
+                padding: 0.6rem 1.2rem !important;
+                font-size: 0.85rem !important;
+                margin: 0.2rem;
+                border-radius: 50px !important;
+            }
+            
+            .mobile-view .course-card {
+                margin-bottom: 1.5rem;
+                border-radius: 16px;
+                overflow: hidden;
+            }
+            
+            .mobile-view .course-card h3 {
+                font-size: 1.2rem !important;
+                line-height: 1.3;
+                margin-bottom: 0.8rem;
+            }
+            
+            .mobile-view .course-buttons {
+                width: 100%;
+            }
+            
+            .mobile-view .course-buttons button {
+                width: 100%;
+                padding: 0.9rem !important;
+                border-radius: 50px !important;
+                border-radius: 9999px !important;
+            }
+            
+            /* MOBILE FACULTY SECTION */
+            .mobile-view #faculty {
+                padding: 3rem 1rem !important;
+                background: linear-gradient(to bottom, #0F1016, #050507);
+            }
+            
+            .mobile-view #faculty h2 {
+                font-size: 2.2rem !important;
+                line-height: 1.2;
+                margin-bottom: 2rem;
+                text-align: center;
+            }
+            
+            .mobile-view .faculty-card {
+                margin-bottom: 2rem;
+                border-radius: 20px;
+                padding: 1.5rem !important;
+            }
+            
+            .mobile-view .faculty-card h3 {
+                font-size: 1.3rem !important;
+            }
+            
+            .mobile-view .faculty-designation {
+                font-size: 0.95rem !important;
+            }
+            
+            .mobile-view .faculty-description p {
+                font-size: 0.9rem !important;
+                line-height: 1.6;
+            }
+            
+            /* MOBILE APP SECTION */
+            .mobile-view #app {
+                padding: 3rem 1rem !important;
+            }
+            
+            .mobile-view #app h2 {
+                font-size: 2.2rem !important;
+                margin-bottom: 2rem;
+                text-align: center;
+            }
+            
+            .mobile-view #app p {
+                font-size: 1rem !important;
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+            
+            .mobile-view .full-phone-mockup {
+                width: 280px;
+                height: 560px;
+                border-radius: 40px;
+                border-width: 10px;
+                margin: 0 auto;
+            }
+            
+            .mobile-view .phone-notch {
+                width: 120px;
+                height: 24px;
+            }
+            
+            .mobile-view .inner-screen {
+                padding: 20px;
+            }
+            
+            .mobile-view .premium-logo-wrapper {
+                width: 70px;
+                height: 70px;
+                margin-bottom: 10px;
+            }
+            
+            .mobile-view .logo-main-box {
+                width: 60px;
+                height: 60px;
+                border-radius: 16px;
+            }
+            
+            .mobile-view .logo-main-box i {
+                font-size: 1.5rem;
+            }
+            
+            .mobile-view .mock-item {
+                padding: 12px;
+                gap: 12px;
+                border-radius: 14px;
+                margin-bottom: 8px;
+            }
+            
+            .mobile-view .mock-title {
+                font-size: 12px;
+            }
+            
+            .mobile-view .mock-desc {
+                font-size: 10px;
+            }
+            
+            /* MOBILE FOOTER */
+            .mobile-view footer {
+                padding: 3rem 1rem !important;
+            }
+            
+            .mobile-view .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            
+            /* Payment modal mobile */
+            .mobile-view #payment-modal .max-w-\[350px\] {
+                max-width: 90% !important;
+                margin: 1rem;
+            }
+            
+            /* Stats section for mobile */
+            .mobile-view .stat-number {
+                font-size: 2.5rem !important;
+            }
+            
+            /* MOBILE PROMO INPUT */
+            .mobile-view .promo-input-container input {
+                padding: 12px 90px 12px 12px;
+                font-size: 13px;
+            }
+            
+            .mobile-view .promo-input-container .apply-btn {
+                padding: 6px 12px;
+                font-size: 11px;
+                height: calc(100% - 12px);
+            }
+            
+            /* Mobile payment course details */
+            .mobile-view .payment-course-details {
+                max-height: 100px;
+                font-size: 11px;
+            }
+            
+            .mobile-view .payment-course-item {
+                padding: 4px 0;
+                font-size: 10px;
+            }
+            
+            /* Mobile QR code */
+            .mobile-view .qr-code-container {
+                width: 180px;
+                height: 180px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            /* Extra small devices */
+            .mobile-view .hero-section {
+                min-height: 100vh;
+            }
+            
+            .mobile-view .banner-content {
+                padding-top: 90px !important; /* Increased for small screens */
+                padding-bottom: 30px !important;
+                margin-top: 30px !important;
+            }
+            
+            .mobile-view .banner-title {
+                font-size: 1.8rem !important;
+            }
+            
+            .mobile-view .banner-subtitle {
+                font-size: 0.9rem !important;
+            }
+            
+            .mobile-view .full-phone-mockup {
+                width: 260px;
+                height: 520px;
+            }
+            
+            .mobile-view #courses h2,
+            .mobile-view #faculty h2,
+            .mobile-view #app h2 {
+                font-size: 2rem !important;
+            }
+            
+            .mobile-view .qr-code-container {
+                width: 160px;
+                height: 160px;
+            }
+        }
+        
+        @media (max-width: 320px) {
+            /* Very small devices */
+            .mobile-view .banner-content {
+                padding-top: 80px !important;
+                margin-top: 20px !important;
+            }
+            
+            .mobile-view .banner-title {
+                font-size: 1.6rem !important;
+            }
+            
+            .mobile-view .banner-subtitle {
+                font-size: 0.85rem !important;
+            }
+            
+            .mobile-view .filter-btn {
+                padding: 0.5rem 1rem !important;
+                font-size: 0.8rem !important;
+            }
+            
+            .mobile-view .full-phone-mockup {
+                width: 240px;
+                height: 480px;
+            }
+            
+            .mobile-view .qr-code-container {
+                width: 140px;
+                height: 140px;
+            }
+        }
+
+        /* DESKTOP/PC/LAPTOP VIEW */
+        @media (min-width: 769px) {
+            /* DESKTOP HEADER */
+            #main-header nav {
+                display: flex;
+            }
+            
+            #main-header .md\\:hidden {
+                display: none;
+            }
+            
+            /* DESKTOP HERO SECTION - FULL SCREEN */
+            .hero-section {
+                height: 100vh;
+                min-height: 100vh;
+            }
+            
+            /* Banner content centered between header and bottom - INCREASED MARGIN */
+            .banner-content {
+                padding-top: 120px; /* Increased from 60px */
+                padding-bottom: 60px;
+                justify-content: center;
+                margin-top: 80px; /* Increased from 60px */
+            }
+        }
+
+        /* Banner arrow visibility on medium screens */
+        @media (max-width: 1024px) and (min-width: 769px) {
+            .banner-nav-arrow {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+            
+            .banner-nav-arrow.prev {
+                left: 20px;
+            }
+            
+            .banner-nav-arrow.next {
+                right: 20px;
+            }
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -1850,89 +1708,6 @@
             
             <!-- Banner slides will be inserted here by JavaScript -->
             <div class="banner-overlay"></div>
-            <div class="banner-indicators" id="banner-indicators">
-                <!-- Banner dots will be inserted here by JavaScript -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Desktop Features Section -->
-    <section class="py-12 bg-gradient-to-b from-brand-surface to-brand-bg hidden md:block">
-        <div class="container mx-auto px-4">
-            <div class="desktop-features-grid">
-                <div class="animate-fade-in" style="animation-delay: 0.1s">
-                    <div class="feature-icon">
-                        <i class="fas fa-user-graduate text-brand-primary"></i>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3">Expert Tutors</h3>
-                    <p class="text-sm text-gray-400">Certified Trainers from UK/USA</p>
-                </div>
-                <div class="animate-fade-in" style="animation-delay: 0.2s">
-                    <div class="feature-icon">
-                        <i class="fas fa-globe-americas text-brand-accent"></i>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3">Global Visa</h3>
-                    <p class="text-sm text-gray-400">99% Success Rate in Filing</p>
-                </div>
-                <div class="animate-fade-in" style="animation-delay: 0.3s">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt text-brand-secondary"></i>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3">Mobile App</h3>
-                    <p class="text-sm text-gray-400">Learn Anytime, Anywhere</p>
-                </div>
-                <div class="animate-fade-in" style="animation-delay: 0.4s">
-                    <div class="feature-icon">
-                        <i class="fas fa-certificate text-brand-warning"></i>
-                    </div>
-                    <h3 class="font-bold text-xl mb-3">Certified</h3>
-                    <p class="text-sm text-gray-400">ISO 9001:2015 Certified</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Mobile Features Section -->
-    <section id="features" class="hidden md:hidden py-12">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl font-bold mb-4">Why Choose TESCA?</h2>
-                <p class="text-gray-400">Premium education with guaranteed results</p>
-            </div>
-            
-            <div class="mobile-features-grid">
-                <div class="mobile-feature-card animate-slide-in" style="animation-delay: 0.1s">
-                    <div class="mobile-feature-icon">
-                        <i class="fas fa-user-graduate text-brand-primary"></i>
-                    </div>
-                    <h3>Expert Tutors</h3>
-                    <p>Certified Trainers from UK/USA</p>
-                </div>
-                
-                <div class="mobile-feature-card animate-slide-in" style="animation-delay: 0.2s">
-                    <div class="mobile-feature-icon">
-                        <i class="fas fa-globe-americas text-brand-accent"></i>
-                    </div>
-                    <h3>Global Visa</h3>
-                    <p>99% Success Rate in Filing</p>
-                </div>
-                
-                <div class="mobile-feature-card animate-slide-in" style="animation-delay: 0.3s">
-                    <div class="mobile-feature-icon">
-                        <i class="fas fa-mobile-alt text-brand-secondary"></i>
-                    </div>
-                    <h3>Mobile App</h3>
-                    <p>Learn Anytime, Anywhere</p>
-                </div>
-                
-                <div class="mobile-feature-card animate-slide-in" style="animation-delay: 0.4s">
-                    <div class="mobile-feature-icon">
-                        <i class="fas fa-certificate text-brand-warning"></i>
-                    </div>
-                    <h3>Certified</h3>
-                    <p>ISO 9001:2015 Certified</p>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -1960,7 +1735,7 @@
         </div>
     </section>
 
-    <!-- Faculty Section - WITH REDUCED SPACE BETWEEN NAME AND LOGO -->
+    <!-- Faculty Section -->
     <section id="faculty" class="section-padding bg-gradient-to-b from-brand-surface to-brand-bg">
         <div class="container mx-auto px-4">
             <div class="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
@@ -1971,22 +1746,22 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
                 <!-- Nikunj Dhanani -->
-                <div class="faculty-card glass-card p-8 rounded-3xl text-center animate-fade-in" style="animation-delay: 0.1s">
+                <div class="faculty-card glass-card animate-fade-in" style="animation-delay: 0.1s">
                     <div class="faculty-content">
-                        <div class="relative mb-4"> <!-- Reduced from mb-6 -->
-                            <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-brand-primary to-purple-600 flex items-center justify-center text-2xl font-bold text-white mb-2"> <!-- Reduced size -->
+                        <div class="faculty-photo-container">
+                            <div class="faculty-initial-circle bg-gradient-to-br from-brand-primary to-purple-600">
                                 ND
                             </div>
                         </div>
-                        <div class="mb-3">
+                        <div class="faculty-name">
                             <h3 class="text-2xl font-bold">Nikunj Dhanani</h3>
                             <div class="bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full inline-block mt-2">Founder</div>
                         </div>
-                        <p class="faculty-designation text-sm text-brand-accent font-bold mb-4">CEO & Lead Visa Consultant</p>
-                        <div class="faculty-description mb-6">
+                        <p class="faculty-designation text-brand-accent">CEO & Lead Visa Consultant</p>
+                        <div class="faculty-description">
                             <p class="text-gray-400">With 12+ years in international education, Nikunj has successfully placed 5000+ students in top global universities. His expertise in visa documentation has achieved a remarkable 99.2% success rate.</p>
                         </div>
-                        <div class="flex justify-center space-x-3 mt-auto">
+                        <div class="flex justify-center space-x-3 mt-auto pt-4 border-t border-white/5">
                             <span class="px-3 py-1 bg-blue-500/10 text-blue-400 text-xs rounded-full">UK Visa Expert</span>
                             <span class="px-3 py-1 bg-green-500/10 text-green-400 text-xs rounded-full">Profile Builder</span>
                         </div>
@@ -1994,22 +1769,22 @@
                 </div>
 
                 <!-- Vishal Faldu -->
-                <div class="faculty-card glass-card p-8 rounded-3xl text-center animate-fade-in" style="animation-delay: 0.2s">
+                <div class="faculty-card glass-card animate-fade-in" style="animation-delay: 0.2s">
                     <div class="faculty-content">
-                        <div class="relative mb-4"> <!-- Reduced from mb-6 -->
-                            <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-brand-warning to-orange-500 flex items-center justify-center text-2xl font-bold text-white mb-2"> <!-- Reduced size -->
+                        <div class="faculty-photo-container">
+                            <div class="faculty-initial-circle bg-gradient-to-br from-brand-warning to-orange-500">
                                 VF
                             </div>
                         </div>
-                        <div class="mb-3">
+                        <div class="faculty-name">
                             <h3 class="text-2xl font-bold">Vishal Faldu</h3>
                             <div class="bg-blue-500/20 text-blue-400 text-xs font-bold px-3 py-1 rounded-full inline-block mt-2">Co-Founder</div>
                         </div>
-                        <p class="faculty-designation text-sm text-brand-warning font-bold mb-4">IELTS/PTE Master Trainer</p>
-                        <div class="faculty-description mb-6">
+                        <p class="faculty-designation text-brand-warning">IELTS/PTE Master Trainer</p>
+                        <div class="faculty-description">
                             <p class="text-gray-400">A British Council certified trainer with 8+ years experience. Specializes in helping students achieve Band 8+ in IELTS and 85+ in PTE. Known for his unique "Score Booster" techniques.</p>
                         </div>
-                        <div class="flex justify-center space-x-3 mt-auto">
+                        <div class="flex justify-center space-x-3 mt-auto pt-4 border-t border-white/5">
                             <span class="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs rounded-full">IELTS Band 9</span>
                             <span class="px-3 py-1 bg-red-500/10 text-red-400 text-xs rounded-full">PTE Expert</span>
                         </div>
@@ -2017,22 +1792,22 @@
                 </div>
 
                 <!-- Kiran Lathiya -->
-                <div class="faculty-card glass-card p-8 rounded-3xl text-center animate-fade-in" style="animation-delay: 0.3s">
+                <div class="faculty-card glass-card animate-fade-in" style="animation-delay: 0.3s">
                     <div class="faculty-content">
-                        <div class="relative mb-4"> <!-- Reduced from mb-6 -->
-                            <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-br from-brand-accent to-cyan-500 flex items-center justify-center text-2xl font-bold text-white mb-2"> <!-- Reduced size -->
+                        <div class="faculty-photo-container">
+                            <div class="faculty-initial-circle bg-gradient-to-br from-brand-accent to-cyan-500">
                                 KL
                             </div>
                         </div>
-                        <div class="mb-3">
+                        <div class="faculty-name">
                             <h3 class="text-2xl font-bold">Kiran Lathiya</h3>
                             <div class="bg-brand-primary/20 text-brand-primary text-xs font-bold px-3 py-1 rounded-full inline-block mt-2">Head Mentor</div>
                         </div>
-                        <p class="faculty-designation text-sm text-cyan-400 font-bold mb-4">Spoken English Guru</p>
-                        <div class="faculty-description mb-6">
+                        <p class="faculty-designation text-cyan-400">Spoken English Guru</p>
+                        <div class="faculty-description">
                             <p class="text-gray-400">25+ years of transforming students into confident English speakers. Former corporate trainer at multinational companies. His "Zero to Hero" methodology has helped 10,000+ students overcome hesitation.</p>
                         </div>
-                        <div class="flex justify-center space-x-3 mt-auto">
+                        <div class="flex justify-center space-x-3 mt-auto pt-4 border-t border-white/5">
                             <span class="px-3 py-1 bg-cyan-500/10 text-cyan-400 text-xs rounded-full">Accent Trainer</span>
                             <span class="px-3 py-1 bg-yellow-500/10 text-yellow-400 text-xs rounded-full">Corporate English</span>
                         </div>
@@ -2060,74 +1835,120 @@
         </div>
     </section>
 
-    <!-- NEW APP SECTION - USING PROVIDED DESIGN -->
-    <section id="app" class="py-24 relative overflow-hidden bg-brand-bg">
-        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-center gap-20 relative z-10">
+    <!-- APP SECTION - UPDATED LAYOUT -->
+    <section id="app" class="section-padding relative overflow-hidden bg-gradient-to-b from-brand-bg to-brand-surface">
+        <div class="container mx-auto px-4">
+            <!-- Section Title FIRST -->
+            <div class="max-w-3xl mx-auto text-center mb-16">
+                <span class="text-brand-primary font-black text-sm tracking-[0.3em] uppercase mb-4 block">Modern Learning</span>
+                <h2 class="text-5xl md:text-6xl font-bold leading-tight mb-8">Your Pocket <span class="text-brand-primary">Classroom</span></h2>
+                <p class="text-gray-400 text-xl leading-relaxed font-medium mb-12">
+                    Carry your classroom in your pocket. Access live sessions, premium study materials, 
+                    and track your visa application status directly from the official TESCA app.
+                </p>
+            </div>
             
-            <div class="full-phone-mockup shrink-0">
-                <div class="phone-notch"></div>
+            <!-- Content with Mockup -->
+            <div class="flex flex-col md:flex-row items-center justify-center gap-20 relative z-10">
                 
-                <div class="inner-screen">
+                <!-- Phone Mockup -->
+                <div class="full-phone-mockup shrink-0 order-2 md:order-1">
+                    <div class="phone-notch"></div>
                     
-                    <div class="premium-logo-wrapper">
-                        <div class="logo-glass-ring"></div>
-                        <div class="logo-main-box">
-                            <i class="fas fa-graduation-cap text-white text-3xl"></i>
+                    <div class="inner-screen">
+                        
+                        <div class="premium-logo-wrapper">
+                            <div class="logo-glass-ring"></div>
+                            <div class="logo-main-box">
+                                <i class="fas fa-graduation-cap text-white text-3xl"></i>
+                            </div>
                         </div>
-                    </div>
 
-                    <h4 class="text-white font-black text-xl mb-1 tracking-widest uppercase">TESCA</h4>
-                    <p class="text-[11px] text-gray-500 uppercase tracking-[0.4em] mb-10 font-black">Official App</p>
-                    
-                    <div class="w-full space-y-4">
-                        <div class="mock-item">
-                            <div class="w-10 h-10 rounded-xl bg-brand-primary/20 flex items-center justify-center text-brand-primary text-lg flex-shrink-0">
-                                <i class="fas fa-play"></i>
+                        <h4 class="text-white font-black text-xl mb-1 tracking-widest uppercase">TESCA</h4>
+                        <p class="text-[11px] text-gray-500 uppercase tracking-[0.4em] mb-10 font-black">Official App</p>
+                        
+                        <div class="w-full space-y-4">
+                            <div class="mock-item">
+                                <div class="w-10 h-10 rounded-xl bg-brand-primary/20 flex items-center justify-center text-brand-primary text-lg flex-shrink-0">
+                                    <i class="fas fa-play"></i>
+                                </div>
+                                <div class="text-left">
+                                    <p class="mock-title">Live Classes</p>
+                                    <p class="mock-desc">Daily interactive Video</p>
+                                </div>
                             </div>
-                            <div class="text-left">
-                                <p class="mock-title">Live Classes</p>
-                                <p class="mock-desc">Daily interactive Video</p>
+                            <div class="mock-item">
+                                <div class="w-10 h-10 rounded-xl bg-brand-success/20 flex items-center justify-center text-brand-success text-lg flex-shrink-0">
+                                    <i class="fas fa-file-alt"></i>
+                                </div>
+                                <div class="text-left">
+                                    <p class="mock-title">Study Hub</p>
+                                    <p class="mock-desc">Full Library of PDF's</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="mock-item">
-                            <div class="w-10 h-10 rounded-xl bg-brand-success/20 flex items-center justify-center text-brand-success text-lg flex-shrink-0">
-                                <i class="fas fa-file-alt"></i>
-                            </div>
-                            <div class="text-left">
-                                <p class="mock-title">Study Hub</p>
-                                <p class="mock-desc">Full Library of PDF's</p>
-                            </div>
-                        </div>
-                        <div class="mock-item">
-                            <div class="w-10 h-10 rounded-xl bg-brand-accent/20 flex items-center justify-center text-brand-accent text-lg flex-shrink-0">
-                                <i class="fas fa-comments"></i>
-                            </div>
-                            <div class="text-left">
-                                <p class="mock-title">Tutor Chat</p>
-                                <p class="mock-desc">24/7 Expert Support</p>
+                            <div class="mock-item">
+                                <div class="w-10 h-10 rounded-xl bg-brand-accent/20 flex items-center justify-center text-brand-accent text-lg flex-shrink-0">
+                                    <i class="fas fa-comments"></i>
+                                </div>
+                                <div class="text-left">
+                                    <p class="mock-title">Tutor Chat</p>
+                                    <p class="mock-desc">24/7 Expert Support</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="max-w-xl text-center md:text-left">
-                <span class="text-brand-primary font-black text-sm tracking-[0.3em] uppercase mb-4 block">Modern Learning</span>
-                <h2 class="text-6xl font-black mb-8 leading-tight">Mastery on <br><span class="text-brand-primary">the Go.</span></h2>
-                <p class="text-gray-400 text-xl mb-10 leading-relaxed font-medium">
-                    Carry your classroom in your pocket. Access live sessions, premium study materials, 
-                    and track your visa application status directly from the official TESCA app.
-                </p>
-                
-                <a href="https://play.google.com/store/apps/details?id=co.ted.fpqdt" target="_blank" class="direct-link inline-flex items-center gap-4 bg-white text-black px-12 py-5 rounded-[2rem] font-black hover:scale-105 transition-all shadow-2xl">
-                    <i class="fab fa-google-play text-3xl text-brand-success"></i>
-                    <div class="text-left">
-                        <div class="text-[11px] text-gray-500 uppercase font-black tracking-tighter leading-none mb-1">Available on</div>
-                        <div class="text-2xl leading-none">Google Play</div>
+                <!-- Features List -->
+                <div class="max-w-xl order-1 md:order-2">
+                    <div class="space-y-8">
+                        <div class="glass-card p-6 rounded-2xl">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-brand-primary to-brand-secondary flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-video text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold mb-2">Live Interactive Classes</h4>
+                                    <p class="text-gray-400">Join daily live sessions with expert faculty. Get your doubts cleared in real-time.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card p-6 rounded-2xl">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-brand-success to-emerald-500 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-book text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold mb-2">Comprehensive Study Material</h4>
+                                    <p class="text-gray-400">Access 1000+ PDFs, practice tests, and video lectures anytime, anywhere.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="glass-card p-6 rounded-2xl">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-brand-accent to-cyan-500 flex items-center justify-center flex-shrink-0">
+                                    <i class="fas fa-headset text-white text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xl font-bold mb-2">24/7 Mentor Support</h4>
+                                    <p class="text-gray-400">Chat directly with mentors for personalized guidance and quick doubt resolution.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Download Button -->
+                        <a href="https://play.google.com/store/apps/details?id=co.ted.fpqdt" target="_blank" class="direct-link inline-flex items-center gap-4 bg-white text-black px-12 py-5 rounded-[2rem] font-black hover:scale-105 transition-all shadow-2xl w-full justify-center mt-8">
+                            <i class="fab fa-google-play text-3xl text-brand-success"></i>
+                            <div class="text-left">
+                                <div class="text-[11px] text-gray-500 uppercase font-black tracking-tighter leading-none mb-1">Available on</div>
+                                <div class="text-2xl leading-none">Google Play</div>
+                            </div>
+                        </a>
                     </div>
-                </a>
+                </div>
             </div>
-            
         </div>
     </section>
 
@@ -2298,20 +2119,20 @@
         </div>
     </div>
 
-    <!-- Payment Modal -->
+    <!-- MODERN PAYMENT MODAL - WITH ORIGINAL QR CODE STYLE -->
     <div id="payment-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-black/95 backdrop-blur-xl" onclick="closePayment()"></div>
         
-        <div class="relative bg-[#121212] w-full max-w-[350px] rounded-3xl border border-white/10 shadow-2xl flex flex-col items-center overflow-hidden animate-slide-up">
+        <div class="relative bg-[#121212] w-full max-w-[400px] rounded-3xl border border-white/10 shadow-2xl flex flex-col items-center overflow-hidden animate-slide-up">
             
-            <div class="w-full bg-gradient-to-r from-brand-primary to-brand-secondary p-3 text-center">
-                <h3 class="font-bold text-white text-base tracking-wide">Secure Payment</h3>
+            <div class="w-full bg-gradient-to-r from-brand-primary to-brand-secondary p-4 text-center">
+                <h3 class="font-bold text-white text-lg tracking-wide">Secure Payment Gateway</h3>
             </div>
 
             <div class="p-6 w-full flex flex-col items-center">
                 
                 <!-- Applied Code Display -->
-                <div id="applied-code-display" class="applied-code-display w-full hidden">
+                <div id="applied-code-display" class="applied-code-display w-full hidden mb-4">
                     <div>
                         <div class="text-xs text-gray-400 mb-1">Applied Code:</div>
                         <div class="code-text" id="applied-code-text"></div>
@@ -2319,49 +2140,95 @@
                     <div class="used-badge">PERMANENTLY USED</div>
                 </div>
                 
-                <div class="mb-4 text-xs font-mono text-gray-400 bg-white/5 px-3 py-1 rounded-full">
-                    Expiring in: <span id="timer" class="text-brand-danger font-bold">01:00</span>
-                </div>
-
-                <div class="relative bg-white p-3 rounded-2xl shadow-inner mb-4">
-                    <img id="qr-image" src="" alt="Scan QR" class="w-44 h-44 object-contain mx-auto">
-                    
-                    <div id="qr-expired" class="absolute inset-0 bg-white/95 flex flex-col items-center justify-center rounded-2xl hidden">
-                        <span class="text-black font-bold text-xs mb-2">QR Expired</span>
-                        <button onclick="resetTimer()" class="bg-blue-600 text-white text-xs px-4 py-2 rounded-full font-bold shadow-lg hover:bg-blue-700 transition duration-300">Refresh Code</button>
-                    </div>
-                </div>
-
+                <!-- Payment Amount -->
                 <div class="text-center w-full mb-4">
-                    <div class="text-xs text-gray-500">Pay to: <span class="text-white font-bold">TESCA Education</span></div>
-                    <div class="text-xs text-brand-accent font-mono my-1 select-all">8866722633@upi</div>
-                    <div class="text-2xl font-bold text-white" id="pay-final-amount">₹0</div>
+                    <div class="text-sm text-gray-500 mb-1">Total Amount Payable</div>
+                    <div class="text-3xl font-bold text-white" id="pay-final-amount">₹0</div>
+                    <div class="text-xs text-gray-400 mt-1">to: <span class="text-white font-bold">TESCA Education</span></div>
                 </div>
 
-                <div class="text-center w-full mb-6">
-                    <p class="text-xs text-gray-400 mb-3">Or pay directly via:</p>
-                    <div class="flex gap-4 justify-center">
-                        <!-- These buttons will have dynamic href with correct amount -->
-                        <a id="google-pay-btn" href="#" class="upi-app-btn bg-white rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-white/20 transition-all">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/f/f2/Google_Pay_Logo.svg" class="h-6" alt="Google Pay">
+                <!-- COURSE DETAILS SECTION -->
+                <div class="payment-course-details w-full mb-6" id="payment-course-details-container">
+                    <!-- Course details will be inserted here -->
+                </div>
+
+                <!-- UPI ID -->
+                <div class="glass-card p-4 rounded-xl w-full mb-6">
+                    <div class="text-center">
+                        <div class="text-xs text-gray-400 mb-2">UPI ID for Payment</div>
+                        <div class="text-lg font-mono text-brand-accent font-bold select-all bg-black/30 py-2 px-4 rounded-lg">
+                            8866722633@upi
+                        </div>
+                        <div class="text-xs text-gray-500 mt-2">Copy this UPI ID to pay via any UPI app</div>
+                    </div>
+                </div>
+
+                <!-- ORIGINAL QR CODE STYLE -->
+                <div class="w-full mb-6">
+                    <div class="text-center text-sm text-gray-400 mb-3">Or scan QR code:</div>
+                    
+                    <!-- QR Code Container -->
+                    <div class="qr-code-container">
+                        <img id="qr-image" src="" alt="Scan QR" class="w-full h-full">
+                        
+                        <!-- QR Expired Overlay -->
+                        <div id="qr-expired" class="qr-expired-overlay hidden">
+                            <span class="text-black font-bold text-sm mb-2">QR Expired</span>
+                            <button onclick="resetTimer()" class="bg-blue-600 text-white text-xs px-4 py-2 rounded-full font-bold shadow-lg hover:bg-blue-700 transition duration-300">Refresh Code</button>
+                        </div>
+                    </div>
+                    
+                    <!-- Timer -->
+                    <div class="text-center mt-3">
+                        <div class="text-xs font-mono text-gray-400 bg-white/5 px-3 py-1 rounded-full inline-block">
+                            Expires in: <span id="timer" class="text-brand-danger font-bold">05:00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modern UPI Apps Section -->
+                <div class="w-full mb-6">
+                    <p class="text-center text-sm text-gray-400 mb-4">Pay instantly via:</p>
+                    <div class="grid grid-cols-2 gap-3">
+                        <!-- Google Pay -->
+                        <a id="google-pay-link" href="#" class="upi-payment-link" target="_blank">
+                            <div class="payment-app-icon bg-gradient-to-br from-white to-gray-100">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Google_Pay_Logo.svg/512px-Google_Pay_Logo.svg.png" class="h-6" alt="Google Pay">
+                            </div>
+                            <p class="text-center text-xs mt-2 text-gray-300">Google Pay</p>
                         </a>
-                        <a id="phonepe-btn" href="#" class="upi-app-btn bg-white rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-white/20 transition-all">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/7/71/PhonePe_Logo.svg" class="h-5" alt="PhonePe">
+                        
+                        <!-- PhonePe -->
+                        <a id="phonepe-link" href="#" class="upi-payment-link" target="_blank">
+                            <div class="payment-app-icon bg-gradient-to-br from-purple-600 to-purple-800">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/PhonePe_Logo.svg/512px-PhonePe_Logo.svg.png" class="h-5" alt="PhonePe">
+                            </div>
+                            <p class="text-center text-xs mt-2 text-gray-300">PhonePe</p>
                         </a>
-                        <a id="paytm-btn" href="#" class="upi-app-btn bg-white rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-white/20 transition-all">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Paytm_Logo_%28standalone%29.svg" class="h-4" alt="Paytm">
+                        
+                        <!-- Paytm -->
+                        <a id="paytm-link" href="#" class="upi-payment-link" target="_blank">
+                            <div class="payment-app-icon bg-gradient-to-br from-blue-600 to-blue-800">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Paytm_Logo_%28standalone%29.svg/512px-Paytm_Logo_%28standalone%29.svg.png" class="h-4" alt="Paytm">
+                            </div>
+                            <p class="text-center text-xs mt-2 text-gray-300">Paytm</p>
                         </a>
-                        <a id="any-upi-btn" href="#" class="upi-app-btn bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg p-2 w-14 h-14 flex items-center justify-center hover:shadow-lg hover:shadow-blue-500/20 transition-all">
-                            <i class="fas fa-mobile-alt text-white text-xl"></i>
+                        
+                        <!-- Any UPI App -->
+                        <a id="any-upi-link" href="#" class="upi-payment-link" target="_blank">
+                            <div class="payment-app-icon bg-gradient-to-br from-green-600 to-emerald-700">
+                                <i class="fas fa-mobile-alt text-white text-xl"></i>
+                            </div>
+                            <p class="text-center text-xs mt-2 text-gray-300">Any UPI App</p>
                         </a>
                     </div>
-                    <p class="text-[10px] text-gray-500 mt-2">Click any app to pay instantly</p>
                 </div>
 
-                <div class="w-full bg-brand-danger/10 border border-brand-danger/20 p-3 rounded-xl">
+                <!-- Important Instructions -->
+                <div class="w-full bg-brand-danger/10 border border-brand-danger/20 p-4 rounded-xl">
                     <div class="flex items-start gap-2">
                         <i class="fas fa-exclamation-circle text-brand-danger text-sm mt-0.5"></i>
-                        <p class="text-[11px] text-gray-300 leading-snug font-medium">
+                        <p class="text-[12px] text-gray-300 leading-snug font-medium">
                             <span class="text-brand-danger font-bold">IMPORTANT:</span> 
                             After payment, take a <strong>screenshot</strong> and WhatsApp it to 
                             <span class="text-white font-mono underline">8866722633</span>. 
@@ -2670,7 +2537,6 @@
             // Check if mobile view
             if (window.innerWidth <= 768) {
                 document.body.classList.add('mobile-view');
-                document.getElementById('features').classList.remove('hidden');
             }
             
             // Loader animation
@@ -2710,16 +2576,13 @@
             window.addEventListener('scroll', handleScroll);
         }
 
-        // --- 6. BANNER SYSTEM ---
+        // --- 6. BANNER SYSTEM - WITH INCREASED MARGIN TOP ---
         function renderBanners() {
             const bannerContainer = document.querySelector('.banner-container');
-            const indicatorsContainer = document.getElementById('banner-indicators');
             
-            // Clear existing content (except arrows)
-            const existingSlides = bannerContainer.querySelectorAll('.banner-slide:not(.banner-nav-arrow)');
+            // Clear existing content (except arrows and overlay)
+            const existingSlides = bannerContainer.querySelectorAll('.banner-slide:not(.banner-nav-arrow):not(.banner-overlay)');
             existingSlides.forEach(slide => slide.remove());
-            
-            indicatorsContainer.innerHTML = '';
             
             // Create banner slides
             banners.forEach((banner, index) => {
@@ -2729,45 +2592,42 @@
                 
                 // Check if mobile view for responsive styling
                 const isMobile = window.innerWidth <= 768;
-                const titleSize = isMobile ? 'text-3xl' : '';
-                const subtitleSize = isMobile ? 'text-base' : '';
+                const titleSize = isMobile ? 'text-3xl md:text-4xl' : 'text-5xl md:text-6xl';
+                const subtitleSize = isMobile ? 'text-base md:text-lg' : 'text-xl md:text-2xl';
                 const priceSize = isMobile ? 'text-3xl' : 'text-4xl md:text-5xl';
                 const originalSize = isMobile ? 'text-lg' : 'text-2xl';
-                const ctaSize = isMobile ? 'text-sm py-3 px-6' : '';
+                const ctaSize = isMobile ? 'text-sm py-3 px-6' : 'text-lg py-4 px-8';
                 
                 slide.innerHTML = `
                     <div class="banner-content">
-                        <h1 class="banner-title text-white mb-6 ${titleSize}">
-                            ${banner.title}
-                        </h1>
-                        <p class="banner-subtitle text-gray-300 mb-8 ${subtitleSize}">
-                            ${banner.subtitle}
-                        </p>
-                        
-                        <div class="glass-card p-6 rounded-2xl mb-8 banner-offer-details ${isMobile ? 'p-4' : ''}">
-                            <div class="flex items-center justify-center gap-4 mb-4 flex-wrap">
-                                <span class="${originalSize} text-gray-400 line-through">${banner.originalPrice}</span>
-                                <span class="${priceSize} font-bold text-white">${banner.price}</span>
-                                <span class="bg-gradient-to-r ${banner.color} text-white text-sm px-3 py-1 rounded-full font-bold">${banner.discount}</span>
+                        <div class="max-w-4xl mx-auto">
+                            <h1 class="banner-title ${titleSize} font-bold mb-6">
+                                ${banner.title}
+                            </h1>
+                            <p class="banner-subtitle ${subtitleSize} text-gray-300 mb-8">
+                                ${banner.subtitle}
+                            </p>
+                            
+                            <div class="glass-card p-6 md:p-8 rounded-2xl mb-8">
+                                <div class="flex flex-wrap items-center justify-center gap-4 md:gap-6 mb-4">
+                                    <span class="${originalSize} text-gray-400 line-through">${banner.originalPrice}</span>
+                                    <span class="${priceSize} font-bold text-white">${banner.price}</span>
+                                    <span class="bg-gradient-to-r ${banner.color} text-white text-sm md:text-base px-4 py-2 rounded-full font-bold shadow-lg">${banner.discount}</span>
+                                </div>
+                                <p class="text-sm md:text-lg text-gray-300 text-center">${banner.offer}</p>
                             </div>
-                            <p class="text-sm text-gray-300 mb-2 text-center ${isMobile ? 'text-xs' : ''}">${banner.offer}</p>
-                        </div>
-                        
-                        <div class="text-center">
-                            <button onclick="scrollToCourses('${banner.type}')" class="banner-cta bg-gradient-to-r ${banner.color} text-white hover:opacity-90 shadow-lg ${ctaSize}">
-                                ${banner.cta} →
-                            </button>
+                            
+                            <div class="text-center">
+                                <button onclick="scrollToCourses('${banner.type}')" 
+                                        class="banner-cta bg-gradient-to-r ${banner.color} text-white font-bold hover:shadow-xl hover:scale-105 transition-all duration-300 ${ctaSize}">
+                                    ${banner.cta} <i class="fas fa-arrow-right ml-2"></i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 `;
                 
                 bannerContainer.insertBefore(slide, bannerContainer.querySelector('.banner-overlay'));
-                
-                // Create indicator dot
-                const dot = document.createElement('div');
-                dot.className = `banner-dot ${index === 0 ? 'active' : ''}`;
-                dot.onclick = () => goToBanner(index);
-                indicatorsContainer.appendChild(dot);
             });
         }
 
@@ -2784,14 +2644,8 @@
                 slide.classList.remove('active');
             });
             
-            document.querySelectorAll('.banner-dot').forEach(dot => {
-                dot.classList.remove('active');
-            });
-            
             currentBannerIndex = index;
             document.getElementById(`banner-${index}`).classList.add('active');
-            const dots = document.querySelectorAll('.banner-dot');
-            if (dots[index]) dots[index].classList.add('active');
             
             clearInterval(bannerInterval);
             startBannerRotation();
@@ -3259,7 +3113,7 @@
             showNotification('Promo code removed', 'info');
         }
 
-        // --- 10. PAYMENT SYSTEM - FIXED FOR ALL UPI APPS ---
+        // --- 10. MODERN PAYMENT SYSTEM - WITH ORIGINAL QR CODE STYLE ---
         function startPayment() {
             if (cart.length === 0) return;
 
@@ -3282,56 +3136,94 @@
                 appliedCodeDisplay.classList.add('hidden');
             }
             
+            // Render course details in payment modal
+            renderPaymentCourseDetails();
+            
             toggleCart();
             
             document.getElementById('pay-final-amount').innerText = `₹${amount.toLocaleString()}`;
             document.getElementById('payment-modal').classList.remove('hidden');
 
-            // FIXED: Generate UPI string that works with ALL UPI apps including BHIM
+            // Generate UPI links for different apps
             const upiId = '8866722633@upi';
             const payeeName = 'TESCA Education';
-            const note = 'TESCA Course Payment';
+            const courseTitles = cart.map(c => c.title).join(', ');
+            const note = `TESCA Courses: ${courseTitles.substring(0, 50)}${courseTitles.length > 50 ? '...' : ''}`;
             
             // URL encode all parameters
             const encodedNote = encodeURIComponent(note);
             const encodedPayeeName = encodeURIComponent(payeeName);
             
-            // UPI string for QR code
-            const upiString = `upi://pay?pa=${upiId}&pn=${encodedPayeeName}&am=${amount}&cu=INR&tn=${encodedNote}`;
-            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&margin=10&data=${encodeURIComponent(upiString)}`;
+            // Generate UPI payment URL with amount and note
+            const upiPaymentUrl = `upi://pay?pa=${upiId}&pn=${encodedPayeeName}&am=${amount}&cu=INR&tn=${encodedNote}`;
+            
+            // Set QR code with course details
+            const qrData = `upi://pay?pa=${upiId}&pn=${encodedPayeeName}&am=${amount}&cu=INR&tn=${encodedNote}`;
+            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=10&data=${encodeURIComponent(qrData)}`;
             document.getElementById('qr-image').src = qrUrl;
 
-            // FIXED: Update app buttons with proper UPI URLs that work with all apps
-            const googlePayUrl = `upi://pay?pa=${upiId}&pn=${encodedPayeeName}&am=${amount}&cu=INR`;
-            const phonePeUrl = `phonepe://pay?pa=${upiId}&pn=${encodedPayeeName}&am=${amount}&cu=INR`;
-            const paytmUrl = `paytmmp://pay?pa=${upiId}&pn=${encodedPayeeName}&am=${amount}&cu=INR`;
-            
-            // For BHIM/Any UPI app - using simple format
-            const anyUpiUrl = `upi://pay?pa=${upiId}&pn=${encodedPayeeName}&am=${amount}&cu=INR&tn=${encodedNote}`;
-            
-            document.getElementById('google-pay-btn').href = googlePayUrl;
-            document.getElementById('phonepe-btn').href = phonePeUrl;
-            document.getElementById('paytm-btn').href = paytmUrl;
-            document.getElementById('any-upi-btn').href = anyUpiUrl;
+            // Set payment links for all UPI apps with amount
+            const links = {
+                'google-pay-link': `https://gpay.app.goo.gl/${upiId}?am=${amount}&tn=${encodedNote}`,
+                'phonepe-link': `phonepe://pay?pa=${upiId}&pn=${encodedPayeeName}&am=${amount}&cu=INR&tn=${encodedNote}`,
+                'paytm-link': `paytmmp://pay?pa=${upiId}&pn=${encodedPayeeName}&am=${amount}&cu=INR&tn=${encodedNote}`,
+                'any-upi-link': upiPaymentUrl
+            };
+
+            // Assign links to buttons
+            Object.keys(links).forEach(id => {
+                const linkElement = document.getElementById(id);
+                if (linkElement) {
+                    linkElement.href = links[id];
+                    linkElement.onclick = function(e) {
+                        // Try to open the app, if fails, show alert
+                        setTimeout(() => {
+                            if (!document.hidden) {
+                                alert(`If the UPI app didn't open automatically, please open your UPI app and send ₹${amount} to ${upiId}`);
+                            }
+                        }, 1000);
+                    };
+                }
+            });
 
             resetTimer();
+        }
+
+        function renderPaymentCourseDetails() {
+            const container = document.getElementById('payment-course-details-container');
+            if (!container) return;
+            
+            if (cart.length === 0) {
+                container.innerHTML = '<div class="text-sm text-gray-500 text-center">No courses in cart</div>';
+                return;
+            }
+            
+            let html = '<div class="text-xs text-gray-400 mb-2">Courses in this payment:</div>';
+            
+            cart.forEach(course => {
+                html += `
+                <div class="payment-course-item">
+                    <div class="payment-course-name">${course.title}</div>
+                    <div class="payment-course-price">₹${course.price.toLocaleString()}</div>
+                </div>
+                `;
+            });
+            
+            container.innerHTML = html;
         }
 
         function resetTimer() {
             clearInterval(timerInterval);
             document.getElementById('qr-expired').classList.add('hidden');
             
-            let timeLeft = 60;
+            let timeLeft = 300; // 5 minutes
             const timerDisplay = document.getElementById('timer');
-            timerDisplay.innerText = "01:00";
-            timerDisplay.classList.remove('text-gray-500');
-            timerDisplay.classList.add('text-brand-danger');
-
+            
             timerInterval = setInterval(() => {
                 timeLeft--;
                 let min = Math.floor(timeLeft / 60);
                 let sec = timeLeft % 60;
-                timerDisplay.innerText = `0${min}:${sec < 10 ? '0' : ''}${sec}`;
+                timerDisplay.innerText = `${min < 10 ? '0' : ''}${min}:${sec < 10 ? '0' : ''}${sec}`;
 
                 if (timeLeft <= 0) {
                     clearInterval(timerInterval);
@@ -3462,10 +3354,16 @@
             window.addEventListener('resize', () => {
                 if (window.innerWidth <= 768) {
                     document.body.classList.add('mobile-view');
-                    document.getElementById('features').classList.remove('hidden');
+                    // Hide banner arrows on mobile
+                    document.querySelectorAll('.banner-nav-arrow').forEach(arrow => {
+                        arrow.style.display = 'none';
+                    });
                 } else {
                     document.body.classList.remove('mobile-view');
-                    document.getElementById('features').classList.add('hidden');
+                    // Show banner arrows on desktop
+                    document.querySelectorAll('.banner-nav-arrow').forEach(arrow => {
+                        arrow.style.display = 'flex';
+                    });
                 }
                 
                 // Re-render banners for responsive adjustments
