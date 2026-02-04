@@ -1163,6 +1163,21 @@
             white-space: nowrap;
         }
 
+        /* NEW: Footer - REMOVED SPACE BETWEEN LOGO AND TEXT */
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Footer logo section - compact */
+        .footer-logo-section {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
         /* NEW: COMPACT QR PAYMENT SYSTEM */
         .qr-payment-container {
             width: 100%;
@@ -1290,7 +1305,7 @@
         .copy-upi-btn.copied {
             background: linear-gradient(90deg, #10b981, #059669);
         }
-
+        
         /* Mobile improvements */
         @media (max-width: 768px) {
             /* MOBILE BODY STYLES */
@@ -1305,9 +1320,9 @@
                 padding-bottom: 2.5rem !important;
             }
             
-            /* MOBILE HEADER - ADDED MARGIN TOP */
+            /* MOBILE HEADER */
             #main-header .glass {
-                margin: 0.75rem auto; /* Increased from 0.5rem */
+                margin: 0.5rem auto;
                 padding: 0.4rem 1rem;
                 max-width: 95%;
                 border-radius: 50px !important;
@@ -1360,49 +1375,48 @@
                 color: #6366f1;
             }
             
-            /* MOBILE BANNER - ADJUSTED HEIGHT & IMPROVED STRUCTURE WITH BETTER MARGINS */
+            /* MOBILE BANNER - ADJUSTED HEIGHT & IMPROVED STRUCTURE */
             .mobile-view .hero-section {
-                height: 70vh !important; /* Increased from 65vh for better spacing */
-                min-height: 70vh;
-                margin-bottom: 10px; /* Added margin at bottom */
+                height: 65vh !important; /* Reduced from 70vh */
+                min-height: 65vh;
             }
             
             .mobile-view .banner-container {
-                min-height: 70vh;
+                min-height: 65vh;
             }
             
             .mobile-view .banner-slide {
-                min-height: 70vh;
+                min-height: 65vh;
             }
             
             .mobile-view .banner-content {
-                padding: 40px 15px !important; /* Increased top padding for better centering */
+                padding: 20px 15px !important;
                 justify-content: center !important;
                 margin-top: 0 !important;
-                min-height: 70vh;
+                min-height: 65vh;
                 width: 95%;
             }
             
             .mobile-view .banner-title {
-                font-size: 2.2rem !important; /* Slightly larger */
+                font-size: 2rem !important; /* Increased from 1.8rem */
                 line-height: 1.2;
-                margin-bottom: 1.2rem !important;
-                margin-top: 10px !important; /* Added top margin */
+                margin-bottom: 1rem !important;
+                margin-top: 0 !important;
                 padding: 0 5px;
                 font-weight: 800;
             }
             
             .mobile-view .banner-subtitle {
-                font-size: 1.15rem !important; 
+                font-size: 1.1rem !important; /* Increased from 1rem */
                 line-height: 1.5;
-                margin-bottom: 1.8rem !important; /* Increased margin */
+                margin-bottom: 1.5rem !important;
                 padding: 0 10px;
                 opacity: 0.9;
             }
             
             .mobile-view .banner-offer-details {
                 padding: 1rem !important;
-                margin: 0.8rem 0 !important; /* Increased margin */
+                margin: 0.5rem 0 !important;
                 border-radius: 12px;
             }
             
@@ -1416,78 +1430,50 @@
             
             .mobile-view .banner-cta {
                 font-size: 1rem !important;
-                padding: 0.9rem 2rem !important; /* Slightly larger padding */
-                margin-top: 0.8rem; /* Increased margin */
-                margin-bottom: 1.2rem !important; /* Increased bottom margin */
+                padding: 0.8rem 1.8rem !important;
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem !important;
                 border-radius: 50px;
             }
             
-            /* MOBILE BANNER ARROWS - POSITIONED AT BOTTOM CENTER WITH MORE SPACING */
+            /* MOBILE BANNER ARROWS - POSITIONED AT BOTTOM CENTER */
             .mobile-view .banner-nav-arrow {
                 display: flex !important;
                 top: auto !important;
-                bottom: 40px !important; /* Increased from 15px to 40px - MOVED UP FROM BOTTOM */
+                bottom: 15px !important;
                 transform: translateY(0) !important;
-                width: 46px !important; /* Slightly larger */
-                height: 46px !important;
-                font-size: 1.3rem !important;
+                width: 40px !important;
+                height: 40px !important;
+                font-size: 1.2rem !important;
                 background: rgba(255, 255, 255, 0.15);
                 border: 1px solid rgba(255, 255, 255, 0.25);
-                z-index: 25; /* Ensure above content */
             }
             
             .mobile-view .banner-nav-arrow.prev {
-                left: calc(50% - 60px) !important; /* Increased spacing between arrows */
+                left: calc(50% - 50px) !important;
                 right: auto !important;
             }
             
             .mobile-view .banner-nav-arrow.next {
-                right: calc(50% - 60px) !important; /* Increased spacing between arrows */
+                right: calc(50% - 50px) !important;
                 left: auto !important;
             }
             
-            /* Add space between arrows */
-            .mobile-view .banner-nav-arrow.prev,
-            .mobile-view .banner-nav-arrow.next {
-                margin-bottom: 10px; /* Added margin at bottom */
-            }
-            
-            /* MOBILE FOOTER - COMPACT 2x2 GRID WITH BETTER CENTERING */
+            /* MOBILE FOOTER - COMPACT 2x2 GRID */
             .mobile-view .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1.5rem;
                 margin-bottom: 1.5rem;
-                text-align: center; /* Center all text */
             }
             
-            /* Footer logo section - compact and centered */
+            /* Footer logo section - compact */
             .mobile-view .footer-logo-section {
-                gap: 0.5rem;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                text-align: center;
+                gap: 0.3rem;
             }
             
             .mobile-view .footer-logo-section .logo-img {
-                width: 90px; /* Slightly larger */
-                height: 90px;
-                margin: 0 auto;
-            }
-            
-            /* Center all footer columns */
-            .mobile-view footer > div {
-                text-align: center;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .mobile-view footer ul {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+                width: 80px;
+                height: 80px;
             }
             
             /* MOBILE COURSES SECTION */
@@ -1512,7 +1498,7 @@
             .mobile-view .filter-btn {
                 padding: 0.5rem 1rem !important;
                 font-size: 0.8rem !important;
-                margin: 0.3rem; /* Increased margin */
+                margin: 0.2rem;
                 border-radius: 50px !important;
             }
             
@@ -1589,195 +1575,189 @@
             }
             
             .mobile-view .full-phone-mockup {
-                width: 300px; /* Consistent size */
-                height: 600px; /* Consistent size */
-                border-radius: 45px; /* Consistent border radius */
-                border-width: 12px; /* Consistent border */
+                width: 280px; /* Slightly smaller for mobile */
+                height: 560px; /* Slightly smaller for mobile */
+                border-radius: 40px; /* Adjusted for mobile */
+                border-width: 10px; /* Thinner border for mobile */
                 margin: 0 auto;
             }
             
             .mobile-view .phone-notch {
-                width: 130px; /* Consistent notch */
-                height: 26px; /* Consistent notch */
+                width: 120px; /* Smaller for mobile */
+                height: 24px; /* Smaller for mobile */
             }
             
             .mobile-view .inner-screen {
-                padding: 25px; /* Consistent padding */
+                padding: 20px; /* Adjusted for mobile */
                 overflow-y: visible !important; /* Remove scrollbar */
             }
             
             .mobile-view .premium-logo-wrapper {
-                width: 80px; /* Consistent size */
-                height: 80px; /* Consistent size */
-                margin-bottom: 15px; /* Consistent spacing */
-                margin-top: 35px; /* Consistent spacing */
+                width: 75px; /* Adjusted for mobile */
+                height: 75px; /* Adjusted for mobile */
+                margin-bottom: 12px; /* Adjusted for mobile */
+                margin-top: 30px; /* Adjusted for mobile */
             }
             
             .mobile-view .logo-main-box {
-                width: 65px; /* Consistent size */
-                height: 65px; /* Consistent size */
-                border-radius: 18px; /* Consistent border radius */
+                width: 60px; /* Adjusted for mobile */
+                height: 60px; /* Adjusted for mobile */
+                border-radius: 16px; /* Adjusted for mobile */
             }
             
             .mobile-view .logo-main-box i {
-                font-size: 1.8rem; /* Consistent icon size */
+                font-size: 1.7rem; /* Adjusted for mobile */
             }
             
             .mobile-view .mock-item {
-                padding: 15px; /* Consistent padding */
-                gap: 12px; /* Consistent gap */
-                border-radius: 16px; /* Consistent border radius */
-                margin-bottom: 10px; /* Consistent spacing */
+                padding: 14px; /* Adjusted for mobile */
+                gap: 12px; /* Adjusted for mobile */
+                border-radius: 16px; /* Adjusted for mobile */
+                margin-bottom: 8px;
             }
             
             .mobile-view .mock-title {
-                font-size: 14px; /* Consistent font size */
+                font-size: 13px; /* Adjusted for mobile */
             }
             
             .mobile-view .mock-desc {
-                font-size: 12px; /* Consistent font size */
+                font-size: 11px; /* Adjusted for mobile */
             }
             
             /* APP SECTION ICON SHAPES */
             .mobile-view #app .glass-card .w-12.h-12 {
-                border-radius: 16px !important; /* Consistent shape */
+                border-radius: 14px !important; /* Consistent shape */
             }
             
-            /* MOBILE FOOTER - COMPACT AND CENTERED */
+            /* MOBILE FOOTER - COMPACT */
             .mobile-view footer {
                 padding: 2.5rem 1rem !important;
-                text-align: center;
             }
             
             .mobile-view footer h4 {
-                font-size: 1.1rem; /* Slightly larger */
-                margin-bottom: 1rem;
-                text-align: center;
+                font-size: 1rem;
+                margin-bottom: 0.8rem;
             }
             
             .mobile-view footer ul {
-                font-size: 0.9rem; /* Slightly larger */
-                align-items: center;
-                text-align: center;
+                font-size: 0.85rem;
             }
             
-            /* Mobile payment modal - COMPACT QR SYSTEM WITH LARGER TEXT */
+            /* Mobile payment modal - COMPACT QR SYSTEM */
             .mobile-view #payment-modal {
                 padding: 0.5rem;
             }
             
             .mobile-view #payment-modal .max-w-\[450px\] {
-                max-width: 95% !important; /* Slightly smaller max width */
-                margin: 0.5rem auto;
+                max-width: 100% !important;
+                margin: 0.5rem;
                 height: auto;
                 max-height: 90vh;
                 overflow-y: auto;
-                width: 380px; /* Fixed width for consistency */
             }
             
             /* Stats section for mobile */
             .mobile-view .stat-number {
-                font-size: 2.2rem !important; /* Slightly larger */
+                font-size: 2rem !important;
             }
             
             /* MOBILE PROMO INPUT */
             .mobile-view .promo-input-container input {
-                padding: 12px 90px 12px 12px; /* Slightly larger padding */
-                font-size: 13px; /* Larger font */
+                padding: 10px 80px 10px 10px;
+                font-size: 12px;
             }
             
             .mobile-view .promo-input-container .apply-btn {
-                padding: 7px 14px; /* Larger button */
-                font-size: 12px; /* Larger font */
+                padding: 5px 10px;
+                font-size: 10px;
                 height: calc(100% - 10px);
             }
             
             /* Mobile payment course details */
             .mobile-view .payment-course-details {
-                max-height: 100px;
-                font-size: 11px; /* Larger font */
-                padding: 10px; /* Larger padding */
+                max-height: 90px;
+                font-size: 10px;
+                padding: 8px;
             }
             
             .mobile-view .payment-course-item {
-                padding: 5px 0; /* Larger padding */
-                font-size: 11px; /* Larger font */
+                padding: 3px 0;
+                font-size: 9px;
             }
             
             /* Mobile payment app grid */
             .mobile-view .payment-app-grid {
                 grid-template-columns: repeat(4, 1fr);
-                gap: 8px; /* Slightly larger gap */
+                gap: 6px;
             }
             
             .mobile-view .payment-app-icon-new {
-                width: 48px; /* Consistent size */
-                height: 48px;
-                font-size: 22px; /* Larger icon */
-                border-radius: 12px; /* Consistent border radius */
+                width: 42px;
+                height: 42px;
+                font-size: 18px;
+                border-radius: 10px;
             }
             
             .mobile-view .qr-code-wrapper {
-                width: 160px; /* Consistent size */
-                height: 160px;
-                padding: 10px; /* Consistent padding */
+                width: 150px;
+                height: 150px;
+                padding: 8px;
             }
             
             .mobile-view .qr-code-section {
-                padding: 15px; /* Consistent padding */
-                margin-bottom: 12px;
+                padding: 12px;
+                margin-bottom: 10px;
             }
             
             .mobile-view .qr-payment-details {
-                padding: 12px; /* Consistent padding */
-                margin-bottom: 12px;
+                padding: 10px;
+                margin-bottom: 10px;
             }
             
             .mobile-view .qr-detail-label {
-                font-size: 12px !important; /* Larger font - IMPORTANT CHANGE */
+                font-size: 10px;
             }
             
             .mobile-view .qr-detail-value {
-                font-size: 13px !important; /* Larger font - IMPORTANT CHANGE */
+                font-size: 11px;
             }
             
             .mobile-view .copy-upi-btn {
-                padding: 8px 16px; /* Larger button */
-                font-size: 12px; /* Larger font */
+                padding: 6px 12px;
+                font-size: 10px;
             }
         }
         
         @media (max-width: 480px) {
             /* Extra small devices */
             .mobile-view .hero-section {
-                min-height: 65vh;
-                height: 65vh !important;
+                min-height: 60vh;
+                height: 60vh !important;
             }
             
             .mobile-view .banner-content {
-                padding-top: 30px !important; /* Adjusted padding */
-                padding-bottom: 20px !important;
+                padding-top: 15px !important;
+                padding-bottom: 15px !important;
             }
             
             .mobile-view .banner-title {
-                font-size: 1.9rem !important;
-                margin-top: 15px !important; /* Added top margin */
+                font-size: 1.7rem !important;
             }
             
             .mobile-view .banner-subtitle {
-                font-size: 1.05rem !important;
+                font-size: 1rem !important;
             }
             
             .mobile-view .full-phone-mockup {
-                width: 280px; /* Consistent size */
-                height: 560px; /* Consistent size */
-                border-radius: 40px; /* Consistent border radius */
+                width: 260px;
+                height: 520px;
+                border-radius: 36px;
             }
             
             .mobile-view #courses h2,
             .mobile-view #faculty h2,
             .mobile-view #app h2 {
-                font-size: 1.9rem !important;
+                font-size: 1.8rem !important;
             }
             
             .mobile-view .footer-grid {
@@ -1785,57 +1765,48 @@
                 gap: 1.5rem;
             }
             
-            /* Adjust banner arrows for extra small */
             .mobile-view .banner-nav-arrow.prev {
-                left: calc(50% - 55px) !important;
+                left: calc(50% - 45px) !important;
             }
             
             .mobile-view .banner-nav-arrow.next {
-                right: calc(50% - 55px) !important;
-            }
-            
-            .mobile-view .banner-nav-arrow {
-                bottom: 35px !important; /* Adjusted position */
-                width: 42px !important;
-                height: 42px !important;
+                right: calc(50% - 45px) !important;
             }
         }
         
         @media (max-width: 320px) {
             /* Very small devices */
             .mobile-view .banner-title {
-                font-size: 1.7rem !important;
-                margin-top: 20px !important; /* More top margin */
+                font-size: 1.5rem !important;
             }
             
             .mobile-view .banner-subtitle {
-                font-size: 1rem !important;
+                font-size: 0.9rem !important;
             }
             
             .mobile-view .filter-btn {
-                padding: 0.5rem 0.9rem !important; /* Adjusted padding */
-                font-size: 0.8rem !important;
+                padding: 0.4rem 0.8rem !important;
+                font-size: 0.75rem !important;
             }
             
             .mobile-view .full-phone-mockup {
-                width: 260px; /* Consistent size */
-                height: 520px; /* Consistent size */
-                border-radius: 35px; /* Consistent border radius */
+                width: 240px;
+                height: 480px;
+                border-radius: 30px;
             }
             
             .mobile-view .banner-nav-arrow {
-                width: 40px !important;
-                height: 40px !important;
-                font-size: 1.1rem !important;
-                bottom: 30px !important; /* Adjusted position */
+                width: 36px !important;
+                height: 36px !important;
+                font-size: 1rem !important;
             }
             
             .mobile-view .banner-nav-arrow.prev {
-                left: calc(50% - 50px) !important;
+                left: calc(50% - 40px) !important;
             }
             
             .mobile-view .banner-nav-arrow.next {
-                right: calc(50% - 50px) !important;
+                right: calc(50% - 40px) !important;
             }
         }
 
@@ -1858,80 +1829,21 @@
             
             /* Banner content centered between header and bottom */
             .banner-content {
-                padding-top: 140px; /* Increased top padding for better centering */
+                padding-top: 120px;
                 padding-bottom: 60px;
                 justify-content: center;
                 margin-top: 60px;
             }
             
-            /* DESKTOP FOOTER - 2x2 GRID WITH BETTER CENTERING */
+            /* DESKTOP FOOTER - 2x2 GRID */
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 2.5rem;
-                text-align: center; /* Center all text */
-            }
-            
-            /* Center all footer columns */
-            footer > div {
-                text-align: center;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            footer ul {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            /* Center footer logo section */
-            .footer-logo-section {
-                align-items: center;
-                text-align: center;
             }
             
             /* APP SECTION ICON SHAPES - CONSISTENT */
             #app .glass-card .w-12.h-12 {
                 border-radius: 16px !important;
-            }
-            
-            /* COMPACT QR PAYMENT MODAL FOR DESKTOP - SAME SIZE AS MOBILE */
-            #payment-modal .relative {
-                max-width: 420px !important; /* Fixed compact size */
-                width: 420px;
-                margin: 0 auto;
-            }
-            
-            /* Larger text in QR system for desktop */
-            .qr-detail-label {
-                font-size: 13px !important; /* Larger font */
-            }
-            
-            .qr-detail-value {
-                font-size: 14px !important; /* Larger font */
-            }
-            
-            .payment-app-label {
-                font-size: 11px !important; /* Larger font */
-            }
-            
-            .copy-upi-btn {
-                font-size: 13px !important; /* Larger font */
-                padding: 9px 18px !important; /* Larger button */
-            }
-            
-            /* Consistent phone mockup size for desktop */
-            .full-phone-mockup {
-                width: 310px; /* Fixed size */
-                height: 620px; /* Fixed size */
-                border-radius: 54px; /* Fixed border radius */
-                border: 12px solid #1a1a1a; /* Fixed border */
-            }
-            
-            .phone-notch {
-                width: 140px; /* Fixed notch size */
-                height: 28px; /* Fixed notch size */
             }
         }
 
@@ -1958,76 +1870,10 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            /* Consistent phone mockup for tablet */
             .full-phone-mockup {
-                width: 300px; /* Same as mobile */
-                height: 600px; /* Same as mobile */
+                width: 280px;
+                height: 560px;
             }
-            
-            /* COMPACT QR PAYMENT MODAL FOR TABLET */
-            #payment-modal .relative {
-                max-width: 400px !important;
-                width: 400px;
-            }
-        }
-
-        /* IMPROVED QR PAYMENT MODAL TEXT SIZES FOR ALL VIEWS */
-        .qr-detail-label {
-            font-size: 12px; /* Base size for all views */
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        .qr-detail-value {
-            font-size: 13px; /* Base size for all views */
-            font-weight: bold;
-            color: white;
-            font-family: 'Courier New', monospace;
-        }
-        
-        .payment-app-label {
-            font-size: 10px; /* Base size for all views */
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.9);
-            margin-top: 3px;
-        }
-        
-        .copy-upi-btn {
-            font-size: 12px; /* Base size for all views */
-        }
-
-        /* FOOTER STRUCTURE IMPROVEMENTS FOR ALL VIEWS */
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-bottom: 2rem;
-            text-align: center; /* Center all text */
-        }
-        
-        .footer-logo-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Center content */
-            text-align: center; /* Center text */
-            gap: 0.5rem;
-        }
-        
-        footer h4 {
-            text-align: center; /* Center headings */
-            margin-bottom: 1rem;
-        }
-        
-        footer ul {
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Center list items */
-            text-align: center; /* Center text */
-            gap: 0.5rem;
-        }
-        
-        /* Center social media icons */
-        footer .flex.gap-3 {
-            justify-content: center;
         }
     </style>
 </head>
@@ -2257,7 +2103,7 @@
             <!-- Content with Mockup -->
             <div class="flex flex-col md:flex-row items-center justify-center gap-16 relative z-10">
                 
-                <!-- Phone Mockup - CONSISTENT SIZE ACROSS ALL VIEWS -->
+                <!-- Phone Mockup -->
                 <div class="full-phone-mockup shrink-0 order-2 md:order-1">
                     <div class="phone-notch"></div>
                     
@@ -2358,21 +2204,21 @@
         </div>
     </section>
 
-    <!-- Footer - UPDATED with 2x2 Grid and Better Centering -->
+    <!-- Footer - UPDATED with 2x2 Grid -->
     <footer id="contact" class="bg-brand-surface border-t border-white/5 py-12">
         <div class="container mx-auto px-4">
             <div class="footer-grid mb-12">
                 <!-- Column 1: Logo and Description -->
                 <div class="footer-logo-section">
-                    <a href="#home" class="flex items-center mb-2 justify-center">
-                        <div class="w-24 h-24 flex items-center justify-center">
+                    <a href="#home" class="flex items-center mb-2">
+                        <div class="w-20 h-20 flex items-center justify-center">
                             <img src="Logo.png" alt="TESCA" class="logo-img w-full h-full">
                         </div>
                     </a>
-                    <p class="text-gray-400 text-sm leading-relaxed max-w-md text-center">
+                    <p class="text-gray-400 text-sm leading-relaxed">
                         The leading platform for English mastery and Visa consultancy. We have helped 15,000+ students achieve their global dreams.
                     </p>
-                    <a href="https://play.google.com/store/apps/details?id=co.ted.fpqdt" target="_blank" class="direct-link inline-flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-lg hover:bg-white/10 transition mt-3 justify-center">
+                    <a href="https://play.google.com/store/apps/details?id=co.ted.fpqdt" target="_blank" class="direct-link inline-flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-lg hover:bg-white/10 transition mt-3">
                         <i class="fab fa-google-play text-xl text-brand-success"></i>
                         <div class="text-left">
                             <div class="text-[9px] uppercase text-gray-400">Android App on</div>
@@ -2383,7 +2229,7 @@
 
                 <!-- Column 2: Quick Links -->
                 <div>
-                    <h4 class="font-bold text-white mb-4 text-center">Quick Links</h4>
+                    <h4 class="font-bold text-white mb-4">Quick Links</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
                         <li><a href="#home" class="direct-link hover:text-brand-accent transition-colors duration-300">Home</a></li>
                         <li><a href="#courses" class="direct-link hover:text-brand-accent transition-colors duration-300">All Courses</a></li>
@@ -2395,7 +2241,7 @@
 
                 <!-- Column 3: Popular Courses -->
                 <div>
-                    <h4 class="font-bold text-white mb-4 text-center">Popular Courses</h4>
+                    <h4 class="font-bold text-white mb-4">Popular Courses</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
                         <li><a href="#courses" onclick="filterCourses('spoken')" class="direct-link hover:text-brand-accent transition-colors duration-300 cursor-pointer">Spoken English Basic</a></li>
                         <li><a href="#courses" onclick="filterCourses('ielts')" class="direct-link hover:text-brand-accent transition-colors duration-300 cursor-pointer">IELTS Academic</a></li>
@@ -2406,13 +2252,13 @@
 
                 <!-- Column 4: Contact & Social -->
                 <div>
-                    <h4 class="font-bold text-white mb-4 text-center">Get in Touch</h4>
+                    <h4 class="font-bold text-white mb-4">Get in Touch</h4>
                     <ul class="space-y-2 text-sm text-gray-400 mb-4">
-                        <li class="flex items-start gap-3 justify-center"><i class="fas fa-map-marker-alt mt-1 text-brand-primary"></i> <span>304, Royal Trade Center, Surat, Gujarat</span></li>
-                        <li class="flex items-center gap-3 justify-center"><i class="fas fa-phone text-brand-primary"></i> <a href="tel:+918866722633" class="direct-link hover:text-brand-accent transition-colors duration-300">+91 88667 22633</a></li>
-                        <li class="flex items-center gap-3 justify-center"><i class="fas fa-envelope text-brand-primary"></i> <a href="mailto:support@tesca.com" class="direct-link hover:text-brand-accent transition-colors duration-300">support@tesca.com</a></li>
+                        <li class="flex items-start gap-3"><i class="fas fa-map-marker-alt mt-1 text-brand-primary"></i> <span>304, Royal Trade Center, Surat, Gujarat</span></li>
+                        <li class="flex items-center gap-3"><i class="fas fa-phone text-brand-primary"></i> <a href="tel:+918866722633" class="direct-link hover:text-brand-accent transition-colors duration-300">+91 88667 22633</a></li>
+                        <li class="flex items-center gap-3"><i class="fas fa-envelope text-brand-primary"></i> <a href="mailto:support@tesca.com" class="direct-link hover:text-brand-accent transition-colors duration-300">support@tesca.com</a></li>
                     </ul>
-                    <div class="flex gap-3 justify-center">
+                    <div class="flex gap-3">
                         <a href="https://instagram.com" target="_blank" class="direct-link w-9 h-9 rounded-full glass flex items-center justify-center hover:bg-brand-primary hover:text-white transition duration-300"><i class="fab fa-instagram"></i></a>
                         <a href="https://facebook.com" target="_blank" class="direct-link w-9 h-9 rounded-full glass flex items-center justify-center hover:bg-brand-primary hover:text-white transition duration-300"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://youtube.com" target="_blank" class="direct-link w-9 h-9 rounded-full glass flex items-center justify-center hover:bg-red-600 hover:text-white transition duration-300"><i class="fab fa-youtube"></i></a>
@@ -2422,8 +2268,8 @@
             </div>
 
             <div class="border-t border-white/5 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
-                <p class="text-center md:text-left">&copy; 2026 TESCA Education. All rights reserved.</p>
-                <div class="flex gap-4 mt-3 md:mt-0 justify-center">
+                <p>&copy; 2026 TESCA Education. All rights reserved.</p>
+                <div class="flex gap-4 mt-3 md:mt-0">
                     <a href="#" class="direct-link hover:text-white transition-colors duration-300">Privacy Policy</a>
                     <a href="#" class="direct-link hover:text-white transition-colors duration-300">Terms of Service</a>
                 </div>
@@ -2529,11 +2375,11 @@
         </div>
     </div>
 
-    <!-- COMPACT QR PAYMENT MODAL - UPDATED FOR CONSISTENT SIZE ACROSS ALL DEVICES -->
+    <!-- COMPACT QR PAYMENT MODAL -->
     <div id="payment-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-black/95 backdrop-blur-xl" onclick="closePayment()"></div>
         
-        <div class="relative bg-[#121212] w-full max-w-[420px] rounded-3xl border border-white/10 shadow-2xl flex flex-col items-center overflow-hidden animate-slide-up mx-auto">
+        <div class="relative bg-[#121212] w-full max-w-[420px] rounded-3xl border border-white/10 shadow-2xl flex flex-col items-center overflow-hidden animate-slide-up">
             
             <div class="w-full bg-gradient-to-r from-brand-primary to-brand-secondary p-4 text-center">
                 <h3 class="font-bold text-white text-xl tracking-wide">Secure Payment Gateway</h3>
@@ -2562,7 +2408,7 @@
                     <!-- Course details will be inserted here -->
                 </div>
 
-                <!-- COMPACT QR PAYMENT SYSTEM - UPDATED TEXT SIZES -->
+                <!-- COMPACT QR PAYMENT SYSTEM -->
                 <div class="qr-payment-container">
                     <!-- QR Code Section -->
                     <div class="qr-code-section">
@@ -2572,7 +2418,7 @@
                         </div>
                     </div>
                     
-                    <!-- Payment Details - UPDATED LARGER TEXT -->
+                    <!-- Payment Details -->
                     <div class="qr-payment-details">
                         <div class="qr-detail-item">
                             <span class="qr-detail-label">Amount:</span>
@@ -2588,7 +2434,7 @@
                         </div>
                     </div>
                     
-                    <!-- Copy UPI ID Button - UPDATED LARGER TEXT -->
+                    <!-- Copy UPI ID Button -->
                     <button onclick="copyUPIID()" id="copy-upi-btn" class="copy-upi-btn">
                         <i class="far fa-copy"></i>
                         Copy UPI ID
@@ -2631,11 +2477,11 @@
 
                 </div>
 
-                <!-- Important Instructions - UPDATED LARGER TEXT -->
+                <!-- Important Instructions -->
                 <div class="w-full bg-brand-danger/10 border border-brand-danger/20 p-3 rounded-xl mt-5">
                     <div class="flex items-start gap-2">
                         <i class="fas fa-exclamation-circle text-brand-danger text-sm mt-0.5"></i>
-                        <p class="text-xs text-gray-300 leading-snug font-medium">
+                        <p class="text-[11px] text-gray-300 leading-snug font-medium">
                             <span class="text-brand-danger font-bold">IMPORTANT:</span> 
                             After payment, take a <strong>screenshot</strong> and WhatsApp it to 
                             <span class="text-white font-mono underline">+91 88667 22633</span>. 
@@ -2984,7 +2830,7 @@
             window.addEventListener('scroll', handleScroll);
         }
 
-        // --- 6. BANNER SYSTEM - IMPROVED FOR MOBILE (70% HEIGHT with better spacing) ---
+        // --- 6. BANNER SYSTEM - IMPROVED FOR MOBILE (65% HEIGHT) ---
         function renderBanners() {
             const bannerContainer = document.querySelector('.banner-container');
             const isMobile = window.innerWidth <= 768;
@@ -3009,7 +2855,7 @@
                 slide.innerHTML = `
                     <div class="banner-content">
                         <div class="max-w-4xl mx-auto px-4">
-                            <h1 class="banner-title ${titleSize} font-bold mb-6 leading-tight mt-4">
+                            <h1 class="banner-title ${titleSize} font-bold mb-6 leading-tight">
                                 ${banner.title}
                             </h1>
                             <p class="banner-subtitle ${subtitleSize} text-gray-300 mb-8 leading-relaxed">
@@ -3049,18 +2895,18 @@
             arrows.forEach(arrow => {
                 if (isMobile) {
                     arrow.style.display = 'flex';
-                    // Position them at bottom center with more spacing from bottom
+                    // Position them at bottom center
                     if (arrow.classList.contains('prev')) {
-                        arrow.style.left = 'calc(50% - 60px)';
+                        arrow.style.left = 'calc(50% - 50px)';
                         arrow.style.right = 'auto';
                         arrow.style.top = 'auto';
-                        arrow.style.bottom = '40px'; // Increased from 15px to 40px
+                        arrow.style.bottom = '15px';
                         arrow.style.transform = 'translateY(0)';
                     } else if (arrow.classList.contains('next')) {
-                        arrow.style.right = 'calc(50% - 60px)';
+                        arrow.style.right = 'calc(50% - 50px)';
                         arrow.style.left = 'auto';
                         arrow.style.top = 'auto';
-                        arrow.style.bottom = '40px'; // Increased from 15px to 40px
+                        arrow.style.bottom = '15px';
                         arrow.style.transform = 'translateY(0)';
                     }
                 } else {
