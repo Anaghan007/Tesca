@@ -128,10 +128,10 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding-top: 80px; /* Reduced from 100px */
+            padding-top: 120px;
             padding-bottom: 100px;
             min-height: 80vh;
-            margin-top: 20px; /* Added to center between header and bottom */
+            margin-top: 40px;
         }
 
         /* Banner overlay */
@@ -180,7 +180,7 @@
             transition: all 0.3s ease;
             background: transparent !important;
             backdrop-filter: none !important;
-            height: 80px; /* Fixed header height */
+            height: 80px;
         }
         
         #main-header .glass {
@@ -858,7 +858,7 @@
             line-height: 1.5;
         }
 
-        /* NEW APP SECTION STYLES */
+        /* NEW APP SECTION STYLES - FIXED FOR MOBILE */
         .full-phone-mockup { 
             width: 310px; 
             height: 620px; 
@@ -889,10 +889,12 @@
             display: flex; 
             flex-direction: column; 
             align-items: center; 
-            justify-content: center; 
+            justify-content: flex-start; 
             background: #08080a; 
             padding: 25px; 
             text-align: center;
+            overflow: hidden;
+            position: relative;
         }
 
         /* Premium Logo Styling */
@@ -901,6 +903,7 @@
             width: 85px; 
             height: 85px; 
             margin-bottom: 15px;
+            margin-top: 40px;
             display: flex; 
             align-items: center; 
             justify-content: center;
@@ -937,6 +940,7 @@
             display: flex; 
             align-items: center; 
             gap: 15px;
+            margin-bottom: 12px;
         }
 
         .mock-title { 
@@ -944,11 +948,13 @@
             font-weight: 800; 
             color: #fff; 
             margin-bottom: 1px; 
+            text-align: left;
         }
         .mock-desc { 
             font-size: 12px; 
             color: #94a3b8; 
             font-weight: 500; 
+            text-align: left;
         }
 
         /* Fix for Play Store and social media links */
@@ -1159,6 +1165,174 @@
             white-space: nowrap;
         }
 
+        /* NEW: Footer 2x2 Grid */
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        /* NEW: COMPLETELY REDESIGNED QR PAYMENT SYSTEM */
+        .qr-payment-container {
+            width: 100%;
+            margin: 1rem 0;
+        }
+        
+        .qr-code-section {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .qr-code-wrapper {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 15px;
+            border: 1px solid #ddd;
+        }
+        
+        .qr-code-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .qr-payment-details {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .qr-detail-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .qr-detail-item:last-child {
+            border-bottom: none;
+        }
+        
+        .qr-detail-label {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .qr-detail-value {
+            font-weight: bold;
+            font-size: 13px;
+            color: white;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .payment-app-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .payment-app-item {
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-app-icon-new {
+            width: 55px;
+            height: 55px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 6px;
+            font-size: 24px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .payment-app-item:hover .payment-app-icon-new {
+            transform: scale(1.1);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .payment-app-label {
+            font-size: 10px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            margin-top: 4px;
+        }
+        
+        /* Copy UPI ID button */
+        .copy-upi-btn {
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin: 10px auto;
+        }
+        
+        .copy-upi-btn:hover {
+            background: linear-gradient(90deg, #5558e8, #7a4cf5);
+            transform: scale(1.05);
+        }
+        
+        .copy-upi-btn.copied {
+            background: linear-gradient(90deg, #10b981, #059669);
+        }
+        
+        /* Manual payment instructions */
+        .manual-instructions {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        
+        .instruction-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .step-number {
+            background: #6366f1;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
         /* Mobile improvements */
         @media (max-width: 768px) {
             /* MOBILE BODY STYLES */
@@ -1227,57 +1401,74 @@
                 color: #6366f1;
             }
             
-            /* MOBILE BANNER - CENTERED CONTENT */
-            .hero-section {
-                height: 100vh !important;
-                min-height: 100vh;
+            /* MOBILE BANNER - 70% HEIGHT WITH CENTERED CONTENT */
+            .mobile-view .hero-section {
+                height: 70vh !important; /* 70% height for mobile */
+                min-height: 70vh;
             }
             
-            .banner-content {
-                padding-top: 60px !important; /* Reduced for mobile */
-                padding-bottom: 40px !important;
+            .mobile-view .banner-container {
+                min-height: 70vh;
+            }
+            
+            .mobile-view .banner-slide {
+                min-height: 70vh;
+            }
+            
+            .mobile-view .banner-content {
+                padding-top: 40px !important;
+                padding-bottom: 20px !important;
                 justify-content: center !important;
                 margin-top: 0 !important;
+                min-height: 70vh;
+                width: 95%;
             }
             
-            .banner-title {
+            .mobile-view .banner-title {
                 font-size: 2.2rem !important;
                 line-height: 1.2;
                 margin-bottom: 1rem !important;
                 margin-top: 0 !important;
+                padding: 0 10px;
             }
             
-            .banner-subtitle {
+            .mobile-view .banner-subtitle {
                 font-size: 1rem !important;
-                line-height: 1.5;
+                line-height: 1.4;
                 margin-bottom: 1.5rem !important;
                 padding: 0 1rem;
             }
             
-            .banner-offer-details {
-                padding: 1.5rem !important;
-                margin: 1rem 0 !important;
-                border-radius: 16px;
+            .mobile-view .banner-offer-details {
+                padding: 1rem !important;
+                margin: 0.5rem 0 !important;
+                border-radius: 12px;
             }
             
-            .banner-offer-details .text-4xl {
-                font-size: 2rem !important;
+            .mobile-view .banner-offer-details .text-4xl {
+                font-size: 1.8rem !important;
             }
             
-            .banner-offer-details .text-2xl {
-                font-size: 1.2rem !important;
+            .mobile-view .banner-offer-details .text-2xl {
+                font-size: 1.1rem !important;
             }
             
-            .banner-cta {
+            .mobile-view .banner-cta {
                 font-size: 1rem !important;
-                padding: 1rem 2.5rem !important;
-                margin-top: 1rem;
-                margin-bottom: 1rem !important;
+                padding: 0.9rem 2rem !important;
+                margin-top: 0.5rem;
+                margin-bottom: 0.5rem !important;
             }
             
             /* Hide banner arrows on mobile */
             .banner-nav-arrow {
                 display: none !important;
+            }
+            
+            /* MOBILE FOOTER - 2x2 GRID */
+            .mobile-view .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
             }
             
             /* MOBILE COURSES SECTION */
@@ -1326,7 +1517,6 @@
                 width: 100%;
                 padding: 0.9rem !important;
                 border-radius: 50px !important;
-                border-radius: 9999px !important;
             }
             
             /* MOBILE FACULTY SECTION */
@@ -1361,7 +1551,7 @@
                 line-height: 1.6;
             }
             
-            /* MOBILE APP SECTION */
+            /* MOBILE APP SECTION - FIXED MOCKUP (SAME AS DESKTOP) */
             .mobile-view #app {
                 padding: 3rem 1rem !important;
             }
@@ -1379,51 +1569,53 @@
             }
             
             .mobile-view .full-phone-mockup {
-                width: 280px;
-                height: 560px;
-                border-radius: 40px;
-                border-width: 10px;
+                width: 310px; /* Same as desktop */
+                height: 620px; /* Same as desktop */
+                border-radius: 54px; /* Same as desktop */
+                border-width: 12px; /* Same as desktop */
                 margin: 0 auto;
             }
             
             .mobile-view .phone-notch {
-                width: 120px;
-                height: 24px;
+                width: 140px; /* Same as desktop */
+                height: 28px; /* Same as desktop */
             }
             
             .mobile-view .inner-screen {
-                padding: 20px;
+                padding: 25px; /* Same as desktop */
+                overflow-y: auto;
             }
             
             .mobile-view .premium-logo-wrapper {
-                width: 70px;
-                height: 70px;
-                margin-bottom: 10px;
+                width: 85px; /* Same as desktop */
+                height: 85px; /* Same as desktop */
+                margin-bottom: 15px; /* Same as desktop */
+                margin-top: 40px; /* Same as desktop */
             }
             
             .mobile-view .logo-main-box {
-                width: 60px;
-                height: 60px;
-                border-radius: 16px;
+                width: 70px; /* Same as desktop */
+                height: 70px; /* Same as desktop */
+                border-radius: 20px; /* Same as desktop */
             }
             
             .mobile-view .logo-main-box i {
-                font-size: 1.5rem;
+                font-size: 2rem; /* Same as desktop */
             }
             
             .mobile-view .mock-item {
-                padding: 12px;
-                gap: 12px;
-                border-radius: 14px;
-                margin-bottom: 8px;
+                padding: 16px; /* Same as desktop */
+                gap: 15px; /* Same as desktop */
+                border-radius: 18px; /* Same as desktop */
+                margin-bottom: 10px;
             }
             
             .mobile-view .mock-title {
-                font-size: 12px;
+                font-size: 14px; /* Same as desktop */
             }
             
             .mobile-view .mock-desc {
-                font-size: 10px;
+                font-size: 12px; /* Same as desktop */
             }
             
             /* MOBILE FOOTER */
@@ -1431,15 +1623,10 @@
                 padding: 3rem 1rem !important;
             }
             
-            .mobile-view .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 2.5rem;
-            }
-            
-            /* Payment modal mobile */
-            .mobile-view #payment-modal .max-w-\[350px\] {
-                max-width: 90% !important;
-                margin: 1rem;
+            /* Mobile payment modal */
+            .mobile-view #payment-modal .max-w-\[450px\] {
+                max-width: 95% !important;
+                margin: 0.5rem;
             }
             
             /* Stats section for mobile */
@@ -1469,17 +1656,51 @@
                 padding: 4px 0;
                 font-size: 10px;
             }
+            
+            /* Mobile payment app grid */
+            .mobile-view .payment-app-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            
+            .mobile-view .payment-app-icon-new {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
+            .mobile-view .qr-code-wrapper {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .mobile-view .qr-code-section {
+                padding: 15px;
+            }
+            
+            /* Mobile manual instructions */
+            .mobile-view .instruction-step {
+                font-size: 11px;
+            }
+            
+            .mobile-view .qr-detail-label {
+                font-size: 11px;
+            }
+            
+            .mobile-view .qr-detail-value {
+                font-size: 12px;
+            }
         }
         
         @media (max-width: 480px) {
             /* Extra small devices */
             .mobile-view .hero-section {
-                min-height: 100vh;
+                min-height: 70vh;
             }
             
             .mobile-view .banner-content {
-                padding-top: 50px !important;
-                padding-bottom: 30px !important;
+                padding-top: 30px !important;
+                padding-bottom: 20px !important;
             }
             
             .mobile-view .banner-title {
@@ -1491,14 +1712,19 @@
             }
             
             .mobile-view .full-phone-mockup {
-                width: 260px;
-                height: 520px;
+                width: 280px;
+                height: 560px;
             }
             
             .mobile-view #courses h2,
             .mobile-view #faculty h2,
             .mobile-view #app h2 {
                 font-size: 2rem !important;
+            }
+            
+            .mobile-view .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
         }
         
@@ -1518,8 +1744,8 @@
             }
             
             .mobile-view .full-phone-mockup {
-                width: 240px;
-                height: 480px;
+                width: 260px;
+                height: 520px;
             }
         }
 
@@ -1542,10 +1768,16 @@
             
             /* Banner content centered between header and bottom */
             .banner-content {
-                padding-top: 60px; /* Adjusted for desktop */
+                padding-top: 120px;
                 padding-bottom: 60px;
                 justify-content: center;
-                margin-top: 40px; /* Extra margin to center between header and bottom */
+                margin-top: 60px;
+            }
+            
+            /* DESKTOP FOOTER - 2x2 GRID */
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 3rem;
             }
         }
 
@@ -1563,6 +1795,13 @@
             
             .banner-nav-arrow.next {
                 right: 20px;
+            }
+        }
+        
+        /* Tablet view */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
@@ -1870,7 +2109,7 @@
                         
                         <div class="glass-card p-6 rounded-2xl">
                             <div class="flex items-start gap-4">
-                                <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-brand-accent to-cyan-500 flex items-center justify-center flex-shrink-0">
+                                <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-brand-accent to-cyan-500 flex items-center justify-content: center flex-shrink: 0">
                                     <i class="fas fa-headset text-white text-xl"></i>
                                 </div>
                                 <div>
@@ -1894,10 +2133,11 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer - UPDATED with 2x2 Grid -->
     <footer id="contact" class="bg-brand-surface border-t border-white/5 py-16">
         <div class="container mx-auto px-4">
             <div class="footer-grid mb-16">
+                <!-- Column 1: Logo and Description -->
                 <div class="space-y-6">
                     <a href="#home" class="flex items-center">
                         <div class="w-24 h-24 flex items-center justify-center">
@@ -1916,8 +2156,9 @@
                     </a>
                 </div>
 
+                <!-- Column 2: Quick Links -->
                 <div>
-                    <h4 class="font-bold text-white mb-6">Explore</h4>
+                    <h4 class="font-bold text-white mb-6">Quick Links</h4>
                     <ul class="space-y-3 text-sm text-gray-400">
                         <li><a href="#home" class="direct-link hover:text-brand-accent transition-colors duration-300">Home</a></li>
                         <li><a href="#courses" class="direct-link hover:text-brand-accent transition-colors duration-300">All Courses</a></li>
@@ -1927,6 +2168,7 @@
                     </ul>
                 </div>
 
+                <!-- Column 3: Popular Courses -->
                 <div>
                     <h4 class="font-bold text-white mb-6">Popular Courses</h4>
                     <ul class="space-y-3 text-sm text-gray-400">
@@ -1937,6 +2179,7 @@
                     </ul>
                 </div>
 
+                <!-- Column 4: Contact & Social -->
                 <div>
                     <h4 class="font-bold text-white mb-6">Get in Touch</h4>
                     <ul class="space-y-3 text-sm text-gray-400 mb-6">
@@ -2061,14 +2304,14 @@
         </div>
     </div>
 
-    <!-- MODERN PAYMENT MODAL -->
+    <!-- COMPLETELY NEW QR PAYMENT MODAL -->
     <div id="payment-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-4">
         <div class="absolute inset-0 bg-black/95 backdrop-blur-xl" onclick="closePayment()"></div>
         
-        <div class="relative bg-[#121212] w-full max-w-[400px] rounded-3xl border border-white/10 shadow-2xl flex flex-col items-center overflow-hidden animate-slide-up">
+        <div class="relative bg-[#121212] w-full max-w-[450px] rounded-3xl border border-white/10 shadow-2xl flex flex-col items-center overflow-hidden animate-slide-up">
             
-            <div class="w-full bg-gradient-to-r from-brand-primary to-brand-secondary p-4 text-center">
-                <h3 class="font-bold text-white text-lg tracking-wide">Secure Payment Gateway</h3>
+            <div class="w-full bg-gradient-to-r from-brand-primary to-brand-secondary p-5 text-center">
+                <h3 class="font-bold text-white text-xl tracking-wide">Secure Payment Gateway</h3>
             </div>
 
             <div class="p-6 w-full flex flex-col items-center">
@@ -2083,100 +2326,131 @@
                 </div>
                 
                 <!-- Payment Amount -->
-                <div class="text-center w-full mb-4">
+                <div class="text-center w-full mb-6">
                     <div class="text-sm text-gray-500 mb-1">Total Amount Payable</div>
                     <div class="text-3xl font-bold text-white" id="pay-final-amount">₹0</div>
                     <div class="text-xs text-gray-400 mt-1">to: <span class="text-white font-bold">TESCA Education</span></div>
                 </div>
 
-                <!-- COURSE DETAILS SECTION - NEW -->
-                <div class="payment-course-details w-full mb-4" id="payment-course-details-container">
+                <!-- COURSE DETAILS SECTION -->
+                <div class="payment-course-details w-full mb-6" id="payment-course-details-container">
                     <!-- Course details will be inserted here -->
                 </div>
 
-                <!-- UPI ID -->
-                <div class="glass-card p-4 rounded-xl w-full mb-6">
-                    <div class="text-center">
-                        <div class="text-xs text-gray-400 mb-2">UPI ID for Payment</div>
-                        <div class="text-lg font-mono text-brand-accent font-bold select-all bg-black/30 py-2 px-4 rounded-lg">
-                            8866722633@upi
+                <!-- NEW QR PAYMENT SYSTEM -->
+                <div class="qr-payment-container">
+                    <!-- QR Code Section -->
+                    <div class="qr-code-section">
+                        <div class="text-sm text-gray-600 mb-3 font-bold">Scan QR Code to Pay</div>
+                        <div class="qr-code-wrapper">
+                            <img id="qr-code-img" src="" alt="Scan QR Code" class="qr-code-img">
                         </div>
-                        <div class="text-xs text-gray-500 mt-2">Copy this UPI ID to pay via any UPI app</div>
                     </div>
-                </div>
-
-                <!-- Modern UPI Apps Section -->
-                <div class="w-full mb-6">
-                    <p class="text-center text-sm text-gray-400 mb-4">Pay instantly via:</p>
-                    <div class="grid grid-cols-2 gap-3">
+                    
+                    <!-- Payment Details -->
+                    <div class="qr-payment-details">
+                        <div class="qr-detail-item">
+                            <span class="qr-detail-label">Amount:</span>
+                            <span class="qr-detail-value" id="qr-payment-amount">₹0</span>
+                        </div>
+                        <div class="qr-detail-item">
+                            <span class="qr-detail-label">UPI ID:</span>
+                            <span class="qr-detail-value">8866722633@upi</span>
+                        </div>
+                        <div class="qr-detail-item">
+                            <span class="qr-detail-label">Merchant:</span>
+                            <span class="qr-detail-value">TESCA Education</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Copy UPI ID Button -->
+                    <button onclick="copyUPIID()" id="copy-upi-btn" class="copy-upi-btn">
+                        <i class="far fa-copy"></i>
+                        Copy UPI ID
+                    </button>
+                    
+                    <!-- Payment Apps Grid -->
+                    <div class="payment-app-grid">
                         <!-- Google Pay -->
-                        <a id="google-pay-link" href="#" class="upi-payment-link" target="_blank">
-                            <div class="payment-app-icon bg-gradient-to-br from-white to-gray-100">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Google_Pay_Logo.svg/512px-Google_Pay_Logo.svg.png" class="h-6" alt="Google Pay">
+                        <a id="google-pay-direct" href="#" target="_blank" class="payment-app-item">
+                            <div class="payment-app-icon-new bg-gradient-to-br from-white to-gray-200">
+                                <i class="fab fa-google text-xl text-gray-700"></i>
                             </div>
-                            <p class="text-center text-xs mt-2 text-gray-300">Google Pay</p>
+                            <div class="payment-app-label">Google Pay</div>
                         </a>
                         
                         <!-- PhonePe -->
-                        <a id="phonepe-link" href="#" class="upi-payment-link" target="_blank">
-                            <div class="payment-app-icon bg-gradient-to-br from-purple-600 to-purple-800">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/PhonePe_Logo.svg/512px-PhonePe_Logo.svg.png" class="h-5" alt="PhonePe">
+                        <a id="phonepe-direct" href="#" target="_blank" class="payment-app-item">
+                            <div class="payment-app-icon-new bg-gradient-to-br from-purple-600 to-purple-800">
+                                <i class="fas fa-mobile-alt text-white text-xl"></i>
                             </div>
-                            <p class="text-center text-xs mt-2 text-gray-300">PhonePe</p>
+                            <div class="payment-app-label">PhonePe</div>
                         </a>
                         
                         <!-- Paytm -->
-                        <a id="paytm-link" href="#" class="upi-payment-link" target="_blank">
-                            <div class="payment-app-icon bg-gradient-to-br from-blue-600 to-blue-800">
-                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Paytm_Logo_%28standalone%29.svg/512px-Paytm_Logo_%28standalone%29.svg.png" class="h-4" alt="Paytm">
+                        <a id="paytm-direct" href="#" target="_blank" class="payment-app-item">
+                            <div class="payment-app-icon-new bg-gradient-to-br from-blue-600 to-blue-800">
+                                <i class="fas fa-wallet text-white text-xl"></i>
                             </div>
-                            <p class="text-center text-xs mt-2 text-gray-300">Paytm</p>
+                            <div class="payment-app-label">Paytm</div>
                         </a>
                         
-                        <!-- Any UPI App -->
-                        <a id="any-upi-link" href="#" class="upi-payment-link" target="_blank">
-                            <div class="payment-app-icon bg-gradient-to-br from-green-600 to-emerald-700">
-                                <i class="fas fa-mobile-alt text-white text-xl"></i>
+                        <!-- BHIM/Any UPI -->
+                        <a id="bhim-direct" href="#" target="_blank" class="payment-app-item">
+                            <div class="payment-app-icon-new bg-gradient-to-br from-green-600 to-emerald-700">
+                                <i class="fas fa-rupee-sign text-white text-xl"></i>
                             </div>
-                            <p class="text-center text-xs mt-2 text-gray-300">Any UPI App</p>
+                            <div class="payment-app-label">Any UPI App</div>
                         </a>
                     </div>
-                </div>
-
-                <!-- QR Code Section -->
-                <div class="w-full mb-6">
-                    <div class="text-center text-sm text-gray-400 mb-3">Or scan QR code:</div>
-                    <div class="relative bg-white p-3 rounded-2xl shadow-inner mx-auto" style="width: 200px; height: 200px;">
-                        <img id="qr-image" src="" alt="Scan QR" class="w-full h-full object-contain">
-                        
-                        <div id="qr-expired" class="absolute inset-0 bg-white/95 flex flex-col items-center justify-center rounded-2xl hidden">
-                            <span class="text-black font-bold text-sm mb-2">QR Expired</span>
-                            <button onclick="resetTimer()" class="bg-blue-600 text-white text-xs px-4 py-2 rounded-full font-bold shadow-lg hover:bg-blue-700 transition duration-300">Refresh Code</button>
+                    
+                    <!-- Manual Payment Instructions -->
+                    <div class="manual-instructions">
+                        <div class="text-sm font-bold text-white mb-3 flex items-center gap-2">
+                            <i class="fas fa-info-circle text-brand-accent"></i>
+                            Manual Payment Instructions:
                         </div>
-                    </div>
-                    <div class="text-center mt-3">
-                        <div class="text-xs font-mono text-gray-400 bg-white/5 px-3 py-1 rounded-full inline-block">
-                            Expires in: <span id="timer" class="text-brand-danger font-bold">05:00</span>
+                        <div class="instruction-step">
+                            <div class="step-number">1</div>
+                            <span>Open any UPI app on your phone</span>
+                        </div>
+                        <div class="instruction-step">
+                            <div class="step-number">2</div>
+                            <span>Enter UPI ID: <strong class="text-white">8866722633@upi</strong></span>
+                        </div>
+                        <div class="instruction-step">
+                            <div class="step-number">3</div>
+                            <span>Enter Amount: <strong class="text-white" id="manual-amount-display">₹0</strong></span>
+                        </div>
+                        <div class="instruction-step">
+                            <div class="step-number">4</div>
+                            <span>Add note: <strong class="text-white">"TESCA Course Payment"</strong></span>
+                        </div>
+                        <div class="instruction-step">
+                            <div class="step-number">5</div>
+                            <span>Complete payment & take screenshot</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Important Instructions -->
-                <div class="w-full bg-brand-danger/10 border border-brand-danger/20 p-4 rounded-xl">
+                <div class="w-full bg-brand-danger/10 border border-brand-danger/20 p-4 rounded-xl mt-6">
                     <div class="flex items-start gap-2">
                         <i class="fas fa-exclamation-circle text-brand-danger text-sm mt-0.5"></i>
                         <p class="text-[12px] text-gray-300 leading-snug font-medium">
                             <span class="text-brand-danger font-bold">IMPORTANT:</span> 
                             After payment, take a <strong>screenshot</strong> and WhatsApp it to 
-                            <span class="text-white font-mono underline">8866722633</span>. 
-                            Course activates in 24h.
+                            <span class="text-white font-mono underline">+91 88667 22633</span>. 
+                            Course activates within 24 hours.
                         </p>
                     </div>
                 </div>
 
             </div>
 
-            <button onclick="closePayment()" class="absolute top-3 right-3 text-white/60 hover:text-white transition-colors duration-300"><i class="fas fa-times-circle text-lg"></i></button>
+            <button onclick="closePayment()" class="absolute top-3 right-3 text-white/60 hover:text-white transition-colors duration-300">
+                <i class="fas fa-times-circle text-xl"></i>
+            </button>
         </div>
     </div>
 
@@ -2462,7 +2736,6 @@
         let cart = [];
         let activePromo = null;
         let currentBannerIndex = 0;
-        let timerInterval;
         let bannerInterval;
         let currentPaymentAmount = 0;
         let usedPromoCodes = [];
@@ -2513,9 +2786,10 @@
             window.addEventListener('scroll', handleScroll);
         }
 
-        // --- 6. BANNER SYSTEM - UPDATED FOR CENTERING ---
+        // --- 6. BANNER SYSTEM - UPDATED FOR MOBILE (70% HEIGHT) ---
         function renderBanners() {
             const bannerContainer = document.querySelector('.banner-container');
+            const isMobile = window.innerWidth <= 768;
             
             // Clear existing content (except arrows and overlay)
             const existingSlides = bannerContainer.querySelectorAll('.banner-slide:not(.banner-nav-arrow):not(.banner-overlay)');
@@ -2527,13 +2801,12 @@
                 slide.className = `banner-slide ${index === 0 ? 'active' : ''}`;
                 slide.id = `banner-${index}`;
                 
-                // Check if mobile view for responsive styling
-                const isMobile = window.innerWidth <= 768;
-                const titleSize = isMobile ? 'text-3xl md:text-4xl' : 'text-5xl md:text-6xl';
-                const subtitleSize = isMobile ? 'text-base md:text-lg' : 'text-xl md:text-2xl';
-                const priceSize = isMobile ? 'text-3xl' : 'text-4xl md:text-5xl';
-                const originalSize = isMobile ? 'text-lg' : 'text-2xl';
-                const ctaSize = isMobile ? 'text-sm py-3 px-6' : 'text-lg py-4 px-8';
+                // Mobile vs Desktop styling
+                const titleSize = isMobile ? 'text-2xl md:text-3xl' : 'text-5xl md:text-6xl';
+                const subtitleSize = isMobile ? 'text-sm md:text-base' : 'text-xl md:text-2xl';
+                const priceSize = isMobile ? 'text-2xl' : 'text-4xl md:text-5xl';
+                const originalSize = isMobile ? 'text-base' : 'text-2xl';
+                const ctaSize = isMobile ? 'text-sm py-2 px-4' : 'text-lg py-4 px-8';
                 
                 slide.innerHTML = `
                     <div class="banner-content">
@@ -3050,7 +3323,7 @@
             showNotification('Promo code removed', 'info');
         }
 
-        // --- 10. MODERN PAYMENT SYSTEM - UPDATED WITH COURSE DETAILS ---
+        // --- 10. COMPLETELY NEW QR PAYMENT SYSTEM ---
         function startPayment() {
             if (cart.length === 0) return;
 
@@ -3078,10 +3351,23 @@
             
             toggleCart();
             
+            // Update all payment amount displays
             document.getElementById('pay-final-amount').innerText = `₹${amount.toLocaleString()}`;
+            document.getElementById('qr-payment-amount').textContent = `₹${amount.toLocaleString()}`;
+            document.getElementById('manual-amount-display').textContent = `₹${amount.toLocaleString()}`;
             document.getElementById('payment-modal').classList.remove('hidden');
 
-            // Generate UPI links for different apps
+            // Generate QR Code
+            generateQRCode(amount);
+            
+            // Set up payment app links with proper redirection
+            setupPaymentAppLinks(amount);
+            
+            // Show payment instructions
+            showNotification('Payment gateway opened. Scan QR or use any UPI app.', 'success');
+        }
+
+        function generateQRCode(amount) {
             const upiId = '8866722633@upi';
             const payeeName = 'TESCA Education';
             const courseTitles = cart.map(c => c.title).join(', ');
@@ -3091,39 +3377,69 @@
             const encodedNote = encodeURIComponent(note);
             const encodedPayeeName = encodeURIComponent(payeeName);
             
-            // Generate UPI payment URL with amount and note
-            const upiPaymentUrl = `upi://pay?pa=${upiId}&pn=${encodedPayeeName}&am=${amount}&cu=INR&tn=${encodedNote}`;
-            
-            // Set QR code with course details
+            // Generate QR code with UPI payment URL
             const qrData = `upi://pay?pa=${upiId}&pn=${encodedPayeeName}&am=${amount}&cu=INR&tn=${encodedNote}`;
-            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=10&data=${encodeURIComponent(qrData)}`;
-            document.getElementById('qr-image').src = qrUrl;
+            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=400x400&margin=10&data=${encodeURIComponent(qrData)}`;
+            
+            // Set QR code image
+            const qrImg = document.getElementById('qr-code-img');
+            qrImg.src = qrUrl;
+            qrImg.alt = `Scan to pay ₹${amount}`;
+        }
 
-            // Set payment links for all UPI apps with amount
-            const links = {
-                'google-pay-link': `https://gpay.app.goo.gl/${upiId}?am=${amount}&tn=${encodedNote}`,
-                'phonepe-link': `phonepe://pay?pa=${upiId}&pn=${encodedPayeeName}&am=${amount}&cu=INR&tn=${encodedNote}`,
-                'paytm-link': `paytmmp://pay?pa=${upiId}&pn=${encodedPayeeName}&am=${amount}&cu=INR&tn=${encodedNote}`,
-                'any-upi-link': upiPaymentUrl
+        function setupPaymentAppLinks(amount) {
+            const upiId = '8866722633@upi';
+            const payeeName = 'TESCA Education';
+            const courseTitles = cart.map(c => c.title).join(', ');
+            const note = `TESCA Courses: ${courseTitles.substring(0, 50)}${courseTitles.length > 50 ? '...' : ''}`;
+            
+            // URL encode all parameters
+            const encodedNote = encodeURIComponent(note);
+            const encodedPayeeName = encodeURIComponent(payeeName);
+            
+            // Different UPI app URL schemes
+            const paymentLinks = {
+                'google-pay-direct': `https://gpay.app.goo.gl/${upiId}?amount=${amount}&txnNote=${encodedNote}`,
+                'phonepe-direct': `phonepe://pay?pa=${upiId}&pn=${encodedPayeeName}&am=${amount}&cu=INR&tn=${encodedNote}`,
+                'paytm-direct': `paytmmp://pay?pa=${upiId}&pn=${encodedPayeeName}&am=${amount}&cu=INR&tn=${encodedNote}`,
+                'bhim-direct': `bhim://upi/pay?pa=${upiId}&pn=${encodedPayeeName}&am=${amount}&cu=INR&tn=${encodedNote}`
             };
 
             // Assign links to buttons
-            Object.keys(links).forEach(id => {
+            Object.keys(paymentLinks).forEach(id => {
                 const linkElement = document.getElementById(id);
                 if (linkElement) {
-                    linkElement.href = links[id];
+                    linkElement.href = paymentLinks[id];
                     linkElement.onclick = function(e) {
-                        // Try to open the app, if fails, show alert
+                        // Try to open the app, if fails, show alert with instructions
                         setTimeout(() => {
                             if (!document.hidden) {
-                                alert(`If the UPI app didn't open automatically, please open your UPI app and send ₹${amount} to ${upiId}`);
+                                showNotification(`If the app didn't open, please manually enter UPI ID: ${upiId}`, 'info');
                             }
                         }, 1000);
                     };
                 }
             });
+        }
 
-            resetTimer();
+        function copyUPIID() {
+            const upiId = '8866722633@upi';
+            navigator.clipboard.writeText(upiId).then(() => {
+                const copyBtn = document.getElementById('copy-upi-btn');
+                const originalText = copyBtn.innerHTML;
+                
+                copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                copyBtn.classList.add('copied');
+                
+                showNotification('UPI ID copied to clipboard!', 'success');
+                
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalText;
+                    copyBtn.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                showNotification('Failed to copy UPI ID', 'danger');
+            });
         }
 
         function renderPaymentCourseDetails() {
@@ -3149,30 +3465,8 @@
             container.innerHTML = html;
         }
 
-        function resetTimer() {
-            clearInterval(timerInterval);
-            document.getElementById('qr-expired').classList.add('hidden');
-            
-            let timeLeft = 300; // 5 minutes
-            const timerDisplay = document.getElementById('timer');
-            
-            timerInterval = setInterval(() => {
-                timeLeft--;
-                let min = Math.floor(timeLeft / 60);
-                let sec = timeLeft % 60;
-                timerDisplay.innerText = `${min < 10 ? '0' : ''}${min}:${sec < 10 ? '0' : ''}${sec}`;
-
-                if (timeLeft <= 0) {
-                    clearInterval(timerInterval);
-                    timerDisplay.innerText = "00:00";
-                    document.getElementById('qr-expired').classList.remove('hidden');
-                }
-            }, 1000);
-        }
-
         function closePayment() {
             document.getElementById('payment-modal').classList.add('hidden');
-            clearInterval(timerInterval);
             
             if (activePromo) {
                 updatePromoCards();
@@ -3305,6 +3599,18 @@
                 
                 // Re-render banners for responsive adjustments
                 renderBanners();
+                // Re-render courses for responsive curriculum
+                const activeFilter = document.querySelector('.filter-btn.active');
+                if (activeFilter) {
+                    const filterText = activeFilter.textContent.toLowerCase();
+                    let filterType = 'all';
+                    if (filterText.includes('spoken')) filterType = 'spoken';
+                    if (filterText.includes('ielts')) filterType = 'ielts';
+                    if (filterText.includes('pte')) filterType = 'pte';
+                    if (filterText.includes('toefl')) filterType = 'toefl';
+                    if (filterText.includes('visa')) filterType = 'visa';
+                    filterCourses(filterType);
+                }
             });
         }
     </script>
