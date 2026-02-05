@@ -79,7 +79,7 @@
             padding-bottom: 4rem !important;
         }
 
-        /* Hero section - MOBILE ADJUSTED HEIGHT */
+        /* Hero section */
         .hero-section {
             height: 100vh;
             width: 100%;
@@ -313,26 +313,6 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
-        /* UPI App payment buttons */
-        .upi-app-btn {
-            transition: all 0.3s ease;
-        }
-        .upi-app-btn:hover {
-            transform: scale(1.1);
-            filter: brightness(1.2);
-        }
-
-        /* Timer styles */
-        .countdown-timer {
-            font-family: 'Courier New', monospace;
-            font-weight: bold;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 5px 10px;
-            border-radius: 10px;
-            display: inline-block;
-            margin: 0 5px;
-        }
-
         /* Call button in header */
         .call-btn {
             display: flex;
@@ -360,287 +340,6 @@
         .call-btn i {
             font-size: 18px;
             color: #10b981 !important;
-        }
-
-        /* Promo code system */
-        .promo-section-compact {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            padding-bottom: 8px;
-        }
-
-        .promo-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .promo-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #6366f1, #8b5cf6);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-        
-        .promo-card:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .promo-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            border-color: rgba(99, 102, 241, 0.3);
-        }
-        
-        .promo-card.active {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.1) 100%);
-            border-color: #6366f1;
-            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.2);
-        }
-        
-        .promo-card.active::before {
-            transform: scaleX(1);
-        }
-        
-        .promo-code {
-            font-family: 'Courier New', monospace;
-            font-weight: bold;
-            font-size: 16px;
-            color: #6366f1;
-            margin-bottom: 4px;
-        }
-        
-        .promo-desc {
-            font-size: 12px;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 6px;
-        }
-        
-        .promo-validity {
-            font-size: 10px;
-            color: #10b981;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-        
-        .promo-discount {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: linear-gradient(90deg, #10b981, #059669);
-            color: white;
-            font-size: 11px;
-            font-weight: bold;
-            padding: 2px 8px;
-            border-radius: 20px;
-        }
-        
-        .used-promo {
-            opacity: 0.6;
-            cursor: not-allowed;
-            background: rgba(107, 114, 128, 0.1);
-            border-color: rgba(107, 114, 128, 0.3);
-        }
-        
-        .used-promo .promo-code {
-            color: rgba(107, 114, 128, 0.8);
-        }
-        
-        .used-promo:hover {
-            transform: none !important;
-            box-shadow: none !important;
-            border-color: rgba(107, 114, 128, 0.3) !important;
-        }
-        
-        .used-badge {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: #ef4444;
-            color: white;
-            font-size: 9px;
-            padding: 2px 6px;
-            border-radius: 10px;
-            font-weight: bold;
-            z-index: 2;
-        }
-
-        /* NEW CART MODAL */
-        .full-cart-modal {
-            position: fixed;
-            inset: 0;
-            z-index: 150;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem;
-        }
-        
-        .full-cart-content {
-            background: #0F1016;
-            width: 100%;
-            max-width: 800px;
-            height: 90vh;
-            max-height: 700px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-        }
-        
-        .full-cart-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(5, 5, 7, 0.9);
-            flex-shrink: 0;
-        }
-        
-        .full-cart-body {
-            flex: 1;
-            overflow-y: auto;
-            padding: 1.5rem;
-        }
-
-        /* Course item in cart */
-        .cart-course-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            margin-bottom: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .cart-course-details {
-            flex: 1;
-        }
-        
-        .cart-course-type {
-            font-size: 0.75rem;
-            color: #06b6d4;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .cart-course-price {
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: white;
-            margin-top: 4px;
-        }
-        
-        .cart-remove-btn {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.2);
-            color: #ef4444;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-        }
-        
-        .cart-remove-btn:hover {
-            background: rgba(239, 68, 68, 0.2);
-            transform: scale(1.1);
-        }
-
-        /* Applied promo info in cart */
-        .applied-promo-section {
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.1) 100%);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            border-radius: 12px;
-            padding: 1rem;
-            margin: 1rem 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .applied-promo-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #10b981, #059669);
-        }
-        
-        .applied-promo-details {
-            flex: 1;
-        }
-        
-        .applied-promo-code {
-            font-weight: bold;
-            color: #10b981;
-            font-family: 'Courier New', monospace;
-            font-size: 1.1rem;
-            margin-bottom: 4px;
-        }
-        
-        .applied-promo-desc {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-top: 4px;
-        }
-        
-        .applied-promo-savings {
-            font-size: 0.8rem;
-            color: #10b981;
-            font-weight: bold;
-        }
-        
-        .remove-promo-btn {
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.2);
-            color: #ef4444;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-        }
-        
-        .remove-promo-btn:hover {
-            background: rgba(239, 68, 68, 0.2);
-            transform: scale(1.05);
-        }
-
-        /* Line clamp for cart titles */
-        .line-clamp-2 {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
         }
 
         /* Smooth scroll behavior */
@@ -776,13 +475,10 @@
         /* Course buttons container */
         .course-buttons {
             margin-top: auto;
-            display: flex;
-            gap: 12px;
-            align-items: stretch;
         }
         
-        .course-buttons button {
-            flex: 1;
+        .enroll-btn {
+            width: 100%;
             min-height: 44px;
             display: flex;
             align-items: center;
@@ -790,7 +486,17 @@
             white-space: nowrap;
             border-radius: 9999px !important;
             font-weight: 600;
-            border-radius: 50px !important;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .enroll-btn:hover {
+            background: linear-gradient(90deg, #5558e8, #7a4cf5);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
         }
 
         /* Loader */
@@ -801,59 +507,6 @@
         
         .loader-pulse {
             animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        
-        /* Payment page applied code display */
-        .applied-code-display {
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            border-radius: 10px;
-            padding: 8px 12px;
-            margin-bottom: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .applied-code-display .code-text {
-            font-weight: bold;
-            color: #10b981;
-            font-family: 'Courier New', monospace;
-        }
-        
-        .applied-code-display .used-badge {
-            background: #ef4444;
-            color: white;
-            font-size: 10px;
-            padding: 2px 6px;
-            border-radius: 10px;
-            font-weight: bold;
-        }
-        
-        /* Important note in cart */
-        .important-note {
-            background: rgba(245, 158, 11, 0.1);
-            border: 1px solid rgba(245, 158, 11, 0.2);
-            border-radius: 10px;
-            padding: 12px;
-            margin-bottom: 15px;
-            border-left: 4px solid #f59e0b;
-        }
-        
-        .important-note .note-title {
-            color: #f59e0b;
-            font-weight: bold;
-            font-size: 13px;
-            margin-bottom: 6px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .important-note .note-text {
-            color: rgba(255, 255, 255, 0.9);
-            font-size: 12px;
-            line-height: 1.5;
         }
 
         /* NEW APP SECTION STYLES - IMPROVED FOR ALL DEVICES */
@@ -965,46 +618,6 @@
             opacity: 0.8;
         }
 
-        /* Payment modal styles */
-        .payment-app-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-        
-        .payment-app-icon:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        }
-        
-        .upi-payment-link {
-            display: block;
-            width: 100%;
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* FIXED CART PROMO CODE SECTION */
-        .cart-promo-section {
-            margin-top: 1.5rem;
-            padding-top: 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            display: block !important;
-        }
-        
-        .cart-promo-section h4 {
-            font-size: 1rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-            color: white;
-        }
-        
         /* Course details in card */
         .course-details-container {
             margin: 1rem 0;
@@ -1049,65 +662,6 @@
             border: 1px solid rgba(99, 102, 241, 0.2);
         }
         
-        /* Ensure promo codes are visible in cart */
-        #promo-buttons-container {
-            display: grid;
-        }
-
-        /* Promo input container */
-        .promo-input-container {
-            position: relative;
-            margin-top: 1rem;
-        }
-        
-        .promo-input-container input {
-            width: 100%;
-            background: rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 12px 100px 12px 15px;
-            font-size: 14px;
-            color: white;
-            font-family: 'Courier New', monospace;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
-        
-        .promo-input-container input:focus {
-            outline: none;
-            border-color: #6366f1;
-            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
-        }
-        
-        .promo-input-container .apply-btn {
-            position: absolute;
-            right: 5px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: linear-gradient(90deg, #6366f1, #8b5cf6);
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            height: calc(100% - 10px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .promo-input-container .apply-btn:hover {
-            background: linear-gradient(90deg, #5558e8, #7a4cf5);
-            transform: translateY(-50%) scale(1.05);
-        }
-        
-        .promo-input-container .apply-btn:active {
-            transform: translateY(-50%) scale(0.95);
-        }
-
         /* Filter Button Active State */
         .filter-btn.active {
             background: linear-gradient(90deg, #6366f1, #8b5cf6);
@@ -1126,47 +680,10 @@
             height: 100%;
         }
 
-        /* NEW: Course details in payment modal */
-        .payment-course-details {
-            max-height: 120px;
-            overflow-y: auto;
-            margin-top: 12px;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .payment-course-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 6px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 12px;
-        }
-        
-        .payment-course-item:last-child {
-            border-bottom: none;
-        }
-        
-        .payment-course-name {
-            flex: 1;
-            text-align: left;
-            color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .payment-course-price {
-            color: #10b981;
-            font-weight: bold;
-            margin-left: 10px;
-            white-space: nowrap;
-        }
-
-        /* NEW: Footer - REMOVED SPACE BETWEEN LOGO AND TEXT */
+        /* NEW: Footer - PROFESSIONAL DESIGN */
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
             margin-bottom: 2rem;
         }
@@ -1178,134 +695,6 @@
             gap: 0.5rem;
         }
 
-        /* NEW: COMPACT QR PAYMENT SYSTEM */
-        .qr-payment-container {
-            width: 100%;
-            margin: 0.5rem 0;
-        }
-        
-        .qr-code-section {
-            background: white;
-            border-radius: 15px;
-            padding: 15px;
-            margin-bottom: 15px;
-            text-align: center;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-        }
-        
-        .qr-code-wrapper {
-            position: relative;
-            width: 180px;
-            height: 180px;
-            margin: 0 auto 10px;
-            padding: 10px;
-            background: white;
-            border-radius: 12px;
-            border: 1px solid #ddd;
-        }
-        
-        .qr-code-img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-        
-        .qr-payment-details {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: 12px;
-            margin-bottom: 15px;
-        }
-        
-        .qr-detail-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 6px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .qr-detail-item:last-child {
-            border-bottom: none;
-        }
-        
-        .qr-detail-label {
-            font-size: 11px;
-            color: rgba(255, 255, 255, 0.7);
-        }
-        
-        .qr-detail-value {
-            font-weight: bold;
-            font-size: 12px;
-            color: white;
-            font-family: 'Courier New', monospace;
-        }
-        
-        .payment-app-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
-            margin: 15px 0;
-        }
-        
-        .payment-app-item {
-            text-align: center;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s ease;
-        }
-        
-        .payment-app-icon-new {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 5px;
-            font-size: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease;
-        }
-        
-        .payment-app-item:hover .payment-app-icon-new {
-            transform: scale(1.08);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-        }
-        
-        .payment-app-label {
-            font-size: 9px;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.9);
-            margin-top: 3px;
-        }
-        
-        /* Copy UPI ID button */
-        .copy-upi-btn {
-            background: linear-gradient(90deg, #6366f1, #8b5cf6);
-            color: white;
-            border: none;
-            padding: 7px 14px;
-            border-radius: 8px;
-            font-size: 11px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            margin: 8px auto;
-        }
-        
-        .copy-upi-btn:hover {
-            background: linear-gradient(90deg, #5558e8, #7a4cf5);
-            transform: scale(1.05);
-        }
-        
-        .copy-upi-btn.copied {
-            background: linear-gradient(90deg, #10b981, #059669);
-        }
-        
         /* Mobile improvements */
         @media (max-width: 768px) {
             /* MOBILE BODY STYLES */
@@ -1377,7 +766,7 @@
             
             /* MOBILE BANNER - ADJUSTED HEIGHT & IMPROVED STRUCTURE */
             .mobile-view .hero-section {
-                height: 65vh !important; /* Reduced from 70vh */
+                height: 65vh !important;
                 min-height: 65vh;
             }
             
@@ -1398,7 +787,7 @@
             }
             
             .mobile-view .banner-title {
-                font-size: 2rem !important; /* Increased from 1.8rem */
+                font-size: 2rem !important;
                 line-height: 1.2;
                 margin-bottom: 1rem !important;
                 margin-top: 0 !important;
@@ -1407,7 +796,7 @@
             }
             
             .mobile-view .banner-subtitle {
-                font-size: 1.1rem !important; /* Increased from 1rem */
+                font-size: 1.1rem !important;
                 line-height: 1.5;
                 margin-bottom: 1.5rem !important;
                 padding: 0 10px;
@@ -1459,7 +848,7 @@
                 left: auto !important;
             }
             
-            /* MOBILE FOOTER - COMPACT 2x2 GRID */
+            /* MOBILE FOOTER - 2x2 GRID */
             .mobile-view .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1.5rem;
@@ -1514,11 +903,7 @@
                 margin-bottom: 0.8rem;
             }
             
-            .mobile-view .course-buttons {
-                width: 100%;
-            }
-            
-            .mobile-view .course-buttons button {
+            .mobile-view .enroll-btn {
                 width: 100%;
                 padding: 0.8rem !important;
                 border-radius: 50px !important;
@@ -1557,7 +942,7 @@
                 line-height: 1.5;
             }
             
-            /* MOBILE APP SECTION - FIXED MOCKUP WITHOUT SCROLLER */
+            /* MOBILE APP SECTION - FIXED MOCKUP */
             .mobile-view #app {
                 padding: 2.5rem 1rem !important;
             }
@@ -1575,58 +960,58 @@
             }
             
             .mobile-view .full-phone-mockup {
-                width: 280px; /* Slightly smaller for mobile */
-                height: 560px; /* Slightly smaller for mobile */
-                border-radius: 40px; /* Adjusted for mobile */
-                border-width: 10px; /* Thinner border for mobile */
+                width: 280px;
+                height: 560px;
+                border-radius: 40px;
+                border-width: 10px;
                 margin: 0 auto;
             }
             
             .mobile-view .phone-notch {
-                width: 120px; /* Smaller for mobile */
-                height: 24px; /* Smaller for mobile */
+                width: 120px;
+                height: 24px;
             }
             
             .mobile-view .inner-screen {
-                padding: 20px; /* Adjusted for mobile */
-                overflow-y: visible !important; /* Remove scrollbar */
+                padding: 20px;
+                overflow-y: visible !important;
             }
             
             .mobile-view .premium-logo-wrapper {
-                width: 75px; /* Adjusted for mobile */
-                height: 75px; /* Adjusted for mobile */
-                margin-bottom: 12px; /* Adjusted for mobile */
-                margin-top: 30px; /* Adjusted for mobile */
+                width: 75px;
+                height: 75px;
+                margin-bottom: 12px;
+                margin-top: 30px;
             }
             
             .mobile-view .logo-main-box {
-                width: 60px; /* Adjusted for mobile */
-                height: 60px; /* Adjusted for mobile */
-                border-radius: 16px; /* Adjusted for mobile */
+                width: 60px;
+                height: 60px;
+                border-radius: 16px;
             }
             
             .mobile-view .logo-main-box i {
-                font-size: 1.7rem; /* Adjusted for mobile */
+                font-size: 1.7rem;
             }
             
             .mobile-view .mock-item {
-                padding: 14px; /* Adjusted for mobile */
-                gap: 12px; /* Adjusted for mobile */
-                border-radius: 16px; /* Adjusted for mobile */
+                padding: 14px;
+                gap: 12px;
+                border-radius: 16px;
                 margin-bottom: 8px;
             }
             
             .mobile-view .mock-title {
-                font-size: 13px; /* Adjusted for mobile */
+                font-size: 13px;
             }
             
             .mobile-view .mock-desc {
-                font-size: 11px; /* Adjusted for mobile */
+                font-size: 11px;
             }
             
             /* APP SECTION ICON SHAPES */
             .mobile-view #app .glass-card .w-12.h-12 {
-                border-radius: 14px !important; /* Consistent shape */
+                border-radius: 14px !important;
             }
             
             /* MOBILE FOOTER - COMPACT */
@@ -1643,88 +1028,9 @@
                 font-size: 0.85rem;
             }
             
-            /* Mobile payment modal - COMPACT QR SYSTEM */
-            .mobile-view #payment-modal {
-                padding: 0.5rem;
-            }
-            
-            .mobile-view #payment-modal .max-w-\[450px\] {
-                max-width: 100% !important;
-                margin: 0.5rem;
-                height: auto;
-                max-height: 90vh;
-                overflow-y: auto;
-            }
-            
             /* Stats section for mobile */
             .mobile-view .stat-number {
                 font-size: 2rem !important;
-            }
-            
-            /* MOBILE PROMO INPUT */
-            .mobile-view .promo-input-container input {
-                padding: 10px 80px 10px 10px;
-                font-size: 12px;
-            }
-            
-            .mobile-view .promo-input-container .apply-btn {
-                padding: 5px 10px;
-                font-size: 10px;
-                height: calc(100% - 10px);
-            }
-            
-            /* Mobile payment course details */
-            .mobile-view .payment-course-details {
-                max-height: 90px;
-                font-size: 10px;
-                padding: 8px;
-            }
-            
-            .mobile-view .payment-course-item {
-                padding: 3px 0;
-                font-size: 9px;
-            }
-            
-            /* Mobile payment app grid */
-            .mobile-view .payment-app-grid {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 6px;
-            }
-            
-            .mobile-view .payment-app-icon-new {
-                width: 42px;
-                height: 42px;
-                font-size: 18px;
-                border-radius: 10px;
-            }
-            
-            .mobile-view .qr-code-wrapper {
-                width: 150px;
-                height: 150px;
-                padding: 8px;
-            }
-            
-            .mobile-view .qr-code-section {
-                padding: 12px;
-                margin-bottom: 10px;
-            }
-            
-            .mobile-view .qr-payment-details {
-                padding: 10px;
-                margin-bottom: 10px;
-            }
-            
-            .mobile-view .qr-detail-label {
-                font-size: 10px;
-            }
-            
-            .mobile-view .qr-detail-value {
-                font-size: 11px;
-            }
-            
-            .mobile-view .copy-upi-btn {
-                padding: 6px 12px;
-                font-size: 10px;
             }
         }
         
@@ -1835,9 +1141,9 @@
                 margin-top: 60px;
             }
             
-            /* DESKTOP FOOTER - 2x2 GRID */
+            /* DESKTOP FOOTER - 4 COLUMN GRID */
             .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(4, 1fr);
                 gap: 2.5rem;
             }
             
@@ -1920,13 +1226,6 @@
                         <i class="fas fa-phone"></i> 
                         <span class="hidden sm:inline">Call Now</span>
                     </a>
-                    
-                    <button onclick="toggleCart()" class="relative group">
-                        <div class="p-2 rounded-full hover:bg-white/10 transition">
-                            <i class="fas fa-shopping-bag text-xl text-white"></i>
-                        </div>
-                        <span id="cart-count" class="absolute top-0 right-0 bg-brand-danger text-[10px] w-5 h-5 flex items-center justify-center rounded-full border-2 border-brand-bg font-bold">0</span>
-                    </button>
                     
                     <button class="md:hidden text-white text-xl" onclick="toggleMobileMenu()">
                         <i class="fas fa-bars"></i>
@@ -2087,10 +1386,10 @@
         </div>
     </section>
 
-    <!-- APP SECTION - UPDATED LAYOUT -->
+    <!-- APP SECTION -->
     <section id="app" class="section-padding relative overflow-hidden bg-gradient-to-b from-brand-bg to-brand-surface">
         <div class="container mx-auto px-4">
-            <!-- Section Title FIRST -->
+            <!-- Section Title -->
             <div class="max-w-3xl mx-auto text-center mb-12">
                 <span class="text-brand-primary font-black text-sm tracking-[0.3em] uppercase mb-4 block">Modern Learning</span>
                 <h2 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Your Pocket <span class="text-brand-primary">Classroom</span></h2>
@@ -2204,7 +1503,7 @@
         </div>
     </section>
 
-    <!-- Footer - UPDATED with 2x2 Grid -->
+    <!-- Professional Footer -->
     <footer id="contact" class="bg-brand-surface border-t border-white/5 py-12">
         <div class="container mx-auto px-4">
             <div class="footer-grid mb-12">
@@ -2216,12 +1515,12 @@
                         </div>
                     </a>
                     <p class="text-gray-400 text-sm leading-relaxed">
-                        The leading platform for English mastery and Visa consultancy. We have helped 15,000+ students achieve their global dreams.
+                        World-class education and visa consultancy platform helping students achieve their global dreams since 2010.
                     </p>
                     <a href="https://play.google.com/store/apps/details?id=co.ted.fpqdt" target="_blank" class="direct-link inline-flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-lg hover:bg-white/10 transition mt-3">
                         <i class="fab fa-google-play text-xl text-brand-success"></i>
                         <div class="text-left">
-                            <div class="text-[9px] uppercase text-gray-400">Android App on</div>
+                            <div class="text-[9px] uppercase text-gray-400">Download on</div>
                             <div class="text-sm font-bold">Google Play</div>
                         </div>
                     </a>
@@ -2232,10 +1531,10 @@
                     <h4 class="font-bold text-white mb-4">Quick Links</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
                         <li><a href="#home" class="direct-link hover:text-brand-accent transition-colors duration-300">Home</a></li>
-                        <li><a href="#courses" class="direct-link hover:text-brand-accent transition-colors duration-300">All Courses</a></li>
+                        <li><a href="#courses" class="direct-link hover:text-brand-accent transition-colors duration-300">Courses</a></li>
                         <li><a href="#faculty" class="direct-link hover:text-brand-accent transition-colors duration-300">Our Faculty</a></li>
                         <li><a href="#app" class="direct-link hover:text-brand-accent transition-colors duration-300">Mobile App</a></li>
-                        <li><a href="#contact" class="direct-link hover:text-brand-accent transition-colors duration-300">Contact Support</a></li>
+                        <li><a href="#contact" class="direct-link hover:text-brand-accent transition-colors duration-300">Contact</a></li>
                     </ul>
                 </div>
 
@@ -2243,260 +1542,65 @@
                 <div>
                     <h4 class="font-bold text-white mb-4">Popular Courses</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="#courses" onclick="filterCourses('spoken')" class="direct-link hover:text-brand-accent transition-colors duration-300 cursor-pointer">Spoken English Basic</a></li>
-                        <li><a href="#courses" onclick="filterCourses('ielts')" class="direct-link hover:text-brand-accent transition-colors duration-300 cursor-pointer">IELTS Academic</a></li>
-                        <li><a href="#courses" onclick="filterCourses('pte')" class="direct-link hover:text-brand-accent transition-colors duration-300 cursor-pointer">PTE Fast Track</a></li>
-                        <li><a href="#courses" onclick="filterCourses('visa')" class="direct-link hover:text-brand-accent transition-colors duration-300 cursor-pointer">Student Visa Filing</a></li>
+                        <li><a href="#courses" onclick="filterCourses('spoken')" class="direct-link hover:text-brand-accent transition-colors duration-300 cursor-pointer">Spoken English</a></li>
+                        <li><a href="#courses" onclick="filterCourses('ielts')" class="direct-link hover:text-brand-accent transition-colors duration-300 cursor-pointer">IELTS Prep</a></li>
+                        <li><a href="#courses" onclick="filterCourses('pte')" class="direct-link hover:text-brand-accent transition-colors duration-300 cursor-pointer">PTE Mastery</a></li>
+                        <li><a href="#courses" onclick="filterCourses('visa')" class="direct-link hover:text-brand-accent transition-colors duration-300 cursor-pointer">Visa Assistance</a></li>
                     </ul>
                 </div>
 
-                <!-- Column 4: Contact & Social -->
+                <!-- Column 4: Contact Information -->
                 <div>
-                    <h4 class="font-bold text-white mb-4">Get in Touch</h4>
-                    <ul class="space-y-2 text-sm text-gray-400 mb-4">
-                        <li class="flex items-start gap-3"><i class="fas fa-map-marker-alt mt-1 text-brand-primary"></i> <span>304, Royal Trade Center, Surat, Gujarat</span></li>
-                        <li class="flex items-center gap-3"><i class="fas fa-phone text-brand-primary"></i> <a href="tel:+918866722633" class="direct-link hover:text-brand-accent transition-colors duration-300">+91 88667 22633</a></li>
-                        <li class="flex items-center gap-3"><i class="fas fa-envelope text-brand-primary"></i> <a href="mailto:support@tesca.com" class="direct-link hover:text-brand-accent transition-colors duration-300">support@tesca.com</a></li>
+                    <h4 class="font-bold text-white mb-4">Contact Us</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li class="flex items-start gap-3">
+                            <i class="fas fa-map-marker-alt mt-1 text-brand-primary"></i>
+                            <span>304, Royal Trade Center, Surat, Gujarat, India</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-phone text-brand-primary"></i>
+                            <a href="tel:+918866722633" class="direct-link hover:text-brand-accent transition-colors duration-300">+91 88667 22633</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-envelope text-brand-primary"></i>
+                            <a href="mailto:info@tescaeducation.com" class="direct-link hover:text-brand-accent transition-colors duration-300">info@tescaeducation.com</a>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i class="fas fa-clock text-brand-primary"></i>
+                            <span>Mon-Sat: 9:00 AM - 8:00 PM</span>
+                        </li>
                     </ul>
-                    <div class="flex gap-3">
-                        <a href="https://instagram.com" target="_blank" class="direct-link w-9 h-9 rounded-full glass flex items-center justify-center hover:bg-brand-primary hover:text-white transition duration-300"><i class="fab fa-instagram"></i></a>
-                        <a href="https://facebook.com" target="_blank" class="direct-link w-9 h-9 rounded-full glass flex items-center justify-center hover:bg-brand-primary hover:text-white transition duration-300"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://youtube.com" target="_blank" class="direct-link w-9 h-9 rounded-full glass flex items-center justify-center hover:bg-red-600 hover:text-white transition duration-300"><i class="fab fa-youtube"></i></a>
-                        <a href="https://linkedin.com" target="_blank" class="direct-link w-9 h-9 rounded-full glass flex items-center justify-center hover:bg-blue-600 hover:text-white transition duration-300"><i class="fab fa-linkedin-in"></i></a>
+                    
+                    <div class="mt-4">
+                        <h5 class="font-bold text-white text-sm mb-3">Follow Us</h5>
+                        <div class="flex gap-3">
+                            <a href="https://instagram.com/tescaeducation" target="_blank" class="direct-link w-9 h-9 rounded-full glass flex items-center justify-center hover:bg-brand-primary hover:text-white transition duration-300">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://facebook.com/tescaeducation" target="_blank" class="direct-link w-9 h-9 rounded-full glass flex items-center justify-center hover:bg-brand-primary hover:text-white transition duration-300">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://youtube.com/tescaeducation" target="_blank" class="direct-link w-9 h-9 rounded-full glass flex items-center justify-center hover:bg-red-600 hover:text-white transition duration-300">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="https://linkedin.com/company/tescaeducation" target="_blank" class="direct-link w-9 h-9 rounded-full glass flex items-center justify-center hover:bg-blue-600 hover:text-white transition duration-300">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="border-t border-white/5 pt-6 flex flex-col md:flex-row justify-between items-center text-xs text-gray-600">
-                <p>&copy; 2026 TESCA Education. All rights reserved.</p>
+                <p>&copy; 2026 TESCA Education & Visa Consultancy. All rights reserved.</p>
                 <div class="flex gap-4 mt-3 md:mt-0">
                     <a href="#" class="direct-link hover:text-white transition-colors duration-300">Privacy Policy</a>
                     <a href="#" class="direct-link hover:text-white transition-colors duration-300">Terms of Service</a>
+                    <a href="#" class="direct-link hover:text-white transition-colors duration-300">Refund Policy</a>
                 </div>
             </div>
         </div>
     </footer>
-
-    <!-- CART MODAL -->
-    <div id="full-cart-modal" class="full-cart-modal">
-        <div class="absolute inset-0 bg-black/80 backdrop-blur-md" onclick="toggleCart()"></div>
-        <div id="full-cart-panel" class="full-cart-content transform transition-all duration-300 scale-95 opacity-0">
-            <div class="full-cart-header">
-                <div class="flex items-center gap-3">
-                    <i class="fas fa-shopping-cart text-brand-primary text-xl"></i>
-                    <h2 class="text-xl font-bold">Your Shopping Cart</h2>
-                    <span id="full-cart-count" class="bg-brand-primary text-white text-xs px-2 py-1 rounded-full">0 items</span>
-                </div>
-                <button onclick="toggleCart()" class="text-gray-400 hover:text-white transition-colors duration-300">
-                    <i class="fas fa-times text-xl"></i>
-                </button>
-            </div>
-            
-            <div class="full-cart-body">
-                <h3 class="text-lg font-bold mb-4">Courses in Cart (<span id="cart-items-count">0</span>)</h3>
-                
-                <div id="full-cart-items">
-                    <!-- Cart items will be loaded here -->
-                </div>
-                
-                <div id="empty-cart-message" class="flex flex-col items-center justify-center h-full text-gray-500 py-12">
-                    <i class="fas fa-shopping-basket text-5xl mb-4 opacity-30"></i>
-                    <p class="text-lg mb-2">Your cart is empty</p>
-                    <p class="text-sm text-gray-600">Add some courses to get started!</p>
-                </div>
-
-                <!-- Applied Promo Code Section -->
-                <div id="full-applied-promo-info" class="applied-promo-section hidden">
-                    <div class="applied-promo-details">
-                        <div class="applied-promo-code" id="full-current-promo-code"></div>
-                        <div class="applied-promo-desc" id="full-current-promo-desc"></div>
-                        <div class="applied-promo-savings" id="full-promo-savings"></div>
-                    </div>
-                    <button onclick="removePromo()" id="full-remove-promo-btn" class="remove-promo-btn">
-                        Remove
-                    </button>
-                </div>
-                
-                <!-- Important Note -->
-                <div class="important-note mb-4">
-                    <div class="note-title">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        IMPORTANT NOTE:
-                    </div>
-                    <div class="note-text">
-                        Choose Promo Code Wisely! Once you apply a promo code and proceed to payment, it will be permanently marked as <strong>USED</strong> and cannot be reused. Each code can be used only once per user.
-                    </div>
-                </div>
-                
-                <!-- PROMO CODE SECTION -->
-                <div class="cart-promo-section">
-                    <h4>Apply Promo Code</h4>
-                    
-                    <div class="promo-section-compact" id="promo-buttons-container">
-                        <!-- Promo code cards will be loaded here -->
-                    </div>
-                    
-                    <!-- PROMO CODE INPUT WITH APPLY BUTTON -->
-                    <div class="promo-input-container">
-                        <input id="full-promo-input" type="text" placeholder="ENTER PROMO CODE" class="w-full">
-                        <button onclick="applyPromo()" class="apply-btn">APPLY</button>
-                    </div>
-                    <div id="full-promo-status" class="text-xs h-6 mt-2 flex items-center"></div>
-                </div>
-                
-                <!-- Order Summary -->
-                <div class="mt-4 pt-4 border-t border-white/5">
-                    <div class="space-y-2 text-sm text-gray-400">
-                        <div class="flex justify-between">
-                            <span>Subtotal</span>
-                            <span id="full-cart-subtotal" class="text-white">₹0</span>
-                        </div>
-                        <div class="flex justify-between text-brand-success">
-                            <span>Discount</span>
-                            <span id="full-cart-discount">-₹0</span>
-                        </div>
-                        <div class="flex justify-between text-xs text-gray-500" id="full-discount-details"></div>
-                    </div>
-                    
-                    <div class="flex justify-between text-lg font-bold text-white pt-4 mt-4 border-t border-white/5">
-                        <span>Total Amount</span>
-                        <span id="full-cart-total">₹0</span>
-                    </div>
-                    
-                    <button onclick="startPayment()" id="full-checkout-btn" class="w-full mt-6 bg-gradient-to-r from-brand-primary to-brand-secondary py-3 rounded-xl font-bold text-white shadow-lg hover:shadow-brand-primary/40 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-sm">
-                        <i class="fas fa-lock mr-2"></i>Proceed to Secure Payment
-                    </button>
-                    
-                    <p class="text-xs text-gray-500 text-center mt-3">
-                        <i class="fas fa-shield-alt mr-1"></i>100% Secure Payment
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- COMPACT QR PAYMENT MODAL -->
-    <div id="payment-modal" class="fixed inset-0 z-[200] hidden flex items-center justify-center p-4">
-        <div class="absolute inset-0 bg-black/95 backdrop-blur-xl" onclick="closePayment()"></div>
-        
-        <div class="relative bg-[#121212] w-full max-w-[420px] rounded-3xl border border-white/10 shadow-2xl flex flex-col items-center overflow-hidden animate-slide-up">
-            
-            <div class="w-full bg-gradient-to-r from-brand-primary to-brand-secondary p-4 text-center">
-                <h3 class="font-bold text-white text-xl tracking-wide">Secure Payment Gateway</h3>
-            </div>
-
-            <div class="p-5 w-full flex flex-col items-center">
-                
-                <!-- Applied Code Display -->
-                <div id="applied-code-display" class="applied-code-display w-full hidden mb-3">
-                    <div>
-                        <div class="text-xs text-gray-400 mb-1">Applied Code:</div>
-                        <div class="code-text" id="applied-code-text"></div>
-                    </div>
-                    <div class="used-badge">PERMANENTLY USED</div>
-                </div>
-                
-                <!-- Payment Amount -->
-                <div class="text-center w-full mb-5">
-                    <div class="text-sm text-gray-500 mb-1">Total Amount Payable</div>
-                    <div class="text-3xl font-bold text-white" id="pay-final-amount">₹0</div>
-                    <div class="text-xs text-gray-400 mt-1">to: <span class="text-white font-bold">TESCA Education</span></div>
-                </div>
-
-                <!-- COURSE DETAILS SECTION -->
-                <div class="payment-course-details w-full mb-5" id="payment-course-details-container">
-                    <!-- Course details will be inserted here -->
-                </div>
-
-                <!-- COMPACT QR PAYMENT SYSTEM -->
-                <div class="qr-payment-container">
-                    <!-- QR Code Section -->
-                    <div class="qr-code-section">
-                        <div class="text-sm text-gray-600 mb-3 font-bold">Scan QR Code to Pay</div>
-                        <div class="qr-code-wrapper">
-                            <img id="qr-code-img" src="" alt="Scan QR Code" class="qr-code-img">
-                        </div>
-                    </div>
-                    
-                    <!-- Payment Details -->
-                    <div class="qr-payment-details">
-                        <div class="qr-detail-item">
-                            <span class="qr-detail-label">Amount:</span>
-                            <span class="qr-detail-value" id="qr-payment-amount">₹0</span>
-                        </div>
-                        <div class="qr-detail-item">
-                            <span class="qr-detail-label">UPI ID:</span>
-                            <span class="qr-detail-value">8866722633@upi</span>
-                        </div>
-                        <div class="qr-detail-item">
-                            <span class="qr-detail-label">Merchant:</span>
-                            <span class="qr-detail-value">TESCA Education</span>
-                        </div>
-                    </div>
-                    
-                    <!-- Copy UPI ID Button -->
-                    <button onclick="copyUPIID()" id="copy-upi-btn" class="copy-upi-btn">
-                        <i class="far fa-copy"></i>
-                        Copy UPI ID
-                    </button>
-                    
-                    <!-- Payment Apps Grid -->
-                    <div class="payment-app-grid">
-                        <!-- Google Pay -->
-                        <a id="google-pay-direct" href="#" target="_blank" class="payment-app-item">
-                            <div class="payment-app-icon-new bg-gradient-to-br from-white to-gray-200">
-                                <i class="fab fa-google text-xl text-gray-700"></i>
-                            </div>
-                            <div class="payment-app-label">Google Pay</div>
-                        </a>
-                        
-                        <!-- PhonePe -->
-                        <a id="phonepe-direct" href="#" target="_blank" class="payment-app-item">
-                            <div class="payment-app-icon-new bg-gradient-to-br from-purple-600 to-purple-800">
-                                <i class="fas fa-mobile-alt text-white text-xl"></i>
-                            </div>
-                            <div class="payment-app-label">PhonePe</div>
-                        </a>
-                        
-                        <!-- Paytm -->
-                        <a id="paytm-direct" href="#" target="_blank" class="payment-app-item">
-                            <div class="payment-app-icon-new bg-gradient-to-br from-blue-600 to-blue-800">
-                                <i class="fas fa-wallet text-white text-xl"></i>
-                            </div>
-                            <div class="payment-app-label">Paytm</div>
-                        </a>
-                        
-                        <!-- BHIM/Any UPI -->
-                        <a id="bhim-direct" href="#" target="_blank" class="payment-app-item">
-                            <div class="payment-app-icon-new bg-gradient-to-br from-green-600 to-emerald-700">
-                                <i class="fas fa-rupee-sign text-white text-xl"></i>
-                            </div>
-                            <div class="payment-app-label">Any UPI App</div>
-                        </a>
-                    </div>
-
-                </div>
-
-                <!-- Important Instructions -->
-                <div class="w-full bg-brand-danger/10 border border-brand-danger/20 p-3 rounded-xl mt-5">
-                    <div class="flex items-start gap-2">
-                        <i class="fas fa-exclamation-circle text-brand-danger text-sm mt-0.5"></i>
-                        <p class="text-[11px] text-gray-300 leading-snug font-medium">
-                            <span class="text-brand-danger font-bold">IMPORTANT:</span> 
-                            After payment, take a <strong>screenshot</strong> and WhatsApp it to 
-                            <span class="text-white font-mono underline">+91 88667 22633</span>. 
-                            Course activates within 24 hours.
-                        </p>
-                    </div>
-                </div>
-
-            </div>
-
-            <button onclick="closePayment()" class="absolute top-3 right-3 text-white/60 hover:text-white transition-colors duration-300">
-                <i class="fas fa-times-circle text-xl"></i>
-            </button>
-        </div>
-    </div>
 
     <script>
         // --- 1. BANNERS ARRAY ---
@@ -2535,17 +1639,6 @@
                 color: 'from-cyan-400 to-blue-500'
             },
             {
-                type: 'spoken',
-                title: 'Business English Mastery Program',
-                subtitle: 'Speak Like a Corporate Executive in 60 Days',
-                price: '₹11,999',
-                originalPrice: '₹19,999',
-                discount: '40% OFF',
-                offer: 'Includes: Email Writing, Presentations, Negotiation Skills',
-                cta: 'Master Business English',
-                color: 'from-green-400 to-emerald-600'
-            },
-            {
                 type: 'visa',
                 title: 'Study Abroad Dream Package',
                 subtitle: 'End-to-End Visa Assistance with 99% Success Rate',
@@ -2555,83 +1648,6 @@
                 offer: 'University Selection + SOP Writing + Visa Filing + Mock Interviews',
                 cta: 'Get Visa Assistance',
                 color: 'from-red-400 to-pink-600'
-            },
-            {
-                type: 'ielts',
-                title: 'IELTS Crash Course - 6 Weeks',
-                subtitle: 'Band 7+ Guaranteed or 50% Refund',
-                price: '₹14,999',
-                originalPrice: '₹29,999',
-                discount: '50% OFF',
-                offer: 'FLASH SALE: 50% OFF + FREE Visa SOP Review',
-                cta: 'Enroll Now',
-                color: 'from-orange-400 to-red-500'
-            },
-            {
-                type: 'toefl',
-                title: 'TOEFL 115+ Score Program',
-                subtitle: 'Specialized Training for US/Canada University Admissions',
-                price: '₹17,499',
-                originalPrice: '₹28,999',
-                discount: '40% OFF',
-                offer: 'Includes University Application Guidance',
-                cta: 'Achieve 115+',
-                color: 'from-indigo-400 to-purple-500'
-            },
-            {
-                type: 'spoken',
-                title: 'Accent Neutralization Masterclass',
-                subtitle: 'Sound Like a Native Speaker in 8 Weeks',
-                price: '₹8,999',
-                originalPrice: '₹14,999',
-                discount: '40% OFF',
-                offer: 'American & British Accent Training',
-                cta: 'Perfect Your Accent',
-                color: 'from-pink-400 to-rose-500'
-            },
-            {
-                type: 'pte',
-                title: 'PTE Speaking & Writing Bootcamp',
-                subtitle: 'Master Templates for 79+ Score',
-                price: '₹9,999',
-                originalPrice: '₹16,999',
-                discount: '41% OFF',
-                offer: 'AI Scoring + Personal Trainer',
-                cta: 'Join Bootcamp',
-                color: 'from-teal-400 to-cyan-500'
-            },
-            {
-                type: 'visa',
-                title: 'Canada PR Pathway Program',
-                subtitle: 'Complete Guidance for Canada Permanent Residency',
-                price: '₹24,999',
-                originalPrice: '₹44,999',
-                discount: '44% OFF',
-                offer: 'IELTS + PTE + Visa Filing + Job Search Assistance',
-                cta: 'Start PR Process',
-                color: 'from-red-500 to-orange-500'
-            },
-            {
-                type: 'ielts',
-                title: 'IELTS Writing & Speaking Excellence',
-                subtitle: 'Band 9 Strategies from British Council Trainers',
-                price: '₹12,999',
-                originalPrice: '₹21,999',
-                discount: '41% OFF',
-                offer: 'Focus on Writing Task 2 & Speaking Part 3',
-                cta: 'Master IELTS',
-                color: 'from-blue-600 to-indigo-600'
-            },
-            {
-                type: 'spoken',
-                title: 'Complete English Fluency Package',
-                subtitle: 'From Beginner to Advanced in 90 Days',
-                price: '₹15,999',
-                originalPrice: '₹29,999',
-                discount: '47% OFF',
-                offer: 'All Modules + Certification + Placement Assistance',
-                cta: 'Become Fluent',
-                color: 'from-purple-500 to-pink-500'
             }
         ];
 
@@ -2641,152 +1657,69 @@
                 id: 1, type: 'spoken', title: 'Spoken English Basic (40% OFF)', price: 9599, original: 15999, 
                 dur: '2 Months', lang: 'Hindi/English', cert: 'Yes',
                 desc: 'Build a strong foundation in English grammar and vocabulary. Includes Pronunciation Masterclass.',
-                curriculum: ['Tenses & Grammar Rules', '500+ Daily Vocabulary', 'Sentence Structure', 'Basic Conversation', 'Pronunciation Masterclass'],
-                applicablePromos: ['TESCA50', 'WELCOME10', 'FLASH40']
+                curriculum: ['Tenses & Grammar Rules', '500+ Daily Vocabulary', 'Sentence Structure', 'Basic Conversation', 'Pronunciation Masterclass']
             },
             { 
                 id: 2, type: 'spoken', title: 'Fluent Speaker Pro (50% OFF)', price: 7999, original: 15999, 
                 dur: '3 Months', lang: 'English', cert: 'Yes',
                 desc: 'Become a confident speaker with Job Interview Prep Module included.',
-                curriculum: ['Public Speaking', 'Debate Sessions', 'Accent Neutralization', 'Body Language', 'Job Interview Prep Module'],
-                applicablePromos: ['TESCA50', 'WELCOME10', 'FLASH40']
+                curriculum: ['Public Speaking', 'Debate Sessions', 'Accent Neutralization', 'Body Language', 'Job Interview Prep Module']
             },
             { 
                 id: 3, type: 'spoken', title: 'Business Communication (60% OFF)', price: 6399, original: 15999, 
                 dur: '2.5 Months', lang: 'English', cert: 'Yes',
                 desc: 'Master corporate English with ALL bonuses included.',
-                curriculum: ['Email Etiquette', 'Interview Prep', 'Presentation Skills', 'Corporate Vocabulary', 'IELTS Speaking Module', 'Accent Training'],
-                applicablePromos: ['TESCA50', 'WELCOME10', 'FLASH40']
+                curriculum: ['Email Etiquette', 'Interview Prep', 'Presentation Skills', 'Corporate Vocabulary', 'IELTS Speaking Module', 'Accent Training']
             },
             { 
-                id: 4, type: 'spoken', title: 'Ultimate English Mastery (70% OFF)', price: 5999, original: 19999, 
-                dur: '4 Months', lang: 'English', cert: 'Yes',
-                desc: 'Complete package with 70% discount and money-back guarantee.',
-                curriculum: ['All Previous Modules', 'LinkedIn Profile Optimization', '30-Day Money Back', 'Pay in 3 Months Installment'],
-                applicablePromos: ['TESCA50', 'WELCOME10', 'FLASH40']
-            },
-            { 
-                id: 5, type: 'ielts', title: 'IELTS Academic (35% OFF)', price: 16249, original: 24999, 
+                id: 4, type: 'ielts', title: 'IELTS Academic (35% OFF)', price: 16249, original: 24999, 
                 dur: '3 Months', lang: 'English', cert: 'Yes',
                 desc: 'Complete preparation for students aiming for foreign universities with FREE Spoken English.',
-                curriculum: ['Reading & Listening Modules', 'Writing Task 1 & 2', 'Speaking Mock Tests', 'Band 8 Strategy', 'FREE Spoken English Course'],
-                applicablePromos: ['IELTS35', 'WELCOME10', 'FLASH40']
+                curriculum: ['Reading & Listening Modules', 'Writing Task 1 & 2', 'Speaking Mock Tests', 'Band 8 Strategy', 'FREE Spoken English Course']
             },
             { 
-                id: 6, type: 'ielts', title: 'IELTS Crash Course (45% OFF)', price: 16499, original: 29999, 
+                id: 5, type: 'ielts', title: 'IELTS Crash Course (45% OFF)', price: 16499, original: 29999, 
                 dur: '6 Weeks', lang: 'English', cert: 'Yes',
                 desc: '6-Week Intensive Program with Money-Back Guarantee.',
-                curriculum: ['Band 7+ Guarantee', 'Visa SOP Review', 'Spoken English Module', 'Mock Tests with Evaluation'],
-                applicablePromos: ['IELTS35', 'WELCOME10', 'FLASH40']
+                curriculum: ['Band 7+ Guarantee', 'Visa SOP Review', 'Spoken English Module', 'Mock Tests with Evaluation']
             },
             { 
-                id: 7, type: 'pte', title: 'PTE Fast Track (40% OFF)', price: 13799, original: 22999, 
+                id: 6, type: 'pte', title: 'PTE Fast Track (40% OFF)', price: 13799, original: 22999, 
                 dur: '4 Weeks', lang: 'English', cert: 'Yes',
                 desc: 'Crash course for PTE with AI-based scoring tricks.',
-                curriculum: ['Speaking Templates', 'Writing Templates', 'AI Scoring Hacks', 'Mock Tests', 'FREE Spoken English Course'],
-                applicablePromos: ['PTE45', 'WELCOME10', 'FLASH40']
+                curriculum: ['Speaking Templates', 'Writing Templates', 'AI Scoring Hacks', 'Mock Tests', 'FREE Spoken English Course']
             },
             { 
-                id: 8, type: 'pte', title: 'PTE Mastery (50% OFF)', price: 17499, original: 34998, 
+                id: 7, type: 'pte', title: 'PTE Mastery (50% OFF)', price: 17499, original: 34998, 
                 dur: '2 Months', lang: 'English', cert: 'Yes',
                 desc: 'Complete PTE preparation with ₹10,000 cashback opportunity.',
-                curriculum: ['90/90 Score Strategy', '1-Year Spoken English Access', '6 Months Speaking Club', 'Cashback on 85+ Score'],
-                applicablePromos: ['PTE45', 'WELCOME10', 'FLASH40']
+                curriculum: ['90/90 Score Strategy', '1-Year Spoken English Access', '6 Months Speaking Club', 'Cashback on 85+ Score']
             },
             { 
-                id: 9, type: 'toefl', title: 'TOEFL Academic (35% OFF)', price: 18849, original: 28999, 
+                id: 8, type: 'toefl', title: 'TOEFL Academic (35% OFF)', price: 18849, original: 28999, 
                 dur: '12 Weeks', lang: 'English', cert: 'Yes',
                 desc: 'Specialized Training for US/Canada University Admissions.',
-                curriculum: ['115/120 Score Strategy', 'University Application Guide', 'Advanced Spoken English', 'SOP Assistance'],
-                applicablePromos: ['TOEFL30', 'WELCOME10', 'FLASH40']
+                curriculum: ['115/120 Score Strategy', 'University Application Guide', 'Advanced Spoken English', 'SOP Assistance']
             },
             { 
-                id: 10, type: 'toefl', title: 'TOEFL Platinum', price: 14999, original: 26999, 
-                dur: '10 Weeks', lang: 'English', cert: 'Yes',
-                desc: 'Score Improvement Guarantee with all bonuses.',
-                curriculum: ['20+ Points Improvement', 'Spoken English for Interviews', 'Academic Writing', '3 Mock Interviews'],
-                applicablePromos: ['TOEFL30', 'WELCOME10', 'FLASH40']
-            },
-            { 
-                id: 11, type: 'visa', title: 'Visa Success Package', price: 19999, original: 34999, 
+                id: 9, type: 'visa', title: 'Visa Success Package', price: 19999, original: 34999, 
                 dur: 'Until Approval', lang: 'English/Hindi', cert: 'No',
                 desc: 'End-to-end guidance for study visa applications.',
-                curriculum: ['Profile Assessment', 'University Shortlisting', 'SOP Drafting', 'Visa Filing Assistance', 'FREE Spoken English Course'],
-                applicablePromos: ['VISA25', 'WELCOME10', 'FLASH40']
+                curriculum: ['Profile Assessment', 'University Shortlisting', 'SOP Drafting', 'Visa Filing Assistance', 'FREE Spoken English Course']
             },
             { 
-                id: 12, type: 'visa', title: 'Urgent Visa Express (30% OFF)', price: 27999, original: 39999, 
+                id: 10, type: 'visa', title: 'Urgent Visa Express (30% OFF)', price: 27999, original: 39999, 
                 dur: '7 Days Processing', lang: 'English/Hindi', cert: 'No',
                 desc: 'Urgent visa processing with 7-day guarantee.',
-                curriculum: ['7-Day Processing', 'Interview Preparation', 'Documentation Help', 'Spoken English Crash Course'],
-                applicablePromos: ['VISA25', 'WELCOME10', 'FLASH40']
+                curriculum: ['7-Day Processing', 'Interview Preparation', 'Documentation Help', 'Spoken English Crash Course']
             }
         ];
 
-        // --- 3. PROMO CODES ---
-        const promos = {
-            'TESCA50': { 
-                discount: 0.50, 
-                description: '50% OFF on Spoken English Courses',
-                applicableTypes: ['spoken'],
-                validity: 'Valid till 31 Dec 2026',
-                minAmount: 5000
-            },
-            'WELCOME10': { 
-                discount: 0.10, 
-                description: '10% OFF on Any Course (First Purchase)',
-                applicableTypes: ['spoken', 'ielts', 'pte', 'toefl', 'visa'],
-                validity: 'New Users Only',
-                minAmount: 3000
-            },
-            'FLASH40': { 
-                discount: 0.40, 
-                description: '40% FLASH SALE - Limited Time',
-                applicableTypes: ['spoken', 'ielts', 'pte', 'toefl', 'visa'],
-                validity: 'Valid for 48 hours',
-                minAmount: 8000
-            },
-            'IELTS35': { 
-                discount: 0.35, 
-                description: '35% OFF on IELTS Courses',
-                applicableTypes: ['ielts'],
-                validity: 'Valid till 30 Nov 2026',
-                minAmount: 10000
-            },
-            'PTE45': { 
-                discount: 0.45, 
-                description: '45% OFF on PTE Courses',
-                applicableTypes: ['pte'],
-                validity: 'Valid till 15 Dec 2026',
-                minAmount: 12000
-            },
-            'TOEFL30': { 
-                discount: 0.30, 
-                description: '30% OFF on TOEFL Courses',
-                applicableTypes: ['toefl'],
-                validity: 'Valid till 20 Dec 2026',
-                minAmount: 14000
-            },
-            'VISA25': { 
-                discount: 0.25, 
-                description: '25% OFF on Visa Services',
-                applicableTypes: ['visa'],
-                validity: 'Valid till 31 Jan 2027',
-                minAmount: 15000
-            }
-        };
-
-        // --- 4. STATE VARIABLES ---
-        let cart = [];
-        let activePromo = null;
+        // --- 3. STATE VARIABLES ---
         let currentBannerIndex = 0;
         let bannerInterval;
-        let currentPaymentAmount = 0;
-        let usedPromoCodes = [];
-        let permanentUsedPromoCodes = [];
-        let promoButtons = {};
 
-        // --- 5. INITIALIZATION ---
+        // --- 4. INITIALIZATION ---
         window.onload = () => {
             // Check if mobile view
             if (window.innerWidth <= 768) {
@@ -2814,23 +1747,16 @@
         };
 
         function initWebsite() {
-            // Load permanently used promos from localStorage
-            const savedPermUsedPromos = localStorage.getItem('tescaPermanentUsedPromos');
-            if (savedPermUsedPromos) {
-                permanentUsedPromoCodes = JSON.parse(savedPermUsedPromos);
-            }
-            
             renderBanners();
             startBannerRotation();
             filterCourses('all');
-            renderPromoCards();
             setupEventListeners();
             
             // Add scroll listener for header
             window.addEventListener('scroll', handleScroll);
         }
 
-        // --- 6. BANNER SYSTEM - IMPROVED FOR MOBILE (65% HEIGHT) ---
+        // --- 5. BANNER SYSTEM ---
         function renderBanners() {
             const bannerContainer = document.querySelector('.banner-container');
             const isMobile = window.innerWidth <= 768;
@@ -2968,7 +1894,7 @@
             }, 500);
         }
 
-        // --- 7. COURSES SYSTEM ---
+        // --- 6. COURSES SYSTEM ---
         function filterCourses(cat) {
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.classList.remove('active');
@@ -3036,22 +1962,6 @@
                                     ` : ''}
                                 </div>
                             </div>
-                            
-                            ${c.applicablePromos && c.applicablePromos.length > 0 ? `
-                            <div class="mb-2">
-                                <h4 class="font-bold text-white text-sm mb-2">Applicable Promo Codes:</h4>
-                                <div class="course-promo-tags">
-                                    ${c.applicablePromos.map(code => {
-                                        const promo = promos[code];
-                                        const isPermanentlyUsed = permanentUsedPromoCodes.includes(code);
-                                        return `
-                                        <span class="course-promo-tag ${isPermanentlyUsed ? 'opacity-50' : ''}">
-                                            ${code} ${isPermanentlyUsed ? '(Used)' : ''}
-                                        </span>`;
-                                    }).join('')}
-                                </div>
-                            </div>
-                            ` : ''}
                         </div>
                         
                         <div class="flex items-end gap-2 mb-6 border-t border-white/5 pt-4">
@@ -3060,9 +1970,9 @@
                         </div>
 
                         <div class="course-buttons">
-                            <button onclick="addToCart(${c.id})" class="w-full py-3 rounded-full bg-gradient-to-r from-brand-primary to-brand-secondary text-white hover:opacity-90 text-xs font-bold transition duration-300">
-                                <i class="fas fa-shopping-cart mr-2"></i>Add to Cart
-                            </button>
+                            <a href="#contact" class="enroll-btn">
+                                <i class="fas fa-user-graduate mr-2"></i>Enroll Now
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -3070,504 +1980,7 @@
             }).join('');
         }
 
-        // --- 8. CART SYSTEM ---
-        function addToCart(id) {
-            if (cart.find(x => x.id === id)) {
-                showNotification('This course is already in your cart!', 'warning');
-                return;
-            }
-            
-            const course = courses.find(x => x.id === id);
-            cart.push(course);
-            renderCart();
-            toggleCart(true);
-            updatePromoCards();
-            showNotification('Course added to cart!', 'success');
-        }
-
-        function removeFromCart(id) {
-            cart = cart.filter(x => x.id !== id);
-            
-            if (activePromo) {
-                const promo = promos[activePromo];
-                const isStillValid = cart.some(course => 
-                    promo.applicableTypes.includes(course.type) || 
-                    (course.applicablePromos && course.applicablePromos.includes(activePromo))
-                );
-                
-                if (!isStillValid) {
-                    const index = usedPromoCodes.indexOf(activePromo);
-                    if (index > -1) usedPromoCodes.splice(index, 1);
-                    activePromo = null;
-                    document.getElementById('full-promo-input').value = '';
-                }
-            }
-            
-            renderCart();
-            updatePromoCards();
-            showNotification('Course removed from cart', 'info');
-        }
-
-        function renderCart() {
-            document.getElementById('cart-count').innerText = cart.length;
-            document.getElementById('full-cart-count').innerText = `${cart.length} ${cart.length === 1 ? 'item' : 'items'}`;
-            document.getElementById('cart-items-count').innerText = cart.length;
-            
-            const container = document.getElementById('full-cart-items');
-            const emptyMessage = document.getElementById('empty-cart-message');
-            const checkoutBtn = document.getElementById('full-checkout-btn');
-            
-            if (cart.length === 0) {
-                container.innerHTML = '';
-                emptyMessage.classList.remove('hidden');
-                checkoutBtn.disabled = true;
-                checkoutBtn.classList.add('opacity-50');
-                updateCartTotals(0, 0);
-                return;
-            }
-            
-            emptyMessage.classList.add('hidden');
-            checkoutBtn.disabled = false;
-            checkoutBtn.classList.remove('opacity-50');
-            
-            container.innerHTML = cart.map(c => {
-                const discountPercent = Math.round(((c.original - c.price) / c.original) * 100);
-                return `
-                <div class="cart-course-item">
-                    <div class="cart-course-details">
-                        <span class="cart-course-type">${c.type}</span>
-                        <h4 class="font-bold text-white text-sm mb-1">${c.title}</h4>
-                        <p class="text-xs text-gray-400 mb-2">${c.desc}</p>
-                        <div class="flex items-center gap-2">
-                            <span class="cart-course-price">₹${c.price.toLocaleString()}</span>
-                            <span class="text-xs text-gray-500 line-through">₹${c.original.toLocaleString()}</span>
-                            <span class="text-xs text-brand-danger font-bold">Save ${discountPercent}%</span>
-                        </div>
-                        <div class="flex flex-wrap gap-1 mt-2">
-                            <span class="text-xs px-2 py-1 bg-white/5 rounded">${c.dur}</span>
-                            <span class="text-xs px-2 py-1 bg-white/5 rounded">${c.lang}</span>
-                            ${c.cert === 'Yes' ? '<span class="text-xs px-2 py-1 bg-green-500/10 text-green-400 rounded">Certificate</span>' : ''}
-                        </div>
-                    </div>
-                    
-                    <button onclick="removeFromCart(${c.id})" class="cart-remove-btn" title="Remove from cart">
-                        <i class="fas fa-trash-alt text-xs"></i>
-                    </button>
-                </div>
-                `;
-            }).join('');
-            
-            const subtotal = cart.reduce((acc, item) => acc + item.price, 0);
-            let discount = 0;
-            let discountDetails = '';
-            let savingsText = '';
-            
-            if (activePromo && promos[activePromo]) {
-                const promo = promos[activePromo];
-                discount = Math.floor(subtotal * promo.discount);
-                discountDetails = `${activePromo}: ${promo.discount * 100}% OFF`;
-                savingsText = `You save ₹${discount.toLocaleString()}`;
-            }
-            
-            updateCartTotals(subtotal, discount, discountDetails);
-            updatePromoInfo(savingsText);
-        }
-
-        function updateCartTotals(sub, disc, details = '') {
-            document.getElementById('full-cart-subtotal').innerText = `₹${sub.toLocaleString()}`;
-            document.getElementById('full-cart-discount').innerText = `-₹${disc.toLocaleString()}`;
-            
-            const discountDetailsEl = document.getElementById('full-discount-details');
-            if (details) {
-                discountDetailsEl.innerHTML = `<span class="text-brand-success">${details}</span>`;
-                discountDetailsEl.classList.remove('hidden');
-            } else {
-                discountDetailsEl.innerHTML = '';
-                discountDetailsEl.classList.add('hidden');
-            }
-            
-            document.getElementById('full-cart-total').innerText = `₹${(sub - disc).toLocaleString()}`;
-        }
-
-        function toggleCart(forceOpen = false) {
-            const modal = document.getElementById('full-cart-modal');
-            const panel = document.getElementById('full-cart-panel');
-            
-            if (forceOpen || modal.style.display === 'none' || modal.style.display === '') {
-                modal.style.display = 'flex';
-                setTimeout(() => {
-                    panel.classList.remove('scale-95', 'opacity-0');
-                    panel.classList.add('scale-100', 'opacity-100');
-                }, 10);
-                renderCart();
-                updatePromoCards();
-            } else {
-                panel.classList.remove('scale-100', 'opacity-100');
-                panel.classList.add('scale-95', 'opacity-0');
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                }, 300);
-            }
-        }
-
-        // --- 9. PROMO CODE SYSTEM ---
-        function renderPromoCards() {
-            const container = document.getElementById('promo-buttons-container');
-            if (!container) return;
-            
-            const applicablePromos = Object.entries(promos).filter(([code, promo]) => {
-                // Check if any course in cart is eligible for this promo
-                return cart.some(course => 
-                    promo.applicableTypes.includes(course.type) ||
-                    (course.applicablePromos && course.applicablePromos.includes(code))
-                );
-            });
-            
-            container.innerHTML = applicablePromos.map(([code, details]) => {
-                const isPermanentlyUsed = permanentUsedPromoCodes.includes(code);
-                const isApplied = activePromo === code;
-                
-                return `
-                <div onclick="applySpecificCode('${code}')" id="promo-card-${code}" 
-                     class="promo-card ${isPermanentlyUsed ? 'used-promo' : ''} ${isApplied ? 'active' : ''}"
-                     ${isPermanentlyUsed ? 'style="cursor: not-allowed;"' : 'style="cursor: pointer;"'}>
-                    ${isPermanentlyUsed ? '<div class="used-badge">USED</div>' : ''}
-                    <div class="promo-discount">${details.discount * 100}% OFF</div>
-                    <div class="promo-code">${code}</div>
-                    <div class="promo-desc">${details.description}</div>
-                    <div class="promo-validity">
-                        <i class="fas fa-calendar-alt text-xs"></i>
-                        ${details.validity}
-                    </div>
-                    ${isApplied ? '<div class="absolute bottom-2 right-2 text-green-400"><i class="fas fa-check-circle"></i></div>' : ''}
-                </div>
-                `;
-            }).join('');
-            
-            // Store promo card elements
-            applicablePromos.forEach(([code]) => {
-                promoButtons[code] = document.getElementById(`promo-card-${code}`);
-            });
-        }
-
-        function updatePromoCards() {
-            Object.keys(promoButtons).forEach(code => {
-                const card = promoButtons[code];
-                if (!card) return;
-                
-                const promo = promos[code];
-                const isPermanentlyUsed = permanentUsedPromoCodes.includes(code);
-                const isApplied = activePromo === code;
-                
-                // Check eligibility based on current cart
-                const isEligible = cart.some(course => 
-                    promo.applicableTypes.includes(course.type) ||
-                    (course.applicablePromos && course.applicablePromos.includes(code))
-                );
-                
-                const subtotal = cart.reduce((acc, item) => acc + item.price, 0);
-                const meetsMinAmount = subtotal >= promo.minAmount;
-                
-                if (isPermanentlyUsed) {
-                    card.classList.add('used-promo');
-                    card.classList.remove('active');
-                    card.querySelector('.used-badge')?.remove();
-                    card.innerHTML += '<div class="used-badge">USED</div>';
-                    card.style.cursor = 'not-allowed';
-                } else if (!isEligible || !meetsMinAmount) {
-                    card.classList.remove('active');
-                    card.style.opacity = '0.5';
-                    card.style.cursor = 'not-allowed';
-                } else if (isApplied) {
-                    card.classList.add('active');
-                    card.classList.remove('used-promo');
-                    card.style.opacity = '1';
-                    card.style.cursor = 'pointer';
-                } else {
-                    card.classList.remove('active', 'used-promo');
-                    card.style.opacity = '1';
-                    card.style.cursor = 'pointer';
-                }
-            });
-        }
-
-        function applySpecificCode(code) {
-            if (permanentUsedPromoCodes.includes(code)) {
-                document.getElementById('full-promo-status').innerHTML = 
-                    `<span class="text-brand-danger font-bold">Permanently Used - Cannot be used again</span>`;
-                return;
-            }
-            
-            if (activePromo === code) {
-                document.getElementById('full-promo-status').innerHTML = 
-                    `<span class="text-brand-warning font-bold">Already applied</span>`;
-                return;
-            }
-            
-            document.getElementById('full-promo-input').value = code;
-            applyPromo();
-        }
-
-        function applyPromo() {
-            if (cart.length === 0) {
-                document.getElementById('full-promo-status').innerHTML = 
-                    `<span class="text-brand-danger font-bold">Add a course first!</span>`;
-                return;
-            }
-
-            const code = document.getElementById('full-promo-input').value.toUpperCase().trim();
-            const statusEl = document.getElementById('full-promo-status');
-
-            if (!promos[code]) {
-                activePromo = null;
-                statusEl.innerHTML = `<span class="text-brand-danger font-bold">Invalid Code</span>`;
-                updatePromoInfo();
-                renderCart();
-                updatePromoCards();
-                return;
-            }
-
-            if (permanentUsedPromoCodes.includes(code)) {
-                statusEl.innerHTML = `<span class="text-brand-danger font-bold">Permanently Used - Cannot be used again</span>`;
-                return;
-            }
-
-            if (activePromo === code) {
-                statusEl.innerHTML = `<span class="text-brand-warning font-bold">Already applied</span>`;
-                return;
-            }
-
-            const promo = promos[code];
-            const isEligible = cart.some(course => 
-                promo.applicableTypes.includes(course.type) ||
-                (course.applicablePromos && course.applicablePromos.includes(code))
-            );
-
-            if (!isEligible) {
-                statusEl.innerHTML = `<span class="text-brand-warning font-bold">Not applicable to courses in cart</span>`;
-                return;
-            }
-
-            const subtotal = cart.reduce((acc, item) => acc + item.price, 0);
-            if (subtotal < promo.minAmount) {
-                statusEl.innerHTML = `<span class="text-brand-warning font-bold">Minimum order value ₹${promo.minAmount} required</span>`;
-                return;
-            }
-
-            activePromo = code;
-            
-            statusEl.innerHTML = `
-                <span class="text-brand-success font-bold">
-                    <i class="fas fa-check-circle mr-1"></i> Applied! ${promo.discount * 100}% OFF
-                </span>`;
-            
-            updatePromoCards();
-            updatePromoInfo();
-            renderCart();
-            showNotification('Promo code applied successfully!', 'success');
-        }
-
-        function updatePromoInfo(savingsText = '') {
-            const infoEl = document.getElementById('full-applied-promo-info');
-            const codeEl = document.getElementById('full-current-promo-code');
-            const descEl = document.getElementById('full-current-promo-desc');
-            const savingsEl = document.getElementById('full-promo-savings');
-            const removeBtn = document.getElementById('full-remove-promo-btn');
-            
-            if (activePromo && promos[activePromo]) {
-                const promo = promos[activePromo];
-                const isPermanentlyUsed = permanentUsedPromoCodes.includes(activePromo);
-                
-                codeEl.textContent = `${activePromo} - ${promo.discount * 100}% OFF`;
-                descEl.textContent = isPermanentlyUsed ? 'Permanently Used' : promo.description;
-                savingsEl.textContent = savingsText || `You save ${promo.discount * 100}%`;
-                
-                if (isPermanentlyUsed) {
-                    removeBtn.style.display = 'none';
-                } else {
-                    removeBtn.style.display = 'block';
-                }
-                
-                infoEl.classList.remove('hidden');
-            } else {
-                infoEl.classList.add('hidden');
-            }
-        }
-
-        function removePromo() {
-            if (activePromo) {
-                if (permanentUsedPromoCodes.includes(activePromo)) {
-                    showNotification('This promo code is permanently used and cannot be removed', 'warning');
-                    return;
-                }
-            }
-            
-            activePromo = null;
-            document.getElementById('full-promo-input').value = '';
-            document.getElementById('full-promo-status').innerHTML = '';
-            updatePromoInfo();
-            updatePromoCards();
-            renderCart();
-            showNotification('Promo code removed', 'info');
-        }
-
-        // --- 10. COMPACT QR PAYMENT SYSTEM ---
-        function startPayment() {
-            if (cart.length === 0) return;
-
-            const totalStr = document.getElementById('full-cart-total').innerText.replace('₹', '').replace(/,/g, '');
-            const amount = parseInt(totalStr);
-            currentPaymentAmount = amount;
-
-            if (activePromo && !permanentUsedPromoCodes.includes(activePromo)) {
-                permanentUsedPromoCodes.push(activePromo);
-                localStorage.setItem('tescaPermanentUsedPromos', JSON.stringify(permanentUsedPromoCodes));
-            }
-            
-            const appliedCodeDisplay = document.getElementById('applied-code-display');
-            const appliedCodeText = document.getElementById('applied-code-text');
-            
-            if (activePromo) {
-                appliedCodeDisplay.classList.remove('hidden');
-                appliedCodeText.textContent = activePromo;
-            } else {
-                appliedCodeDisplay.classList.add('hidden');
-            }
-            
-            // Render course details in payment modal
-            renderPaymentCourseDetails();
-            
-            toggleCart();
-            
-            // Update all payment amount displays
-            document.getElementById('pay-final-amount').innerText = `₹${amount.toLocaleString()}`;
-            document.getElementById('qr-payment-amount').textContent = `₹${amount.toLocaleString()}`;
-            document.getElementById('payment-modal').classList.remove('hidden');
-
-            // Generate QR Code
-            generateQRCode(amount);
-            
-            // Set up payment app links with proper redirection
-            setupPaymentAppLinks(amount);
-            
-            // Show payment instructions
-            showNotification('Payment gateway opened. Scan QR or use any UPI app.', 'success');
-        }
-
-        function generateQRCode(amount) {
-            const upiId = '8866722633@upi';
-            const payeeName = 'TESCA Education';
-            const courseTitles = cart.map(c => c.title).join(', ');
-            const note = `TESCA Courses: ${courseTitles.substring(0, 50)}${courseTitles.length > 50 ? '...' : ''}`;
-            
-            // URL encode all parameters
-            const encodedNote = encodeURIComponent(note);
-            const encodedPayeeName = encodeURIComponent(payeeName);
-            
-            // Generate QR code with UPI payment URL
-            const qrData = `upi://pay?pa=${upiId}&pn=${encodedPayeeName}&am=${amount}&cu=INR&tn=${encodedNote}`;
-            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=10&data=${encodeURIComponent(qrData)}`;
-            
-            // Set QR code image
-            const qrImg = document.getElementById('qr-code-img');
-            qrImg.src = qrUrl;
-            qrImg.alt = `Scan to pay ₹${amount}`;
-        }
-
-        function setupPaymentAppLinks(amount) {
-            const upiId = '8866722633@upi';
-            const payeeName = 'TESCA Education';
-            const courseTitles = cart.map(c => c.title).join(', ');
-            const note = `TESCA Courses: ${courseTitles.substring(0, 50)}${courseTitles.length > 50 ? '...' : ''}`;
-            
-            // URL encode all parameters
-            const encodedNote = encodeURIComponent(note);
-            const encodedPayeeName = encodeURIComponent(payeeName);
-            
-            // Different UPI app URL schemes
-            const paymentLinks = {
-                'google-pay-direct': `https://gpay.app.goo.gl/${upiId}?amount=${amount}&txnNote=${encodedNote}`,
-                'phonepe-direct': `phonepe://pay?pa=${upiId}&pn=${encodedPayeeName}&am=${amount}&cu=INR&tn=${encodedNote}`,
-                'paytm-direct': `paytmmp://pay?pa=${upiId}&pn=${encodedPayeeName}&am=${amount}&cu=INR&tn=${encodedNote}`,
-                'bhim-direct': `bhim://upi/pay?pa=${upiId}&pn=${encodedPayeeName}&am=${amount}&cu=INR&tn=${encodedNote}`
-            };
-
-            // Assign links to buttons
-            Object.keys(paymentLinks).forEach(id => {
-                const linkElement = document.getElementById(id);
-                if (linkElement) {
-                    linkElement.href = paymentLinks[id];
-                    linkElement.onclick = function(e) {
-                        // Try to open the app, if fails, show alert with instructions
-                        setTimeout(() => {
-                            if (!document.hidden) {
-                                showNotification(`If the app didn't open, please manually enter UPI ID: ${upiId}`, 'info');
-                            }
-                        }, 1000);
-                    };
-                }
-            });
-        }
-
-        function copyUPIID() {
-            const upiId = '8866722633@upi';
-            navigator.clipboard.writeText(upiId).then(() => {
-                const copyBtn = document.getElementById('copy-upi-btn');
-                const originalText = copyBtn.innerHTML;
-                
-                copyBtn.innerHTML = '<i class="fas fa-check"></i> Copied!';
-                copyBtn.classList.add('copied');
-                
-                showNotification('UPI ID copied to clipboard!', 'success');
-                
-                setTimeout(() => {
-                    copyBtn.innerHTML = originalText;
-                    copyBtn.classList.remove('copied');
-                }, 2000);
-            }).catch(err => {
-                showNotification('Failed to copy UPI ID', 'danger');
-            });
-        }
-
-        function renderPaymentCourseDetails() {
-            const container = document.getElementById('payment-course-details-container');
-            if (!container) return;
-            
-            if (cart.length === 0) {
-                container.innerHTML = '<div class="text-sm text-gray-500 text-center">No courses in cart</div>';
-                return;
-            }
-            
-            let html = '<div class="text-xs text-gray-400 mb-2">Courses in this payment:</div>';
-            
-            cart.forEach(course => {
-                html += `
-                <div class="payment-course-item">
-                    <div class="payment-course-name">${course.title}</div>
-                    <div class="payment-course-price">₹${course.price.toLocaleString()}</div>
-                </div>
-                `;
-            });
-            
-            container.innerHTML = html;
-        }
-
-        function closePayment() {
-            document.getElementById('payment-modal').classList.add('hidden');
-            
-            if (activePromo) {
-                updatePromoCards();
-                updatePromoInfo();
-            }
-            
-            cart = [];
-            activePromo = null;
-            usedPromoCodes = [];
-            renderCart();
-            document.getElementById('cart-count').innerText = '0';
-        }
-
-        // --- 11. UTILITY FUNCTIONS ---
+        // --- 7. UTILITY FUNCTIONS ---
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
             if (menu.classList.contains('hidden')) {
@@ -3581,33 +1994,6 @@
                     menu.classList.remove('flex');
                 }, 400);
             }
-        }
-
-        function showNotification(message, type = 'info') {
-            const notification = document.createElement('div');
-            notification.className = `fixed top-24 right-4 z-[1000] px-4 py-3 rounded-lg shadow-lg transform transition-all duration-300 translate-x-full`;
-            
-            let bgColor = 'bg-blue-500';
-            if (type === 'success') bgColor = 'bg-green-500';
-            if (type === 'warning') bgColor = 'bg-yellow-500';
-            if (type === 'danger') bgColor = 'bg-red-500';
-            
-            notification.className += ` ${bgColor} text-white`;
-            notification.innerHTML = `
-                <div class="flex items-center gap-2">
-                    <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'}"></i>
-                    <span>${message}</span>
-                </div>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            setTimeout(() => notification.classList.remove('translate-x-full'), 10);
-            
-            setTimeout(() => {
-                notification.classList.add('translate-x-full');
-                setTimeout(() => notification.remove(), 300);
-            }, 3000);
         }
 
         function handleScroll() {
@@ -3652,16 +2038,6 @@
             
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'Escape') {
-                    const cartModal = document.getElementById('full-cart-modal');
-                    if (cartModal.style.display === 'flex') {
-                        toggleCart();
-                    }
-                    
-                    const paymentModal = document.getElementById('payment-modal');
-                    if (!paymentModal.classList.contains('hidden')) {
-                        closePayment();
-                    }
-                    
                     const mobileMenu = document.getElementById('mobile-menu');
                     if (!mobileMenu.classList.contains('hidden')) {
                         toggleMobileMenu();
