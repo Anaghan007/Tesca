@@ -37,7 +37,9 @@
                         'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                         'slide-up': 'slideUp 0.5s ease-out forwards',
                         'fade-in': 'fadeIn 0.8s ease-out',
-                        'slide-in': 'slideIn 0.5s ease-out'
+                        'slide-in': 'slideIn 0.5s ease-out',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'gradient-flow': 'gradientFlow 8s ease infinite'
                     },
                     keyframes: {
                         float: {
@@ -55,6 +57,14 @@
                         slideIn: {
                             '0%': { transform: 'translateX(-20px)', opacity: '0' },
                             '100%': { transform: 'translateX(0)', opacity: '1' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 20px rgba(99, 102, 241, 0.5)' },
+                            '100%': { boxShadow: '0 0 40px rgba(99, 102, 241, 0.8)' },
+                        },
+                        gradientFlow: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
                         }
                     }
                 }
@@ -509,105 +519,6 @@
             animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
 
-        /* NEW APP SECTION STYLES - IMPROVED FOR ALL DEVICES */
-        .full-phone-mockup { 
-            width: 310px; 
-            height: 620px; 
-            border: 12px solid #1a1a1a; 
-            border-radius: 54px; 
-            background: #000; 
-            position: relative; 
-            overflow: hidden; 
-            box-shadow: 0 50px 100px -20px rgba(0,0,0,0.8); 
-        }
-
-        .phone-notch { 
-            position: absolute; 
-            top: 0; 
-            left: 50%; 
-            transform: translateX(-50%); 
-            width: 140px; 
-            height: 28px; 
-            background: #1a1a1a; 
-            border-bottom-left-radius: 20px; 
-            border-bottom-right-radius: 20px; 
-            z-index: 20; 
-        }
-        
-        .inner-screen { 
-            height: 100%; 
-            width: 100%; 
-            display: flex; 
-            flex-direction: column; 
-            align-items: center; 
-            justify-content: flex-start; 
-            background: #08080a; 
-            padding: 25px; 
-            text-align: center;
-            overflow-y: auto;
-            position: relative;
-        }
-
-        /* Premium Logo Styling */
-        .premium-logo-wrapper {
-            position: relative; 
-            width: 85px; 
-            height: 85px; 
-            margin-bottom: 15px;
-            margin-top: 40px;
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-        }
-        .logo-glass-ring {
-            position: absolute; 
-            inset: 0; 
-            border-radius: 24px;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
-            border: 1px solid rgba(255, 255, 255, 0.1); 
-            backdrop-filter: blur(5px); 
-            transform: rotate(-5deg);
-        }
-        .logo-main-box {
-            position: relative; 
-            width: 70px; 
-            height: 70px; 
-            border-radius: 20px;
-            background: linear-gradient(135deg, #6366f1, #a855f7);
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.5); 
-            z-index: 2;
-        }
-
-        /* Readable Feature List */
-        .mock-item { 
-            width: 100%; 
-            background: rgba(255,255,255,0.04); 
-            padding: 16px; 
-            border-radius: 18px; 
-            border: 1px solid rgba(255,255,255,0.08); 
-            display: flex; 
-            align-items: center; 
-            gap: 15px;
-            margin-bottom: 12px;
-        }
-
-        .mock-title { 
-            font-size: 14px; 
-            font-weight: 800; 
-            color: #fff; 
-            margin-bottom: 1px; 
-            text-align: left;
-        }
-        .mock-desc { 
-            font-size: 12px; 
-            color: #94a3b8; 
-            font-weight: 500; 
-            text-align: left;
-        }
-
         /* Fix for Play Store and social media links */
         .direct-link {
             text-decoration: none;
@@ -695,7 +606,300 @@
             gap: 0.5rem;
         }
 
-        /* Mobile improvements */
+        /* NEW PREMIUM APP SECTION STYLES */
+        .app-section-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 2rem;
+        }
+
+        .app-section-bg-gradient {
+            background: linear-gradient(135deg, 
+                rgba(99, 102, 241, 0.1) 0%, 
+                rgba(139, 92, 246, 0.05) 25%,
+                rgba(6, 182, 212, 0.05) 50%,
+                rgba(99, 102, 241, 0.05) 75%,
+                rgba(139, 92, 246, 0.1) 100%);
+            background-size: 400% 400%;
+            animation: gradientFlow 8s ease infinite;
+        }
+
+        /* Premium Phone Mockup */
+        .premium-phone-mockup {
+            width: 340px;
+            height: 690px;
+            border-radius: 60px;
+            background: #0a0a0a;
+            position: relative;
+            margin: 0 auto;
+            box-shadow: 
+                0 60px 120px -30px rgba(0, 0, 0, 0.8),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 0 0 12px #1a1a1a,
+                0 0 0 14px rgba(255, 255, 255, 0.05);
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .phone-frame {
+            position: absolute;
+            inset: 0;
+            border-radius: 60px;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180px;
+            height: 32px;
+            background: #0a0a0a;
+            border-bottom-left-radius: 24px;
+            border-bottom-right-radius: 24px;
+            z-index: 20;
+            border: 2px solid rgba(255, 255, 255, 0.05);
+            border-top: none;
+        }
+
+        .phone-screen {
+            position: absolute;
+            inset: 16px;
+            border-radius: 48px;
+            background: linear-gradient(135deg, #08080a 0%, #0a0a0c 100%);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 30px;
+            z-index: 10;
+        }
+
+        .app-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 40px;
+            width: 100%;
+        }
+
+        .app-logo-container {
+            width: 80px;
+            height: 80px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            box-shadow: 
+                0 20px 40px rgba(99, 102, 241, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .app-logo-container i {
+            font-size: 36px;
+            color: white;
+        }
+
+        .app-name {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(90deg, #fff, #c7d2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .app-tagline {
+            font-size: 13px;
+            color: #94a3b8;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .app-features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            width: 100%;
+            margin-bottom: 40px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 18px;
+            padding: 18px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateX(5px);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .feature-content h4 {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: white;
+        }
+
+        .feature-content p {
+            font-size: 12px;
+            color: #94a3b8;
+            line-height: 1.4;
+        }
+
+        .app-download-section {
+            margin-top: auto;
+            width: 100%;
+        }
+
+        .download-btn {
+            width: 100%;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            color: white;
+            border: none;
+            border-radius: 16px;
+            padding: 16px;
+            font-size: 15px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(99, 102, 241, 0.4);
+        }
+
+        /* App Features Sidebar */
+        .app-features-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .feature-highlight {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 28px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-highlight:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(99, 102, 241, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .feature-highlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-highlight:hover::before {
+            opacity: 1;
+        }
+
+        .feature-highlight-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .feature-highlight h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: white;
+        }
+
+        .feature-highlight p {
+            color: #94a3b8;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        /* Download Stats */
+        .download-stats {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+            flex: 1;
+        }
+
+        .stat-number-small {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(90deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .premium-phone-mockup {
+                width: 320px;
+                height: 650px;
+            }
+        }
+
         @media (max-width: 768px) {
             /* MOBILE BODY STYLES */
             body {
@@ -942,7 +1146,7 @@
                 line-height: 1.5;
             }
             
-            /* MOBILE APP SECTION - FIXED MOCKUP */
+            /* MOBILE APP SECTION */
             .mobile-view #app {
                 padding: 2.5rem 1rem !important;
             }
@@ -959,59 +1163,102 @@
                 margin-bottom: 1.5rem;
             }
             
-            .mobile-view .full-phone-mockup {
+            /* Premium phone mockup for mobile */
+            .mobile-view .premium-phone-mockup {
                 width: 280px;
-                height: 560px;
-                border-radius: 40px;
-                border-width: 10px;
-                margin: 0 auto;
+                height: 580px;
+                border-radius: 48px;
+                margin: 0 auto 3rem auto;
             }
             
             .mobile-view .phone-notch {
-                width: 120px;
-                height: 24px;
+                width: 140px;
+                height: 28px;
             }
             
-            .mobile-view .inner-screen {
-                padding: 20px;
-                overflow-y: visible !important;
+            .mobile-view .phone-screen {
+                inset: 12px;
+                border-radius: 40px;
+                padding: 30px 20px;
             }
             
-            .mobile-view .premium-logo-wrapper {
-                width: 75px;
-                height: 75px;
-                margin-bottom: 12px;
-                margin-top: 30px;
+            .mobile-view .app-logo-container {
+                width: 70px;
+                height: 70px;
+                border-radius: 20px;
+                margin-bottom: 16px;
             }
             
-            .mobile-view .logo-main-box {
-                width: 60px;
-                height: 60px;
-                border-radius: 16px;
+            .mobile-view .app-logo-container i {
+                font-size: 32px;
             }
             
-            .mobile-view .logo-main-box i {
-                font-size: 1.7rem;
+            .mobile-view .app-name {
+                font-size: 24px;
             }
             
-            .mobile-view .mock-item {
-                padding: 14px;
-                gap: 12px;
-                border-radius: 16px;
-                margin-bottom: 8px;
-            }
-            
-            .mobile-view .mock-title {
-                font-size: 13px;
-            }
-            
-            .mobile-view .mock-desc {
+            .mobile-view .app-tagline {
                 font-size: 11px;
             }
             
-            /* APP SECTION ICON SHAPES */
-            .mobile-view #app .glass-card .w-12.h-12 {
-                border-radius: 14px !important;
+            .mobile-view .feature-card {
+                padding: 14px;
+                border-radius: 16px;
+                gap: 12px;
+            }
+            
+            .mobile-view .feature-icon {
+                width: 40px;
+                height: 40px;
+                border-radius: 12px;
+            }
+            
+            .mobile-view .feature-content h4 {
+                font-size: 14px;
+            }
+            
+            .mobile-view .feature-content p {
+                font-size: 11px;
+            }
+            
+            .mobile-view .download-btn {
+                padding: 14px;
+                font-size: 14px;
+                border-radius: 14px;
+            }
+            
+            .mobile-view .feature-highlight {
+                padding: 22px;
+                border-radius: 18px;
+            }
+            
+            .mobile-view .feature-highlight-icon {
+                width: 48px;
+                height: 48px;
+                border-radius: 14px;
+                margin-bottom: 16px;
+                font-size: 20px;
+            }
+            
+            .mobile-view .feature-highlight h3 {
+                font-size: 18px;
+            }
+            
+            .mobile-view .feature-highlight p {
+                font-size: 14px;
+            }
+            
+            .mobile-view .download-stats {
+                gap: 16px;
+                margin-top: 24px;
+            }
+            
+            .mobile-view .stat-number-small {
+                font-size: 24px;
+            }
+            
+            .mobile-view .stat-label {
+                font-size: 11px;
             }
             
             /* MOBILE FOOTER - COMPACT */
@@ -1054,10 +1301,10 @@
                 font-size: 1rem !important;
             }
             
-            .mobile-view .full-phone-mockup {
+            .mobile-view .premium-phone-mockup {
                 width: 260px;
-                height: 520px;
-                border-radius: 36px;
+                height: 540px;
+                border-radius: 40px;
             }
             
             .mobile-view #courses h2,
@@ -1078,6 +1325,57 @@
             .mobile-view .banner-nav-arrow.next {
                 right: calc(50% - 45px) !important;
             }
+            
+            .mobile-view .phone-screen {
+                padding: 25px 18px;
+            }
+            
+            .mobile-view .app-logo-container {
+                width: 60px;
+                height: 60px;
+                border-radius: 16px;
+                margin-bottom: 14px;
+            }
+            
+            .mobile-view .app-logo-container i {
+                font-size: 28px;
+            }
+            
+            .mobile-view .app-name {
+                font-size: 22px;
+            }
+            
+            .mobile-view .app-tagline {
+                font-size: 10px;
+            }
+            
+            .mobile-view .app-features-grid {
+                gap: 10px;
+                margin-bottom: 30px;
+            }
+            
+            .mobile-view .feature-card {
+                padding: 12px;
+                gap: 10px;
+            }
+            
+            .mobile-view .feature-icon {
+                width: 36px;
+                height: 36px;
+                border-radius: 10px;
+            }
+            
+            .mobile-view .feature-highlight {
+                padding: 18px;
+            }
+            
+            .mobile-view .download-stats {
+                gap: 12px;
+            }
+            
+            .mobile-view .stat-number-small {
+                font-size: 20px;
+            }
         }
         
         @media (max-width: 320px) {
@@ -1095,10 +1393,10 @@
                 font-size: 0.75rem !important;
             }
             
-            .mobile-view .full-phone-mockup {
+            .mobile-view .premium-phone-mockup {
                 width: 240px;
-                height: 480px;
-                border-radius: 30px;
+                height: 500px;
+                border-radius: 36px;
             }
             
             .mobile-view .banner-nav-arrow {
@@ -1113,6 +1411,17 @@
             
             .mobile-view .banner-nav-arrow.next {
                 right: calc(50% - 40px) !important;
+            }
+            
+            .mobile-view .phone-notch {
+                width: 120px;
+                height: 24px;
+            }
+            
+            .mobile-view .phone-screen {
+                inset: 10px;
+                border-radius: 32px;
+                padding: 20px 15px;
             }
         }
 
@@ -1146,11 +1455,6 @@
                 grid-template-columns: repeat(4, 1fr);
                 gap: 2.5rem;
             }
-            
-            /* APP SECTION ICON SHAPES - CONSISTENT */
-            #app .glass-card .w-12.h-12 {
-                border-radius: 16px !important;
-            }
         }
 
         /* Banner arrow visibility on medium screens */
@@ -1168,6 +1472,11 @@
             .banner-nav-arrow.next {
                 right: 20px;
             }
+            
+            .premium-phone-mockup {
+                width: 300px;
+                height: 620px;
+            }
         }
         
         /* Tablet view */
@@ -1176,9 +1485,9 @@
                 grid-template-columns: repeat(2, 1fr);
             }
             
-            .full-phone-mockup {
+            .premium-phone-mockup {
                 width: 280px;
-                height: 560px;
+                height: 580px;
             }
         }
     </style>
@@ -1386,117 +1695,168 @@
         </div>
     </section>
 
-    <!-- APP SECTION -->
+    <!-- NEW PREMIUM APP SECTION -->
     <section id="app" class="section-padding relative overflow-hidden bg-gradient-to-b from-brand-bg to-brand-surface">
         <div class="container mx-auto px-4">
-            <!-- Section Title -->
-            <div class="max-w-3xl mx-auto text-center mb-12">
-                <span class="text-brand-primary font-black text-sm tracking-[0.3em] uppercase mb-4 block">Modern Learning</span>
-                <h2 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Your Pocket <span class="text-brand-primary">Classroom</span></h2>
-                <p class="text-gray-400 text-lg leading-relaxed font-medium mb-10">
-                    Carry your classroom in your pocket. Access live sessions, premium study materials, 
-                    and track your visa application status directly from the official TESCA app.
-                </p>
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
+                <span class="text-brand-primary font-bold tracking-widest text-sm uppercase mb-4 block">Revolutionary Learning</span>
+                <h2 class="text-4xl md:text-5xl font-bold leading-tight mb-6">Your Ultimate <span class="gradient-text">Learning Companion</span></h2>
+                <p class="text-gray-400 text-lg">Download the official TESCA app for seamless learning experience, live classes, and personalized guidance - all in one place.</p>
             </div>
-            
-            <!-- Content with Mockup -->
-            <div class="flex flex-col md:flex-row items-center justify-center gap-16 relative z-10">
-                
-                <!-- Phone Mockup -->
-                <div class="full-phone-mockup shrink-0 order-2 md:order-1">
-                    <div class="phone-notch"></div>
-                    
-                    <div class="inner-screen">
+
+            <div class="app-section-container">
+                <div class="app-section-bg-gradient rounded-3xl p-8 md:p-12">
+                    <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
                         
-                        <div class="premium-logo-wrapper">
-                            <div class="logo-glass-ring"></div>
-                            <div class="logo-main-box">
-                                <i class="fas fa-graduation-cap text-white text-3xl"></i>
+                        <!-- Premium Phone Mockup -->
+                        <div class="lg:w-1/2 flex justify-center animate-fade-in" style="animation-delay: 0.1s">
+                            <div class="premium-phone-mockup">
+                                <div class="phone-frame">
+                                    <div class="phone-notch"></div>
+                                    <div class="phone-screen">
+                                        
+                                        <!-- App Header -->
+                                        <div class="app-header">
+                                            <div class="app-logo-container">
+                                                <i class="fas fa-graduation-cap"></i>
+                                            </div>
+                                            <h2 class="app-name">TESCA</h2>
+                                            <p class="app-tagline">Premium Learning</p>
+                                        </div>
+
+                                        <!-- App Features List -->
+                                        <div class="app-features-grid">
+                                            <!-- Feature 1 -->
+                                            <div class="feature-card">
+                                                <div class="feature-icon" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));">
+                                                    <i class="fas fa-video text-brand-primary text-lg"></i>
+                                                </div>
+                                                <div class="feature-content">
+                                                    <h4>Live Interactive Classes</h4>
+                                                    <p>Join daily sessions with expert trainers</p>
+                                                </div>
+                                            </div>
+
+                                            <!-- Feature 2 -->
+                                            <div class="feature-card">
+                                                <div class="feature-icon" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(5, 150, 105, 0.2));">
+                                                    <i class="fas fa-book text-brand-success text-lg"></i>
+                                                </div>
+                                                <div class="feature-content">
+                                                    <h4>Study Materials</h4>
+                                                    <p>Access 1000+ PDFs & practice tests</p>
+                                                </div>
+                                            </div>
+
+                                            <!-- Feature 3 -->
+                                            <div class="feature-card">
+                                                <div class="feature-icon" style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(14, 165, 233, 0.2));">
+                                                    <i class="fas fa-headset text-brand-accent text-lg"></i>
+                                                </div>
+                                                <div class="feature-content">
+                                                    <h4>24/7 Mentor Support</h4>
+                                                    <p>Instant doubt resolution</p>
+                                                </div>
+                                            </div>
+
+                                            <!-- Feature 4 -->
+                                            <div class="feature-card">
+                                                <div class="feature-icon" style="background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(217, 119, 6, 0.2));">
+                                                    <i class="fas fa-chart-line text-brand-warning text-lg"></i>
+                                                </div>
+                                                <div class="feature-content">
+                                                    <h4>Progress Tracking</h4>
+                                                    <p>Monitor your learning journey</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Download Button -->
+                                        <div class="app-download-section">
+                                            <a href="https://play.google.com/store/apps/details?id=co.ted.fpqdt" target="_blank" class="direct-link">
+                                                <button class="download-btn">
+                                                    <i class="fab fa-google-play text-xl"></i>
+                                                    Download Now
+                                                </button>
+                                            </a>
+                                            
+                                            <!-- Download Stats -->
+                                            <div class="download-stats">
+                                                <div class="stat-item">
+                                                    <div class="stat-number-small">50K+</div>
+                                                    <div class="stat-label">Downloads</div>
+                                                </div>
+                                                <div class="stat-item">
+                                                    <div class="stat-number-small">4.8</div>
+                                                    <div class="stat-label">Rating</div>
+                                                </div>
+                                                <div class="stat-item">
+                                                    <div class="stat-number-small">24/7</div>
+                                                    <div class="stat-label">Support</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <h4 class="text-white font-black text-xl mb-1 tracking-widest uppercase">TESCA</h4>
-                        <p class="text-[11px] text-gray-500 uppercase tracking-[0.4em] mb-8 font-black">Official App</p>
-                        
-                        <div class="w-full space-y-4">
-                            <div class="mock-item">
-                                <div class="w-10 h-10 rounded-xl bg-brand-primary/20 flex items-center justify-center text-brand-primary text-lg flex-shrink-0">
-                                    <i class="fas fa-play"></i>
+                        <!-- App Features Description -->
+                        <div class="lg:w-1/2 animate-fade-in" style="animation-delay: 0.2s">
+                            <div class="app-features-sidebar">
+                                
+                                <!-- Feature 1 -->
+                                <div class="feature-highlight">
+                                    <div class="feature-highlight-icon" style="background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.1));">
+                                        <i class="fas fa-broadcast-tower text-brand-primary"></i>
+                                    </div>
+                                    <h3>Live Interactive Learning</h3>
+                                    <p>Experience real-time classroom sessions with our expert faculty. Ask questions, participate in discussions, and get instant feedback - just like a physical classroom but from anywhere.</p>
                                 </div>
-                                <div class="text-left">
-                                    <p class="mock-title">Live Classes</p>
-                                    <p class="mock-desc">Daily interactive Video</p>
-                                </div>
-                            </div>
-                            <div class="mock-item">
-                                <div class="w-10 h-10 rounded-xl bg-brand-success/20 flex items-center justify-center text-brand-success text-lg flex-shrink-0">
-                                    <i class="fas fa-file-alt"></i>
-                                </div>
-                                <div class="text-left">
-                                    <p class="mock-title">Study Hub</p>
-                                    <p class="mock-desc">Full Library of PDF's</p>
-                                </div>
-                            </div>
-                            <div class="mock-item">
-                                <div class="w-10 h-10 rounded-xl bg-brand-accent/20 flex items-center justify-center text-brand-accent text-lg flex-shrink-0">
-                                    <i class="fas fa-comments"></i>
-                                </div>
-                                <div class="text-left">
-                                    <p class="mock-title">Tutor Chat</p>
-                                    <p class="mock-desc">24/7 Expert Support</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Features List -->
-                <div class="max-w-xl order-1 md:order-2">
-                    <div class="space-y-6">
-                        <div class="glass-card p-5 rounded-2xl">
-                            <div class="flex items-start gap-4">
-                                <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-brand-primary to-brand-secondary flex items-center justify-center flex-shrink-0">
-                                    <i class="fas fa-video text-white text-xl"></i>
+                                <!-- Feature 2 -->
+                                <div class="feature-highlight">
+                                    <div class="feature-highlight-icon" style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.1));">
+                                        <i class="fas fa-database text-brand-success"></i>
+                                    </div>
+                                    <h3>Comprehensive Study Library</h3>
+                                    <p>Access thousands of study materials including PDFs, practice tests, video lectures, and templates. Everything you need for IELTS, PTE, TOEFL, and spoken English mastery.</p>
                                 </div>
-                                <div>
-                                    <h4 class="text-xl font-bold mb-2">Live Interactive Classes</h4>
-                                    <p class="text-gray-400">Join daily live sessions with expert faculty. Get your doubts cleared in real-time.</p>
+
+                                <!-- Feature 3 -->
+                                <div class="feature-highlight">
+                                    <div class="feature-highlight-icon" style="background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(14, 165, 233, 0.1));">
+                                        <i class="fas fa-user-graduate text-brand-accent"></i>
+                                    </div>
+                                    <h3>Personalized Mentorship</h3>
+                                    <p>Get one-on-one guidance from industry experts. Track your progress, receive customized study plans, and achieve your learning goals with dedicated mentor support.</p>
+                                </div>
+
+                                <!-- App Store Buttons -->
+                                <div class="flex flex-col sm:flex-row gap-4 mt-8">
+                                    <a href="https://play.google.com/store/apps/details?id=co.ted.fpqdt" target="_blank" class="direct-link flex-1">
+                                        <div class="bg-gray-900 hover:bg-gray-800 border border-gray-800 rounded-2xl p-4 flex items-center justify-center gap-3 transition-all duration-300 hover:scale-[1.02]">
+                                            <i class="fab fa-google-play text-2xl text-brand-success"></i>
+                                            <div class="text-left">
+                                                <div class="text-[10px] text-gray-400 uppercase">Get it on</div>
+                                                <div class="text-sm font-bold">Google Play</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    
+                                    <div class="direct-link flex-1">
+                                        <div class="bg-gray-900 border border-gray-800 rounded-2xl p-4 flex items-center justify-center gap-3 opacity-70 cursor-not-allowed">
+                                            <i class="fab fa-apple text-2xl text-gray-400"></i>
+                                            <div class="text-left">
+                                                <div class="text-[10px] text-gray-500 uppercase">Coming soon to</div>
+                                                <div class="text-sm font-bold text-gray-400">App Store</div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="glass-card p-5 rounded-2xl">
-                            <div class="flex items-start gap-4">
-                                <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-brand-success to-emerald-500 flex items-center justify-center flex-shrink-0">
-                                    <i class="fas fa-book text-white text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-xl font-bold mb-2">Comprehensive Study Material</h4>
-                                    <p class="text-gray-400">Access 1000+ PDFs, practice tests, and video lectures anytime, anywhere.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="glass-card p-5 rounded-2xl">
-                            <div class="flex items-start gap-4">
-                                <div class="w-12 h-12 rounded-xl bg-gradient-to-r from-brand-accent to-cyan-500 flex items-center justify-center flex-shrink-0">
-                                    <i class="fas fa-headset text-white text-xl"></i>
-                                </div>
-                                <div>
-                                    <h4 class="text-xl font-bold mb-2">24/7 Mentor Support</h4>
-                                    <p class="text-gray-400">Chat directly with mentors for personalized guidance and quick doubt resolution.</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Download Button -->
-                        <a href="https://play.google.com/store/apps/details?id=co.ted.fpqdt" target="_blank" class="direct-link inline-flex items-center gap-4 bg-white text-black px-10 py-4 rounded-[2rem] font-black hover:scale-105 transition-all shadow-xl w-full justify-center mt-6">
-                            <i class="fab fa-google-play text-2xl text-brand-success"></i>
-                            <div class="text-left">
-                                <div class="text-[11px] text-gray-500 uppercase font-black tracking-tighter leading-none mb-1">Available on</div>
-                                <div class="text-xl leading-none">Google Play</div>
-                            </div>
-                        </a>
                     </div>
                 </div>
             </div>
