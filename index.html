@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TESCA | World-Class Education & Visa Consultancy</title>
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
@@ -148,14 +151,14 @@
             min-height: 80vh;
         }
 
-        /* Banner overlay */
+        /* Banner overlay - UPDATED: Changed to 50% transparency */
         .banner-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(5, 5, 7, 0.9) 0%, rgba(15, 16, 22, 0.8) 100%);
+            background: rgba(0, 0, 0, 0.5); /* 50% transparency as requested */
             z-index: 1;
         }
 
@@ -288,7 +291,7 @@
             margin-bottom: 1.5rem !important;
         }
         
-        .faculty-initial-circle {
+        .faculty-photo {
             width: 100px !important;
             height: 100px !important;
             margin: 0 auto 1rem auto !important;
@@ -296,9 +299,8 @@
             align-items: center;
             justify-content: center;
             border-radius: 50%;
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: white;
+            object-fit: cover;
+            border: 3px solid rgba(99, 102, 241, 0.3);
         }
         
         .faculty-name {
@@ -501,6 +503,7 @@
             border: none;
             cursor: pointer;
             transition: all 0.3s ease;
+            text-decoration: none;
         }
         
         .enroll-btn:hover {
@@ -892,6 +895,20 @@
             font-weight: 600;
         }
 
+        /* Banner highlight text */
+        .banner-highlight {
+            background: linear-gradient(90deg, rgba(99, 102, 241, 0.2), rgba(139, 92, 246, 0.2));
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 12px;
+            padding: 12px 20px;
+            margin: 15px auto;
+            max-width: 500px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+        }
+
         /* Responsive Design */
         @media (max-width: 1200px) {
             .premium-phone-mockup {
@@ -907,21 +924,21 @@
                 line-height: 1.6;
             }
             
-            /* Reduced section padding for mobile */
-            .mobile-view .section-padding {
-                padding-top: 2.5rem !important;
-                padding-bottom: 2.5rem !important;
-            }
-            
-            /* MOBILE HEADER */
+            /* UPDATED: Added margin top for header in mobile view */
             #main-header .glass {
-                margin: 0.5rem auto;
+                margin: 15px auto 0 auto !important; /* Added top margin */
                 padding: 0.4rem 1rem;
                 max-width: 95%;
                 border-radius: 50px !important;
                 background: rgba(255, 255, 255, 0.1) !important;
                 backdrop-filter: blur(20px) !important;
                 border: 1px solid rgba(255, 255, 255, 0.15) !important;
+            }
+            
+            /* Reduced section padding for mobile */
+            .mobile-view .section-padding {
+                padding-top: 2.5rem !important;
+                padding-bottom: 2.5rem !important;
             }
             
             #main-header .logo-img {
@@ -968,30 +985,31 @@
                 color: #6366f1;
             }
             
-            /* MOBILE BANNER - ADJUSTED HEIGHT & IMPROVED STRUCTURE */
+            /* UPDATED: MOBILE BANNER - ADJUSTED HEIGHT & IMPROVED STRUCTURE */
             .mobile-view .hero-section {
-                height: 65vh !important;
-                min-height: 65vh;
+                height: 70vh !important;
+                min-height: 70vh;
             }
             
             .mobile-view .banner-container {
-                min-height: 65vh;
+                min-height: 70vh;
             }
             
             .mobile-view .banner-slide {
-                min-height: 65vh;
+                min-height: 70vh;
             }
             
+            /* UPDATED: Better centered content with more padding */
             .mobile-view .banner-content {
-                padding: 20px 15px !important;
+                padding: 60px 15px 80px !important; /* Increased padding */
                 justify-content: center !important;
                 margin-top: 0 !important;
-                min-height: 65vh;
+                min-height: 70vh;
                 width: 95%;
             }
             
             .mobile-view .banner-title {
-                font-size: 2rem !important;
+                font-size: 2.2rem !important;
                 line-height: 1.2;
                 margin-bottom: 1rem !important;
                 margin-top: 0 !important;
@@ -1025,30 +1043,36 @@
                 font-size: 1rem !important;
                 padding: 0.8rem 1.8rem !important;
                 margin-top: 0.5rem;
-                margin-bottom: 0.5rem !important;
+                margin-bottom: 1.5rem !important; /* Increased bottom margin */
                 border-radius: 50px;
             }
             
-            /* MOBILE BANNER ARROWS - POSITIONED AT BOTTOM CENTER */
+            .mobile-view .banner-highlight {
+                font-size: 0.9rem !important;
+                padding: 8px 12px;
+                margin: 10px auto;
+            }
+            
+            /* UPDATED: MOBILE BANNER ARROWS - INCREASED SIZE AND ADDED MARGIN */
             .mobile-view .banner-nav-arrow {
                 display: flex !important;
                 top: auto !important;
-                bottom: 15px !important;
+                bottom: 40px !important; /* Moved up from bottom edge */
                 transform: translateY(0) !important;
-                width: 40px !important;
-                height: 40px !important;
-                font-size: 1.2rem !important;
+                width: 55px !important; /* Increased size */
+                height: 55px !important; /* Increased size */
+                font-size: 1.4rem !important; /* Increased font size */
                 background: rgba(255, 255, 255, 0.15);
                 border: 1px solid rgba(255, 255, 255, 0.25);
             }
             
             .mobile-view .banner-nav-arrow.prev {
-                left: calc(50% - 50px) !important;
+                left: calc(50% - 65px) !important; /* Adjusted for larger size */
                 right: auto !important;
             }
             
             .mobile-view .banner-nav-arrow.next {
-                right: calc(50% - 50px) !important;
+                right: calc(50% - 65px) !important; /* Adjusted for larger size */
                 left: auto !important;
             }
             
@@ -1284,21 +1308,41 @@
         @media (max-width: 480px) {
             /* Extra small devices */
             .mobile-view .hero-section {
-                min-height: 60vh;
-                height: 60vh !important;
+                min-height: 65vh;
+                height: 65vh !important;
             }
             
             .mobile-view .banner-content {
-                padding-top: 15px !important;
-                padding-bottom: 15px !important;
+                padding: 50px 15px 70px !important; /* Adjusted padding */
             }
             
             .mobile-view .banner-title {
-                font-size: 1.7rem !important;
+                font-size: 1.9rem !important;
             }
             
             .mobile-view .banner-subtitle {
                 font-size: 1rem !important;
+            }
+            
+            .mobile-view .banner-highlight {
+                font-size: 0.85rem !important;
+                padding: 6px 10px;
+            }
+            
+            /* UPDATED: Further adjustments for very small screens */
+            .mobile-view .banner-nav-arrow {
+                bottom: 35px !important;
+                width: 50px !important;
+                height: 50px !important;
+                font-size: 1.3rem !important;
+            }
+            
+            .mobile-view .banner-nav-arrow.prev {
+                left: calc(50% - 60px) !important;
+            }
+            
+            .mobile-view .banner-nav-arrow.next {
+                right: calc(50% - 60px) !important;
             }
             
             .mobile-view .premium-phone-mockup {
@@ -1316,14 +1360,6 @@
             .mobile-view .footer-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
-            }
-            
-            .mobile-view .banner-nav-arrow.prev {
-                left: calc(50% - 45px) !important;
-            }
-            
-            .mobile-view .banner-nav-arrow.next {
-                right: calc(50% - 45px) !important;
             }
             
             .mobile-view .phone-screen {
@@ -1381,11 +1417,31 @@
         @media (max-width: 320px) {
             /* Very small devices */
             .mobile-view .banner-title {
-                font-size: 1.5rem !important;
+                font-size: 1.7rem !important;
             }
             
             .mobile-view .banner-subtitle {
                 font-size: 0.9rem !important;
+            }
+            
+            .mobile-view .banner-highlight {
+                font-size: 0.8rem !important;
+            }
+            
+            /* UPDATED: Further arrow adjustments for smallest screens */
+            .mobile-view .banner-nav-arrow {
+                bottom: 30px !important;
+                width: 45px !important;
+                height: 45px !important;
+                font-size: 1.2rem !important;
+            }
+            
+            .mobile-view .banner-nav-arrow.prev {
+                left: calc(50% - 55px) !important;
+            }
+            
+            .mobile-view .banner-nav-arrow.next {
+                right: calc(50% - 55px) !important;
             }
             
             .mobile-view .filter-btn {
@@ -1397,20 +1453,6 @@
                 width: 240px;
                 height: 500px;
                 border-radius: 36px;
-            }
-            
-            .mobile-view .banner-nav-arrow {
-                width: 36px !important;
-                height: 36px !important;
-                font-size: 1rem !important;
-            }
-            
-            .mobile-view .banner-nav-arrow.prev {
-                left: calc(50% - 40px) !important;
-            }
-            
-            .mobile-view .banner-nav-arrow.next {
-                right: calc(50% - 40px) !important;
             }
             
             .mobile-view .phone-notch {
@@ -1531,7 +1573,7 @@
                 </nav>
 
                 <div class="flex items-center gap-5">
-                    <a href="tel:+918866722633" class="call-btn">
+                    <a href="tel:+919925081515" class="call-btn">
                         <i class="fas fa-phone"></i> 
                         <span class="hidden sm:inline">Call Now</span>
                     </a>
@@ -1581,8 +1623,7 @@
             </div>
             
             <div class="flex flex-wrap gap-3 justify-center mb-10 animate-fade-in" style="animation-delay: 0.2s">
-                <button onclick="filterCourses('all')" class="filter-btn active px-6 py-3 rounded-full border border-white/10 bg-white/5 text-sm font-bold transition">All Courses</button>
-                <button onclick="filterCourses('spoken')" class="filter-btn px-6 py-3 rounded-full border border-white/10 bg-white/5 text-sm font-bold transition">Spoken English</button>
+                <button onclick="filterCourses('spoken')" class="filter-btn active px-6 py-3 rounded-full border border-white/10 bg-white/5 text-sm font-bold transition">Spoken English</button>
                 <button onclick="filterCourses('ielts')" class="filter-btn px-6 py-3 rounded-full border border-white/10 bg-white/5 text-sm font-bold transition">IELTS</button>
                 <button onclick="filterCourses('pte')" class="filter-btn px-6 py-3 rounded-full border border-white/10 bg-white/5 text-sm font-bold transition">PTE</button>
                 <button onclick="filterCourses('toefl')" class="filter-btn px-6 py-3 rounded-full border border-white/10 bg-white/5 text-sm font-bold transition">TOEFL</button>
@@ -1609,9 +1650,7 @@
                 <div class="faculty-card glass-card animate-fade-in" style="animation-delay: 0.1s">
                     <div class="faculty-content">
                         <div class="faculty-photo-container">
-                            <div class="faculty-initial-circle bg-gradient-to-br from-brand-primary to-purple-600">
-                                ND
-                            </div>
+                            <img src="pro1.png" alt="Nikunj Dhanani" class="faculty-photo">
                         </div>
                         <div class="faculty-name">
                             <h3 class="text-2xl font-bold">Nikunj Dhanani</h3>
@@ -1632,9 +1671,7 @@
                 <div class="faculty-card glass-card animate-fade-in" style="animation-delay: 0.2s">
                     <div class="faculty-content">
                         <div class="faculty-photo-container">
-                            <div class="faculty-initial-circle bg-gradient-to-br from-brand-warning to-orange-500">
-                                VF
-                            </div>
+                            <img src="pro2.png" alt="Vishal Faldu" class="faculty-photo">
                         </div>
                         <div class="faculty-name">
                             <h3 class="text-2xl font-bold">Vishal Faldu</h3>
@@ -1655,9 +1692,7 @@
                 <div class="faculty-card glass-card animate-fade-in" style="animation-delay: 0.3s">
                     <div class="faculty-content">
                         <div class="faculty-photo-container">
-                            <div class="faculty-initial-circle bg-gradient-to-br from-brand-accent to-cyan-500">
-                                KL
-                            </div>
+                            <img src="pro3.png" alt="Kiran Lathiya" class="faculty-photo">
                         </div>
                         <div class="faculty-name">
                             <h3 class="text-2xl font-bold">Kiran Lathiya</h3>
@@ -1915,15 +1950,15 @@
                     <ul class="space-y-3 text-sm text-gray-400">
                         <li class="flex items-start gap-3">
                             <i class="fas fa-map-marker-alt mt-1 text-brand-primary"></i>
-                            <span>304, Royal Trade Center, Surat, Gujarat, India</span>
+                            <span>107, Ambika Pinacle, Lajamni Chowk, Dwarkesh Nagari, Mota Varachha, Surat, Gujarat 394101</span>
                         </li>
                         <li class="flex items-center gap-3">
                             <i class="fas fa-phone text-brand-primary"></i>
-                            <a href="tel:+918866722633" class="direct-link hover:text-brand-accent transition-colors duration-300">+91 88667 22633</a>
+                            <a href="tel:+919925081515" class="direct-link hover:text-brand-accent transition-colors duration-300">+91 99250 81515</a>
                         </li>
                         <li class="flex items-center gap-3">
                             <i class="fas fa-envelope text-brand-primary"></i>
-                            <a href="mailto:info@tescaeducation.com" class="direct-link hover:text-brand-accent transition-colors duration-300">info@tescaeducation.com</a>
+                            <a href="mailto:visa@tesca.co" class="direct-link hover:text-brand-accent transition-colors duration-300">visa@tesca.co</a>
                         </li>
                         <li class="flex items-center gap-3">
                             <i class="fas fa-clock text-brand-primary"></i>
@@ -1972,20 +2007,24 @@
                 price: '₹9,599',
                 originalPrice: '₹15,999',
                 discount: '40% OFF',
+                highlight: '🚀 Special Bonus: FREE Job Interview Prep Module Included!',
                 offer: 'Limited Time Offer: Get 40% OFF + FREE Interview Preparation',
                 cta: 'Start Your Journey',
-                color: 'from-yellow-400 to-orange-500'
+                color: 'from-yellow-400 to-orange-500',
+                bgImage: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
             },
             {
                 type: 'ielts',
-                title: 'Ace IELTS with Band 8+ Guarantee!',
+                title: 'IELTS with Band 8+ Guarantee!',
                 subtitle: 'India\'s #1 IELTS Prep with 94% Success Rate | Join 5,000+ High Scorers',
                 price: '₹16,249',
                 originalPrice: '₹24,999',
                 discount: '35% OFF',
+                highlight: '🎯 Band 8+ Guarantee or Your Money Back!',
                 offer: 'SPECIAL: Get FREE Spoken English Course (Worth ₹9,999)',
                 cta: 'Get Band 8+',
-                color: 'from-blue-500 to-purple-600'
+                color: 'from-blue-500 to-purple-600',
+                bgImage: 'https://images.unsplash.com/photo-1513258496099-48168024aec0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
             },
             {
                 type: 'pte',
@@ -1994,9 +2033,11 @@
                 price: '₹13,799',
                 originalPrice: '₹22,999',
                 discount: '40% OFF',
+                highlight: '🔥 AI-Powered Mock Tests with Instant Results!',
                 offer: 'Launch Offer: 40% OFF + FREE Spoken English Course',
                 cta: 'Score 90/90',
-                color: 'from-cyan-400 to-blue-500'
+                color: 'from-cyan-400 to-blue-500',
+                bgImage: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
             },
             {
                 type: 'visa',
@@ -2005,9 +2046,11 @@
                 price: '₹19,999',
                 originalPrice: '₹34,999',
                 discount: '43% OFF',
+                highlight: '✈️ 99% Visa Success Rate - Highest in Gujarat!',
                 offer: 'University Selection + SOP Writing + Visa Filing + Mock Interviews',
                 cta: 'Get Visa Assistance',
-                color: 'from-red-400 to-pink-600'
+                color: 'from-red-400 to-pink-600',
+                bgImage: 'https://images.unsplash.com/photo-1541336032412-2048a678540d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
             }
         ];
 
@@ -2038,19 +2081,19 @@
                 curriculum: ['Reading & Listening Modules', 'Writing Task 1 & 2', 'Speaking Mock Tests', 'Band 8 Strategy', 'FREE Spoken English Course']
             },
             { 
-                id: 5, type: 'ielts', title: 'IELTS Crash Course (45% OFF)', price: 16499, original: 29999, 
+                id: 5, type: 'ielts', title: 'IELTS General (45% OFF)', price: 16499, original: 29999, 
                 dur: '6 Weeks', lang: 'English', cert: 'Yes',
                 desc: '6-Week Intensive Program with Money-Back Guarantee.',
                 curriculum: ['Band 7+ Guarantee', 'Visa SOP Review', 'Spoken English Module', 'Mock Tests with Evaluation']
             },
             { 
-                id: 6, type: 'pte', title: 'PTE Fast Track (40% OFF)', price: 13799, original: 22999, 
+                id: 6, type: 'pte', title: 'PTE Academic (40% OFF)', price: 13799, original: 22999, 
                 dur: '4 Weeks', lang: 'English', cert: 'Yes',
                 desc: 'Crash course for PTE with AI-based scoring tricks.',
                 curriculum: ['Speaking Templates', 'Writing Templates', 'AI Scoring Hacks', 'Mock Tests', 'FREE Spoken English Course']
             },
             { 
-                id: 7, type: 'pte', title: 'PTE Mastery (50% OFF)', price: 17499, original: 34998, 
+                id: 7, type: 'pte', title: 'PTE General (50% OFF)', price: 17499, original: 34998, 
                 dur: '2 Months', lang: 'English', cert: 'Yes',
                 desc: 'Complete PTE preparation with ₹10,000 cashback opportunity.',
                 curriculum: ['90/90 Score Strategy', '1-Year Spoken English Access', '6 Months Speaking Club', 'Cashback on 85+ Score']
@@ -2109,7 +2152,7 @@
         function initWebsite() {
             renderBanners();
             startBannerRotation();
-            filterCourses('all');
+            filterCourses('spoken'); // Default to Spoken English
             setupEventListeners();
             
             // Add scroll listener for header
@@ -2130,6 +2173,12 @@
                 const slide = document.createElement('div');
                 slide.className = `banner-slide ${index === 0 ? 'active' : ''}`;
                 slide.id = `banner-${index}`;
+                
+                // Set background image with inline style
+                slide.style.backgroundImage = `url('${banner.bgImage}')`;
+                slide.style.backgroundSize = 'cover';
+                slide.style.backgroundPosition = 'center';
+                slide.style.backgroundRepeat = 'no-repeat';
                 
                 // Mobile vs Desktop styling
                 const titleSize = isMobile ? 'text-3xl md:text-4xl' : 'text-5xl md:text-6xl';
@@ -2154,7 +2203,10 @@
                                     <span class="${priceSize} font-bold text-white">${banner.price}</span>
                                     <span class="bg-gradient-to-r ${banner.color} text-white text-sm md:text-base px-3 py-2 rounded-full font-bold shadow-lg">${banner.discount}</span>
                                 </div>
-                                <p class="text-sm md:text-base text-gray-300 text-center px-2">${banner.offer}</p>
+                                <div class="banner-highlight text-center">
+                                    ${banner.highlight}
+                                </div>
+                                <p class="text-sm md:text-base text-gray-300 text-center px-2 mt-3">${banner.offer}</p>
                             </div>
                             
                             <div class="text-center">
@@ -2181,36 +2233,8 @@
             arrows.forEach(arrow => {
                 if (isMobile) {
                     arrow.style.display = 'flex';
-                    // Position them at bottom center
-                    if (arrow.classList.contains('prev')) {
-                        arrow.style.left = 'calc(50% - 50px)';
-                        arrow.style.right = 'auto';
-                        arrow.style.top = 'auto';
-                        arrow.style.bottom = '15px';
-                        arrow.style.transform = 'translateY(0)';
-                    } else if (arrow.classList.contains('next')) {
-                        arrow.style.right = 'calc(50% - 50px)';
-                        arrow.style.left = 'auto';
-                        arrow.style.top = 'auto';
-                        arrow.style.bottom = '15px';
-                        arrow.style.transform = 'translateY(0)';
-                    }
                 } else {
                     arrow.style.display = 'flex';
-                    // Position them at sides (centered vertically)
-                    if (arrow.classList.contains('prev')) {
-                        arrow.style.left = '30px';
-                        arrow.style.right = 'auto';
-                        arrow.style.top = '50%';
-                        arrow.style.bottom = 'auto';
-                        arrow.style.transform = 'translateY(-50%)';
-                    } else if (arrow.classList.contains('next')) {
-                        arrow.style.right = '30px';
-                        arrow.style.left = 'auto';
-                        arrow.style.top = '50%';
-                        arrow.style.bottom = 'auto';
-                        arrow.style.transform = 'translateY(-50%)';
-                    }
                 }
             });
         }
@@ -2258,7 +2282,6 @@
         function filterCourses(cat) {
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.classList.remove('active');
-                if (cat === 'all' && btn.textContent.includes('All')) btn.classList.add('active');
                 if (cat === 'spoken' && btn.textContent.includes('Spoken')) btn.classList.add('active');
                 if (cat === 'ielts' && btn.textContent.includes('IELTS')) btn.classList.add('active');
                 if (cat === 'pte' && btn.textContent.includes('PTE')) btn.classList.add('active');
@@ -2282,6 +2305,7 @@
             grid.innerHTML = filtered.map(c => {
                 const discountPercent = Math.round(((c.original - c.price) / c.original) * 100);
                 const isMobile = window.innerWidth <= 768;
+                const buttonText = c.type === 'visa' ? 'Make Inquiry' : 'Enroll Now';
                 
                 return `
                 <div class="course-card glass-card animate-fade-in">
@@ -2330,8 +2354,8 @@
                         </div>
 
                         <div class="course-buttons">
-                            <a href="#contact" class="enroll-btn">
-                                <i class="fas fa-user-graduate mr-2"></i>Enroll Now
+                            <a href="tel:+919925081515" class="enroll-btn">
+                                <i class="fas ${c.type === 'visa' ? 'fa-headset' : 'fa-user-graduate'} mr-2"></i>${buttonText}
                             </a>
                         </div>
                     </div>
@@ -2412,17 +2436,13 @@
                     document.body.classList.remove('mobile-view');
                 }
                 
-                // Update banner arrows position
-                updateBannerArrows();
-                
                 // Re-render banners for responsive adjustments
                 renderBanners();
                 // Re-render courses for responsive curriculum
                 const activeFilter = document.querySelector('.filter-btn.active');
                 if (activeFilter) {
                     const filterText = activeFilter.textContent.toLowerCase();
-                    let filterType = 'all';
-                    if (filterText.includes('spoken')) filterType = 'spoken';
+                    let filterType = 'spoken'; // Default to spoken
                     if (filterText.includes('ielts')) filterType = 'ielts';
                     if (filterText.includes('pte')) filterType = 'pte';
                     if (filterText.includes('toefl')) filterType = 'toefl';
