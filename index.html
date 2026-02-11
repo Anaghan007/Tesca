@@ -151,14 +151,14 @@
             min-height: 80vh;
         }
 
-        /* Banner overlay - UPDATED: 75% darkness for better readability */
+        /* Banner overlay - UPDATED: 85% darkness for better readability (was 75%) */
         .banner-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.75);
+            background: rgba(0, 0, 0, 0.85);
             z-index: 1;
         }
 
@@ -1024,6 +1024,37 @@
             box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
         }
 
+        /* ===== MOBILE FOOTER CALL BUTTON (Transparent, Round) ===== */
+        .mobile-footer-call-btn {
+            display: none; /* Hidden by default, shown on mobile */
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: transparent;
+            border: 1.5px solid rgba(99, 102, 241, 0.6);
+            border-radius: 50px;
+            padding: 0.75rem 1.5rem;
+            color: white;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+            width: 100%;
+            backdrop-filter: blur(10px);
+        }
+
+        .mobile-footer-call-btn i {
+            color: #10b981;
+            font-size: 1.1rem;
+        }
+
+        .mobile-footer-call-btn:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: #6366f1;
+            transform: scale(1.02);
+        }
+
         /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 1200px) {
             .premium-phone-mockup {
@@ -1075,33 +1106,33 @@
                 display: block;
             }
 
-            /* ===== MOBILE BANNER - CENTERED VERTICALLY ===== */
+            /* ===== MOBILE BANNER - VERTICAL CENTERING WITH HEADER CLEARANCE ===== */
             .mobile-view .hero-section {
-                height: 70vh !important;
-                min-height: 70vh;
+                height: 100vh !important;
+                min-height: 100vh;
             }
             
             .mobile-view .banner-container {
-                min-height: 70vh;
+                min-height: 100vh;
             }
             
             .mobile-view .banner-slide {
-                min-height: 70vh;
+                min-height: 100vh;
                 display: flex;
                 align-items: center;
                 padding: 0;
             }
             
-            /* Content centering fix - using flex and auto margins */
+            /* Content centered vertically with padding for header and arrows */
             .mobile-view .banner-content {
-                padding: 0 15px !important;
+                padding: 80px 15px 80px !important; /* Top and bottom padding to clear header and arrows */
                 height: 100%;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 margin: 0 auto;
-                min-height: 70vh;
+                min-height: 100vh;
                 width: 95%;
             }
             
@@ -1150,7 +1181,7 @@
                 margin: 10px auto;
             }
 
-            /* MOBILE BANNER ARROWS */
+            /* MOBILE BANNER ARROWS - positioned at bottom */
             .mobile-view .banner-nav-arrow {
                 display: flex !important;
                 top: auto !important;
@@ -1161,6 +1192,7 @@
                 font-size: 1.4rem !important;
                 background: rgba(255, 255, 255, 0.15);
                 border: 1px solid rgba(255, 255, 255, 0.25);
+                z-index: 30;
             }
             
             .mobile-view .banner-nav-arrow.prev {
@@ -1184,6 +1216,11 @@
             .mobile-view .footer-logo-section .logo-img {
                 width: 100px;
                 height: 100px;
+            }
+
+            /* Show mobile footer call button */
+            .mobile-footer-call-btn {
+                display: flex;
             }
 
             /* MOBILE COURSES SECTION */
@@ -1399,12 +1436,12 @@
         
         @media (max-width: 480px) {
             .mobile-view .hero-section {
-                min-height: 65vh;
-                height: 65vh !important;
+                min-height: 100vh;
+                height: 100vh !important;
             }
             
             .mobile-view .banner-content {
-                padding: 0 15px !important;
+                padding: 80px 15px 80px !important;
             }
             
             .mobile-view .banner-title {
@@ -1597,6 +1634,11 @@
             .footer-logo-section .logo-img {
                 width: 96px;
                 height: 96px;
+            }
+
+            /* Hide mobile footer call button on desktop */
+            .mobile-footer-call-btn {
+                display: none !important;
             }
         }
 
@@ -2096,6 +2138,12 @@
                             <span>Mon-Sat: 9:00 AM - 8:00 PM</span>
                         </li>
                     </ul>
+
+                    <!-- ===== MOBILE CALL BUTTON (Transparent, Round) - JUST BELOW CONTACT US ===== -->
+                    <a href="tel:+919925081515" class="mobile-footer-call-btn">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>Call Us: +91 99250 81515</span>
+                    </a>
                     
                     <div class="mt-4">
                         <h5 class="font-bold text-white text-sm mb-3">Follow Us</h5>
