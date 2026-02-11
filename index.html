@@ -151,14 +151,14 @@
             min-height: 80vh;
         }
 
-        /* Banner overlay - UPDATED: Changed to 50% transparency */
+        /* Banner overlay - UPDATED: 75% darkness for better readability */
         .banner-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* 50% transparency as requested */
+            background: rgba(0, 0, 0, 0.75);
             z-index: 1;
         }
 
@@ -192,7 +192,7 @@
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #555; }
 
-        /* Header styling */
+        /* Header styling - ALWAYS TRANSPARENT (no scroll change) */
         #main-header {
             transition: all 0.3s ease;
             background: transparent !important;
@@ -210,15 +210,6 @@
             -webkit-backdrop-filter: blur(16px) !important;
             border: 1px solid rgba(255, 255, 255, 0.15) !important;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-        }
-        
-        #main-header.scrolled .glass {
-            background: rgba(5, 5, 7, 0.85) !important;
-            backdrop-filter: blur(24px) !important;
-            -webkit-backdrop-filter: blur(24px) !important;
-            border-color: rgba(255, 255, 255, 0.2) !important;
-            margin: 0.5rem auto;
-            padding: 0.5rem 2rem;
         }
         
         /* Header links spacing */
@@ -260,7 +251,7 @@
             width: 100%;
         }
 
-        /* Logo styling */
+        /* Logo styling - BIGGER */
         .logo-img {
             width: auto;
             height: auto;
@@ -286,7 +277,6 @@
             padding: 2rem;
         }
         
-        /* Improved spacing for faculty photo */
         .faculty-photo-container {
             margin-bottom: 1.5rem !important;
         }
@@ -325,7 +315,7 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
-        /* Call button in header */
+        /* Call button in header - hidden on mobile */
         .call-btn {
             display: flex;
             align-items: center;
@@ -398,9 +388,145 @@
             scroll-margin-top: 100px;
         }
 
-        /* Mobile menu styles */
+        /* ===== NEW SLIDE-IN MOBILE MENU ===== */
+        /* Menu overlay (dim background) */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Slide-in menu panel */
         #mobile-menu {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 80%;
+            max-width: 320px;
+            height: 100vh;
+            background: rgba(5, 5, 7, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            padding: 2rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+            overflow-y: auto;
+        }
+
+        #mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* Mobile menu logo */
+        .mobile-menu-logo {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-menu-logo img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        /* Close button */
+        .mobile-menu-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            color: rgba(255,255,255,0.7);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.2s;
+            z-index: 1010;
+        }
+
+        .mobile-menu-close:hover {
+            color: white;
+        }
+
+        /* Mobile menu links */
+        .mobile-menu-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .mobile-menu-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 0.5rem 0.75rem;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .mobile-menu-link i {
+            width: 24px;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #6366f1;
+        }
+
+        .mobile-menu-link:hover {
+            background: rgba(99, 102, 241, 0.1);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        /* Mobile call button - transparent style */
+        .mobile-call-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            background: transparent;
+            border: 1.5px solid rgba(99, 102, 241, 0.5);
+            border-radius: 50px;
+            padding: 1rem;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: auto;
+            backdrop-filter: blur(10px);
+        }
+
+        .mobile-call-btn i {
+            color: #10b981;
+            font-size: 1.2rem;
+        }
+
+        .mobile-call-btn:hover {
+            background: rgba(99, 102, 241, 0.1);
+            border-color: #6366f1;
+            transform: scale(1.02);
         }
 
         /* Banner title styles */
@@ -484,7 +610,6 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
         
-        /* Course buttons container */
         .course-buttons {
             margin-top: auto;
         }
@@ -584,17 +709,7 @@
             box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
         }
 
-        /* Banner content centering fix */
-        .banner-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            height: 100%;
-        }
-
-        /* NEW: Footer - PROFESSIONAL DESIGN */
+        /* Footer - PROFESSIONAL DESIGN */
         .footer-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -602,7 +717,7 @@
             margin-bottom: 2rem;
         }
 
-        /* Footer logo section - compact */
+        /* Footer logo section - BIGGER LOGO */
         .footer-logo-section {
             display: flex;
             flex-direction: column;
@@ -909,7 +1024,7 @@
             box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
         }
 
-        /* Responsive Design */
+        /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 1200px) {
             .premium-phone-mockup {
                 width: 320px;
@@ -923,10 +1038,9 @@
                 font-size: 16px;
                 line-height: 1.6;
             }
-            
-            /* UPDATED: Added margin top for header in mobile view */
+
             #main-header .glass {
-                margin: 15px auto 0 auto !important; /* Added top margin */
+                margin: 15px auto 0 auto !important;
                 padding: 0.4rem 1rem;
                 max-width: 95%;
                 border-radius: 50px !important;
@@ -934,58 +1048,34 @@
                 backdrop-filter: blur(20px) !important;
                 border: 1px solid rgba(255, 255, 255, 0.15) !important;
             }
-            
-            /* Reduced section padding for mobile */
+
+            /* BIGGER HEADER LOGO ON MOBILE */
+            #main-header .logo-img {
+                width: 70px;
+                height: 70px;
+            }
+
+            /* Hide desktop call button on mobile */
+            #main-header .call-btn {
+                display: none !important;
+            }
+
             .mobile-view .section-padding {
                 padding-top: 2.5rem !important;
                 padding-bottom: 2.5rem !important;
             }
-            
-            #main-header .logo-img {
-                max-width: 90px;
-                max-height: 35px;
-            }
-            
-            .call-btn {
-                padding: 6px 12px;
-                font-size: 13px;
-                border-radius: 50px !important;
-            }
-            
-            .call-btn span {
-                display: none;
-            }
-            
+
             /* Hide header nav on mobile */
             #main-header nav {
                 display: none;
             }
-            
+
             /* Show mobile menu button */
             #main-header .md\\:hidden {
                 display: block;
             }
-            
-            /* MOBILE MENU IMPROVEMENTS */
-            #mobile-menu {
-                font-size: 1.8rem;
-                background: rgba(5, 5, 7, 0.98);
-                backdrop-filter: blur(20px);
-            }
-            
-            .mobile-menu-link {
-                padding: 1rem 0;
-                display: block;
-                text-align: center;
-                transition: all 0.3s ease;
-            }
-            
-            .mobile-menu-link:hover {
-                transform: scale(1.05);
-                color: #6366f1;
-            }
-            
-            /* UPDATED: MOBILE BANNER - ADJUSTED HEIGHT & IMPROVED STRUCTURE */
+
+            /* ===== MOBILE BANNER - CENTERED VERTICALLY ===== */
             .mobile-view .hero-section {
                 height: 70vh !important;
                 min-height: 70vh;
@@ -997,13 +1087,20 @@
             
             .mobile-view .banner-slide {
                 min-height: 70vh;
+                display: flex;
+                align-items: center;
+                padding: 0;
             }
             
-            /* UPDATED: Better centered content with more padding */
+            /* Content centering fix - using flex and auto margins */
             .mobile-view .banner-content {
-                padding: 60px 15px 80px !important; /* Increased padding */
-                justify-content: center !important;
-                margin-top: 0 !important;
+                padding: 0 15px !important;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin: 0 auto;
                 min-height: 70vh;
                 width: 95%;
             }
@@ -1043,7 +1140,7 @@
                 font-size: 1rem !important;
                 padding: 0.8rem 1.8rem !important;
                 margin-top: 0.5rem;
-                margin-bottom: 1.5rem !important; /* Increased bottom margin */
+                margin-bottom: 1.5rem !important;
                 border-radius: 50px;
             }
             
@@ -1052,47 +1149,43 @@
                 padding: 8px 12px;
                 margin: 10px auto;
             }
-            
-            /* UPDATED: MOBILE BANNER ARROWS - INCREASED SIZE AND ADDED MARGIN */
+
+            /* MOBILE BANNER ARROWS */
             .mobile-view .banner-nav-arrow {
                 display: flex !important;
                 top: auto !important;
-                bottom: 40px !important; /* Moved up from bottom edge */
+                bottom: 40px !important;
                 transform: translateY(0) !important;
-                width: 55px !important; /* Increased size */
-                height: 55px !important; /* Increased size */
-                font-size: 1.4rem !important; /* Increased font size */
+                width: 55px !important;
+                height: 55px !important;
+                font-size: 1.4rem !important;
                 background: rgba(255, 255, 255, 0.15);
                 border: 1px solid rgba(255, 255, 255, 0.25);
             }
             
             .mobile-view .banner-nav-arrow.prev {
-                left: calc(50% - 65px) !important; /* Adjusted for larger size */
+                left: calc(50% - 65px) !important;
                 right: auto !important;
             }
             
             .mobile-view .banner-nav-arrow.next {
-                right: calc(50% - 65px) !important; /* Adjusted for larger size */
+                right: calc(50% - 65px) !important;
                 left: auto !important;
             }
-            
+
             /* MOBILE FOOTER - 2x2 GRID */
             .mobile-view .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 1.5rem;
                 margin-bottom: 1.5rem;
             }
-            
-            /* Footer logo section - compact */
-            .mobile-view .footer-logo-section {
-                gap: 0.3rem;
-            }
-            
+
+            /* Footer logo section - BIGGER on mobile */
             .mobile-view .footer-logo-section .logo-img {
-                width: 80px;
-                height: 80px;
+                width: 100px;
+                height: 100px;
             }
-            
+
             /* MOBILE COURSES SECTION */
             .mobile-view #courses {
                 padding: 2.5rem 1rem !important;
@@ -1137,7 +1230,7 @@
                 border-radius: 50px !important;
                 font-size: 0.85rem;
             }
-            
+
             /* MOBILE FACULTY SECTION */
             .mobile-view #faculty {
                 padding: 2.5rem 1rem !important;
@@ -1169,7 +1262,7 @@
                 font-size: 0.85rem !important;
                 line-height: 1.5;
             }
-            
+
             /* MOBILE APP SECTION */
             .mobile-view #app {
                 padding: 2.5rem 1rem !important;
@@ -1187,7 +1280,6 @@
                 margin-bottom: 1.5rem;
             }
             
-            /* Premium phone mockup for mobile */
             .mobile-view .premium-phone-mockup {
                 width: 280px;
                 height: 580px;
@@ -1284,7 +1376,7 @@
             .mobile-view .stat-label {
                 font-size: 11px;
             }
-            
+
             /* MOBILE FOOTER - COMPACT */
             .mobile-view footer {
                 padding: 2.5rem 1rem !important;
@@ -1298,7 +1390,7 @@
             .mobile-view footer ul {
                 font-size: 0.85rem;
             }
-            
+
             /* Stats section for mobile */
             .mobile-view .stat-number {
                 font-size: 2rem !important;
@@ -1306,14 +1398,13 @@
         }
         
         @media (max-width: 480px) {
-            /* Extra small devices */
             .mobile-view .hero-section {
                 min-height: 65vh;
                 height: 65vh !important;
             }
             
             .mobile-view .banner-content {
-                padding: 50px 15px 70px !important; /* Adjusted padding */
+                padding: 0 15px !important;
             }
             
             .mobile-view .banner-title {
@@ -1328,8 +1419,7 @@
                 font-size: 0.85rem !important;
                 padding: 6px 10px;
             }
-            
-            /* UPDATED: Further adjustments for very small screens */
+
             .mobile-view .banner-nav-arrow {
                 bottom: 35px !important;
                 width: 50px !important;
@@ -1360,6 +1450,11 @@
             .mobile-view .footer-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
+            }
+            
+            .mobile-view .footer-logo-section .logo-img {
+                width: 90px;
+                height: 90px;
             }
             
             .mobile-view .phone-screen {
@@ -1415,7 +1510,6 @@
         }
         
         @media (max-width: 320px) {
-            /* Very small devices */
             .mobile-view .banner-title {
                 font-size: 1.7rem !important;
             }
@@ -1427,8 +1521,7 @@
             .mobile-view .banner-highlight {
                 font-size: 0.8rem !important;
             }
-            
-            /* UPDATED: Further arrow adjustments for smallest screens */
+
             .mobile-view .banner-nav-arrow {
                 bottom: 30px !important;
                 width: 45px !important;
@@ -1469,7 +1562,6 @@
 
         /* DESKTOP/PC/LAPTOP VIEW */
         @media (min-width: 769px) {
-            /* DESKTOP HEADER */
             #main-header nav {
                 display: flex;
             }
@@ -1478,13 +1570,17 @@
                 display: none;
             }
             
-            /* DESKTOP HERO SECTION - FULL SCREEN */
+            /* BIGGER LOGO DESKTOP */
+            #main-header .logo-img {
+                width: 80px;
+                height: 80px;
+            }
+
             .hero-section {
                 height: 100vh;
                 min-height: 100vh;
             }
             
-            /* Banner content centered between header and bottom */
             .banner-content {
                 padding-top: 120px;
                 padding-bottom: 60px;
@@ -1492,14 +1588,18 @@
                 margin-top: 60px;
             }
             
-            /* DESKTOP FOOTER - 4 COLUMN GRID */
             .footer-grid {
                 grid-template-columns: repeat(4, 1fr);
                 gap: 2.5rem;
             }
+            
+            /* BIGGER FOOTER LOGO DESKTOP */
+            .footer-logo-section .logo-img {
+                width: 96px;
+                height: 96px;
+            }
         }
 
-        /* Banner arrow visibility on medium screens */
         @media (max-width: 1024px) and (min-width: 769px) {
             .banner-nav-arrow {
                 width: 45px;
@@ -1521,7 +1621,6 @@
             }
         }
         
-        /* Tablet view */
         @media (min-width: 769px) and (max-width: 1024px) {
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1554,12 +1653,12 @@
         <div class="mt-4 text-xs text-gray-500 font-mono tracking-widest">LOADING...</div>
     </div>
 
-    <!-- Header -->
+    <!-- Header - ALWAYS TRANSPARENT (no scroll class) -->
     <header id="main-header" class="fixed top-0 w-full z-50 transition-all duration-300">
         <div class="glass">
             <div class="container mx-auto px-4 py-1 flex justify-between items-center">
                 <a href="#home" class="flex items-center group">
-                    <div class="w-16 h-16 flex items-center justify-center">
+                    <div class="w-20 h-20 flex items-center justify-center">
                         <img src="Logo.png" alt="TESCA" class="logo-img w-full h-full">
                     </div>
                 </a>
@@ -1573,6 +1672,7 @@
                 </nav>
 
                 <div class="flex items-center gap-5">
+                    <!-- Call button hidden on mobile via CSS -->
                     <a href="tel:+919925081515" class="call-btn">
                         <i class="fas fa-phone"></i> 
                         <span class="hidden sm:inline">Call Now</span>
@@ -1586,14 +1686,45 @@
         </div>
     </header>
 
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="fixed inset-0 z-40 bg-brand-bg/98 backdrop-blur-xl hidden flex-col items-center justify-center gap-8 text-2xl font-bold transition-all duration-400">
-        <button onclick="toggleMobileMenu()" class="absolute top-8 right-8 text-gray-400 p-2 hover:text-white transition-colors duration-300"><i class="fas fa-times text-3xl"></i></button>
-        <a href="#home" class="hover:text-brand-accent mobile-menu-link transition-colors duration-300" onclick="toggleMobileMenu()">Home</a>
-        <a href="#courses" class="hover:text-brand-accent mobile-menu-link transition-colors duration-300" onclick="toggleMobileMenu()">Courses</a>
-        <a href="#faculty" class="hover:text-brand-accent mobile-menu-link transition-colors duration-300" onclick="toggleMobileMenu()">Our Faculty</a>
-        <a href="#app" class="hover:text-brand-accent mobile-menu-link transition-colors duration-300" onclick="toggleMobileMenu()">Download App</a>
-        <a href="#contact" class="hover:text-brand-accent mobile-menu-link transition-colors duration-300" onclick="toggleMobileMenu()">Contact Us</a>
+    <!-- Mobile Menu Overlay (click to close) -->
+    <div id="mobile-menu-overlay" class="mobile-menu-overlay" onclick="closeMobileMenu()"></div>
+
+    <!-- Mobile Menu - Slide-in Panel -->
+    <div id="mobile-menu" class="mobile-menu-panel">
+        <!-- Close button -->
+        <div class="mobile-menu-close" onclick="closeMobileMenu()">
+            <i class="fas fa-times"></i>
+        </div>
+        
+        <!-- Logo -->
+        <div class="mobile-menu-logo">
+            <img src="Logo.png" alt="TESCA" class="logo-img">
+        </div>
+        
+        <!-- Navigation links with icons -->
+        <div class="mobile-menu-links">
+            <a href="#home" class="mobile-menu-link" onclick="closeMobileMenu()">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="#courses" class="mobile-menu-link" onclick="closeMobileMenu()">
+                <i class="fas fa-book-open"></i> Courses
+            </a>
+            <a href="#faculty" class="mobile-menu-link" onclick="closeMobileMenu()">
+                <i class="fas fa-chalkboard-teacher"></i> Our Faculty
+            </a>
+            <a href="#app" class="mobile-menu-link" onclick="closeMobileMenu()">
+                <i class="fas fa-mobile-alt"></i> Download App
+            </a>
+            <a href="#contact" class="mobile-menu-link" onclick="closeMobileMenu()">
+                <i class="fas fa-envelope"></i> Contact Us
+            </a>
+        </div>
+        
+        <!-- Call button at bottom -->
+        <a href="tel:+919925081515" class="mobile-call-btn" onclick="closeMobileMenu()">
+            <i class="fas fa-phone-alt"></i>
+            <span>Call Now: +91 99250 81515</span>
+        </a>
     </div>
 
     <!-- Hero Banner Section -->
@@ -1905,7 +2036,7 @@
                 <!-- Column 1: Logo and Description -->
                 <div class="footer-logo-section">
                     <a href="#home" class="flex items-center mb-2">
-                        <div class="w-20 h-20 flex items-center justify-center">
+                        <div class="w-24 h-24 flex items-center justify-center">
                             <img src="Logo.png" alt="TESCA" class="logo-img w-full h-full">
                         </div>
                     </a>
@@ -2155,8 +2286,7 @@
             filterCourses('spoken'); // Default to Spoken English
             setupEventListeners();
             
-            // Add scroll listener for header
-            window.addEventListener('scroll', handleScroll);
+            // NO SCROLL LISTENER for header transparency - header stays transparent always
         }
 
         // --- 5. BANNER SYSTEM ---
@@ -2364,45 +2494,52 @@
             }).join('');
         }
 
-        // --- 7. UTILITY FUNCTIONS ---
+        // --- 7. MOBILE MENU FUNCTIONS (SLIDE-IN) ---
         function toggleMobileMenu() {
             const menu = document.getElementById('mobile-menu');
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-                menu.classList.add('flex');
-                setTimeout(() => menu.style.opacity = '1', 10);
+            const overlay = document.getElementById('mobile-menu-overlay');
+            
+            if (menu.classList.contains('open')) {
+                closeMobileMenu();
             } else {
-                menu.style.opacity = '0';
-                setTimeout(() => {
-                    menu.classList.add('hidden');
-                    menu.classList.remove('flex');
-                }, 400);
+                openMobileMenu();
             }
         }
 
-        function handleScroll() {
-            const header = document.getElementById('main-header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
-            }
+        function openMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('mobile-menu-overlay');
+            
+            menu.classList.add('open');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
         }
 
+        function closeMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('mobile-menu-overlay');
+            
+            menu.classList.remove('open');
+            overlay.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        // Close mobile menu on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeMobileMenu();
+            }
+        });
+
+        // --- 8. OTHER UTILITY FUNCTIONS ---
         function setupEventListeners() {
-            window.addEventListener('scroll', handleScroll);
-
+            // Smooth scroll for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const href = this.getAttribute('href');
                     if (href === '#') return;
                     
                     e.preventDefault();
-                    
-                    const mobileMenu = document.getElementById('mobile-menu');
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        toggleMobileMenu();
-                    }
                     
                     const targetId = href.substring(1);
                     const targetElement = document.getElementById(targetId);
@@ -2420,20 +2557,14 @@
                 });
             });
             
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    const mobileMenu = document.getElementById('mobile-menu');
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        toggleMobileMenu();
-                    }
-                }
-            });
-            
+            // Resize handler
             window.addEventListener('resize', () => {
                 if (window.innerWidth <= 768) {
                     document.body.classList.add('mobile-view');
                 } else {
                     document.body.classList.remove('mobile-view');
+                    // Close mobile menu if open on resize to desktop
+                    closeMobileMenu();
                 }
                 
                 // Re-render banners for responsive adjustments
