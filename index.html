@@ -151,14 +151,14 @@
             min-height: 80vh;
         }
 
-        /* Banner overlay - UPDATED: 85% darkness for better readability (was 75%) */
+        /* Banner overlay - UPDATED: 75% darkness for better readability */
         .banner-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0, 0, 0, 0.75);
             z-index: 1;
         }
 
@@ -1024,35 +1024,10 @@
             box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
         }
 
-        /* ===== MOBILE FOOTER CALL BUTTON (Transparent, Round) ===== */
+        /* ===== MOBILE FOOTER CALL BUTTON ===== */
         .mobile-footer-call-btn {
-            display: none; /* Hidden by default, shown on mobile */
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            background: transparent;
-            border: 1.5px solid rgba(99, 102, 241, 0.6);
-            border-radius: 50px;
-            padding: 0.75rem 1.5rem;
-            color: white;
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
+            display: none;
             margin-top: 1.5rem;
-            width: 100%;
-            backdrop-filter: blur(10px);
-        }
-
-        .mobile-footer-call-btn i {
-            color: #10b981;
-            font-size: 1.1rem;
-        }
-
-        .mobile-footer-call-btn:hover {
-            background: rgba(99, 102, 241, 0.1);
-            border-color: #6366f1;
-            transform: scale(1.02);
         }
 
         /* ===== RESPONSIVE DESIGN ===== */
@@ -1106,10 +1081,10 @@
                 display: block;
             }
 
-            /* ===== MOBILE BANNER - VERTICAL CENTERING WITH HEADER CLEARANCE ===== */
+            /* ===== MOBILE BANNER - PERFECT CENTERING ===== */
             .mobile-view .hero-section {
                 height: 100vh !important;
-                min-height: 100vh;
+                min-height: 100vh !important;
             }
             
             .mobile-view .banner-container {
@@ -1120,19 +1095,19 @@
                 min-height: 100vh;
                 display: flex;
                 align-items: center;
+                justify-content: center;
                 padding: 0;
             }
             
-            /* Content centered vertically with padding for header and arrows */
             .mobile-view .banner-content {
-                padding: 80px 15px 80px !important; /* Top and bottom padding to clear header and arrows */
-                height: 100%;
+                padding: 110px 15px 100px !important; /* Equal spacing from header and arrows */
+                height: auto;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 margin: 0 auto;
-                min-height: 100vh;
+                min-height: auto;
                 width: 95%;
             }
             
@@ -1181,18 +1156,17 @@
                 margin: 10px auto;
             }
 
-            /* MOBILE BANNER ARROWS - positioned at bottom */
+            /* MOBILE BANNER ARROWS - positioned at bottom with proper spacing */
             .mobile-view .banner-nav-arrow {
                 display: flex !important;
                 top: auto !important;
-                bottom: 40px !important;
+                bottom: 30px !important;
                 transform: translateY(0) !important;
                 width: 55px !important;
                 height: 55px !important;
                 font-size: 1.4rem !important;
                 background: rgba(255, 255, 255, 0.15);
                 border: 1px solid rgba(255, 255, 255, 0.25);
-                z-index: 30;
             }
             
             .mobile-view .banner-nav-arrow.prev {
@@ -1216,11 +1190,6 @@
             .mobile-view .footer-logo-section .logo-img {
                 width: 100px;
                 height: 100px;
-            }
-
-            /* Show mobile footer call button */
-            .mobile-footer-call-btn {
-                display: flex;
             }
 
             /* MOBILE COURSES SECTION */
@@ -1432,16 +1401,49 @@
             .mobile-view .stat-number {
                 font-size: 2rem !important;
             }
+
+            /* ===== MOBILE FOOTER CALL BUTTON - SHOW ONLY ON MOBILE ===== */
+            .mobile-footer-call-btn {
+                display: block;
+            }
+            
+            .mobile-footer-call-btn a {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
+                background: transparent;
+                border: 1.5px solid rgba(99, 102, 241, 0.5);
+                border-radius: 50px;
+                padding: 12px 20px;
+                color: white;
+                font-weight: 600;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                backdrop-filter: blur(10px);
+                width: 100%;
+            }
+            
+            .mobile-footer-call-btn i {
+                color: #10b981;
+                font-size: 1.2rem;
+            }
+            
+            .mobile-footer-call-btn a:hover {
+                background: rgba(99, 102, 241, 0.1);
+                border-color: #6366f1;
+                transform: scale(1.02);
+            }
         }
         
         @media (max-width: 480px) {
             .mobile-view .hero-section {
-                min-height: 100vh;
+                min-height: 100vh !important;
                 height: 100vh !important;
             }
             
             .mobile-view .banner-content {
-                padding: 80px 15px 80px !important;
+                padding: 100px 15px 90px !important;
             }
             
             .mobile-view .banner-title {
@@ -1458,7 +1460,7 @@
             }
 
             .mobile-view .banner-nav-arrow {
-                bottom: 35px !important;
+                bottom: 25px !important;
                 width: 50px !important;
                 height: 50px !important;
                 font-size: 1.3rem !important;
@@ -1560,7 +1562,7 @@
             }
 
             .mobile-view .banner-nav-arrow {
-                bottom: 30px !important;
+                bottom: 20px !important;
                 width: 45px !important;
                 height: 45px !important;
                 font-size: 1.2rem !important;
@@ -1762,11 +1764,13 @@
             </a>
         </div>
         
-        <!-- Call button at bottom -->
-        <a href="tel:+919925081515" class="mobile-call-btn" onclick="closeMobileMenu()">
-            <i class="fas fa-phone-alt"></i>
-            <span>Call Now: +91 99250 81515</span>
-        </a>
+        <!-- ===== MOBILE CALL BUTTON - ONLY NUMBER, ROUND TRANSPARENT ===== -->
+                    <div class="mobile-footer-call-btn">
+                        <a href="tel:+919925081515" class="direct-link">
+                            <i class="fas fa-phone"></i>
+                            +91 99250 81515
+                        </a>
+                    </div>
     </div>
 
     <!-- Hero Banner Section -->
@@ -1819,6 +1823,26 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <!-- Kiran Lathiya -->
+                <div class="faculty-card glass-card animate-fade-in" style="animation-delay: 0.3s">
+                    <div class="faculty-content">
+                        <div class="faculty-photo-container">
+                            <img src="pro3.png" alt="Kiran Lathiya" class="faculty-photo">
+                        </div>
+                        <div class="faculty-name">
+                            <h3 class="text-2xl font-bold">Kiran Lathiya</h3>
+                            <div class="bg-brand-primary/20 text-brand-primary text-xs font-bold px-3 py-1 rounded-full inline-block mt-2">Founder</div>
+                        </div>
+                        <p class="faculty-designation text-cyan-400">CEO & Spoken English Guru</p>
+                        <div class="faculty-description">
+                            <p class="text-gray-400">25+ years of transforming students into confident English speakers. Former corporate trainer at multinational companies. His "Zero to Hero" methodology has helped 10,000+ students overcome hesitation.</p>
+                        </div>
+                        <div class="flex justify-center space-x-3 mt-auto pt-4 border-t border-white/5">
+                            <span class="px-3 py-1 bg-cyan-500/10 text-cyan-400 text-xs rounded-full">Accent Trainer</span>
+                            <span class="px-3 py-1 bg-yellow-500/10 text-yellow-400 text-xs rounded-full">Corporate English</span>
+                        </div>
+                    </div>
+                </div>
                 <!-- Nikunj Dhanani -->
                 <div class="faculty-card glass-card animate-fade-in" style="animation-delay: 0.1s">
                     <div class="faculty-content">
@@ -1827,9 +1851,9 @@
                         </div>
                         <div class="faculty-name">
                             <h3 class="text-2xl font-bold">Nikunj Dhanani</h3>
-                            <div class="bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full inline-block mt-2">Founder</div>
+                            <div class="bg-green-500/20 text-green-400 text-xs font-bold px-3 py-1 rounded-full inline-block mt-2">Co-Founder</div>
                         </div>
-                        <p class="faculty-designation text-brand-accent">CEO & Lead Visa Consultant</p>
+                        <p class="faculty-designation text-brand-accent">Lead Visa Consultant</p>
                         <div class="faculty-description">
                             <p class="text-gray-400">With 12+ years in international education, Nikunj has successfully placed 5000+ students in top global universities. His expertise in visa documentation has achieved a remarkable 99.2% success rate.</p>
                         </div>
@@ -1848,36 +1872,15 @@
                         </div>
                         <div class="faculty-name">
                             <h3 class="text-2xl font-bold">Vishal Faldu</h3>
-                            <div class="bg-blue-500/20 text-blue-400 text-xs font-bold px-3 py-1 rounded-full inline-block mt-2">Co-Founder</div>
+                            <div class="bg-blue-500/20 text-blue-400 text-xs font-bold px-3 py-1 rounded-full inline-block mt-2">Head Mentor</div>
                         </div>
-                        <p class="faculty-designation text-brand-warning">IELTS/PTE Master Trainer</p>
+                        <p class="faculty-designation text-brand-warning">Spoken English Guru</p>
                         <div class="faculty-description">
                             <p class="text-gray-400">A British Council certified trainer with 8+ years experience. Specializes in helping students achieve Band 8+ in IELTS and 85+ in PTE. Known for his unique "Score Booster" techniques.</p>
                         </div>
                         <div class="flex justify-center space-x-3 mt-auto pt-4 border-t border-white/5">
                             <span class="px-3 py-1 bg-purple-500/10 text-purple-400 text-xs rounded-full">IELTS Band 9</span>
                             <span class="px-3 py-1 bg-red-500/10 text-red-400 text-xs rounded-full">PTE Expert</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Kiran Lathiya -->
-                <div class="faculty-card glass-card animate-fade-in" style="animation-delay: 0.3s">
-                    <div class="faculty-content">
-                        <div class="faculty-photo-container">
-                            <img src="pro3.png" alt="Kiran Lathiya" class="faculty-photo">
-                        </div>
-                        <div class="faculty-name">
-                            <h3 class="text-2xl font-bold">Kiran Lathiya</h3>
-                            <div class="bg-brand-primary/20 text-brand-primary text-xs font-bold px-3 py-1 rounded-full inline-block mt-2">Head Mentor</div>
-                        </div>
-                        <p class="faculty-designation text-cyan-400">Spoken English Guru</p>
-                        <div class="faculty-description">
-                            <p class="text-gray-400">25+ years of transforming students into confident English speakers. Former corporate trainer at multinational companies. His "Zero to Hero" methodology has helped 10,000+ students overcome hesitation.</p>
-                        </div>
-                        <div class="flex justify-center space-x-3 mt-auto pt-4 border-t border-white/5">
-                            <span class="px-3 py-1 bg-cyan-500/10 text-cyan-400 text-xs rounded-full">Accent Trainer</span>
-                            <span class="px-3 py-1 bg-yellow-500/10 text-yellow-400 text-xs rounded-full">Corporate English</span>
                         </div>
                     </div>
                 </div>
@@ -2138,12 +2141,6 @@
                             <span>Mon-Sat: 9:00 AM - 8:00 PM</span>
                         </li>
                     </ul>
-
-                    <!-- ===== MOBILE CALL BUTTON (Transparent, Round) - JUST BELOW CONTACT US ===== -->
-                    <a href="tel:+919925081515" class="mobile-footer-call-btn">
-                        <i class="fas fa-phone-alt"></i>
-                        <span>Call Us: +91 99250 81515</span>
-                    </a>
                     
                     <div class="mt-4">
                         <h5 class="font-bold text-white text-sm mb-3">Follow Us</h5>
@@ -2177,7 +2174,7 @@
     </footer>
 
     <script>
-        // --- 1. BANNERS ARRAY ---
+        // --- 1. BANNERS ARRAY (BACKGROUND IMAGES REMOVED) ---
         const banners = [
             {
                 type: 'spoken',
@@ -2189,8 +2186,7 @@
                 highlight: '🚀 Special Bonus: FREE Job Interview Prep Module Included!',
                 offer: 'Limited Time Offer: Get 40% OFF + FREE Interview Preparation',
                 cta: 'Start Your Journey',
-                color: 'from-yellow-400 to-orange-500',
-                bgImage: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+                color: 'from-yellow-400 to-orange-500'
             },
             {
                 type: 'ielts',
@@ -2202,8 +2198,7 @@
                 highlight: '🎯 Band 8+ Guarantee or Your Money Back!',
                 offer: 'SPECIAL: Get FREE Spoken English Course (Worth ₹9,999)',
                 cta: 'Get Band 8+',
-                color: 'from-blue-500 to-purple-600',
-                bgImage: 'https://images.unsplash.com/photo-1513258496099-48168024aec0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+                color: 'from-blue-500 to-purple-600'
             },
             {
                 type: 'pte',
@@ -2215,8 +2210,7 @@
                 highlight: '🔥 AI-Powered Mock Tests with Instant Results!',
                 offer: 'Launch Offer: 40% OFF + FREE Spoken English Course',
                 cta: 'Score 90/90',
-                color: 'from-cyan-400 to-blue-500',
-                bgImage: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+                color: 'from-cyan-400 to-blue-500'
             },
             {
                 type: 'visa',
@@ -2228,8 +2222,7 @@
                 highlight: '✈️ 99% Visa Success Rate - Highest in Gujarat!',
                 offer: 'University Selection + SOP Writing + Visa Filing + Mock Interviews',
                 cta: 'Get Visa Assistance',
-                color: 'from-red-400 to-pink-600',
-                bgImage: 'https://images.unsplash.com/photo-1541336032412-2048a678540d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80'
+                color: 'from-red-400 to-pink-600'
             }
         ];
 
@@ -2352,11 +2345,8 @@
                 slide.className = `banner-slide ${index === 0 ? 'active' : ''}`;
                 slide.id = `banner-${index}`;
                 
-                // Set background image with inline style
-                slide.style.backgroundImage = `url('${banner.bgImage}')`;
-                slide.style.backgroundSize = 'cover';
-                slide.style.backgroundPosition = 'center';
-                slide.style.backgroundRepeat = 'no-repeat';
+                // SOLID DARK GRADIENT BACKGROUND - NO IMAGES
+                slide.style.background = 'linear-gradient(135deg, #0F1016 0%, #050507 100%)';
                 
                 // Mobile vs Desktop styling
                 const titleSize = isMobile ? 'text-3xl md:text-4xl' : 'text-5xl md:text-6xl';
