@@ -100,7 +100,7 @@
             margin: 0;
             padding: 0;
             width: 100%;
-            font-size: 16px; /* base for rem */
+            font-size: 16px;
         }
 
         img, video, iframe {
@@ -108,13 +108,11 @@
             height: auto;
         }
 
-        /* Improved spacing between sections */
         .section-padding {
             padding-top: 4rem !important;
             padding-bottom: 4rem !important;
         }
 
-        /* Hero section */
         .hero-section {
             height: 100vh;
             width: 100%;
@@ -127,7 +125,6 @@
             justify-content: center;
         }
 
-        /* Banner container */
         .banner-container {
             width: 100%;
             height: 100%;
@@ -173,7 +170,6 @@
             min-height: 80vh;
         }
 
-        /* Banner overlay - UPDATED: 75% darkness for better readability */
         .banner-overlay {
             position: absolute;
             top: 0;
@@ -184,7 +180,6 @@
             z-index: 1;
         }
 
-        /* Glassmorphism Panel */
         .glass {
             background: rgba(255, 255, 255, 0.02);
             backdrop-filter: blur(16px);
@@ -199,7 +194,6 @@
             box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
 
-        /* Ambient Background Glows */
         .glow-orb {
             position: fixed;
             border-radius: 50%;
@@ -208,13 +202,11 @@
             opacity: 0.15;
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #050507; }
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #555; }
 
-        /* Header styling - ALWAYS TRANSPARENT (no scroll change) */
         #main-header {
             transition: all 0.3s ease;
             background: transparent !important;
@@ -234,7 +226,6 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
         }
         
-        /* Header links spacing */
         #main-header nav {
             display: flex;
             gap: 2.5rem;
@@ -273,7 +264,6 @@
             width: 100%;
         }
 
-        /* Logo styling - BIGGER */
         .logo-img {
             width: auto;
             height: auto;
@@ -282,7 +272,7 @@
             object-fit: contain;
         }
 
-        /* ===== ENHANCED FACULTY CARDS - BIGGER IMAGES + PERFECT ALIGNMENT ===== */
+        /* ===== ENHANCED FACULTY CARDS - BIGGER IMAGES + NO CUTTING ===== */
         .faculty-card {
             transition: all 0.3s ease;
             height: 100%;
@@ -306,7 +296,7 @@
         }
         
         .faculty-photo {
-            width: 140px !important;   /* INCREASED significantly for premium look */
+            width: 140px !important;
             height: 140px !important;
             margin: 0 auto 0.8rem auto !important;
             display: flex;
@@ -314,6 +304,7 @@
             justify-content: center;
             border-radius: 50%;
             object-fit: cover;
+            object-position: center; /* FIX: prevents top cutting */
             border: 3px solid rgba(99, 102, 241, 0.3);
             transition: transform 0.3s ease;
         }
@@ -345,7 +336,6 @@
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
-        /* Call button in header - hidden on mobile */
         .call-btn {
             display: flex;
             align-items: center;
@@ -374,12 +364,10 @@
             color: #10b981 !important;
         }
 
-        /* Smooth scroll behavior */
         html {
             scroll-behavior: smooth;
         }
 
-        /* Desktop Banner Navigation Arrows (hidden on mobile) */
         .banner-nav-arrow {
             position: absolute;
             top: 50%;
@@ -413,12 +401,11 @@
             right: 30px;
         }
 
-        /* Prevent overlapping with fixed header */
         section[id] {
             scroll-margin-top: 100px;
         }
 
-        /* ===== NEW SLIDE-IN MOBILE MENU ===== */
+        /* ===== SLIDE-IN MOBILE MENU ===== */
         .mobile-menu-overlay {
             position: fixed;
             top: 0;
@@ -524,36 +511,45 @@
             transform: translateX(5px);
         }
 
-        .mobile-call-btn {
+        /* ----- FIXED: MOBILE MENU CALL BUTTON (CLEAN & CENTERED) ----- */
+        #mobile-menu .mobile-footer-call-btn {
+            width: 100%;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        #mobile-menu .mobile-footer-call-btn a {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.75rem;
-            background: transparent;
-            border: 1.5px solid rgba(99, 102, 241, 0.5);
-            border-radius: 50px;
-            padding: 1rem;
+            gap: 12px;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1.5px solid #6366f1;
+            border-radius: 60px;
+            padding: 1rem 1.5rem;
             color: white;
             font-weight: 700;
             font-size: 1.1rem;
             text-decoration: none;
             transition: all 0.3s ease;
-            margin-top: auto;
             backdrop-filter: blur(10px);
+            width: 100%;
+            letter-spacing: 0.5px;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
         }
 
-        .mobile-call-btn i {
+        #mobile-menu .mobile-footer-call-btn a i {
             color: #10b981;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
         }
 
-        .mobile-call-btn:hover {
-            background: rgba(99, 102, 241, 0.1);
-            border-color: #6366f1;
+        #mobile-menu .mobile-footer-call-btn a:hover {
+            background: rgba(99, 102, 241, 0.2);
+            border-color: #8b5cf6;
             transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.4);
         }
 
-        /* Banner title styles */
         .banner-title {
             font-size: 4rem;
             line-height: 1.1;
@@ -656,7 +652,6 @@
             box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
         }
 
-        /* Loader */
         @keyframes pulse {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.5; }
@@ -754,7 +749,6 @@
             animation: gradientFlow 8s ease infinite;
         }
 
-        /* Premium Phone Mockup - FULLY RESPONSIVE */
         .premium-phone-mockup {
             width: 340px;
             max-width: 100%;
@@ -1039,10 +1033,7 @@
             margin-top: 1.5rem;
         }
 
-        /* ===== RESPONSIVE SYSTEM: AUTO‑DETECT EVERY SCREEN SIZE (GLOBAL COVERAGE) ===== */
-        /* ----- MOBILE FIRST + FINE‑TUNED BREAKPOINTS ----- */
-
-        /* Extra small devices (<=320px) */
+        /* ===== RESPONSIVE SYSTEM ===== */
         @media (max-width: 320px) {
             html { font-size: 14px; }
             .hero-section { height: calc(100vh - 10px) !important; min-height: calc(100vh - 10px) !important; }
@@ -1051,7 +1042,7 @@
             .banner-subtitle { font-size: 0.9rem !important; }
             .banner-highlight { font-size: 0.8rem !important; padding: 6px 10px; }
             .banner-cta { font-size: 0.85rem !important; padding: 0.7rem 1.5rem !important; }
-            .faculty-photo { width: 110px !important; height: 110px !important; }
+            .faculty-photo { width: 120px !important; height: 120px !important; }
             .filter-btn { padding: 0.4rem 0.8rem !important; font-size: 0.7rem !important; }
             .premium-phone-mockup { width: 240px; height: 500px; border-radius: 36px; }
             .phone-notch { width: 120px; height: 24px; }
@@ -1060,53 +1051,45 @@
             .footer-logo-section .logo-img { width: 90px; height: 90px; }
         }
 
-        /* Small phones (321px - 375px) */
         @media (min-width: 321px) and (max-width: 375px) {
             html { font-size: 15px; }
             .banner-title { font-size: 1.9rem !important; }
             .banner-subtitle { font-size: 1rem !important; }
-            .faculty-photo { width: 120px !important; height: 120px !important; }
+            .faculty-photo { width: 130px !important; height: 130px !important; }
             .premium-phone-mockup { width: 260px; height: 540px; border-radius: 40px; }
             .phone-notch { width: 140px; height: 28px; }
         }
 
-        /* Medium phones (376px - 425px) */
         @media (min-width: 376px) and (max-width: 425px) {
             .banner-title { font-size: 2rem !important; }
-            .faculty-photo { width: 125px !important; height: 125px !important; }
+            .faculty-photo { width: 140px !important; height: 140px !important; }
             .premium-phone-mockup { width: 280px; height: 580px; }
         }
 
-        /* Large phones (426px - 480px) */
         @media (min-width: 426px) and (max-width: 480px) {
             .banner-title { font-size: 2.1rem !important; }
-            .faculty-photo { width: 130px !important; height: 130px !important; }
+            .faculty-photo { width: 145px !important; height: 145px !important; }
         }
 
-        /* Small tablets (481px - 640px) */
         @media (min-width: 481px) and (max-width: 640px) {
             .banner-title { font-size: 2.3rem !important; }
-            .faculty-photo { width: 135px !important; height: 135px !important; }
+            .faculty-photo { width: 150px !important; height: 150px !important; }
             .footer-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
-        /* Tablets (641px - 768px) */
         @media (min-width: 641px) and (max-width: 768px) {
             .banner-title { font-size: 2.5rem !important; }
-            .faculty-photo { width: 140px !important; height: 140px !important; }
+            .faculty-photo { width: 160px !important; height: 160px !important; }
             .footer-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
-        /* MOBILE VIEW CORE – BANNER ARROWS BELOW CTA + HIDE GLOBAL ARROWS */
         @media (max-width: 768px) {
             body { overflow-x: hidden; }
             
-            /* Hide desktop absolute arrows on mobile */
             .banner-nav-arrow {
                 display: none !important;
             }
 
-            /* Mobile banner navigation – placed just below CTA */
             .mobile-banner-nav {
                 display: flex;
                 justify-content: center;
@@ -1138,7 +1121,6 @@
                 transform: scale(0.95);
             }
 
-            /* Header mobile adjustments */
             #main-header .glass {
                 margin: 15px auto 0 auto !important;
                 padding: 0.4rem 1rem;
@@ -1155,7 +1137,6 @@
                 display: none;
             }
 
-            /* Mobile hero – perfect vertical centering */
             .hero-section {
                 height: calc(100vh - 30px) !important;
                 min-height: calc(100vh - 30px) !important;
@@ -1181,14 +1162,14 @@
                 margin-bottom: 0 !important;
             }
 
-            /* Faculty images – bigger and perfectly spaced */
+            /* ===== INCREASED FACULTY IMAGE HEIGHT (MOBILE) ===== */
             .faculty-photo {
-                width: 130px !important;
-                height: 130px !important;
+                width: 150px !important;
+                height: 150px !important;
                 margin-bottom: 1rem !important;
             }
             .faculty-photo-container {
-                margin-bottom: 1rem !important;
+                margin-bottom: 1.2rem !important;
             }
             .faculty-card {
                 margin-bottom: 1.5rem;
@@ -1198,12 +1179,10 @@
                 font-size: 1.3rem !important;
             }
 
-            /* Courses mobile */
             #courses { padding: 2.5rem 1rem !important; }
             #courses h2 { font-size: 2rem !important; }
             .filter-btn { padding: 0.5rem 1rem !important; font-size: 0.8rem !important; }
 
-            /* App section mobile */
             #app { padding: 2.5rem 1rem !important; }
             .premium-phone-mockup {
                 width: 280px;
@@ -1212,14 +1191,12 @@
                 margin: 0 auto 3rem auto;
             }
 
-            /* Footer mobile */
             footer { padding: 2.5rem 1rem !important; }
             .footer-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
             .footer-logo-section .logo-img { width: 100px; height: 100px; }
             .mobile-footer-call-btn { display: block; }
         }
 
-        /* Extra small mobile fine-tuning for arrows */
         @media (max-width: 480px) {
             .mobile-banner-nav button {
                 width: 50px;
@@ -1243,7 +1220,6 @@
             }
         }
 
-        /* Desktop / Large devices */
         @media (min-width: 769px) {
             #main-header nav { display: flex; }
             #main-header .md\:hidden { display: none; }
@@ -1253,10 +1229,9 @@
             .footer-grid { grid-template-columns: repeat(4, 1fr); gap: 2.5rem; }
             .footer-logo-section .logo-img { width: 96px; height: 96px; }
             .mobile-footer-call-btn { display: none !important; }
-            .mobile-banner-nav { display: none; } /* ensure desktop never shows mobile arrows */
+            .mobile-banner-nav { display: none; }
         }
 
-        /* Laptop & desktop fine-tuning */
         @media (min-width: 1025px) and (max-width: 1280px) {
             .banner-title { font-size: 3.5rem; }
             .premium-phone-mockup { width: 320px; height: 660px; }
@@ -1283,7 +1258,6 @@
                 <img src="Logo.png" alt="TESCA Logo" class="logo-img w-full h-full">
             </div>
         </div>
-        
         <div class="w-48 h-[2px] bg-gray-800 rounded-full overflow-hidden">
             <div id="loader-bar" class="h-full bg-gradient-to-r from-brand-primary to-brand-accent w-0 transition-all duration-300"></div>
         </div>
@@ -1309,12 +1283,10 @@
                 </nav>
 
                 <div class="flex items-center gap-5">
-                    <!-- Call button hidden on mobile via CSS -->
                     <a href="tel:+919925081515" class="call-btn">
                         <i class="fas fa-phone"></i> 
                         <span class="hidden sm:inline">Call Now</span>
                     </a>
-                    
                     <button class="md:hidden text-white text-xl" onclick="toggleMobileMenu()">
                         <i class="fas fa-bars"></i>
                     </button>
@@ -1326,7 +1298,7 @@
     <!-- Mobile Menu Overlay (click to close) -->
     <div id="mobile-menu-overlay" class="mobile-menu-overlay" onclick="closeMobileMenu()"></div>
 
-    <!-- Mobile Menu - Slide-in Panel -->
+    <!-- Mobile Menu - Slide-in Panel (CALL BUTTON NOW PERFECTLY STYLED) -->
     <div id="mobile-menu" class="mobile-menu-panel">
         <div class="mobile-menu-close" onclick="closeMobileMenu()">
             <i class="fas fa-times"></i>
@@ -1341,6 +1313,7 @@
             <a href="#app" class="mobile-menu-link" onclick="closeMobileMenu()"><i class="fas fa-mobile-alt"></i> Download App</a>
             <a href="#contact" class="mobile-menu-link" onclick="closeMobileMenu()"><i class="fas fa-envelope"></i> Contact Us</a>
         </div>
+        <!-- MOBILE CALL BUTTON - FIXED & ELEGANT -->
         <div class="mobile-footer-call-btn">
             <a href="tel:+919925081515" class="direct-link">
                 <i class="fas fa-phone"></i> +91 99250 81515
@@ -1351,12 +1324,9 @@
     <!-- Hero Banner Section -->
     <section id="home" class="hero-section">
         <div class="banner-container">
-            <!-- DESKTOP GLOBAL ARROWS (hidden on mobile via CSS) -->
             <button class="banner-nav-arrow prev" onclick="prevBanner()"><i class="fas fa-chevron-left"></i></button>
             <button class="banner-nav-arrow next" onclick="nextBanner()"><i class="fas fa-chevron-right"></i></button>
-            
             <div class="banner-overlay"></div>
-            <!-- Banner slides will be injected here -->
         </div>
     </section>
 
@@ -1377,13 +1347,11 @@
                 <button onclick="filterCourses('visa')" class="filter-btn px-6 py-3 rounded-full border border-white/10 bg-white/5 text-sm font-bold transition">Visa</button>
             </div>
 
-            <div id="course-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Courses will be loaded here -->
-            </div>
+            <div id="course-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
         </div>
     </section>
 
-    <!-- Faculty Section -->
+    <!-- Faculty Section (IMAGES NOW BIGGER ON MOBILE, NO CUTTING) -->
     <section id="faculty" class="section-padding bg-gradient-to-b from-brand-surface to-brand-bg">
         <div class="container mx-auto px-4">
             <div class="text-center max-w-3xl mx-auto mb-12 animate-fade-in">
@@ -1393,7 +1361,6 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-                <!-- Kiran Lathiya -->
                 <div class="faculty-card glass-card animate-fade-in" style="animation-delay: 0.3s">
                     <div class="faculty-content">
                         <div class="faculty-photo-container">
@@ -1413,7 +1380,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Nikunj Dhanani -->
                 <div class="faculty-card glass-card animate-fade-in" style="animation-delay: 0.1s">
                     <div class="faculty-content">
                         <div class="faculty-photo-container">
@@ -1433,7 +1399,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Vishal Faldu -->
                 <div class="faculty-card glass-card animate-fade-in" style="animation-delay: 0.2s">
                     <div class="faculty-content">
                         <div class="faculty-photo-container">
@@ -1455,7 +1420,6 @@
                 </div>
             </div>
 
-            <!-- Stats -->
             <div class="glass-card p-6 rounded-3xl">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
                     <div><div class="stat-number mb-2">15K+</div><div class="text-sm text-gray-400">Students Trained</div></div>
@@ -1466,7 +1430,7 @@
         </div>
     </section>
 
-    <!-- NEW PREMIUM APP SECTION -->
+    <!-- Premium App Section -->
     <section id="app" class="section-padding relative overflow-hidden bg-gradient-to-b from-brand-bg to-brand-surface">
         <div class="container mx-auto px-4">
             <div class="text-center max-w-3xl mx-auto mb-16 animate-fade-in">
@@ -1478,8 +1442,6 @@
             <div class="app-section-container">
                 <div class="app-section-bg-gradient rounded-3xl p-8 md:p-12">
                     <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
-                        
-                        <!-- Premium Phone Mockup -->
                         <div class="lg:w-1/2 flex justify-center animate-fade-in" style="animation-delay: 0.1s">
                             <div class="premium-phone-mockup">
                                 <div class="phone-frame">
@@ -1510,8 +1472,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- App Features Description -->
                         <div class="lg:w-1/2 animate-fade-in" style="animation-delay: 0.2s">
                             <div class="app-features-sidebar">
                                 <div class="feature-highlight"><div class="feature-highlight-icon" style="background: linear-gradient(135deg, rgba(99,102,241,0.15), rgba(139,92,246,0.1));"><i class="fas fa-broadcast-tower text-brand-primary"></i></div><h3>Live Interactive Learning</h3><p>Experience real-time classroom sessions with our expert faculty. Ask questions, participate in discussions, and get instant feedback - just like a physical classroom but from anywhere.</p></div>
@@ -1529,12 +1489,17 @@
         </div>
     </section>
 
-    <!-- Professional Footer -->
+    <!-- Professional Footer (LOGO CENTERED IN ITS DIV) -->
     <footer id="contact" class="bg-brand-surface border-t border-white/5 py-12">
         <div class="container mx-auto px-4">
             <div class="footer-grid mb-12">
                 <div class="footer-logo-section">
-                    <a href="#home" class="flex items-center mb-2"><div class="w-24 h-24 flex items-center justify-center"><img src="Logo.png" alt="TESCA" class="logo-img w-full h-full"></div></a>
+                    <!-- FIX: logo anchor centered horizontally, text stays left -->
+                    <a href="#home" class="flex items-center mb-2 mx-auto">
+                        <div class="w-24 h-24 flex items-center justify-center">
+                            <img src="Logo.png" alt="TESCA" class="logo-img w-full h-full">
+                        </div>
+                    </a>
                     <p class="text-gray-400 text-sm leading-relaxed">World-class education and visa consultancy platform helping students achieve their global dreams since 2010.</p>
                     <a href="https://play.google.com/store/apps/details?id=co.ted.fpqdt" target="_blank" class="direct-link inline-flex items-center gap-3 bg-white/5 border border-white/10 px-4 py-2 rounded-lg hover:bg-white/10 transition mt-3"><i class="fab fa-google-play text-xl text-brand-success"></i><div class="text-left"><div class="text-[9px] uppercase text-gray-400">Download on</div><div class="text-sm font-bold">Google Play</div></div></a>
                 </div>
@@ -1550,7 +1515,7 @@
     </footer>
 
     <script>
-        // --- 1. BANNERS ARRAY ---
+        // BANNERS ARRAY
         const banners = [
             { type: 'spoken', title: 'Transform Your English in Just 30 Days!', subtitle: 'Join 15,000+ students who achieved fluency with our proven methodology', price: '₹9,599', originalPrice: '₹15,999', discount: '40% OFF', highlight: '🚀 Special Bonus: FREE Job Interview Prep Module Included!', offer: 'Limited Time Offer: Get 40% OFF + FREE Interview Preparation', cta: 'Start Your Journey', color: 'from-yellow-400 to-orange-500' },
             { type: 'ielts', title: 'IELTS with Band 8+ Guarantee!', subtitle: 'India\'s #1 IELTS Prep with 94% Success Rate | Join 5,000+ High Scorers', price: '₹16,249', originalPrice: '₹24,999', discount: '35% OFF', highlight: '🎯 Band 8+ Guarantee or Your Money Back!', offer: 'SPECIAL: Get FREE Spoken English Course (Worth ₹9,999)', cta: 'Get Band 8+', color: 'from-blue-500 to-purple-600' },
@@ -1638,7 +1603,6 @@
                             </div>
                 `;
 
-                // ADD MOBILE ARROWS JUST BELOW CTA BUTTON (request #1)
                 if (isMobile) {
                     html += `
                             <div class="mobile-banner-nav">
@@ -1648,7 +1612,7 @@
                     `;
                 }
 
-                html += `</div></div>`; // close banner-content and inner divs
+                html += `</div></div>`;
                 slide.innerHTML = html;
                 bannerContainer.insertBefore(slide, bannerContainer.querySelector('.banner-overlay'));
             });
@@ -1676,17 +1640,7 @@
                 const discountPercent = Math.round(((c.original - c.price) / c.original) * 100);
                 const isMobile = window.innerWidth <= 768;
                 const buttonText = c.type === 'visa' ? 'Make Inquiry' : 'Enroll Now';
-                return `
-                <div class="course-card glass-card animate-fade-in">
-                    <div class="course-content">
-                        <div class="absolute top-4 right-4 bg-brand-danger text-xs font-bold px-3 py-1 rounded-full">${discountPercent}% OFF</div>
-                        <div class="mb-4"><span class="text-xs font-bold text-brand-accent uppercase tracking-widest">${c.type}</span><h3 class="text-xl font-bold mt-2 mb-3 line-clamp-2">${c.title}</h3><div class="mb-3"><p class="text-sm text-gray-400">${c.desc}</p></div></div>
-                        <div class="course-details-container"><div class="mb-3"><h4 class="font-bold text-white text-sm mb-2">Course Details:</h4><div class="flex flex-wrap gap-2 mb-3"><span class="text-xs px-2 py-1 bg-white/5 rounded">${c.dur}</span><span class="text-xs px-2 py-1 bg-white/5 rounded">${c.lang}</span>${c.cert === 'Yes' ? '<span class="text-xs px-2 py-1 bg-green-500/10 text-green-400 rounded">Certificate</span>' : ''}</div></div>
-                        <div class="mb-3"><h4 class="font-bold text-white text-sm mb-2">What You'll Learn:</h4><div class="course-curriculum-list">${c.curriculum.slice(0, isMobile ? 2 : 3).map(item => `<div class="course-curriculum-item"><i class="fas fa-check"></i><span class="text-xs">${item}</span></div>`).join('')}${c.curriculum.length > (isMobile ? 2 : 3) ? `<div class="course-curriculum-item"><i class="fas fa-plus"></i><span class="text-xs">+${c.curriculum.length - (isMobile ? 2 : 3)} more modules</span></div>` : ''}</div></div></div>
-                        <div class="flex items-end gap-2 mb-6 border-t border-white/5 pt-4"><span class="text-2xl font-bold text-white">₹${c.price.toLocaleString()}</span><span class="text-sm text-gray-500 line-through mb-1">₹${c.original.toLocaleString()}</span></div>
-                        <div class="course-buttons"><a href="tel:+919925081515" class="enroll-btn"><i class="fas ${c.type === 'visa' ? 'fa-headset' : 'fa-user-graduate'} mr-2"></i>${buttonText}</a></div>
-                    </div>
-                </div>`;
+                return `<div class="course-card glass-card animate-fade-in"><div class="course-content"><div class="absolute top-4 right-4 bg-brand-danger text-xs font-bold px-3 py-1 rounded-full">${discountPercent}% OFF</div><div class="mb-4"><span class="text-xs font-bold text-brand-accent uppercase tracking-widest">${c.type}</span><h3 class="text-xl font-bold mt-2 mb-3 line-clamp-2">${c.title}</h3><div class="mb-3"><p class="text-sm text-gray-400">${c.desc}</p></div></div><div class="course-details-container"><div class="mb-3"><h4 class="font-bold text-white text-sm mb-2">Course Details:</h4><div class="flex flex-wrap gap-2 mb-3"><span class="text-xs px-2 py-1 bg-white/5 rounded">${c.dur}</span><span class="text-xs px-2 py-1 bg-white/5 rounded">${c.lang}</span>${c.cert === 'Yes' ? '<span class="text-xs px-2 py-1 bg-green-500/10 text-green-400 rounded">Certificate</span>' : ''}</div></div><div class="mb-3"><h4 class="font-bold text-white text-sm mb-2">What You'll Learn:</h4><div class="course-curriculum-list">${c.curriculum.slice(0, isMobile ? 2 : 3).map(item => `<div class="course-curriculum-item"><i class="fas fa-check"></i><span class="text-xs">${item}</span></div>`).join('')}${c.curriculum.length > (isMobile ? 2 : 3) ? `<div class="course-curriculum-item"><i class="fas fa-plus"></i><span class="text-xs">+${c.curriculum.length - (isMobile ? 2 : 3)} more modules</span></div>` : ''}</div></div></div><div class="flex items-end gap-2 mb-6 border-t border-white/5 pt-4"><span class="text-2xl font-bold text-white">₹${c.price.toLocaleString()}</span><span class="text-sm text-gray-500 line-through mb-1">₹${c.original.toLocaleString()}</span></div><div class="course-buttons"><a href="tel:+919925081515" class="enroll-btn"><i class="fas ${c.type === 'visa' ? 'fa-headset' : 'fa-user-graduate'} mr-2"></i>${buttonText}</a></div></div></div>`;
             }).join('');
         }
 
